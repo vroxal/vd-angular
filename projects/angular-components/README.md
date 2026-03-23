@@ -1,63 +1,108 @@
-# AngularComponents
+# @vroxal/vd-angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.0.
+Angular component library for the Vroxal Design.
 
-## Code scaffolding
+## Package Scope
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+This package contains reusable UI primitives, form controls, overlays, navigation components, and feedback patterns used across Vroxal Angular applications.
+
+The source of truth for exported components and services lives in:
+
+- `src/public-api.ts`
+- `guidelines/COMPONENT_REGISTRY.md`
+- `guidelines/USAGE_GUIDELINES.md`
+
+## Installation
 
 ```bash
-ng generate component component-name
+npm install @vroxal/vd-angular @vroxal/vd-tokens @vroxal/vd-icons
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Required Angular peer dependencies:
+
+- `@angular/core`
+- `@angular/common`
+- `@angular/cdk`
+
+## Usage
+
+Import standalone components from the package root:
+
+```ts
+import { Component } from '@angular/core';
+import { VdButton, VdInput } from '@vroxal/vd-angular';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [VdButton, VdInput],
+  template: `
+    <vd-input label="Email"></vd-input>
+    <vd-button label="Continue"></vd-button>
+  `,
+})
+export class ExampleComponent {}
+```
+
+If your application still uses NgModules, use the bundled module:
+
+```ts
+import { NgModule } from '@angular/core';
+import { VdAngularComponentsModule } from '@vroxal/vd-angular';
+
+@NgModule({
+  imports: [VdAngularComponentsModule],
+})
+export class ExampleModule {}
+```
+
+## Available Component Areas
+
+- Actions: button, icon button, icon, badge
+- Inputs and selection: input, textarea, select, number input, file input, checkbox, radio, switch, verification code input
+- Date and time: single date, range date, inline date, date-time, time picker
+- Overlays and feedback: tooltip, dropdown, dialog, drawer, confirmation dialog, toast, alert
+- Navigation and layout: breadcrumb, navbar, sidebar, accordion, divider, tab
+- Data and states: datatable, pagination, progress tracker, empty state, loading state
+
+For the full selector and symbol inventory, read `guidelines/COMPONENT_REGISTRY.md`.
+
+## Development
+
+From the workspace root, build the library with:
 
 ```bash
-ng generate --help
+npm run build:lib
 ```
 
-## Building
-
-To build the library, run:
+Or directly with Angular CLI:
 
 ```bash
 ng build angular-components
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+The packaged output is generated in `dist/angular-components`.
 
-### Publishing the Library
+## Testing
 
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/angular-components
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Run the workspace unit tests from the repo root:
 
 ```bash
-ng test
+npm test
 ```
 
-## Running end-to-end tests
+## Publishing
 
-For end-to-end (e2e) testing, run:
+After building, publish from the generated package directory:
 
 ```bash
-ng e2e
+cd dist/angular-components
+npm publish
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Guidance
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Import only from `@vroxal/vd-angular`
+- Prefer library components over building custom UI when an equivalent component already exists
+- Use the provided service APIs for toast, dialog, drawer, and confirmation flows
+- Avoid deep imports and style overrides

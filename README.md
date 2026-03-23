@@ -1,83 +1,81 @@
-# Vroxal Design Angular Components
+# Vroxal Design Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.4.
+Monorepo for the Vroxal Design Angular library and its documentation app.
 
-This workspace contains:
+## Workspace Contents
 
-- **angular-components**: Component library
+- `projects/angular-components`: publishable Angular component library exposed as `@vroxal/vd-angular`
+- `projects/docs`: Angular application used to develop and preview the library
 
-- **vd-docs**: Documentation application
+## Requirements
 
-## Development server
+- Node.js 20+
+- npm 10+
 
-To start the demo application:
+## Getting Started
+
+Install dependencies:
 
 ```bash
-npm run start:demo
+npm install
 ```
 
-To start the documentation application:
+Start the docs application locally:
 
 ```bash
 npm run start:docs
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The docs app runs on `http://localhost:4200/` with live reload enabled by Angular CLI.
 
-## Code scaffolding
+## Common Commands
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the component library:
+Build the component library:
 
 ```bash
 npm run build:lib
 ```
 
-To build the demo app:
-
-```bash
-npm run build:demo
-```
-
-To build the documentation:
+Build the docs application:
 
 ```bash
 npm run build:docs
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Run unit tests:
 
 ```bash
-ng test
+npm test
 ```
 
-## Running end-to-end tests
+## Library Workflow
 
-For end-to-end (e2e) testing, run:
+The library source lives in `projects/angular-components/src`, and the packaged output is written to `dist/angular-components`.
+
+Useful library references:
+
+- Component registry: `projects/angular-components/guidelines/COMPONENT_REGISTRY.md`
+- Usage guidance: `projects/angular-components/guidelines/USAGE_GUIDELINES.md`
+- Public exports: `projects/angular-components/src/public-api.ts`
+
+## Publishing
+
+Build the library first:
 
 ```bash
-ng e2e
+npm run build:lib
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Then publish from the generated package directory:
 
-## Additional Resources
+```bash
+cd dist/angular-components
+npm publish
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Tech Stack
+
+- Angular 21
+- `ng-packagr` for library packaging
+- Vitest via Angular's unit-test builder
+
