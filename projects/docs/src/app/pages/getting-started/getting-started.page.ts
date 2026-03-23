@@ -44,10 +44,10 @@ export default class GettingStartedPage {
   variant="solid"
 ></vd-icon-button>`;
 
-  // agenticAiGovernanceSnippet = `# VD Design System Governance\`
-  agenticAiGovernanceSnippet = `# Vroxal Design System Governance
+  // agenticAiGovernanceSnippet = `# VD Design Governance\`
+  agenticAiGovernanceSnippet = `# Vroxal Design Governance
 
-This project uses the **Vroxal Design System (VD)** as the single source of truth
+This project uses the **Vroxal Design (VD)** as the single source of truth
 for all UI decisions: components, tokens, typography, icons, and layout scales.
 
 Primary component library:

@@ -1,4 +1,4 @@
-# Vroxal Design System Usage Guidelines
+# Vroxal Design Usage Guidelines
 
 This guide is for agentic AI and developers using `@vroxal/vd-angular`.
 

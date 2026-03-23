@@ -1,4 +1,4 @@
-# Vroxal Design System - Angular Components
+# Vroxal Design - Angular Components
 
 ## Project Architecture
 
