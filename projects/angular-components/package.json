@@ -1,6 +1,6 @@
 {
   "name": "@vroxal/vd-angular",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vroxal Design Angular Components Library",
   "peerDependencies": {
     "@angular/common": "^21.0.0",
