@@ -1,6 +1,6 @@
 # @vroxal/vd-angular
 
-Angular component library for the Vroxal design system.
+Angular component library for the Vroxal Design.
 
 ## What This Package Includes
 
@@ -104,8 +104,7 @@ Some library features are used through services instead of direct template compo
 Add a single toast host near the app shell:
 
 ```html
-<router-outlet></router-outlet>
-<vd-toast></vd-toast>
+<router-outlet></router-outlet> <vd-toast></vd-toast>
 ```
 
 Trigger toasts from any injected service consumer:
