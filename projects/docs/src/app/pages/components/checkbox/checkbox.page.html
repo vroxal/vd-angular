@@ -1,0 +1,255 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Checkbox'"
+    [subtitle]="'Checkboxes let users choose one or more independent options.'"
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Basic Checkbox</h3>
+        <p>Standard checkbox with label</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-checkbox label="Checkbox Label"></vd-checkbox>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">With Description</h3>
+        <p>Checkbox with supporting text</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-checkbox
+            label="Checkbox Label"
+            description="Description for the checkbox goes here"
+          ></vd-checkbox>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">States</h3>
+        <p>Unchecked, Checked, Indeterminate, and Disabled</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-checkbox label="Unchecked"></vd-checkbox>
+          <vd-checkbox label="Checked" [checked]="true"></vd-checkbox>
+          <vd-checkbox label="Indeterminate" [indeterminate]="true"></vd-checkbox>
+          <vd-checkbox label="Disabled" [disabled]="true"></vd-checkbox>
+          <vd-checkbox label="Disabled Checked" [checked]="true" [disabled]="true"></vd-checkbox>
+          <vd-checkbox
+            label="Disabled Indeterminate"
+            [indeterminate]="true"
+            [disabled]="true"
+          ></vd-checkbox>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the checkbox component in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-checkbox.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Use label and optional description for clarity:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="checkbox-basic.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Indeterminate State</h3>
+          <p>Use the indeterminate state for partial selection:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="indeterminateSnippet"
+            fileName="checkbox-indeterminate.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Listening to Change Events</h3>
+          <p>Handle changes by listening to the (change) event:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="changeHandlingSnippet"
+            fileName="checkbox-events.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="changeHandlingComponentSnippet"
+            fileName="checkbox-events.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">All Available APIs</h3>
+          <p class="body-large">Example using all available APIs:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allImplementationSnippet"
+            fileName="checkbox-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+        </div>
+        <vd-datatable [data]="outputsData" [columns]="eventsColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-group usage-guidelines">
+  <div class="content-group-title">
+    <h2 class="headline-large">Best Practices</h2>
+  </div>
+  <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Checkbox when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Checkbox when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Use checkboxes for multiple selection, not mutually exclusive choices</li>
+          <li>Provide clear labels and descriptions when additional context is needed</li>
+          <li>Use indeterminate state to represent partial selection in groups</li>
+          <li>Group related checkboxes to improve scanability</li>
+          <li>Keep labels concise and action-oriented</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+</div>
+
+<div class="content-group playground">
+  <div class="content-group-title">
+    <h2 class="headline-large">Component playground</h2>
+    <p class="body-large">Interact with the checkbox component in this section</p>
+    <div class="content-group-container playground-container">
+      <div class="component-preview">
+        <div class="component-control">
+          <div class="controls">
+            <vd-input
+              label="Label"
+              placeholder="Enter checkbox label"
+              [(value)]="label"
+            ></vd-input>
+            <vd-input
+              label="Description"
+              placeholder="Enter checkbox description"
+              [(value)]="description"
+            ></vd-input>
+
+            <label class="switch-label">
+              <span>Checked</span>
+              <vd-switch [(ngModel)]="checked"></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Indeterminate</span>
+              <vd-switch [(ngModel)]="indeterminate"></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Disabled</span>
+              <vd-switch [(ngModel)]="disabled"></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-checkbox
+              [label]="label"
+              [description]="description"
+              [checked]="checked"
+              [indeterminate]="indeterminate"
+              [disabled]="disabled"
+              (change)="onCheckboxChange($event)"
+            ></vd-checkbox>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

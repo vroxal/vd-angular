@@ -1,0 +1,27 @@
+<div class="main">
+  <app-doc-page-header
+    [title]="'Welcome to Vroxal Design'"
+    [subtitle]="
+      'Explore foundations and component documentation to build consistent product experiences.'
+    "
+  ></app-doc-page-header>
+
+  <!-- Foundations + Components -->
+  <section *ngFor="let section of sections" class="content-group">
+    <div class="content-group-title">
+      <h2 class="headline-large">{{ section.title }}</h2>
+    </div>
+    <div class="card-grid">
+      <a
+        *ngFor="let item of section.items"
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="intro-card"
+      >
+        <img *ngIf="item.image" [src]="'assets/images/docs/' + item.image + '.jpg'" alt="" />
+        <span class="title-large">{{ item.label }}</span>
+      </a>
+    </div>
+  </section>
+</div>

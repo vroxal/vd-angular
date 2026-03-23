@@ -1,0 +1,200 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Switch'"
+    [subtitle]="'Switches toggle between two states, such as enabled and disabled.'"
+  >
+  </app-doc-page-header>
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Basic Switch</h3>
+        <p>Standard switch without label</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-switch></vd-switch>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">With Label</h3>
+        <p>Switch with descriptive label</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-switch label="Enable Notifications"></vd-switch>
+          <vd-switch label="Dark Mode" [checked]="true"></vd-switch>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">States</h3>
+        <p>Unchecked, Checked, and Disabled states</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-switch label="Unchecked"></vd-switch>
+          <vd-switch label="Checked" [checked]="true"></vd-switch>
+          <vd-switch label="Disabled" [disabled]="true"></vd-switch>
+          <vd-switch label="Disabled Checked" [checked]="true" [disabled]="true"></vd-switch>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the switch component in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-switch.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example using ngModel for two-way binding:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="switch-example.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Listening to Change Events</h3>
+          <p>Handle state changes by listening to the (change) event:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="eventHandlingSnippet"
+            fileName="switch-events.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="eventHandlingComponentSnippet"
+            fileName="switch-events.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+        </div>
+        <vd-datatable [data]="outputsData" [columns]="eventsColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-group usage-guidelines">
+  <div class="content-group-title">
+    <h2 class="headline-large">Best Practices</h2>
+  </div>
+  <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Switch when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Switch when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Always provide a clear label that describes what the switch controls</li>
+          <li>Use switches for binary on/off choices, not for multiple options</li>
+          <li>Use reactive forms for better state management in complex forms</li>
+          <li>Disable switches when the option is not applicable based on other form values</li>
+          <li>Consider the impact of toggling and provide feedback (success messages, warnings)</li>
+          <li>Group related switches together visually</li>
+          <li>Test keyboard accessibility (Space to toggle, Tab navigation)</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+</div>
+
+<div class="content-group playground">
+  <div class="content-group-title">
+    <h2 class="headline-large">Component playground</h2>
+    <p class="body-large">Interact with the switch component in this section</p>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-input label="Label" placeholder="Enter switch label" [(value)]="label"></vd-input>
+
+            <label class="switch-label">
+              <span>Disabled</span>
+              <vd-switch [(ngModel)]="disabled"></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-switch
+              [label]="label"
+              [(ngModel)]="checked"
+              [disabled]="disabled"
+              (change)="onSwitchChange($event)"
+            ></vd-switch>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

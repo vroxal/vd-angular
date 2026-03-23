@@ -1,0 +1,10 @@
+<div class="code-container">
+  <div class="code-preview__header">
+    <p class="body-medium-italic">{{ fileName }}</p>
+    <div class="copy-container" (click)="copyCode()" [class.disabled]="copied">
+      <vd-icon class="copy-code" [name]="currentIcon" size="xs"></vd-icon>
+      <p class="label-small">{{ copied ? 'Copied' : 'Copy code' }}</p>
+    </div>
+  </div>
+  <div class="code-body" [innerHTML]="highlightedCode"></div>
+</div>

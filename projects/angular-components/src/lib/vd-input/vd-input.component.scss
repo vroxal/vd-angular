@@ -1,0 +1,235 @@
+:host {
+  display: block;
+  width: 100%;
+
+  --vd-input-border-base: var(--vd-color-border-default-base);
+  --vd-input-border-secondary: var(--vd-color-border-default-secondary);
+  --vd-input-border-disabled: var(--vd-color-border-default-disabled);
+  --vd-input-outline-color: var(--vd-color-border-primary-tertiary);
+
+  --vd-input-bg-base: var(--vd-color-background-default-secondary);
+  --vd-input-bg-disabled: var(--vd-color-background-default-disabled);
+
+  --vd-input-text-base: var(--vd-color-content-default-base);
+  --vd-input-text-secondary: var(--vd-color-content-default-secondary);
+  --vd-input-text-disabled: var(--vd-color-content-default-disabled);
+  --vd-input-text-placeholder: var(--vd-color-content-default-disabled);
+
+  --vd-input-icon-base: var(--vd-color-content-default-tertiary);
+  --vd-input-icon-disabled: var(--vd-color-content-default-disabled);
+
+  --vd-input-padding: var(--vd-scale-spacing-300);
+  --vd-input-border-width: var(--vd-scale-border-width-sm);
+  --vd-input-radius: var(--vd-scale-border-radius-md);
+  --vd-input-outline-width: var(--vd-scale-border-width-md);
+}
+
+// State variants loop
+@each $state in success, error, warning {
+  .vd-input--#{$state} {
+    --vd-input-icon-state: var(--vd-color-content-#{$state}-base);
+    --vd-input-text-state: var(--vd-color-content-#{$state}-base);
+    --vd-input-border-state: var(--vd-color-border-#{$state}-base);
+    --vd-input-bg-state: var(--vd-color-background-#{$state}-secondary);
+  }
+}
+
+.vd-input {
+  width: 100%;
+  min-width: 240px;
+
+  &__label-row {
+    display: flex;
+    gap: var(--vd-scale-spacing-200);
+    margin-bottom: var(--vd-scale-spacing-100);
+  }
+
+  &__label {
+    color: var(--vd-input-text-base);
+  }
+
+  &__optional {
+    flex: 1;
+    text-align: right;
+    margin: 0;
+  }
+
+  &__container {
+    display: flex;
+    gap: var(--vd-scale-spacing-200);
+    align-items: center;
+    margin: 0;
+    padding: calc(var(--vd-input-padding) - var(--vd-input-border-width));
+    border: var(--vd-input-border-width) solid var(--vd-input-border-secondary);
+    border-radius: var(--vd-input-radius);
+    background: var(--vd-input-bg-base);
+    cursor: text;
+
+    &:focus-within:not(:has(.vd-input__trailing-action-container:focus-within)) {
+      border-color: var(--vd-input-border-base);
+      background: var(--vd-input-bg-base);
+    }
+  }
+
+  &__input {
+    flex: 1;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    color: var(--vd-input-text-base);
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: var(--vd-input-text-placeholder);
+    }
+
+    &:-webkit-autofill {
+      box-shadow: 0 0 0px 1000px var(--vd-input-bg-base) inset;
+      -webkit-box-shadow: 0 0 0px 1000px var(--vd-input-bg-base) inset;
+      -webkit-text-fill-color: var(--vd-input-text-base);
+      transition: background-color 5000s ease-in-out;
+    }
+
+    &:-moz-autofill {
+      box-shadow: 0 0 0px 1000px var(--vd-input-bg-base) inset;
+      -moz-text-fill-color: var(--vd-input-text-base);
+    }
+  }
+
+  &__leading-icon,
+  &__trailing-icon {
+    display: inline-flex;
+    color: var(--vd-input-icon-base);
+  }
+
+  &__trailing-action-container {
+    position: relative;
+    height: var(--vd-scale-spacing-600);
+    width: var(--vd-scale-spacing-800);
+  }
+
+  &__trailing-action {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__helper-row {
+    display: flex;
+    margin-top: var(--vd-scale-spacing-100);
+  }
+
+  &__helper-text {
+    margin: 0;
+  }
+
+  &__input-counter {
+    flex: 1;
+    text-align: right;
+    margin: 0;
+  }
+
+  // Focus state
+  &:focus-within:not(:has(.vd-input__trailing-action-container:focus-within)) {
+    .vd-input__container {
+      border-color: var(--vd-input-border-base);
+      outline: var(--vd-input-outline-width) solid var(--vd-input-outline-color);
+      outline-offset: var(--vd-scale-spacing-50);
+      background: var(--vd-input-bg-base);
+    }
+
+    .vd-input__label,
+    .vd-input__helper-text {
+      color: var(--vd-input-text-secondary);
+    }
+  }
+
+  // Disabled state
+  &--disabled {
+    .vd-input__container {
+      border-color: var(--vd-input-border-disabled);
+      background: var(--vd-input-bg-disabled);
+    }
+
+    .vd-input__label,
+    .vd-input__helper-text,
+    .vd-input__input {
+      color: var(--vd-input-text-disabled);
+    }
+
+    .vd-input__leading-icon {
+      color: var(--vd-input-icon-disabled);
+    }
+  }
+
+  // Success state
+  &--success {
+    .vd-input__trailing-icon {
+      color: var(--vd-input-icon-state);
+    }
+
+    .vd-input__helper-text {
+      color: var(--vd-input-text-state);
+    }
+  }
+
+  // Error state
+  &--error {
+    .vd-input__label {
+      color: var(--vd-input-text-state);
+    }
+
+    .vd-input__container {
+      border-color: var(--vd-input-border-state);
+      background: var(--vd-input-bg-state);
+    }
+
+    .vd-input__trailing-icon {
+      color: var(--vd-input-icon-state);
+    }
+
+    .vd-input__helper-text {
+      color: var(--vd-input-text-state);
+    }
+  }
+
+  // Warning state
+  &--warning {
+    .vd-input__trailing-icon {
+      color: var(--vd-input-icon-state);
+    }
+
+    .vd-input__helper-text {
+      color: var(--vd-input-text-state);
+    }
+  }
+}
+
+.vd-input__helper-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  .vd-input__hint-tooltip {
+    width: max-content;
+    max-width: 240px;
+    min-width: 120px;
+    white-space: normal;
+    text-align: center;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--vd-color-background-default-always-dark, #333);
+    color: var(--vd-color-background-default-always-light, #fff);
+    padding: 8px 12px;
+    border-radius: var(--vd-radius-sm, 4px);
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 4px;
+  }
+}

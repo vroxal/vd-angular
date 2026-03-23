@@ -1,0 +1,102 @@
+:host {
+  --vd-alert-bg-base: var(--vd-color-background-primary-secondary);
+  --vd-alert-border-base: var(--vd-color-border-primary-secondary);
+  --vd-alert-text-base: var(--vd-color-content-primary-on-secondary);
+  --vd-alert-description-base: var(--vd-color-content-default-base);
+
+  --vd-alert-padding: var(--vd-scale-spacing-400);
+  --vd-alert-padding-closable: var(--vd-scale-spacing-1200);
+  --vd-alert-gap: var(--vd-scale-spacing-200);
+  --vd-alert-radius: var(--vd-scale-border-radius-md);
+  --vd-alert-border-width: var(--vd-scale-border-width-sm);
+  --vd-alert-icon-size: var(--vd-scale-icon-size-md);
+  --vd-alert-close-offset: var(--vd-scale-spacing-300);
+
+  width: 100%;
+}
+
+.vd-alert {
+  --vd-alert-bg: var(--vd-alert-bg-base);
+  --vd-alert-border: var(--vd-alert-border-base);
+  --vd-alert-text: var(--vd-alert-text-base);
+
+  position: relative;
+  display: flex;
+  gap: var(--vd-alert-gap);
+  align-items: flex-start;
+  padding: var(--vd-alert-padding);
+  border-radius: var(--vd-alert-radius);
+  border: var(--vd-alert-border-width) solid var(--vd-alert-border);
+  background-color: var(--vd-alert-bg);
+  color: var(--vd-alert-text);
+  box-sizing: border-box;
+
+  &--closable {
+    padding-right: var(--vd-alert-padding-closable);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--vd-alert-gap);
+    flex: 1;
+
+    &--inline-action {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+  }
+
+  &__text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  &__title {
+    color: inherit;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__description {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    color: var(--vd-alert-description-base);
+  }
+
+  &__action {
+    display: inline-flex;
+
+    ::ng-deep .vd-button {
+      --vd-button-padding-x: 0;
+      --vd-button-padding-y: 0;
+      --vd-button-bg: transparent;
+      --vd-button-bg-hover: transparent;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: var(--vd-alert-close-offset);
+    right: var(--vd-alert-close-offset);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@each $color in primary, success, error, warning, info, neutral {
+  .vd-alert--#{$color} {
+    --vd-alert-bg: var(--vd-color-background-#{$color}-secondary);
+    --vd-alert-border: var(--vd-color-border-#{$color}-secondary);
+    --vd-alert-text: var(--vd-color-content-#{$color}-on-secondary);
+  }
+}

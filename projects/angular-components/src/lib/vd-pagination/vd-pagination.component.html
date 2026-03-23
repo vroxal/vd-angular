@@ -1,0 +1,55 @@
+<div class="vd-pagination">
+  <!-- Previous Button -->
+  <vd-button
+    color="neutral"
+    variant="transparent"
+    leftIcon="vd-icon-caret-left"
+    label="Previous"
+    [disabled]="currentPage === 1"
+    (click)="goPrevious()"
+    size="sm"
+  ></vd-button>
+
+  <!-- Page Numbers -->
+  <ng-container *ngFor="let page of pagesToShow">
+    <!-- Regular page button -->
+    <vd-button
+      *ngIf="page !== currentPage && page !== '...'"
+      color="neutral"
+      variant="transparent"
+      [label]="page.toString()"
+      (click)="goToPage(page)"
+      size="sm"
+    ></vd-button>
+
+    <!-- Active page button -->
+    <vd-button
+      *ngIf="page === currentPage"
+      color="primary"
+      variant="solid"
+      [label]="page.toString()"
+      size="sm"
+    ></vd-button>
+
+    <!-- Ellipsis -->
+    <vd-button
+      *ngIf="page === '...'"
+      color="neutral"
+      variant="transparent"
+      label="..."
+      [disabled]="true"
+      size="sm"
+    ></vd-button>
+  </ng-container>
+
+  <!-- Next Button -->
+  <vd-button
+    color="neutral"
+    variant="transparent"
+    rightIcon="vd-icon-caret-right"
+    label="Next"
+    [disabled]="currentPage === totalPages"
+    size="sm"
+    (click)="goNext()"
+  ></vd-button>
+</div>

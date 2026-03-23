@@ -1,0 +1,39 @@
+<div
+  class="vd-range-date-picker"
+  [class.vd-range-date-picker--error]="visualState === 'error'"
+  [class.vd-range-date-picker--success]="visualState === 'success'"
+  [class.vd-range-date-picker--warning]="visualState === 'warning'"
+  [class.vd-range-date-picker--disabled]="disabled"
+  [class.vd-range-date-picker--open]="isOpen"
+>
+  <div class="vd-range-date-picker__field" #trigger>
+    <vd-input
+      [label]="label"
+      [hintText]="hintText"
+      [helperText]="helperText"
+      [optional]="optional"
+      [leadingIcon]="leadingIcon"
+      [trailingActionIcon]="'vd-icon-calendar'"
+      [placeholder]="placeholder"
+      [value]="displayValue"
+      [readOnly]="true"
+      [disabled]="disabled"
+      [state]="visualState"
+      (trailingActionClick)="toggleCalendar()"
+      (inputFocus)="onInputFocus()"
+      (valueCommit)="onInputBlur()"
+    ></vd-input>
+  </div>
+</div>
+
+<ng-template #calendarPopupTemplate>
+  <div class="vd-range-date-picker__calendar-popup" (click)="$event.stopPropagation()">
+    <vd-range-date-inline
+      [value]="value"
+      (valueChange)="onDateSelect($event)"
+      [minDate]="minDate"
+      [maxDate]="maxDate"
+      [disabled]="disabled"
+    ></vd-range-date-inline>
+  </div>
+</ng-template>

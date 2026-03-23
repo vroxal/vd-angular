@@ -1,0 +1,334 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Input'"
+    [subtitle]="'Inputs capture single-line text values with support for states and helper content.'"
+  >
+  </app-doc-page-header>
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Basic Input</h3>
+        <p>Standard input for short, single-line data entry</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-input label="Full Name" placeholder="Enter your name"></vd-input>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">States</h3>
+        <p>Contains: Default, Success, Error, Warning</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-input label="Default" placeholder="Default state"></vd-input>
+          <vd-input
+            label="Success"
+            placeholder="Success state"
+            state="success"
+            helperText="Looks good"
+            value="John Doe"
+          ></vd-input>
+          <vd-input
+            label="Error"
+            placeholder="Error state"
+            state="error"
+            helperText="This field is required"
+          ></vd-input>
+          <vd-input
+            label="Warning"
+            placeholder="Warning state"
+            state="warning"
+            helperText="Double-check this value"
+          ></vd-input>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Leading Icon</h3>
+        <p>Leading icon and optional trailing action icon</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-input label="Search" placeholder="Search" leadingIcon="vd-icon-search"></vd-input>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Trailing action</h3>
+        <p>Trailing action with icon button.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-input
+            label="Password"
+            placeholder="Enter password"
+            type="password"
+            trailingActionIcon="vd-icon-eye"
+          ></vd-input>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Input Type</h3>
+        <p>Supports text and password types</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-input label="Text" placeholder="Text input" type="text"></vd-input>
+          <vd-input label="Password" placeholder="Password input" type="password"></vd-input>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Optional & Disabled</h3>
+        <p>Inputs can be marked optional or disabled</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-input label="Optional Field" [optional]="true" placeholder="Optional..."></vd-input>
+          <vd-input label="Disabled Field" [disabled]="true" placeholder="Disabled..."></vd-input>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Character Limit</h3>
+        <p>Inputs can show a character counter and enforce max length</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-input
+            label="Limited Input"
+            placeholder="Max 20 characters"
+            [maxInputCount]="20"
+          ></vd-input>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Hint & Helper Text</h3>
+        <p>Use hint for tooltips and helper text for guidance</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-input
+            label="Account Number"
+            placeholder="123456"
+            hintText="Use the number printed on your card"
+            helperText="Digits only"
+          ></vd-input>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the input component in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-input.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the input component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="input-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Implementation with all available APIs</h3>
+          <p>Here is an example of using the input component with all available APIs:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allImplementationSnippet"
+            fileName="input-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Listening to Events</h3>
+          <p>Handle changes, blur commits, and trailing action clicks:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="eventsSnippet"
+            fileName="input-events.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="eventsComponentSnippet"
+            fileName="input-events.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+        </div>
+        <vd-datatable [data]="outputsData" [columns]="eventsColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-group usage-guidelines">
+  <div class="content-group-title">
+    <h2 class="headline-large">Best Practices</h2>
+  </div>
+  <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Input when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Input when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Use clear labels and concise placeholder text</li>
+          <li>Show helper text for validation or formatting guidance</li>
+          <li>Reserve error state for actionable validation feedback</li>
+          <li>Use trailing actions for contextual helpers like clear or show password</li>
+          <li>Set maxInputCount when input length is constrained</li>
+          <li>Do not rely solely on placeholder text to describe required input</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+</div>
+
+<div class="content-group playground">
+  <div class="content-group-title">
+    <h2 class="headline-large">Component playground</h2>
+    <p class="body-large">Customize the input features in this section</p>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-select
+              label="State"
+              [value]="state"
+              (valueChange)="state = $event"
+              [options]="stateOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Type"
+              [value]="type"
+              (valueChange)="$event && (type = $event)"
+              [options]="typeOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Leading Icon"
+              [value]="leadingIcon"
+              (valueChange)="leadingIcon = $event || ''"
+              [options]="icons"
+            ></vd-select>
+
+            <vd-select
+              label="Trailing Action"
+              [value]="trailingActionIcon"
+              (valueChange)="trailingActionIcon = $event || ''"
+              [options]="icons"
+            ></vd-select>
+
+            <vd-select
+              label="Max Count"
+              [value]="maxInputCount"
+              (valueChange)="maxInputCount = $event"
+              [options]="maxInputOptions"
+            ></vd-select>
+
+            <label class="switch-label">
+              <span>Optional</span>
+              <vd-switch [checked]="optional" (change)="optional = $event"></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Disabled</span>
+              <vd-switch [checked]="disabled" (change)="disabled = $event"></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-input
+              [label]="label"
+              [placeholder]="placeholder"
+              [(value)]="value"
+              [optional]="optional"
+              [disabled]="disabled"
+              [state]="state"
+              [helperText]="helperText"
+              [hintText]="hintText"
+              [type]="type"
+              [leadingIcon]="leadingIcon"
+              [trailingActionIcon]="trailingActionIcon"
+              [maxInputCount]="maxInputCount || undefined"
+              (trailingActionClick)="onTrailingActionClick()"
+            ></vd-input>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

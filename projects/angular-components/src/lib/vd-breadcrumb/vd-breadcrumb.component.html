@@ -1,0 +1,60 @@
+<nav aria-label="breadcrumb">
+  <ol class="vd-breadcrumb label-medium">
+    <ng-container *ngFor="let item of visibleItems; let i = index; let isLast = last">
+      <li class="vd-breadcrumb__item" [attr.aria-current]="isLast ? 'page' : null">
+        <!-- Render link if url exists, otherwise a span -->
+        <a
+          *ngIf="item.url; else noLink"
+          [href]="item.url"
+          class="vd-breadcrumb__link"
+          [class.vd-breadcrumb__link--active]="isLast"
+          (click)="onItemClick($event, item)"
+        >
+          {{ item.label }}
+        </a>
+        <ng-template #noLink>
+          <span
+            class="vd-breadcrumb__link"
+            [class.vd-breadcrumb__link--active]="isLast"
+            (click)="onItemClick($event, item)"
+            [style.cursor]="isLast ? 'default' : 'pointer'"
+          >
+            {{ item.label }}
+          </span>
+        </ng-template>
+      </li>
+
+      <!-- Separator for normally visible items -->
+      <li *ngIf="!isLast" class="vd-breadcrumb__separator" aria-hidden="true">
+        <vd-icon name="vd-icon-caret-right"></vd-icon>
+      </li>
+
+      <!-- Render the overflow dropdown right after the first item if there are overflow items -->
+      <ng-container *ngIf="showOverflow && i === 0">
+        <li class="vd-breadcrumb__item">
+          <vd-dropdown position="bottom-center">
+            <vd-icon-button
+              vdDropdownTrigger
+              variant="transparent"
+              color="neutral"
+              size="sm"
+              icon="vd-icon-horizontal-dot"
+              class="vd-breadcrumb__overflow-button"
+            ></vd-icon-button>
+            <ng-container vdDropdownContent>
+              <vd-dropdown-item-link
+                *ngFor="let overflowItem of overflowItems"
+                [href]="overflowItem.url!"
+                [title]="overflowItem.label"
+              ></vd-dropdown-item-link>
+            </ng-container>
+          </vd-dropdown>
+        </li>
+
+        <li class="vd-breadcrumb__separator" aria-hidden="true">
+          <vd-icon name="vd-icon-caret-right"></vd-icon>
+        </li>
+      </ng-container>
+    </ng-container>
+  </ol>
+</nav>

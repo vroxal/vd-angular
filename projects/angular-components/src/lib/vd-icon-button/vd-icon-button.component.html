@@ -1,0 +1,24 @@
+<button
+  type="button"
+  [disabled]="!!disabled || !!loading"
+  class="vd-icon-button not-initialized"
+  [class.vd-icon-button--subtle]="variant === 'subtle'"
+  [class.vd-icon-button--outline]="variant === 'outline'"
+  [class.vd-icon-button--transparent]="variant === 'transparent'"
+  [class.vd-icon-button--neutral]="color === 'neutral'"
+  [class.vd-icon-button--error]="color === 'error'"
+  [class.vd-icon-button--sm]="size === 'sm'"
+  [class.vd-icon-button--lg]="size === 'lg'"
+  [class.vd-icon-button--rounded]="!!rounded"
+  [class.vd-icon-button--loading]="!!loading"
+  [class.vd-button--disabled]="!!disabled"
+  [attr.aria-label]="ariaLabel"
+>
+  <!-- Icon -->
+  <vd-icon [name]="icon" class="vd-icon-button__icon" [size]="effectiveIconSize"></vd-icon>
+
+  <!-- Loading spinner -->
+  <span *ngIf="!!loading" class="vd-icon-button__spinner">
+    <span class="vd-icon-button__spinner-indicator"></span>
+  </span>
+</button>

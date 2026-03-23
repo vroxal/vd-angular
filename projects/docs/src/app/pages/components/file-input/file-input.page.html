@@ -1,0 +1,338 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'File Input'"
+    [subtitle]="'File inputs allow users to select and upload one or more files.'"
+  >
+  </app-doc-page-header>
+
+  <!-- ─── Component Variations ──────────────────────────────────────────── -->
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <!-- Horizontal (default) -->
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Layout</h3>
+          <p>
+            Contains two variants: horizontal and vertical. Horizontal is Compact inline layout —
+            ideal for form fields with limited vertical space. Vertical is Large centered dropzone —
+            ideal for prominent file upload areas. Horizontal is the default layout.
+          </p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-file-input
+            label="Label"
+            [optional]="true"
+            hintText="Accepted formats: PNG, JPEG"
+            supportedFiles=".png, .jpeg"
+            maxSize="12 MB"
+            supportingText="Please upload the supporting files: .PNG,.JPEF no more than 5 MB"
+            (filesChange)="onExampleFilesSelected($event)"
+          ></vd-file-input>
+          <vd-file-input
+            layout="vertical"
+            label="Label"
+            [optional]="true"
+            hintText="Accepted formats: PNG, JPEG"
+            supportedFiles=".png, .jpeg, .jpg"
+            maxSize="12 MB"
+            supportingText="Accepts: .PNG,.JPEg no more than 5 MB"
+            (filesChange)="onExampleFilesSelected($event)"
+          ></vd-file-input>
+        </div>
+      </div>
+
+      <!-- Error state -->
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Error State</h3>
+          <p>Validation error styling applied to the dropzone and helper text.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-file-input
+            label="Label"
+            state="error"
+            helperText="File size exceeds the maximum allowed limit."
+            supportedFiles=".png, .jpeg"
+            maxSize="12 MB"
+            (filesChange)="onExampleFilesSelected($event)"
+          ></vd-file-input>
+        </div>
+      </div>
+
+      <!-- Disabled state -->
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Disabled State</h3>
+          <p>Interaction is prevented and the component is visually dimmed.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-file-input
+            layout="horizontal"
+            label="Label"
+            [disabled]="true"
+            supportedFiles=".png, .jpeg"
+            maxSize="12 MB"
+            (filesChange)="onExampleFilesSelected($event)"
+          ></vd-file-input>
+        </div>
+      </div>
+
+      <!-- Without label -->
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Without Label</h3>
+          <p>The label row is omitted when no label, hint, or optional prop is provided.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-file-input
+            supportedFiles=".png, .jpeg"
+            maxSize="12 MB"
+            (filesChange)="onExampleFilesSelected($event)"
+          ></vd-file-input>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Usage Guidelines ──────────────────────────────────────────────── -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the file-input component in your standalone component or module:</p>
+        </div>
+        <code-container
+          [code]="importCodeSnippet"
+          fileName="import-file-input.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">TypeScript Setup</h3>
+          <p>Add the component to your imports and handle the <code>filesChange</code> output:</p>
+        </div>
+        <code-container
+          [code]="tsImplementationSnippet"
+          fileName="my.component.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>A minimal file input with label, supported types, and size constraint:</p>
+        </div>
+        <code-container
+          [code]="basicImplementationSnippet"
+          fileName="my.component.html"
+          language="angular-html"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Vertical Layout</h3>
+          <p>Use <code>layout="vertical"</code> for a larger, more prominent dropzone:</p>
+        </div>
+        <code-container
+          [code]="verticalImplementationSnippet"
+          fileName="my.component.html"
+          language="angular-html"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Error State</h3>
+          <p>
+            Set <code>state="error"</code> and provide a <code>helperText</code> for validation
+            feedback:
+          </p>
+        </div>
+        <code-container
+          [code]="errorImplementationSnippet"
+          fileName="my.component.html"
+          language="angular-html"
+        ></code-container>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── API Reference ─────────────────────────────────────────────────── -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+        <vd-datatable
+          [data]="apiData"
+          [columns]="apiColumnsWithTemplate"
+          [rowsPerPage]="20"
+        ></vd-datatable>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+          <p class="body-large">Event emitters for file interaction:</p>
+        </div>
+        <vd-datatable [data]="outputData" [columns]="outputColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Best Practices ────────────────────────────────────────────────── -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use File Input when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using File Input when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>
+            Always provide <code>supportedFiles</code> and <code>maxSize</code> so users know what
+            is accepted before uploading
+          </li>
+          <li>Use <code>accept</code> to restrict the native file picker to valid types</li>
+          <li>
+            Use <code>layout="horizontal"</code> in forms and <code>layout="vertical"</code> as a
+            primary upload area
+          </li>
+          <li>
+            Show error state with <code>helperText</code> explaining the issue (e.g. file too large,
+            wrong type)
+          </li>
+          <li>
+            Use <code>hintText</code> for additional context the user might need before selecting a
+            file
+          </li>
+          <li>
+            Use <code>[multiple]="true"</code> only when multi-file upload is intentionally
+            supported
+          </li>
+          <li>Handle the <code>filesChange</code> output to validate files before uploading</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+  </div>
+
+  <!-- ─── Playground ────────────────────────────────────────────────────── -->
+  <div class="content-group playgrouund">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component playground</h2>
+      <p class="body-large">Customize the file input features in this section</p>
+    </div>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-select
+              label="Layout"
+              [value]="playgroundLayout"
+              [options]="layoutOptions"
+              (valueChange)="$event && (playgroundLayout = $event)"
+            ></vd-select>
+
+            <label class="switch-label">
+              <span>Optional</span>
+              <vd-switch
+                [checked]="playgroundOptional"
+                (change)="playgroundOptional = $event"
+              ></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Show Hint</span>
+              <vd-switch
+                [checked]="playgroundHint"
+                (change)="playgroundHint = $event"
+              ></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Multiple</span>
+              <vd-switch
+                [checked]="playgroundMultiple"
+                (change)="playgroundMultiple = $event"
+              ></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Error</span>
+              <vd-switch
+                [checked]="playgroundError"
+                (change)="playgroundError = $event"
+              ></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Disabled</span>
+              <vd-switch
+                [checked]="playgroundDisabled"
+                (change)="playgroundDisabled = $event"
+              ></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-file-input
+              [layout]="playgroundLayout"
+              label="Attachment"
+              [optional]="playgroundOptional"
+              [hintText]="playgroundHint ? 'Accepted formats: PNG, JPEG' : undefined"
+              [multiple]="playgroundMultiple"
+              [disabled]="playgroundDisabled"
+              [state]="playgroundState"
+              [helperText]="playgroundError ? 'Invalid file type or size exceeded.' : undefined"
+              supportedFiles=".png, .jpeg"
+              maxSize="12 MB"
+              (filesChange)="onExampleFilesSelected($event)"
+            ></vd-file-input>
+          </div>
+        </div>
+      </div>
+
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

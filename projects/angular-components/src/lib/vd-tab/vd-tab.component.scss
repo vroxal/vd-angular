@@ -1,0 +1,177 @@
+:host {
+  display: block;
+  width: 100%;
+  // ── Local CSS custom properties (from Figma design tokens) ──
+
+  // Text colors
+  --vd-tab-text-default: var(--vd-color-content-default-secondary);
+  --vd-tab-text-active: var(--vd-color-content-primary-base);
+  --vd-tab-text-active-boxed: var(--vd-color-content-primary-on-secondary);
+  --vd-tab-text-disabled: var(--vd-color-content-default-disabled);
+
+  // Icon colors
+  --vd-tab-icon-default: var(--vd-color-content-default-secondary);
+  --vd-tab-icon-active: var(--vd-color-content-primary-base);
+  --vd-tab-icon-active-boxed: var(--vd-color-content-primary-on-secondary);
+  --vd-tab-icon-disabled: var(--vd-color-content-default-disabled);
+
+  // Backgrounds
+  --vd-tab-bg-boxed-container: var(--vd-color-background-default-secondary);
+  --vd-tab-bg-boxed-active: var(--vd-color-background-primary-secondary);
+  --vd-tab-bg-hover: var(--vd-color-background-neutral-secondary);
+
+  // Border / indicator
+  --vd-tab-indicator-color: var(--vd-color-border-primary-base);
+  --vd-tab-indicator-width: var(--vd-scale-border-width-md);
+
+  // Spacing
+  --vd-tab-padding-x: var(--vd-scale-spacing-300);
+  --vd-tab-padding-y: var(--vd-scale-spacing-200);
+  --vd-tab-gap: var(--vd-scale-spacing-200);
+  --vd-tab-boxed-container-padding: var(--vd-scale-spacing-50);
+
+  // Radius
+  --vd-tab-radius-boxed-item: var(--vd-scale-border-radius-md);
+  --vd-tab-radius-boxed-container: var(--vd-scale-border-radius-md);
+}
+
+.vd-tab {
+  display: inline-flex;
+  // ── Direction modifiers ──
+  &--horizontal {
+    flex-direction: row;
+  }
+
+  &--vertical {
+    flex-direction: column;
+  }
+
+  // ── Type: Boxed ──
+  &--boxed {
+    background: var(--vd-tab-bg-boxed-container);
+    border-radius: var(--vd-tab-radius-boxed-container);
+    padding: var(--vd-tab-boxed-container-padding);
+
+    .vd-tab__tab {
+      border-radius: var(--vd-tab-radius-boxed-item);
+
+      &--active {
+        background: var(--vd-tab-bg-boxed-active);
+
+        .vd-tab__tab-label {
+          color: var(--vd-tab-text-active-boxed);
+        }
+
+        .vd-tab__tab-icon {
+          color: var(--vd-tab-icon-active-boxed);
+        }
+      }
+
+      &:hover:not(.vd-tab__tab--active):not(.vd-tab__tab--disabled) {
+        background: var(--vd-tab-bg-hover);
+      }
+    }
+  }
+
+  // ── Type: Default (underline) ──
+  &--default {
+    width: 100%;
+
+    .vd-tab__tab {
+      position: relative;
+
+      &--active {
+        .vd-tab__tab-label {
+          color: var(--vd-tab-text-active);
+        }
+
+        .vd-tab__tab-icon {
+          color: var(--vd-tab-icon-active);
+        }
+      }
+
+      &:hover:not(.vd-tab__tab--active):not(.vd-tab__tab--disabled) {
+        background: var(--vd-tab-bg-hover);
+      }
+    }
+
+    // Bottom divider for horizontal default tabs
+    &.vd-tab--horizontal {
+      border-bottom: var(--vd-scale-border-width-sm) solid var(--vd-color-border-default-tertiary);
+    }
+
+    // Left divider for vertical default tabs
+    &.vd-tab--vertical {
+      border-left: var(--vd-scale-border-width-sm) solid var(--vd-color-border-default-secondary);
+    }
+
+    // Underline indicator based on direction
+    &.vd-tab--horizontal .vd-tab__tab--active::after {
+      content: '';
+      position: absolute;
+      bottom: calc(var(--vd-scale-border-width-sm) * -1);
+      left: 0;
+      right: 0;
+      height: var(--vd-tab-indicator-width);
+      background: var(--vd-tab-indicator-color);
+      border-radius: var(--vd-tab-indicator-width);
+      z-index: 1;
+    }
+
+    &.vd-tab--vertical .vd-tab__tab--active::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(var(--vd-scale-border-width-sm) * -1);
+      width: var(--vd-tab-indicator-width);
+      background: var(--vd-tab-indicator-color);
+      border-radius: var(--vd-tab-indicator-width);
+      z-index: 1;
+    }
+  }
+
+  // ── Tab item (shared) ──
+  &__tab {
+    display: flex;
+    gap: var(--vd-tab-gap);
+    align-items: center;
+    padding: var(--vd-tab-padding-y) var(--vd-tab-padding-x);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
+    white-space: nowrap;
+    position: relative;
+
+    &-label {
+      color: var(--vd-tab-text-default);
+      transition: color 0.15s ease;
+    }
+
+    &-icon {
+      color: var(--vd-tab-icon-default);
+      transition: color 0.15s ease;
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+
+      .vd-tab__tab-label {
+        color: var(--vd-tab-text-disabled);
+      }
+
+      .vd-tab__tab-icon {
+        color: var(--vd-tab-icon-disabled);
+      }
+    }
+  }
+
+  // ── Content area ──
+  &__content {
+    margin-top: var(--vd-scale-spacing-300);
+  }
+}

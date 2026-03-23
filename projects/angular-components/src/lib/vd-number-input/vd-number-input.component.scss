@@ -1,0 +1,213 @@
+:host {
+  display: block;
+  width: 100%;
+
+  --vd-number-input-border-base: var(--vd-color-border-default-base);
+  --vd-number-input-border-secondary: var(--vd-color-border-default-secondary);
+  --vd-number-input-border-disabled: var(--vd-color-border-default-disabled);
+  --vd-number-input-outline-color: var(--vd-color-border-primary-tertiary);
+
+  --vd-number-input-bg-base: var(--vd-color-background-default-secondary);
+  --vd-number-input-bg-disabled: var(--vd-color-background-default-disabled);
+
+  --vd-number-input-text-base: var(--vd-color-content-default-base);
+  --vd-number-input-text-secondary: var(--vd-color-content-default-secondary);
+  --vd-number-input-text-disabled: var(--vd-color-content-default-disabled);
+  --vd-number-input-text-placeholder: var(--vd-color-content-default-disabled);
+
+  --vd-number-input-icon-base: var(--vd-color-content-default-base);
+  --vd-number-input-icon-disabled: var(--vd-color-content-default-disabled);
+
+  --vd-number-input-padding: var(--vd-scale-spacing-300);
+  --vd-number-input-border-width: var(--vd-scale-border-width-sm);
+  --vd-number-input-radius: var(--vd-scale-border-radius-md);
+  --vd-number-input-outline-width: var(--vd-scale-border-width-md);
+}
+
+// State variants loop
+@each $state in success, error, warning {
+  .vd-number-input--#{$state} {
+    --vd-number-input-icon-state: var(--vd-color-content-#{$state}-base);
+    --vd-number-input-text-state: var(--vd-color-content-#{$state}-base);
+    --vd-number-input-border-state: var(--vd-color-border-#{$state}-base);
+    --vd-number-input-bg-state: var(--vd-color-background-#{$state}-secondary);
+  }
+}
+
+.vd-number-input {
+  width: 100%;
+  min-width: 240px;
+
+  &__label-row {
+    display: flex;
+    gap: var(--vd-scale-spacing-200);
+    margin-bottom: var(--vd-scale-spacing-100);
+  }
+
+  &__label {
+    color: var(--vd-number-input-text-base);
+  }
+
+  &__optional {
+    flex: 1;
+    text-align: right;
+    margin: 0;
+  }
+
+  &__container {
+    display: flex;
+    gap: var(--vd-scale-spacing-200);
+    align-items: center;
+    padding: calc(var(--vd-number-input-padding) - var(--vd-number-input-border-width));
+    border: var(--vd-number-input-border-width) solid var(--vd-number-input-border-secondary);
+    border-radius: var(--vd-number-input-radius);
+    background: var(--vd-number-input-bg-base);
+    cursor: text;
+
+    &:focus-within:not(:has(.vd-number-input__trailing-action-container:focus-within)) {
+      border-color: var(--vd-input-border-base);
+
+      outline: var(--vd-number-input-outline-width) solid var(--vd-number-input-outline-color);
+      outline-offset: var(--vd-scale-spacing-50);
+    }
+  }
+
+  &__input {
+    flex: 1;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    color: var(--vd-number-input-text-base);
+
+    // Hide number input spin buttons
+    -moz-appearance: textfield;
+    appearance: textfield;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: var(--vd-number-input-text-placeholder);
+    }
+
+    &:-webkit-autofill {
+      box-shadow: 0 0 0px 1000px var(--vd-number-input-bg-base) inset;
+      -webkit-box-shadow: 0 0 0px 1000px var(--vd-number-input-bg-base) inset;
+      -webkit-text-fill-color: var(--vd-number-input-text-base);
+      transition: background-color 5000s ease-in-out;
+    }
+
+    &:-moz-autofill {
+      box-shadow: 0 0 0px 1000px var(--vd-number-input-bg-base) inset;
+      -moz-text-fill-color: var(--vd-number-input-text-base);
+    }
+  }
+
+  &__leading-icon,
+  &__trailing-icon {
+    display: inline-flex;
+    color: var(--vd-number-input-icon-base);
+  }
+
+  &__trailing-action-container {
+    position: relative;
+    height: var(--vd-scale-spacing-600);
+    width: var(--vd-scale-spacing-800);
+  }
+
+  &__trailing-action {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__helper-row {
+    display: flex;
+    margin-top: var(--vd-scale-spacing-100);
+  }
+
+  &__helper-text {
+    margin: 0;
+    flex: 1;
+  }
+
+  // Focus state
+  &:focus-within:not(:has(.vd-number-input__trailing-action-container:focus-within)) {
+    .vd-number-input__container {
+      border-color: var(--vd-number-input-border-base);
+      outline: var(--vd-number-input-outline-width) solid var(--vd-number-input-outline-color);
+      background: var(--vd-number-input-bg-base);
+    }
+
+    .vd-number-input__label,
+    .vd-number-input__helper-text {
+      color: var(--vd-number-input-text-secondary);
+    }
+  }
+
+  // Disabled state
+  &--disabled {
+    .vd-number-input__container {
+      border-color: var(--vd-number-input-border-disabled);
+      background: var(--vd-number-input-bg-disabled);
+    }
+
+    .vd-number-input__label-row,
+    .vd-number-input__helper-text,
+    .vd-number-input__input {
+      color: var(--vd-number-input-text-disabled);
+    }
+
+    .vd-number-input__leading-icon {
+      color: var(--vd-number-input-icon-disabled);
+    }
+  }
+
+  // Success state
+  &--success {
+    .vd-number-input__trailing-icon {
+      color: var(--vd-number-input-icon-state);
+    }
+
+    .vd-number-input__helper-text {
+      color: var(--vd-number-input-text-state);
+    }
+  }
+
+  // Error state
+  &--error {
+    .vd-number-input__label {
+      color: var(--vd-number-input-text-state);
+    }
+
+    .vd-number-input__container {
+      border-color: var(--vd-number-input-border-state);
+      background: var(--vd-number-input-bg-state);
+    }
+
+    .vd-number-input__trailing-icon {
+      color: var(--vd-number-input-icon-state);
+    }
+
+    .vd-number-input__helper-text {
+      color: var(--vd-number-input-text-state);
+    }
+  }
+
+  // Warning state
+  &--warning {
+    .vd-number-input__trailing-icon {
+      color: var(--vd-number-input-icon-state);
+    }
+
+    .vd-number-input__helper-text {
+      color: var(--vd-number-input-text-state);
+    }
+  }
+}

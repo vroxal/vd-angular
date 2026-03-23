@@ -1,0 +1,62 @@
+<div
+  class="vd-number-input"
+  [class.vd-number-input--error]="state === 'error'"
+  [class.vd-number-input--disabled]="disabled"
+  [class.vd-number-input--success]="state === 'success'"
+  [class.vd-number-input--warning]="state === 'warning'"
+>
+  <!-- Label row -->
+  <div class="vd-number-input__label-row" *ngIf="label || optional || hintText">
+    <label *ngIf="label" class="vd-number-input__label" [attr.for]="inputId">
+      {{ label }}
+    </label>
+
+    <vd-icon *ngIf="hintText" name="vd-icon-help" [vdTooltip]="hintText"></vd-icon>
+    <p *ngIf="optional" class="vd-number-input__optional body-medium-italic">Optional</p>
+  </div>
+
+  <div class="vd-number-input__container" (click)="focusInput()">
+    <span *ngIf="leadingIcon" class="vd-number-input__leading-icon">
+      <vd-icon [name]="leadingIcon"></vd-icon>
+    </span>
+
+    <input
+      #inputElement
+      [id]="inputId"
+      class="vd-number-input__input body-medium"
+      type="number"
+      [placeholder]="placeholder"
+      [value]="value === null ? '' : value"
+      [attr.min]="min !== undefined ? min : null"
+      [attr.max]="max !== undefined ? max : null"
+      [attr.step]="step !== undefined ? step : null"
+      (input)="onInput($event)"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+      [disabled]="disabled"
+      [readonly]="readOnly"
+    />
+
+    <span *ngIf="trailingStateIcon" class="vd-number-input__trailing-icon state">
+      <vd-icon [name]="trailingStateIcon"></vd-icon>
+    </span>
+
+    <span class="vd-number-input__trailing-action-container" *ngIf="trailingActionIcon">
+      <vd-icon-button
+        class="vd-number-input__trailing-action"
+        variant="transparent"
+        color="neutral"
+        [disabled]="disabled"
+        [icon]="trailingActionIcon"
+        (click)="onTrailingActionClick(); $event.stopPropagation()"
+      ></vd-icon-button>
+    </span>
+  </div>
+
+  <!-- Helper row -->
+  <div class="vd-number-input__helper-row" *ngIf="helperText">
+    <span class="vd-number-input__helper-text body-small">
+      {{ helperText }}
+    </span>
+  </div>
+</div>

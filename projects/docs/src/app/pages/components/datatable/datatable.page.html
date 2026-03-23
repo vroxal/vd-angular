@@ -1,0 +1,350 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Datatable'"
+    [subtitle]="'Datatables organize structured data into rows and columns with optional interactions.'"
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Basic Table</h3>
+        <p>A simple datatable with basic columns and data</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-datatable
+            [data]="sampleTableData"
+            [columns]="demoColumns"
+            [rowsPerPage]="3"
+          ></vd-datatable>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Table with Pagination</h3>
+        <p>Datatable with pagination controls</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-datatable
+            [data]="sampleTableData"
+            [columns]="demoColumns"
+            [currentPage]="currentPage"
+            [totalPages]="totalPages"
+            [rowsPerPage]="3"
+            (pageChange)="onPageChange($event)"
+          ></vd-datatable>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Table with Pagination and Row Counts</h3>
+        <p>Datatable with pagination controls and row counts</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-datatable
+            [data]="sampleTableData"
+            [columns]="demoColumns"
+            [currentPage]="currentPage"
+            [totalPages]="totalPages"
+            [totalRows]="totalRows"
+            [rowsPerPage]="3"
+            (pageChange)="onPageChange($event)"
+          ></vd-datatable>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Expandable Table</h3>
+        <p>Datatable with expandable rows for additional details</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-datatable
+            [data]="sampleTableData"
+            [columns]="demoColumns"
+            [expandedColumns]="demoColumns"
+            [totalPages]="totalPages"
+            [rowsPerPage]="3"
+          ></vd-datatable>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Table with actions</h3>
+        <p>Datatable with actions for each row</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-datatable
+            [data]="sampleTableData"
+            [columns]="demoColumns"
+            [actions]="demoActions"
+            [rowsPerPage]="3"
+          ></vd-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the datatable component and interfaces in your module or component:</p>
+        </div>
+        <code-container
+          [code]="importCodeSnippet"
+          fileName="import-datatable.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the datatable component:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define data</h4>
+          <code-container
+            [code]="basicImplementationTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Implementation in template</h4>
+          <code-container
+            [code]="basicImplementationTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Implementation with Custom Templates</h3>
+          <p>Using custom templates for dynamic cell rendering (e.g., status badges):</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">
+            1. Define TemplateRef and columns in TypeScript
+          </h4>
+          <code-container
+            [code]="advancedImplementationTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Create template and use in datatable</h4>
+          <code-container
+            [code]="advancedImplementationTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Expandable Rows Implementation</h3>
+          <p>Enable expandable rows to display additional details when a row is clicked:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define expandable columns in TypeScript</h4>
+          <code-container
+            [code]="expandableImplementationTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Use expandable in template</h4>
+          <code-container
+            [code]="expandableImplementationTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Pagination Implementation</h3>
+          <p>Add pagination controls with row counters to navigate through large datasets:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define pagination state in TypeScript</h4>
+          <code-container
+            [code]="paginationImplementationTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Use pagination in template</h4>
+          <code-container
+            [code]="paginationImplementationTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Actions Implementation</h3>
+          <p>Add action buttons for each row with conditional visibility and disabled states:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define actions in TypeScript</h4>
+          <code-container
+            [code]="actionsImplementationTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Use actions in template</h4>
+          <code-container
+            [code]="actionsImplementationTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+        <ng-template #statusBadge let-row>
+          <vd-badge
+            [label]="row.status"
+            [color]="getStatusBadgeColor(row.status)"
+            variant="subtle"
+            size="sm"
+          ></vd-badge>
+        </ng-template>
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+          <p class="body-large">Event emitters for table interactions:</p>
+        </div>
+        <vd-datatable [data]="outputData" [columns]="outputColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Datatable when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Datatable when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Use meaningful column titles that clearly describe the data</li>
+          <li>Limit columns to 5-7 for optimal readability on most screens</li>
+          <li>Enable pagination when displaying more than 20 rows to improve performance</li>
+          <li>Use expandable rows for detailed information that doesn't fit in a single row</li>
+          <li>Provide clear action buttons with icons and tooltips</li>
+          <li>Sort and filter data on the client side for better user experience</li>
+          <li>Use custom templates for complex cell content like badges or status indicators</li>
+          <li>Always specify totalPages and totalRows for accurate pagination display</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+  </div>
+
+  <div class="content-group playgrouund">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component playground</h2>
+      <p class="body-large">Customize the datatable features in this section</p>
+    </div>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <label class="switch-label">
+              <span>Expandable</span>
+              <vd-switch [checked]="expandable" (change)="expandable = $event"></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Show Pagination</span>
+              <vd-switch
+                [checked]="showPagination"
+                (change)="showPagination = $event"
+              ></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Show Actions</span>
+              <vd-switch [checked]="showActions" (change)="showActions = $event"></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-datatable
+              [data]="sampleTableData"
+              [columns]="demoColumns"
+              [expandedColumns]="expandable ? demoColumns : []"
+              [currentPage]="showPagination ? currentPage : 0"
+              [totalPages]="showPagination ? totalPages : 0"
+              [totalRows]="showPagination ? totalRows : 0"
+              [rowsPerPage]="rowPerPage"
+              (pageChange)="onPageChange($event)"
+            ></vd-datatable>
+          </div>
+        </div>
+      </div>
+
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

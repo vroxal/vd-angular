@@ -1,0 +1,340 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Select'"
+    [subtitle]="'Select fields let users choose one option from a dropdown list.'"
+  >
+  </app-doc-page-header>
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Basic Select</h3>
+        <p>Standard select for choosing from a list of options</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-select
+            label="Select a Fruit"
+            placeholder="Choose a fruit..."
+            [options]="fruitOptions"
+          ></vd-select>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">States</h3>
+        <p>Contains: Default, Success, Error, Warning</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-select
+            label="Default"
+            placeholder="Default state"
+            [options]="fruitOptions"
+          ></vd-select>
+          <vd-select
+            label="Success"
+            placeholder="Success state"
+            state="success"
+            helperText="Selection is valid"
+            [options]="fruitOptions"
+          ></vd-select>
+          <vd-select
+            label="Error"
+            placeholder="Error state"
+            state="error"
+            helperText="Please select a valid option"
+            [options]="fruitOptions"
+          ></vd-select>
+          <vd-select
+            label="Warning"
+            placeholder="Warning state"
+            state="warning"
+            helperText="This selection may affect other fields"
+            [options]="fruitOptions"
+          ></vd-select>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">With Icons</h3>
+        <p>Leading icon and optional trailing action icon</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-select
+            label="Select Country"
+            placeholder="Choose..."
+            leadingIcon="vd-icon-placeholder"
+            [options]="countryOptions"
+          ></vd-select>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Optional & Disabled</h3>
+        <p>Select can be marked as optional or disabled</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-select
+            label="Optional Field"
+            [optional]="true"
+            placeholder="Optional..."
+            [options]="fruitOptions"
+          ></vd-select>
+          <vd-select
+            label="Disabled Field"
+            [disabled]="true"
+            placeholder="Disabled..."
+            [options]="fruitOptions"
+          ></vd-select>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Disabled Options</h3>
+        <p>Individual options can be disabled</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-select
+            label="Select Option"
+            placeholder="Some options are disabled..."
+            [options]="disabledOptions"
+          ></vd-select>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Hint & Helper Text</h3>
+        <p>Use hint for tooltips and helper text for guidance</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-select
+            label="Preference"
+            placeholder="Choose..."
+            hintText="Select your preferred option"
+            helperText="This will be saved to your profile"
+            [options]="fruitOptions"
+          ></vd-select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the select component and option interface in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-select.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the select component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="select-example.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Implementation with all available APIs</h3>
+          <p>Here is an example of using the select component with all available APIs:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allImplementationSnippet"
+            fileName="select-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Listening to Selection Events</h3>
+          <p>
+            Handle selection changes by listening to the (valueChange) and (valueCommit) events:
+          </p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="eventsSnippet"
+            fileName="select-events.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="eventsComponentSnippet"
+            fileName="select-events.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Using Disabled Options</h3>
+          <p>You can disable specific options in the select dropdown:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="disabledOptionsSnippet"
+            fileName="select-disabled-options.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">VdSelect - Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">VdSelectOption Interface</h3>
+          <p>Each option in the options array should implement the VdSelectOption interface:</p>
+        </div>
+        <vd-datatable
+          [data]="selectOptionInterfaceData"
+          [columns]="apiColumnsWithTemplate"
+        ></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+        </div>
+        <vd-datatable [data]="outputsData" [columns]="eventsColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-group usage-guidelines">
+  <div class="content-group-title">
+    <h2 class="headline-large">Best Practices</h2>
+  </div>
+  <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Select when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Select when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Use select when you have 3 or more mutually exclusive options</li>
+          <li>Keep option labels concise and consistent in length</li>
+          <li>Sort options logically (alphabetical, by frequency, or by relevance)</li>
+          <li>Use placeholder text that clearly indicates the expected action</li>
+          <li>Provide helper text when the choice may have side effects</li>
+          <li>Disable options that are temporarily unavailable instead of removing them</li>
+          <li>Show validation feedback using state prop and helper text</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+</div>
+
+<div class="content-group playground">
+  <div class="content-group-title">
+    <h2 class="headline-large">Component playground</h2>
+    <p class="body-large">Customize the select features in this section</p>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-select
+              label="State"
+              [value]="state"
+              (valueChange)="$event !== null && (state = $event)"
+              [options]="stateOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Leading Icon"
+              [value]="leadingIcon"
+              (valueChange)="leadingIcon = $event || ''"
+              [options]="icons"
+            ></vd-select>
+
+            <label class="switch-label">
+              <span>Optional</span>
+              <vd-switch [checked]="optional" (change)="optional = $event"></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Disabled</span>
+              <vd-switch [checked]="disabled" (change)="disabled = $event"></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-select
+              [label]="label"
+              [placeholder]="placeholder"
+              [(value)]="value"
+              [optional]="optional"
+              [disabled]="disabled"
+              [state]="state"
+              [helperText]="helperText"
+              [hintText]="hintText"
+              [leadingIcon]="leadingIcon"
+              [options]="fruitOptions"
+              (valueChange)="onValueChange($event)"
+            ></vd-select>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,164 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Loading State'"
+    [subtitle]="'Loading states communicate that content is being prepared and help users understand the system is working.'"
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Default</h3>
+          <p>Animated loading spinner with title and supporting description.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-loading-state
+            title="Title goes here"
+            description="Nothing more exciting happening here in terms of content, but just filling up the space to make it look representative."
+          ></vd-loading-state>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Without Description</h3>
+          <p>Use concise title-only loading when extra context is unnecessary.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-loading-state title="Loading"></vd-loading-state>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the loading state component in your module or standalone component:</p>
+        </div>
+        <code-container
+          [code]="importCodeSnippet"
+          fileName="import-loading-state.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Use title and optional description to clarify what is being loaded.</p>
+        </div>
+        <code-container
+          [code]="basicImplementationSnippet"
+          fileName="my.component.html"
+          language="angular-html"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Minimal Text-Only</h3>
+          <p>Use title-only text when compact feedback is needed.</p>
+        </div>
+        <code-container
+          [code]="minimalImplementationSnippet"
+          fileName="my.component.html"
+          language="angular-html"
+        ></code-container>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Loading State while asynchronous content is being fetched or processed.</li>
+          <li>Use concise messaging to set user expectations for wait time.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Loading State for empty data scenarios after loading is complete.</li>
+          <li>Avoid using it for errors; use alert or error-specific feedback instead.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Keep loading titles short and action-oriented.</li>
+          <li>Add description only when it adds useful context.</li>
+          <li>The loading spinner is always animated to communicate in-progress activity.</li>
+          <li>Ensure text remains readable and centered in available space.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group playground">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component playground</h2>
+      <p class="body-large">Customize the loading state props in this section</p>
+    </div>
+    <div class="content-group-container playground-container">
+        <div class="component-preview">
+          <div class="component-control">
+          <div class="controls">
+            <label class="switch-label">
+              <span>Description</span>
+              <vd-switch
+                [checked]="playgroundShowDescription"
+                (change)="playgroundShowDescription = $event"
+              ></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-loading-state
+              [title]="playgroundTitle"
+              [description]="playgroundShowDescription ? playgroundDescription : undefined"
+            ></vd-loading-state>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="playgroundCodeSnippet"
+        fileName="loading-state.component.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

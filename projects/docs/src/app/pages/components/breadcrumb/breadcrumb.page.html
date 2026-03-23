@@ -1,0 +1,165 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Breadcrumb'"
+    [subtitle]="'Breadcrumbs are a navigation system used to show a user location in a site or app.'"
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Basic Breadcrumb</h3>
+          <p>A simple breadcrumb with three levels</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-breadcrumb [items]="basicItems"></vd-breadcrumb>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Long Breadcrumb</h3>
+          <p>Breadcrumb with multiple levels</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-breadcrumb [items]="longItems"></vd-breadcrumb>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the breadcrumb component in your module or component:</p>
+        </div>
+        <code-container
+          [code]="importCodeSnippet"
+          fileName="import-breadcrumb.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the breadcrumb component:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define data</h4>
+          <code-container
+            [code]="basicImplementationTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Implementation in template</h4>
+          <code-container
+            [code]="basicImplementationTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+        <vd-datatable [data]="apiData" [columns]="apiColumns"></vd-datatable>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+          <p class="body-large">Event emitters for component interactions:</p>
+        </div>
+        <vd-datatable [data]="outputData" [columns]="outputColumns"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Breadcrumb when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Breadcrumb when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Always provide a URL for links that users should be able to open in a new tab</li>
+          <li>The last item usually represents the current page and shouldn't have a URL</li>
+          <li>Keep breadcrumb labels short and concise</li>
+          <li>Use standard separators like chevrons or slashes for clarity</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+  </div>
+
+  <div class="content-group playgrouund">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component playground</h2>
+      <p class="body-large">Customize the breadcrumb features in this section</p>
+    </div>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-switch
+              [checked]="isLongList"
+              label="Show long list"
+              (change)="isLongList = $event"
+            ></vd-switch>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-breadcrumb
+              [items]="playgroundItems"
+              (itemClick)="onItemClick($event)"
+            ></vd-breadcrumb>
+          </div>
+        </div>
+      </div>
+
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,107 @@
+<div class="vd-datatable">
+  <table class="vd-datatable__table">
+    <thead>
+      <tr>
+        <th *ngFor="let col of columns" class="label-medium vd-datatable__table-header">
+          <div class="vd-datatable__cell">{{ col.title }}</div>
+        </th>
+        <th
+          *ngIf="actions.length"
+          class="label-medium vd-datatable__table-header vd-datatable__table-header--actions"
+        >
+          <div class="vd-datatable__cell">Actions</div>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <ng-container *ngFor="let row of pagedData">
+        <!-- Main row -->
+        <tr
+          class="vd-datatable__row"
+          [class.vd-datatable__row--expandable]="isExpandable"
+          (click)="toggleExpand(row)"
+        >
+          <td *ngFor="let col of columns" class="body-medium vd-datatable__table-data">
+            <div class="vd-datatable__cell">
+              <ng-container *ngIf="col.template; else defaultCell">
+                <ng-container
+                  *ngTemplateOutlet="
+                    col.template;
+                    context: {
+                      $implicit: row,
+                      row: row,
+                      key: col.key,
+                    }
+                  "
+                ></ng-container>
+              </ng-container>
+
+              <ng-template #defaultCell>
+                {{ (col.cell ? col.cell(row) : row[col.key]) ?? 'N/A' }}
+              </ng-template>
+            </div>
+          </td>
+
+          <td
+            class="vd-datatable__table-data vd-datatable__table-data--actions"
+            *ngIf="actions.length"
+          >
+            <div class="vd-datatable__action-cell" *ngIf="hasActions(row)">
+              <vd-dropdown position="bottom-right" (click)="$event.stopPropagation()">
+                <vd-icon-button
+                  color="neutral"
+                  variant="transparent"
+                  icon="vd-icon-vertical-dot"
+                  vdDropdownTrigger
+                ></vd-icon-button>
+                <vd-dropdown-item
+                  *ngFor="let act of getRowActions(row)"
+                  [icon]="act.icon || 'vd-icon-placeholder'"
+                  [title]="act.title"
+                  [disabled]="act.disabled?.(row) || false"
+                  (select)="onActionClick(act, row)"
+                ></vd-dropdown-item>
+              </vd-dropdown>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Expanded row -->
+        <tr
+          *ngIf="isExpandable && expandedRow === row"
+          class="vd-datatable__row vd-datatable__row--expanded"
+        >
+          <td
+            [attr.colspan]="columns.length + (actions.length ? 1 : 0)"
+            class="vd-datatable__table-data"
+          >
+            <div class="vd-datatable__expanded-content">
+              <div *ngFor="let col of expandedColumns" class="vd-datatable__expanded-row-item">
+                <div class="label-medium">{{ col.title }}</div>
+                <div class="body-medium">
+                  {{ (col.cell ? col.cell(row) : row[col.key]) ?? 'N/A' }}
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+
+<!-- Bottom -->
+<div class="vd-datatable__bottom" *ngIf="totalPages || totalRows">
+  <div class="vd-datatable__counter" *ngIf="totalRows">
+    Showing {{ rangeStart }} – {{ rangeEnd }} of {{ totalRows }}
+  </div>
+
+  <vd-pagination
+    *ngIf="totalPages"
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    (pageChange)="onPageChanged($event)"
+    class="vd-datatable__pagination"
+  ></vd-pagination>
+</div>

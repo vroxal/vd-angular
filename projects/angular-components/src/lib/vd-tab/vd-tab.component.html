@@ -1,0 +1,24 @@
+<div
+  class="vd-tab"
+  [class.vd-tab--default]="type === 'default'"
+  [class.vd-tab--boxed]="type === 'boxed'"
+  [class.vd-tab--horizontal]="direction === 'horizontal'"
+  [class.vd-tab--vertical]="direction === 'vertical'"
+  role="tablist"
+  [attr.aria-orientation]="direction"
+>
+  <button
+    *ngFor="let tab of tabs; trackBy: trackByTab"
+    class="vd-tab__tab"
+    [class.vd-tab__tab--active]="isActive(tab)"
+    [class.vd-tab__tab--disabled]="tab.disabled"
+    role="tab"
+    [attr.aria-selected]="isActive(tab)"
+    [attr.aria-disabled]="tab.disabled || null"
+    [disabled]="tab.disabled"
+    (click)="selectTab(tab)"
+  >
+    <vd-icon *ngIf="tab.icon" [name]="tab.icon" size="md" class="vd-tab__tab-icon"></vd-icon>
+    <span class="vd-tab__tab-label label-medium">{{ tab.label }}</span>
+  </button>
+</div>

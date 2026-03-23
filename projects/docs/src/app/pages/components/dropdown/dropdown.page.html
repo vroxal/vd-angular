@@ -1,0 +1,467 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Dropdown'"
+    [subtitle]="'Dropdowns present a list of actions or options in a temporary overlay.'"
+  >
+  </app-doc-page-header>
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Position</h3>
+        <p>
+          Contains: bottom-left, bottom-center, bottom-right, top-left, top-center, top-right,
+          left-start, right-start. Bottom-left is default
+        </p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-dropdown position="bottom-left">
+            <vd-button
+              label="Bottom Left Dropdown"
+              variant="subtle"
+              color="neutral"
+              vdDropdownTrigger
+            ></vd-button>
+            <div vdDropdownContent>
+              <vd-dropdown-item title="Action 1" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 2" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 3" icon="vd-icon-placeholder"></vd-dropdown-item>
+            </div>
+          </vd-dropdown>
+          <vd-dropdown position="bottom-center">
+            <vd-button
+              label="Bottom Center Dropdown"
+              variant="subtle"
+              color="neutral"
+              vdDropdownTrigger
+            ></vd-button>
+            <div vdDropdownContent>
+              <vd-dropdown-item title="Action 1" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 2" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 3" icon="vd-icon-placeholder"></vd-dropdown-item>
+            </div>
+          </vd-dropdown>
+          <vd-dropdown position="bottom-right">
+            <vd-button
+              label="Bottom Right Dropdown"
+              variant="subtle"
+              color="neutral"
+              vdDropdownTrigger
+            ></vd-button>
+            <div vdDropdownContent>
+              <vd-dropdown-item title="Action 1" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 2" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 3" icon="vd-icon-placeholder"></vd-dropdown-item>
+            </div>
+          </vd-dropdown>
+          <vd-dropdown position="top-left">
+            <vd-button
+              label="Top Left Dropdown"
+              color="neutral"
+              variant="subtle"
+              vdDropdownTrigger
+            ></vd-button>
+            <div vdDropdownContent>
+              <vd-dropdown-item title="Action 1" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 2" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 3" icon="vd-icon-placeholder"></vd-dropdown-item>
+            </div>
+          </vd-dropdown>
+          <vd-dropdown position="top-center">
+            <vd-button
+              label="Top Center Dropdown"
+              variant="subtle"
+              color="neutral"
+              vdDropdownTrigger
+            ></vd-button>
+            <div vdDropdownContent>
+              <vd-dropdown-item title="Action 1" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 2" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 3" icon="vd-icon-placeholder"></vd-dropdown-item>
+            </div>
+          </vd-dropdown>
+          <vd-dropdown position="top-right">
+            <vd-button
+              label="Top Right Dropdown"
+              color="neutral"
+              variant="subtle"
+              vdDropdownTrigger
+            ></vd-button>
+            <div vdDropdownContent>
+              <vd-dropdown-item title="Action 1" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 2" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 3" icon="vd-icon-placeholder"></vd-dropdown-item>
+            </div>
+          </vd-dropdown>
+          <vd-dropdown position="left-start">
+            <vd-button
+              label="Left Start Dropdown"
+              variant="subtle"
+              color="neutral"
+              vdDropdownTrigger
+            ></vd-button>
+            <div vdDropdownContent>
+              <vd-dropdown-item title="Action 1" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 2" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 3" icon="vd-icon-placeholder"></vd-dropdown-item>
+            </div>
+          </vd-dropdown>
+          <vd-dropdown position="right-start">
+            <vd-button
+              label="Right Start Dropdown"
+              variant="subtle"
+              color="neutral"
+              vdDropdownTrigger
+            ></vd-button>
+            <div vdDropdownContent>
+              <vd-dropdown-item title="Action 1" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 2" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 3" icon="vd-icon-placeholder"></vd-dropdown-item>
+            </div>
+          </vd-dropdown>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Dropdown Items</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Simple</h3>
+        <p>Contains a list of actions that have a title with optional icon and description.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-dropdown>
+            <vd-button
+              label="Simple dropdown item"
+              variant="subtle"
+              color="neutral"
+              vdDropdownTrigger
+            ></vd-button>
+            <div vdDropdownContent>
+              <vd-dropdown-item title="Action 1" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 2" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 3" icon="vd-icon-placeholder"></vd-dropdown-item>
+            </div>
+          </vd-dropdown>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">With divider</h3>
+        <p>A divider can be used to separate the contents.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-dropdown>
+            <vd-button
+              label="Dropdown with Divider"
+              variant="subtle"
+              color="neutral"
+              vdDropdownTrigger
+            ></vd-button>
+            <div vdDropdownContent>
+              <vd-dropdown-item title="Action 1" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 2" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item title="Action 3" icon="vd-icon-placeholder"></vd-dropdown-item>
+              <vd-dropdown-item-divider></vd-dropdown-item-divider>
+              <vd-dropdown-item title="Action 4" icon="vd-icon-placeholder"></vd-dropdown-item>
+            </div>
+          </vd-dropdown>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Grouped content</h3>
+        <p>Organize related items into groups that will have optional group title/name</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-dropdown>
+            <vd-button
+              label="Grouped Menu"
+              color="neutral"
+              variant="subtle"
+              vdDropdownTrigger
+            ></vd-button>
+            <div vdDropdownContent>
+              <vd-dropdown-item-group name="Navigation">
+                <vd-dropdown-item
+                  title="Dashboard"
+                  icon="vd-icon-placeholder"
+                ></vd-dropdown-item>
+                <vd-dropdown-item title="Profile" icon="vd-icon-placeholder"></vd-dropdown-item>
+                <vd-dropdown-item title="Settings" icon="vd-icon-placeholder"></vd-dropdown-item>
+              </vd-dropdown-item-group>
+              <vd-dropdown-item-divider></vd-dropdown-item-divider>
+              <vd-dropdown-item-group>
+                <vd-dropdown-item
+                  title="Change Password"
+                  icon="vd-icon-placeholder"
+                ></vd-dropdown-item>
+                <vd-dropdown-item
+                  title="Two-Factor Auth"
+                  icon="vd-icon-placeholder"
+                ></vd-dropdown-item>
+              </vd-dropdown-item-group>
+              <vd-dropdown-item-divider></vd-dropdown-item-divider>
+              <vd-dropdown-item title="Sign Out" icon="vd-icon-placeholder"></vd-dropdown-item>
+            </div>
+          </vd-dropdown>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the dropdown component in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-dropdown.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the dropdown component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="dropdown-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Simple Dropdown Item</h3>
+          <p>Basic dropdown with simple items containing title, icon, and optional description:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="simpleDropdownItemSnippet"
+            fileName="simple-dropdown.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Dropdown with Divider</h3>
+          <p>Use dividers to separate related items into visual groups:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="dropdownWithDividerSnippet"
+            fileName="dropdown-divider.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Dropdown with Grouped Content</h3>
+          <p>Organize related items into groups that will have group title:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="dropdownWithGroupedContentSnippet"
+            fileName="dropdown-grouped.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Listening to Select Events</h3>
+          <p>
+            Handle dropdown item selection by listening to the (select) event emitted by
+            vd-dropdown-item:
+          </p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="selectEventSnippet"
+            fileName="dropdown-select-event.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="selectEventComponentSnippet"
+            fileName="dropdown-select-event.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">VdDropdown - Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">VdDropdownItem - Inputs</h3>
+          <p>Individual dropdown menu items with optional icon and description.</p>
+        </div>
+        <vd-datatable
+          [data]="dropdownItemApiData"
+          [columns]="apiColumnsWithTemplate"
+        ></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">VdDropdownItem - Outputs</h3>
+        </div>
+        <vd-datatable
+          [data]="dropdownItemEventsData"
+          [columns]="eventsColumnsWithTemplate"
+        ></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">VdDropdownItemGroup - Inputs</h3>
+          <p>Groups related dropdown items together with an optional title.</p>
+        </div>
+        <vd-datatable
+          [data]="dropdownItemGroupApiData"
+          [columns]="apiColumnsWithTemplate"
+        ></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">VdDropdownItemDivider</h3>
+          <p>Visual separator between dropdown items or groups. No inputs required.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-group usage-guidelines">
+  <div class="content-group-title">
+    <h2 class="headline-large">Best Practices</h2>
+  </div>
+  <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Dropdown when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Dropdown when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Use dropdowns for contextual menus and action lists</li>
+          <li>Keep dropdown menus focused with 3-7 items when possible</li>
+          <li>Position dropdowns to avoid clipping at viewport edges</li>
+          <li>Use clear, action-oriented labels for dropdown items</li>
+          <li>Ensure dropdown content is accessible via keyboard navigation</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+</div>
+
+<div class="content-group playground">
+  <div class="content-group-title">
+    <h2 class="headline-large">Component playground</h2>
+    <p class="body-large">Customize the dropdown features in this section</p>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-select
+              label="Position"
+              [value]="position"
+              (valueChange)="onPositionChange($event)"
+              [options]="positionOptions"
+            ></vd-select>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-dropdown [position]="position">
+              <vd-button
+                label="Open Dropdown"
+                variant="subtle"
+                color="neutral"
+                vdDropdownTrigger
+              ></vd-button>
+              <div vdDropdownContent>
+                <vd-dropdown-item
+                  title="Action 1"
+                  icon="vd-icon-placeholder"
+                  (select)="onItemSelect()"
+                ></vd-dropdown-item>
+                <vd-dropdown-item
+                  title="Action 2"
+                  icon="vd-icon-placeholder"
+                  (select)="onItemSelect()"
+                ></vd-dropdown-item>
+                <vd-dropdown-item
+                  title="Action 3"
+                  icon="vd-icon-placeholder"
+                  (select)="onItemSelect()"
+                ></vd-dropdown-item>
+              </div>
+            </vd-dropdown>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+{
+  "name": "@vroxal/vd-angular",
+  "version": "1.0.0",
+  "description": "Vroxal Design Angular Components Library",
+  "peerDependencies": {
+    "@angular/common": "^21.0.0",
+    "@angular/core": "^21.0.0",
+    "@angular/cdk": "^21.1.1",
+    "@vroxal/vd-tokens": "^1.0.0",
+    "@vroxal/vd-icons": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vroxal/vd-angular.git"
+  },
+  "keywords": [
+    "Angular Components",
+    "Angular",
+    "Library",
+    "Vroxal Design"
+  ],
+  "author": "@vroxal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vroxal/vd-angular/issues"
+  },
+  "homepage": "https://vroxal.pages.dev/",
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

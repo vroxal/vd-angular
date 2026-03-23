@@ -1,0 +1,16 @@
+.content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 800px;
+}
+.content-group-section {
+  margin-top: var(--vd-scale-spacing-800);
+}
+
+ul {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

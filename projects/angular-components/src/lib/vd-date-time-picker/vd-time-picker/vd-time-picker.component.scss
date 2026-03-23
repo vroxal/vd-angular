@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.vd-time-picker {
+  position: relative;
+  width: 100%;
+  min-width: 240px;
+
+  &__native-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  &__label-row {
+    display: flex;
+    gap: var(--vd-scale-spacing-200);
+    margin-bottom: var(--vd-scale-spacing-100);
+  }
+
+  &__label {
+    color: var(--vd-time-picker-text-secondary);
+  }
+
+  &__optional {
+    --vd-time-picker-border-width: var(--vd-scale-border-width-sm);
+  }
+}

@@ -1,0 +1,342 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Progress Tracker'"
+    [subtitle]="'Progress trackers show the current step and overall status in multi-step flows.'"
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Indicator type</h3>
+        <p>Contains: Number, Icon. Number is default</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-progress-tracker
+            class="vd-progress-tracker"
+            [items]="numberItems"
+            indicatorType="number"
+          ></vd-progress-tracker>
+          <vd-progress-tracker
+            class="vd-progress-tracker"
+            [items]="iconItems"
+            indicatorType="icon"
+          ></vd-progress-tracker>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">States</h3>
+        <p>Contains: Default, Active, Completed, Error, Disabled</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-progress-tracker
+            class="vd-progress-tracker"
+            [items]="stateItems"
+          ></vd-progress-tracker>
+          <vd-progress-tracker
+            class="vd-progress-tracker"
+            [items]="stateIconItems"
+            indicatorType="icon"
+          ></vd-progress-tracker>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Direction</h3>
+        <p>
+          Contains: Horizontal, Vertical. Vertical is recommended for long forms. Indicator size is
+          set automatically based on direction.
+        </p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-progress-tracker [items]="stateItems" direction="horizontal"></vd-progress-tracker>
+          <vd-progress-tracker
+            class="vd-progress-tracker"
+            [items]="longFormItems"
+            direction="vertical"
+          ></vd-progress-tracker>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Description</h3>
+        <p>Optional descriptions can be hidden if not needed</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-progress-tracker
+            [items]="longFormItems"
+            [showDescription]="true"
+            class="vd-progress-tracker"
+          ></vd-progress-tracker>
+          <vd-progress-tracker
+            [items]="longFormItems"
+            class="vd-progress-tracker"
+            [showDescription]="false"
+          ></vd-progress-tracker>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-example">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage example</h2>
+      <p class="body-large">Interactive 4-step form flow with validation.</p>
+    </div>
+    <div class="content-group-container">
+      <app-progress-tracker-usage-example></app-progress-tracker-usage-example>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the progress tracker component in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-progress-tracker.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the progress tracker component:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define items in TypeScript</h4>
+          <code-container
+            [code]="basicImplementationTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Render in template</h4>
+          <code-container
+            [code]="basicImplementationTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Indicator Icons</h3>
+          <p>Provide icons per item when using the icon indicator type.</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define icon items in TypeScript</h4>
+          <code-container
+            [code]="iconImplementationTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Render with icon indicators</h4>
+          <code-container
+            [code]="iconImplementationTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Interactions</h3>
+          <p>Listen for item clicks to reveal step content or change the active index.</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Handle click in TypeScript</h4>
+          <code-container
+            [code]="interactionImplementationTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Bind click output</h4>
+          <code-container
+            [code]="interactionImplementationTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">4-Step Form Example</h3>
+          <p>Use a progress tracker to drive a multi-step form with dynamic content.</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define steps and active index</h4>
+          <code-container
+            [code]="stepperImplementationTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Render tracker and step content</h4>
+          <code-container
+            [code]="stepperImplementationTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">All Available APIs</h3>
+          <p class="body-large">Example using all available APIs:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allImplementationSnippet"
+            fileName="progress-tracker-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+        </div>
+        <vd-datatable [data]="outputData" [columns]="outputColumns"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Progress Tracker when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Progress Tracker when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Use vertical layout for long forms to keep steps readable</li>
+          <li>Mark completed steps to build user confidence and reduce drop-off</li>
+          <li>Keep descriptions short and action-focused</li>
+          <li>Use icon indicators when steps are represented by recognizable symbols</li>
+          <li>Use error state only on the step that needs attention</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+  </div>
+
+  <div class="content-group playground">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component playground</h2>
+      <p class="body-large">Customize the progress tracker features in this section</p>
+    </div>
+    <div class="content-group-container playground-container">
+      <div class="component-preview">
+        <div class="component-control">
+          <div class="controls">
+            <vd-select
+              label="Direction"
+              [value]="direction"
+              (valueChange)="$event && (direction = $event); onPlaygroundChange()"
+              [options]="directionOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Indicator Type"
+              [value]="indicatorType"
+              (valueChange)="$event && (indicatorType = $event); onPlaygroundChange()"
+              [options]="indicatorTypeOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Active Step"
+              [value]="activeStep"
+              (valueChange)="
+                $event !== null && $event !== undefined && (activeStep = $event);
+                onPlaygroundChange()
+              "
+              [options]="stepOptions"
+            ></vd-select>
+
+            <label class="switch-label">
+              <span>Show Description</span>
+              <vd-switch
+                [checked]="showDescription"
+                (change)="showDescription = $event"
+              ></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-progress-tracker
+              [items]="playgroundItems"
+              [direction]="direction"
+              [indicatorType]="indicatorType"
+              [showDescription]="showDescription"
+            ></vd-progress-tracker>
+          </div>
+        </div>
+      </div>
+      <code-container [code]="codeSnippet" fileName="example.html" language="angular-html">
+      </code-container>
+    </div>
+  </div>
+</div>

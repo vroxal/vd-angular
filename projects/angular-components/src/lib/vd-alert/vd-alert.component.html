@@ -1,0 +1,47 @@
+<div class="vd-alert vd-alert--{{ color }}" [class.vd-alert--closable]="closable" role="alert">
+  <!-- Icon -->
+  @if (showIcon) {
+    <vd-icon [name]="iconName" size="md"></vd-icon>
+  }
+
+  <!-- Content -->
+  <div class="vd-alert__content" [class.vd-alert__content--inline-action]="actionInline">
+    <!-- Text Container -->
+    <div class="vd-alert__text-container">
+      <!-- Title -->
+      @if (title) {
+        <p class="vd-alert__title title-medium">
+          {{ title }}
+        </p>
+      }
+
+      <!-- Description -->
+      <p class="vd-alert__description label-medium">
+        {{ description }}
+      </p>
+    </div>
+
+    <!-- Action Button -->
+    @if (action) {
+      <vd-button
+        [label]="actionLabel"
+        variant="transparent"
+        (click)="handleAction()"
+        class="vd-alert__action label-medium"
+      ></vd-button>
+    }
+  </div>
+  <!-- Close Button -->
+  @if (closable) {
+    <vd-icon-button
+      icon="vd-icon-cross"
+      color="neutral"
+      variant="transparent"
+      size="sm"
+      [rounded]="true"
+      (click)="handleClose()"
+      aria-label="Close alert"
+      class="vd-alert__close"
+    ></vd-icon-button>
+  }
+</div>

@@ -1,0 +1,75 @@
+.vd-tooltip {
+  --vd-tooltip-arrow-size: var(--vd-scale-spacing-300);
+  --vd-tooltip-arrow-offset: var(--vd-scale-spacing-200);
+  position: relative;
+  background: var(--vd-color-background-neutral-tertiary);
+  color: var(--vd-color-content-neutral-on-tertiary);
+  padding: var(--vd-scale-spacing-200) var(--vd-scale-spacing-300);
+  border-radius: var(--vd-scale-border-radius-md);
+  // border-radius: 0;
+  max-width: calc(2 * vard(--vd-scale-spacing-2400));
+  white-space: normal;
+  &__text {
+    margin-bottom: 0;
+  }
+  &__arrow {
+    position: absolute;
+    width: var(--vd-tooltip-arrow-size);
+    height: var(--vd-tooltip-arrow-size);
+    background: inherit;
+    transform: rotate(45deg);
+    border-radius: calc(var(--vd-scale-border-radius-xs));
+  }
+  &[data-position='top-center'] {
+    .vd-tooltip__arrow {
+      bottom: calc(var(--vd-tooltip-arrow-offset) * -0.5);
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+    }
+  }
+  &[data-position='top-left'] {
+    .vd-tooltip__arrow {
+      bottom: calc(var(--vd-tooltip-arrow-offset) * -0.5);
+      left: var(--vd-scale-spacing-300);
+    }
+  }
+  &[data-position='top-right'] {
+    .vd-tooltip__arrow {
+      bottom: calc(var(--vd-tooltip-arrow-offset) * -0.5);
+      right: var(--vd-scale-spacing-300);
+    }
+  }
+  &[data-position='bottom-center'] {
+    .vd-tooltip__arrow {
+      top: calc(var(--vd-tooltip-arrow-offset) * -0.5);
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+    }
+  }
+  &[data-position='bottom-left'] {
+    .vd-tooltip__arrow {
+      top: calc(var(--vd-tooltip-arrow-offset) * -0.5);
+      left: var(--vd-scale-spacing-300);
+    }
+  }
+  &[data-position='bottom-right'] {
+    .vd-tooltip__arrow {
+      top: calc(var(--vd-tooltip-arrow-offset) * -0.5);
+      right: var(--vd-scale-spacing-300);
+    }
+  }
+  &[data-position='center-left'] {
+    .vd-tooltip__arrow {
+      right: calc(var(--vd-tooltip-arrow-offset) * -0.5);
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+  }
+  &[data-position='center-right'] {
+    .vd-tooltip__arrow {
+      left: calc(var(--vd-tooltip-arrow-offset) * -0.5);
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+  }
+}

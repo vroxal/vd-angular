@@ -1,0 +1,9 @@
+<div #trigger class="vd-dropdown__trigger" (click)="toggle()">
+  <ng-content select="[vdDropdownTrigger]"></ng-content>
+</div>
+
+<ng-template #dropdownTemplate let-close="close">
+  <div class="vd-dropdown__content">
+    <ng-content></ng-content>
+  </div>
+</ng-template>

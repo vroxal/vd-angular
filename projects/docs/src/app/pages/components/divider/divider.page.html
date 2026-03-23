@@ -1,0 +1,212 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Divider'"
+    [subtitle]="'Dividers separate content sections to improve visual structure and readability.'"
+  >
+  </app-doc-page-header>
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Direction</h3>
+        <p>Contains: Horizontal, Vertical. Horizontal is default</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-divider direction="horizontal"></vd-divider>
+          <div style="display: flex; height: 100px; gap: 16px">
+            <vd-divider direction="vertical"></vd-divider>
+            <div>Content beside vertical divider</div>
+          </div>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Style</h3>
+        <p>Contains: Solid, Dashed. Solid is default</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-divider [dashed]="false"></vd-divider>
+          <vd-divider [dashed]="true"></vd-divider>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Inset</h3>
+        <p>Is a boolean value. True makes the divider inset from the edges.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-divider [inset]="false"></vd-divider>
+          <vd-divider [inset]="true"></vd-divider>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Color</h3>
+        <p>Contains: Primary, Secondary. Primary is default</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-divider color="primary"></vd-divider>
+          <vd-divider color="secondary"></vd-divider>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the divider component in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-divider.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the divider component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="divider-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Implementation with all available APIs</h3>
+          <p>Here is an example of using the divider component with all available APIs:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allImplementationSnippet"
+            fileName="divider-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-group usage-guidelines">
+  <div class="content-group-title">
+    <h2 class="headline-large">Best Practices</h2>
+  </div>
+  <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Divider when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Divider when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Use horizontal dividers to separate content sections vertically</li>
+          <li>Use vertical dividers when creating side-by-side layouts</li>
+          <li>Use dashed style for less prominent separations</li>
+          <li>Use inset when divider should not extend to container edges</li>
+          <li>Ensure sufficient spacing around dividers for visual clarity</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+</div>
+
+<div class="content-group playground">
+  <div class="content-group-title">
+    <h2 class="headline-large">Component playground</h2>
+    <p class="body-large">Customize the divider features in this section</p>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-select
+              label="Direction"
+              [value]="direction"
+              (valueChange)="$event && (direction = $event)"
+              [options]="directionOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Color"
+              [value]="color"
+              (valueChange)="$event && (color = $event)"
+              [options]="colorOptions"
+            ></vd-select>
+
+            <label class="switch-label">
+              <span>Dashed</span>
+              <vd-switch [checked]="dashed" (change)="dashed = $event"></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Inset</span>
+              <vd-switch [checked]="inset" (change)="inset = $event"></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-divider
+              [dashed]="dashed"
+              [color]="color"
+              [direction]="direction"
+              [inset]="inset"
+            ></vd-divider>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

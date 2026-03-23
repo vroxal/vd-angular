@@ -1,0 +1,18 @@
+<div class="vd-switch">
+  <label *ngIf="label" class="vd-switch__label">{{ label }}</label>
+  <div
+    role="switch"
+    class="vd-switch__base"
+    [attr.aria-checked]="checked"
+    [attr.aria-disabled]="disabled"
+    [attr.aria-label]="label"
+    [class.vd-switch__base--checked]="checked"
+    [class.vd-switch__base--disabled]="disabled"
+    (click)="toggle()"
+    (keydown)="onKeyDown($event)"
+    (blur)="onBlur()"
+    tabindex="0"
+  >
+    <div class="vd-switch__toggle"></div>
+  </div>
+</div>

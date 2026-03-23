@@ -1,0 +1,248 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Checkbox Group'"
+    [subtitle]="'Checkbox groups let users select multiple related options from the same set.'"
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Direction</h3>
+        <p>Checkbox groups can be displayed vertically or horizontally.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-checkbox-group [items]="verticalItems"></vd-checkbox-group>
+          <vd-checkbox-group [items]="horizontalItems" direction="horizontal"></vd-checkbox-group>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Nested Groups</h3>
+        <p>Parent items become indeterminate based on child selection</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-checkbox-group [items]="items" [value]="selectedValues"></vd-checkbox-group>
+          <vd-checkbox-group
+            [items]="horizontalNestedItems"
+            [value]="horizontalSelectedValues"
+            direction="horizontal"
+            (valueChange)="onHorizontalGroupChange($event)"
+          ></vd-checkbox-group>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the checkbox group component and item interface:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-checkbox-group.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Provide a list of items and track selected values:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define items in TypeScript</h4>
+          <code-container
+            [code]="basicImplementationTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Render in template</h4>
+          <code-container
+            [code]="basicImplementationTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Nested Groups</h3>
+          <p>Parent items display indeterminate states based on child selection:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define nested items</h4>
+          <code-container
+            [code]="nestedImplementationTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Render nested groups</h4>
+          <code-container
+            [code]="nestedImplementationTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Handling Output</h3>
+          <p>Listen to the <code>valueChange</code> event to react when selected values change:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define handler in TypeScript</h4>
+          <code-container
+            [code]="outputHandlingComponentSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Bind in template</h4>
+          <code-container
+            [code]="outputHandlingTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">All Available APIs</h3>
+          <p class="body-large">Example using all available APIs:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allImplementationSnippet"
+            fileName="checkbox-group-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+        </div>
+        <vd-datatable [data]="outputData" [columns]="outputColumns"></vd-datatable>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">VdCheckboxGroupItem Interface</h3>
+          <p>Each item in the <code>items</code> array follows this interface:</p>
+        </div>
+        <vd-datatable
+          [data]="itemInterfaceData"
+          [columns]="itemInterfaceColumnsWithTemplate"
+        ></vd-datatable>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-group usage-guidelines">
+  <div class="content-group-title">
+    <h2 class="headline-large">Best Practices</h2>
+  </div>
+  <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Checkbox Group when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Checkbox Group when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Use nested groups to represent hierarchical choices</li>
+          <li>Prefer vertical layout for long lists to improve readability</li>
+          <li>Keep option labels short and descriptive</li>
+          <li>Use indeterminate state to show partial selections in a group</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+</div>
+
+<div class="content-group playground">
+  <div class="content-group-title">
+    <h2 class="headline-large">Component playground</h2>
+    <p class="body-large">Interact with the checkbox group in this section</p>
+    <div class="content-group-container playground-container">
+      <div class="component-preview">
+        <div class="component-control">
+          <div class="controls">
+            <vd-select
+              label="Direction"
+              [value]="direction"
+              (valueChange)="$event && (direction = $event)"
+              [options]="directionOptions"
+            ></vd-select>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-checkbox-group
+              [items]="items"
+              [value]="selectedValues"
+              [direction]="direction"
+              (valueChange)="onGroupChange($event)"
+            ></vd-checkbox-group>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

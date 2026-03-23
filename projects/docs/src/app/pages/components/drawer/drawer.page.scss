@@ -1,0 +1,7 @@
+// Add any page-specific styles if needed
+// Currently following existing documentation classes only
+.drawer-content-dataslot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--vd-scale-spacing-400);
+}

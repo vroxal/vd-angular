@@ -1,0 +1,90 @@
+<div
+  class="vd-date-time-picker"
+  [class.vd-date-time-picker--error]="visualState === 'error'"
+  [class.vd-date-time-picker--success]="visualState === 'success'"
+  [class.vd-date-time-picker--warning]="visualState === 'warning'"
+  [class.vd-date-time-picker--disabled]="disabled"
+  [class.vd-date-time-picker--open]="isOpen"
+>
+  <div class="vd-date-time-picker__field" #trigger>
+    <vd-input
+      [label]="label"
+      [hintText]="hintText"
+      [helperText]="helperText"
+      [optional]="optional"
+      [leadingIcon]="leadingIcon"
+      [trailingActionIcon]="'vd-icon-calendar'"
+      [placeholder]="placeholder"
+      [value]="displayValue"
+      [readOnly]="true"
+      [disabled]="disabled"
+      [state]="visualState"
+      (trailingActionClick)="toggleCalendar()"
+      (inputFocus)="onInputFocus()"
+      (valueCommit)="onInputBlur()"
+    ></vd-input>
+  </div>
+</div>
+
+<ng-template #calendarPopupTemplate>
+  <div class="vd-date-time-picker__calendar-popup" (click)="$event.stopPropagation()">
+    <div class="vd-date-time-picker__date-section">
+      <vd-single-date-inline
+        *ngIf="mode === 'single'"
+        [value]="singleDateValue"
+        (valueChange)="onDateChange($event)"
+        [minDate]="minDate"
+        [maxDate]="maxDate"
+        [showMonthYearSelector]="showMonthYearSelector"
+        [disabled]="disabled"
+      ></vd-single-date-inline>
+
+      <vd-range-date-inline
+        *ngIf="mode === 'range'"
+        [value]="rangeDateValue"
+        (valueChange)="onDateChange($event)"
+        [minDate]="minDate"
+        [maxDate]="maxDate"
+        [disabled]="disabled"
+      ></vd-range-date-inline>
+    </div>
+
+    <vd-divider
+      color="secondary"
+      class="vd-date-time-picker__divider"
+      *ngIf="withTime"
+    ></vd-divider>
+
+    <div class="vd-date-time-picker__time-section" *ngIf="withTime">
+      <vd-time-picker
+        *ngIf="mode === 'single'"
+        [value]="timeValue"
+        label="Time"
+        (valueChange)="onTimeChange($event)"
+        (valueCommit)="onTimeCommit($event)"
+        placeholder="HH:MM"
+        [disabled]="disabled"
+      ></vd-time-picker>
+
+      <div *ngIf="mode === 'range'" class="vd-date-time-picker__time-range">
+        <vd-time-picker
+          [value]="startTimeValue"
+          label="Start Time"
+          (valueChange)="onStartTimeChange($event)"
+          (valueCommit)="onStartTimeCommit($event)"
+          placeholder="HH:MM"
+          [disabled]="disabled"
+        ></vd-time-picker>
+
+        <vd-time-picker
+          [value]="endTimeValue"
+          label="End Time"
+          (valueChange)="onEndTimeChange($event)"
+          (valueCommit)="onEndTimeCommit($event)"
+          placeholder="HH:MM"
+          [disabled]="disabled"
+        ></vd-time-picker>
+      </div>
+    </div>
+  </div>
+</ng-template>

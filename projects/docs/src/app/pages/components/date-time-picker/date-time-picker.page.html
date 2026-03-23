@@ -1,0 +1,462 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Date Time Picker'"
+    [subtitle]="
+      'Date time pickers help users select single dates, ranges, and optional time values.'
+    "
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component Variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Date picker</h3>
+          <p>Can contains single date, date range</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-date-time-picker
+            mode="single"
+            label="Select Date"
+            placeholder="Choose a date..."
+            [(value)]="singleDateValue"
+          ></vd-date-time-picker>
+          <vd-date-time-picker
+            mode="range"
+            label="Select Date Range"
+            [showMonthYearSelector]="true"
+            placeholder="Choose date range..."
+            [(value)]="rangeDateValue"
+          ></vd-date-time-picker>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Date pickers with time</h3>
+          <p>Can contains single date, date range with time.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-date-time-picker
+            mode="single"
+            [withTime]="true"
+            label="Select Date and Time"
+            placeholder="Choose date and time..."
+            [(value)]="singleDateValue"
+          ></vd-date-time-picker>
+          <vd-date-time-picker
+            mode="range"
+            [withTime]="true"
+            label="Select Date Range and Time"
+            placeholder="Choose date range and time..."
+            [(value)]="rangeDateValue"
+          ></vd-date-time-picker>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">States</h3>
+          <p>Contains: Default, Success, Error, Warning</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-date-time-picker
+            mode="single"
+            label="Default"
+            placeholder="Default state"
+          ></vd-date-time-picker>
+          <vd-date-time-picker
+            mode="single"
+            label="Success"
+            placeholder="Success state"
+            state="success"
+            helperText="Valid selection"
+          ></vd-date-time-picker>
+          <vd-date-time-picker
+            mode="single"
+            label="Error"
+            placeholder="Error state"
+            state="error"
+            helperText="Invalid selection"
+          ></vd-date-time-picker>
+          <vd-date-time-picker
+            mode="single"
+            label="Warning"
+            placeholder="Warning state"
+            state="warning"
+            helperText="Check selection"
+          ></vd-date-time-picker>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Dropdown Positions</h3>
+          <p>Contains: Bottom-Left, Bottom-Center, Bottom-Right, Top-Left, Top-Center, Top-Right</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-date-time-picker
+            mode="single"
+            label="Bottom Left (Default)"
+            placeholder="Choose a date..."
+            dropdownPosition="bottom-left"
+          ></vd-date-time-picker>
+          <vd-date-time-picker
+            mode="single"
+            label="Bottom Center"
+            placeholder="Choose a date..."
+            dropdownPosition="bottom-center"
+          ></vd-date-time-picker>
+          <vd-date-time-picker
+            mode="single"
+            label="Bottom Right"
+            placeholder="Choose a date..."
+            dropdownPosition="bottom-right"
+          ></vd-date-time-picker>
+          <vd-date-time-picker
+            mode="single"
+            label="Top Left"
+            placeholder="Choose a date..."
+            dropdownPosition="top-left"
+          ></vd-date-time-picker>
+          <vd-date-time-picker
+            mode="single"
+            label="Top Center"
+            placeholder="Choose a date..."
+            dropdownPosition="top-center"
+          ></vd-date-time-picker>
+          <vd-date-time-picker
+            mode="single"
+            label="Top Right"
+            placeholder="Choose a date..."
+            dropdownPosition="top-right"
+          ></vd-date-time-picker>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Input Field Variations</h3>
+          <p>Contains: Optional Label, Hint Text, Helper Text, Leading Icon</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-date-time-picker
+            mode="single"
+            label="Optional Field"
+            placeholder="Choose a date..."
+            [optional]="true"
+          ></vd-date-time-picker>
+          <vd-date-time-picker
+            mode="single"
+            label="With Hint Text"
+            placeholder="Choose a date..."
+            hintText="This is a hint text shown in tooltip on ? icon"
+          ></vd-date-time-picker>
+          <vd-date-time-picker
+            mode="single"
+            label="With Helper Text"
+            placeholder="Choose a date..."
+            helperText="This is helper text shown below the input field"
+          ></vd-date-time-picker>
+          <vd-date-time-picker
+            mode="single"
+            label="With Leading Icon"
+            placeholder="Choose a date..."
+            leadingIcon="vd-icon-calendar"
+          ></vd-date-time-picker>
+          <vd-date-time-picker
+            mode="single"
+            label="Combined (All Features)"
+            placeholder="Choose a date..."
+            [optional]="true"
+            hintText="Additional information about this field"
+            helperText="Helper text displayed below the field"
+            leadingIcon="vd-icon-placeholder"
+          ></vd-date-time-picker>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- USAGE GUIDELINES -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the date time picker component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-date-time-picker.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Usage</h3>
+          <p>Simplest form of the date picker:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicUsageSnippet"
+            fileName="basic-usage-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Single Date Mode</h3>
+          <p>Select a single date:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="singleModeSnippet"
+            fileName="single-mode-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Range Date Mode</h3>
+          <p>Select a date range:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="rangeModeSnippet"
+            fileName="range-mode-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Single Date Mode with Time</h3>
+          <p>Select a single date with time:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="singleWithTimeSnippet"
+            fileName="single-with-time-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Range Date Mode with Time</h3>
+          <p>Select a date range with time for both start and end:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="rangeWithTimeSnippet"
+            fileName="range-with-time-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Dropdown Position</h3>
+          <p>Control the calendar dropdown position:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="dropdownPositionSnippet"
+            fileName="dropdown-position-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">All API Usage</h3>
+          <p>Comprehensive example with all available properties and events:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allApiSnippet"
+            fileName="date-time-picker-all-api.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- API REFERENCE -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+          <p>Properties that can be passed to the component:</p>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable
+          [data]="apiData"
+          [columns]="apiColumnsWithTemplate"
+          [rowsPerPage]="50"
+        ></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+          <p>Events emitted by the component:</p>
+        </div>
+
+        <vd-datatable
+          [data]="outputApiData"
+          [columns]="outputApiColumnsWithTemplate"
+        ></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <!-- BEST PRACTICES -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Date Time Picker when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>
+            Avoid using Date Time Picker when a simpler component communicates the same intent.
+          </li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Choose the appropriate mode (single/range) based on your use case</li>
+          <li>Enable time selection only when needed - simpler is better</li>
+          <li>Always provide clear labels indicating what should be selected</li>
+          <li>Use helper text to clarify format or constraints</li>
+          <li>Set min and max dates to constrain valid selections</li>
+          <li>Use state prop to provide validation feedback</li>
+          <li>Consider timezone handling when time selection is enabled</li>
+          <li>Provide meaningful error messages for invalid selections</li>
+          <li>Use consistent date/time formats across your application</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAYGROUND -->
+  <div class="content-group playground">
+    <div class="content-group-title">
+      <h2 class="headline-large">Playground</h2>
+      <p class="body-large">Customize the date time picker features</p>
+    </div>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-select
+              label="Mode"
+              [value]="dateTimeMode"
+              (valueChange)="$event && (dateTimeMode = $event)"
+              [options]="modeOptions"
+            ></vd-select>
+
+            <vd-select
+              label="State"
+              [value]="dateTimeState"
+              (valueChange)="dateTimeState = $event"
+              [options]="stateOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Dropdown Position"
+              [value]="dateTimeDropdownPosition"
+              (valueChange)="$event && (dateTimeDropdownPosition = $event)"
+              [options]="dropdownPositionOptions"
+            ></vd-select>
+
+            <label class="switch-label">
+              <span>With Time</span>
+              <vd-switch
+                [checked]="dateTimeWithTime"
+                (change)="dateTimeWithTime = $event"
+              ></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Optional</span>
+              <vd-switch
+                [checked]="dateTimeOptional"
+                (change)="dateTimeOptional = $event"
+              ></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Disabled</span>
+              <vd-switch
+                [checked]="dateTimeDisabled"
+                (change)="dateTimeDisabled = $event"
+              ></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-date-time-picker
+              [mode]="dateTimeMode"
+              [withTime]="dateTimeWithTime"
+              [label]="dateTimeLabel"
+              [placeholder]="dateTimePlaceholder"
+              [(value)]="currentValue"
+              [optional]="dateTimeOptional"
+              [disabled]="dateTimeDisabled"
+              [state]="dateTimeState"
+              [dropdownPosition]="dateTimeDropdownPosition"
+            ></vd-date-time-picker>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

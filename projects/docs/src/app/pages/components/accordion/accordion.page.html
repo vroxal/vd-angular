@@ -1,0 +1,215 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Accordion'"
+    [subtitle]="'Accordions let users expand and collapse sections to reveal content progressively.'"
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Style Variations</h3>
+          <p>Contains: Filled, Divided. Filled is default</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-accordion title="Filled Accordion" variant="filled" [active]="false">
+            This is content for the filled accordion style
+          </vd-accordion>
+          <vd-accordion title="Divided Accordion" variant="divided" [active]="false">
+            This is content for the divided accordion style
+          </vd-accordion>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">State Variations</h3>
+          <p>Accordion can be expanded or collapsed</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-accordion title="Collapsed (Default)" variant="filled" [active]="false">
+            This content is hidden by default
+          </vd-accordion>
+          <vd-accordion title="Expanded" variant="filled" [active]="true">
+            This content is visible by default
+          </vd-accordion>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">With Icons</h3>
+          <p>Accordion items can display an icon</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-accordion
+            title="Accordion with Icon"
+            variant="filled"
+            icon="vd-icon-settings"
+            [active]="false"
+          >
+            This accordion has an icon in the header
+          </vd-accordion>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the accordion component in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-accordion.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the accordion component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="accordion-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Implementation with all available APIs</h3>
+          <p>Here is an example of using the accordion component with all available APIs:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allImplementationSnippet"
+            fileName="accordion-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Accordion when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Accordion when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Keep section titles concise and descriptive</li>
+          <li>Use icons to improve visual hierarchy</li>
+          <li>Ensure only one section is expanded at a time for cleaner UX</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="content-group playground">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component Playground</h2>
+      <p class="body-large">Experiment with different accordion configurations</p>
+    </div>
+    <div class="content-group-container playground-container">
+      <div class="component-preview">
+        <div class="component-control">
+          <div class="controls">
+            <vd-select
+              label="Variant"
+              [value]="variant"
+              (valueChange)="$event && (variant = $event)"
+              [options]="variantOptions"
+            ></vd-select>
+
+            <vd-input label="Title" [value]="title" (valueChange)="title = $event"></vd-input>
+
+            <vd-select
+              label="Icon"
+              [value]="icon"
+              (valueChange)="icon = $event ?? ''"
+              [options]="iconOptions"
+              [optional]="true"
+            ></vd-select>
+
+            <label class="switch-label">
+              <span>Active (Expanded)</span>
+              <vd-switch [checked]="active" (change)="active = $event"></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-accordion
+              [title]="title"
+              [variant]="variant"
+              [active]="active"
+              [icon]="icon || undefined"
+            >
+              This is the accordion content that appears when expanded.
+            </vd-accordion>
+          </div>
+        </div>
+      </div>
+
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

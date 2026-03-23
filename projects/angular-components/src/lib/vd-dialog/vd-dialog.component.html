@@ -1,0 +1,52 @@
+<div
+  class="vd-dialog"
+  [class.vd-dialog--closing]="isClosing"
+  role="dialog"
+  aria-modal="true"
+  [attr.aria-label]="config.title"
+>
+  <div class="vd-dialog__header">
+    <div class="vd-dialog__header-text">
+      <h6 class="vd-dialog__title title-medium">
+        {{ config.title }}
+      </h6>
+    </div>
+
+    <vd-icon-button
+      class="vd-dialog__close"
+      icon="vd-icon-cross"
+      variant="transparent"
+      color="neutral"
+      size="sm"
+      [rounded]="true"
+      ariaLabel="Close dialog"
+      (click)="handleClose()"
+    ></vd-icon-button>
+  </div>
+
+  <div class="vd-dialog__content">
+    <ng-container
+      *ngTemplateOutlet="config.contentTemplate; context: config.context ?? null"
+    ></ng-container>
+  </div>
+
+  <div *ngIf="hasActions" class="vd-dialog__footer">
+    <vd-button
+      *ngIf="config.secondaryActionLabel"
+      [label]="config.secondaryActionLabel"
+      variant="subtle"
+      color="neutral"
+      size="md"
+      (click)="handleSecondaryAction()"
+    ></vd-button>
+
+    <vd-button
+      *ngIf="config.primaryActionLabel"
+      [label]="config.primaryActionLabel"
+      variant="solid"
+      color="primary"
+      size="md"
+      (click)="handlePrimaryAction()"
+    ></vd-button>
+  </div>
+</div>

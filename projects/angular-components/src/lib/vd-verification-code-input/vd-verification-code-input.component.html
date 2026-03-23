@@ -1,0 +1,54 @@
+<div
+  class="vd-verification-code-input"
+  [class.vd-verification-code-input--error]="state === 'error'"
+  [class.vd-verification-code-input--disabled]="disabled"
+>
+  <!-- Label -->
+  <label *ngIf="label" class="vd-verification-code-input__label body-medium" [for]="inputId">
+    {{ label }}
+  </label>
+
+  <!-- Visual cells -->
+  <div class="vd-verification-code-input__cells" (click)="focusInput()">
+    <div
+      *ngFor="let _ of cells; let i = index"
+      class="vd-verification-code-input__cell"
+      [class.vd-verification-code-input__cell--focused]="focused && caretIndex === i"
+      [class.vd-verification-code-input__cell--filled]="!!value[i]"
+    >
+      {{ mask && value[i] ? '•' : value[i] || '' }}
+    </div>
+  </div>
+
+  <!-- Single hidden/native input -->
+  <input
+    #codeInput
+    [id]="inputId"
+    class="vd-verification-code-input__input"
+    type="text"
+    inputmode="numeric"
+    autocomplete="one-time-code"
+    autocorrect="off"
+    spellcheck="false"
+    pattern="[0-9]*"
+    [value]="value"
+    [disabled]="disabled"
+    [attr.maxlength]="length"
+    [attr.aria-invalid]="state === 'error' ? 'true' : null"
+    [attr.aria-describedby]="helperText ? helperTextId : null"
+    [attr.aria-label]="label ? null : 'Verification code'"
+    (keydown)="onKeyDown($event)"
+    (input)="onInput($event)"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+  />
+
+  <!-- Helper text -->
+  <span
+    *ngIf="helperText"
+    class="vd-verification-code-input__helper-text body-small"
+    [id]="helperTextId"
+  >
+    {{ helperText }}
+  </span>
+</div>

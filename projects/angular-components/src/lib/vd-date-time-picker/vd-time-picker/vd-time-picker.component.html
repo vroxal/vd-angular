@@ -1,0 +1,35 @@
+<div
+  class="vd-time-picker"
+  [class.vd-time-picker--error]="state === 'error'"
+  [class.vd-time-picker--disabled]="disabled"
+  [class.vd-time-picker--success]="state === 'success'"
+  [class.vd-time-picker--warning]="state === 'warning'"
+>
+  <vd-input
+    [label]="label"
+    [hintText]="hintText"
+    [helperText]="helperText"
+    [optional]="optional"
+    [leadingIcon]="leadingIcon"
+    [trailingActionIcon]="'vd-icon-clock'"
+    [placeholder]="placeholder"
+    [value]="value"
+    [readOnly]="true"
+    [disabled]="disabled"
+    [state]="visualState"
+    (trailingActionClick)="onTrailingActionClick()"
+    (inputFocus)="onInputFocus()"
+    (valueCommit)="onInputBlur()"
+  ></vd-input>
+
+  <input
+    #inputElement
+    class="vd-time-picker__native-input"
+    type="time"
+    [value]="value"
+    (input)="onInput($event)"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    [disabled]="disabled"
+  />
+</div>

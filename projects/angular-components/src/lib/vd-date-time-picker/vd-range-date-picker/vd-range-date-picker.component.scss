@@ -1,0 +1,28 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.vd-range-date-picker {
+  width: 100%;
+  min-width: 240px;
+  position: relative; // For popup positioning
+
+  // Wrapper around the input and popup so the dropdown anchors to the input even when helper text exists
+  &__field {
+    position: relative;
+    width: 100%;
+  }
+
+  // CALENDAR POPUP
+  &__calendar-popup {
+    background: var(--vd-color-background-default-secondary);
+    border: var(--vd-scale-border-width-sm) solid var(--vd-color-border-default-tertiary);
+    border-radius: var(--vd-scale-border-radius-md);
+    padding: var(--vd-scale-spacing-200);
+    display: flex;
+    flex-direction: row;
+    gap: var(--vd-scale-spacing-400);
+    width: auto;
+  }
+}

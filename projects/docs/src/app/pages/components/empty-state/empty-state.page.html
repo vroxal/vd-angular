@@ -1,0 +1,270 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Empty State'"
+    [subtitle]="'Empty states explain why content is missing and guide users to a next action.'"
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Default</h3>
+          <p>Includes icon, message, and both secondary/primary actions.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-empty-state
+            title="Title goes here"
+            description="Nothing more exciting happening here in terms of content, but just filling up the space to make it look representative."
+            secondaryActionLabel="Cancel"
+            primaryActionLabel="Confirm"
+          ></vd-empty-state>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Without Icon</h3>
+          <p>Use when iconography does not add useful context.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-empty-state
+            title="Title goes here"
+            description="Nothing more exciting happening here in terms of content, but just filling up the space to make it look representative."
+            [showIcon]="false"
+          ></vd-empty-state>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Single Action</h3>
+          <p>Provide only one label to render just that action button.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-empty-state title="No Items" primaryActionLabel="Create"></vd-empty-state>
+          <vd-empty-state title="Go Back" secondaryActionLabel="Go Back"></vd-empty-state>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Boxed</h3>
+          <p>Use <code>boxed</code> to toggle between boxed and unboxed presentation.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-empty-state
+            title="Title goes here"
+            description="Nothing more exciting happening here in terms of content, but just filling up the space to make it look representative."
+            secondaryActionLabel="Cancel"
+            primaryActionLabel="Confirm"
+            [boxed]="true"
+          ></vd-empty-state>
+          <vd-empty-state
+            title="Title goes here"
+            description="Nothing more exciting happening here in terms of content, but just filling up the space to make it look representative."
+            secondaryActionLabel="Cancel"
+            primaryActionLabel="Confirm"
+            [boxed]="false"
+          ></vd-empty-state>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the empty state component in your module or standalone component:</p>
+        </div>
+        <code-container
+          [code]="importCodeSnippet"
+          fileName="import-empty-state.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Use a clear title, concise description, and a meaningful primary action.</p>
+        </div>
+        <code-container
+          [code]="basicImplementationSnippet"
+          fileName="my.component.html"
+          language="angular-html"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Without Icon</h3>
+          <p>Hide the icon for compact layouts or text-only contexts.</p>
+        </div>
+        <code-container
+          [code]="iconlessImplementationSnippet"
+          fileName="my.component.html"
+          language="angular-html"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Unboxed Variant</h3>
+          <p>Set <code>[boxed]="false"</code> to remove outer padding, border, and background.</p>
+        </div>
+        <code-container
+          [code]="unboxedImplementationSnippet"
+          fileName="my.component.html"
+          language="angular-html"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Without Action</h3>
+          <p>Hide action button for passive informational states.</p>
+        </div>
+        <code-container
+          [code]="noActionImplementationSnippet"
+          fileName="my.component.html"
+          language="angular-html"
+        ></code-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+        </div>
+        <vd-datatable [data]="outputData" [columns]="outputColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Empty State when the current screen has no content to display yet.</li>
+          <li>Use it to provide users with a clear next action.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Empty State for loading scenarios; use a loading indicator instead.</li>
+          <li>Avoid using it when data exists but is temporarily filtered out without explanation.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Write concise and action-oriented titles and descriptions.</li>
+          <li>Use a relevant icon only when it adds context.</li>
+          <li>Prefer one clear primary action to reduce decision friction.</li>
+          <li>Keep text content short and easy to scan.</li>
+          <li>Ensure the call to action is keyboard accessible.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group playground">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component playground</h2>
+      <p class="body-large">Customize the empty state props in this section</p>
+    </div>
+    <div class="content-group-container playground-container">
+      <div class="component-preview">
+        <div class="component-control">
+          <div class="controls">
+            <vd-select
+              label="Icon"
+              [value]="playgroundIcon"
+              [options]="iconOptions"
+              (valueChange)="$event && (playgroundIcon = $event)"
+            ></vd-select>
+
+            <label class="switch-label">
+              <span>Show Icon</span>
+              <vd-switch
+                [checked]="playgroundShowIcon"
+                (change)="playgroundShowIcon = $event"
+              ></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Boxed</span>
+              <vd-switch [checked]="playgroundBoxed" (change)="playgroundBoxed = $event">
+              </vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Show Primary</span>
+              <vd-switch
+                [checked]="playgroundShowPrimaryAction"
+                (change)="playgroundShowPrimaryAction = $event"
+              ></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Show Secondary</span>
+              <vd-switch
+                [checked]="playgroundShowSecondaryAction"
+                (change)="playgroundShowSecondaryAction = $event"
+              ></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-empty-state
+              [title]="playgroundTitle"
+              [description]="playgroundDescription"
+              [icon]="playgroundIcon"
+              [showIcon]="playgroundShowIcon"
+              [boxed]="playgroundBoxed"
+              [primaryActionLabel]="playgroundShowPrimaryAction ? 'Confirm' : ''"
+              [secondaryActionLabel]="playgroundShowSecondaryAction ? 'Cancel' : ''"
+              (primaryActionClick)="onPlaygroundActionClick()"
+              (secondaryActionClick)="onPlaygroundActionClick()"
+            ></vd-empty-state>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="playgroundCodeSnippet"
+        fileName="empty-state.component.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

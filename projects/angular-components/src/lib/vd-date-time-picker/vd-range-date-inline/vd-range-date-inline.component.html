@@ -1,0 +1,89 @@
+<div class="vd-range-date-inline">
+  <!-- First Month -->
+  <div class="vd-range-date-inline__month-container">
+    <!-- Header: Month Navigation -->
+    <div class="vd-range-date-inline__header">
+      <vd-icon-button
+        icon="vd-icon-caret-left"
+        variant="transparent"
+        color="neutral"
+        size="sm"
+        (click)="prevMonth($event)"
+      >
+      </vd-icon-button>
+
+      <span class="vd-range-date-inline__month-label label-medium">{{ currentMonthLabel }}</span>
+
+      <!-- Empty space to maintain layout -->
+      <div style="width: 32px"></div>
+    </div>
+
+    <!-- Calendar Grid -->
+    <div class="vd-range-date-inline__grid">
+      <!-- Weekday Headers -->
+      <div class="vd-range-date-inline__weekday label-small" *ngFor="let day of weekDays">
+        {{ day }}
+      </div>
+
+      <!-- Days -->
+      <div
+        class="vd-range-date-inline__day body-medium"
+        *ngFor="let dayObj of calendarDays"
+        [class.outside-month]="!dayObj.inMonth"
+        [class.today]="dayObj.isToday"
+        [class.selected]="dayObj.isSelected"
+        [class.range-start]="dayObj.isRangeStart"
+        [class.range-end]="dayObj.isRangeEnd"
+        [class.in-range]="dayObj.isInRange"
+        [class.disabled]="dayObj.isDisabled"
+        (click)="onDateClick(dayObj, $event)"
+      >
+        <span class="vd-range-date-inline__day-number">{{ dayObj.date.getDate() }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Second Month -->
+  <div class="vd-range-date-inline__month-container">
+    <!-- Header: Month Navigation -->
+    <div class="vd-range-date-inline__header">
+      <!-- Empty space to maintain layout -->
+      <div style="width: 32px"></div>
+
+      <span class="vd-range-date-inline__month-label label-medium">{{ nextMonthLabel }}</span>
+
+      <vd-icon-button
+        icon="vd-icon-caret-right"
+        variant="transparent"
+        color="neutral"
+        size="sm"
+        (click)="nextMonth($event)"
+      >
+      </vd-icon-button>
+    </div>
+
+    <!-- Calendar Grid -->
+    <div class="vd-range-date-inline__grid">
+      <!-- Weekday Headers -->
+      <div class="vd-range-date-inline__weekday label-small" *ngFor="let day of weekDays">
+        {{ day }}
+      </div>
+
+      <!-- Days -->
+      <div
+        class="vd-range-date-inline__day body-medium"
+        *ngFor="let dayObj of nextMonthCalendarDays"
+        [class.outside-month]="!dayObj.inMonth"
+        [class.today]="dayObj.isToday"
+        [class.selected]="dayObj.isSelected"
+        [class.range-start]="dayObj.isRangeStart"
+        [class.range-end]="dayObj.isRangeEnd"
+        [class.in-range]="dayObj.isInRange"
+        [class.disabled]="dayObj.isDisabled"
+        (click)="onDateClick(dayObj, $event)"
+      >
+        <span class="vd-range-date-inline__day-number">{{ dayObj.date.getDate() }}</span>
+      </div>
+    </div>
+  </div>
+</div>

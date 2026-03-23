@@ -1,0 +1,94 @@
+<div
+  class="vd-progress-tracker"
+  [class.vd-progress-tracker--horizontal]="direction === 'horizontal'"
+  [class.vd-progress-tracker--vertical]="direction === 'vertical'"
+  role="list"
+>
+  <div
+    *ngFor="let item of items; let index = index; let isLast = last; trackBy: trackByIndex"
+    class="vd-progress-tracker__item"
+    [class.vd-progress-tracker__item--vertical]="direction === 'vertical'"
+    [class.vd-progress-tracker__item--horizontal]="direction === 'horizontal'"
+    [class.vd-progress-tracker__item--default]="getItemState(item) === 'default'"
+    [class.vd-progress-tracker__item--active]="getItemState(item) === 'active'"
+    [class.vd-progress-tracker__item--completed]="getItemState(item) === 'completed'"
+    [class.vd-progress-tracker__item--error]="getItemState(item) === 'error'"
+    [class.vd-progress-tracker__item--disabled]="getItemState(item) === 'disabled'"
+    (click)="onItemClick(item, index)"
+    role="listitem"
+  >
+    <ng-container *ngIf="direction === 'horizontal'; else verticalLayout">
+      <div class="vd-progress-tracker__indicator-row">
+        <div
+          class="vd-progress-tracker__indicator"
+          [ngClass]="
+            indicatorSize === 'sm'
+              ? 'vd-progress-tracker__indicator--sm'
+              : 'vd-progress-tracker__indicator--lg'
+          "
+        >
+          <ng-container *ngIf="shouldShowIcon(item); else indicatorLabel">
+            <vd-icon
+              class="vd-progress-tracker__indicator-icon"
+              [name]="getIndicatorIcon(item)"
+              [size]="indicatorSize === 'sm' ? 'sm' : 'md'"
+            ></vd-icon>
+          </ng-container>
+          <ng-template #indicatorLabel>
+            <span
+              class="vd-progress-tracker__indicator-label"
+              [ngClass]="indicatorSize === 'sm' ? 'body-small' : 'body-large'"
+            >
+              {{ getIndicatorLabel(item, index) }}
+            </span>
+          </ng-template>
+        </div>
+        <span *ngIf="showConnector && !isLast" class="vd-progress-tracker__connector"></span>
+      </div>
+      <div class="vd-progress-tracker__content">
+        <p class="vd-progress-tracker__title title-medium">{{ item.title }}</p>
+        <p
+          *ngIf="showDescription && item.description"
+          class="vd-progress-tracker__description body-small"
+        >
+          {{ item.description }}
+        </p>
+      </div>
+    </ng-container>
+    <ng-template #verticalLayout>
+      <div
+        class="vd-progress-tracker__indicator"
+        [ngClass]="
+          indicatorSize === 'sm'
+            ? 'vd-progress-tracker__indicator--sm'
+            : 'vd-progress-tracker__indicator--lg'
+        "
+      >
+        <ng-container *ngIf="shouldShowIcon(item); else indicatorLabelVertical">
+          <vd-icon
+            class="vd-progress-tracker__indicator-icon"
+            [name]="getIndicatorIcon(item)"
+            [size]="indicatorSize === 'sm' ? 'sm' : 'md'"
+          ></vd-icon>
+        </ng-container>
+        <ng-template #indicatorLabelVertical>
+          <span
+            class="vd-progress-tracker__indicator-label"
+            [ngClass]="indicatorSize === 'sm' ? 'body-small' : 'body-large'"
+          >
+            {{ getIndicatorLabel(item, index) }}
+          </span>
+        </ng-template>
+      </div>
+      <div class="vd-progress-tracker__content">
+        <p class="vd-progress-tracker__title title-medium">{{ item.title }}</p>
+        <p
+          *ngIf="showDescription && item.description"
+          class="vd-progress-tracker__description body-small"
+        >
+          {{ item.description }}
+        </p>
+      </div>
+    </ng-template>
+  </div>
+</div>

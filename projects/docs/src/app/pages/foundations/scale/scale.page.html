@@ -1,0 +1,211 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Scale System'"
+    [subtitle]="
+      'Apply spacing, sizing, border, and radius tokens to maintain consistent UI rhythm and brand-aligned component sizing.'
+    "
+  ></app-doc-page-header>
+
+  <!-- Overview Section -->
+  <div class="content-group overview">
+    <div class="content-group-title">
+      <h2 class="headline-large">Overview</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <p class="body-large">
+          The VD scale system provides a comprehensive set of predefined tokens for spacing,
+          borders, radius, and icons. All sizing must be applied via these tokens — never choose
+          size based on visual preference. Choose based on semantic intent and layout rhythm.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spacing Scale Section -->
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Spacing Scale</h2>
+      <p class="body-large">
+        Consistent spacing values for margins, padding, and gaps. Always select tokens based on
+        layout intent.
+      </p>
+    </div>
+    <div class="content-group-container">
+      <vd-datatable [data]="spacingTokens" [columns]="scaleColumns"></vd-datatable>
+
+      <div class="guideline-section">
+        <h3 class="title-large">Negative Spacing</h3>
+        <p class="body-medium">
+          Use negative spacing tokens for offsetting or margins in layout adjustments.
+        </p>
+        <vd-datatable [data]="negativeSpacingTokens" [columns]="scaleColumns"></vd-datatable>
+      </div>
+    </div>
+  </div>
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Border Width</h2>
+      <p class="body-large">
+        Standardized border widths for UI elements and dividers. Use the narrowest width that
+        preserves clarity.
+      </p>
+    </div>
+    <div class="content-group-container scale-container">
+      <div *ngFor="let border of borderWidthTokens" class="scale-card">
+        <!-- Rough visual representation using inline style for demonstration -->
+        <div class="border-visual" [style.border-width]="'var(' + border.token + ')'"></div>
+        <div class="border-info">
+          <div class="border-name title-medium">{{ border.name }}</div>
+          <p class="scale-token-chip label-medium">{{ border.token }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Border Radius Section -->
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Border Radius</h2>
+      <p class="body-large">
+        Corner radius values for various UI components. Selection must follow component intent.
+      </p>
+    </div>
+    <div class="content-group-container scale-container">
+      <div *ngFor="let radius of borderRadiusTokens" class="scale-card">
+        <div class="radius-visual" [style.border-radius]="'var(' + radius.token + ')'"></div>
+        <div class="radius-info">
+          <div class="radius-name title-medium">{{ radius.name }}</div>
+          <p class="scale-token-chip label-medium">{{ radius.token }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Icon Sizes Section -->
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Icon Sizes</h2>
+      <p class="body-large">
+        Standard sizes for icon elements. Icon size must correspond to component context.
+      </p>
+    </div>
+    <div class="content-group-container scale-container">
+      <div *ngFor="let icon of iconSizeTokens" class="scale-card">
+        <div class="icon-visual">
+          <div
+            [style.width]="'var(' + icon.token + ')'"
+            [style.height]="'var(' + icon.token + ')'"
+          ></div>
+        </div>
+        <div class="icon-info">
+          <div class="icon-name title-medium">{{ icon.name }}</div>
+          <p class="scale-token-chip label-medium">{{ icon.token }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Usage Guidelines Section -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">Spacing Implementation</h3>
+        <p class="body-medium">Apply spacing tokens for padding, margins, and gaps:</p>
+        <div class="guideline">
+          <code-container
+            [code]="spacingUsageSnippet"
+            language="css"
+            fileName="spacing.css"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <h3 class="title-large">Border Implementation</h3>
+        <p class="body-medium">
+          Apply border width tokens to maintain consistent visual hierarchy:
+        </p>
+        <div class="guideline">
+          <code-container
+            [code]="borderUsageSnippet"
+            language="css"
+            fileName="borders.css"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <h3 class="title-large">Border Radius Implementation</h3>
+        <p class="body-medium">Use radius tokens to define the shape and feel of components:</p>
+        <div class="guideline">
+          <code-container
+            [code]="borderRadiusSnippet"
+            language="css"
+            fileName="radius.css"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <h3 class="title-large">Icon Size Implementation</h3>
+        <p class="body-medium">Icon sizes should match their surrounding UI context:</p>
+        <div class="guideline">
+          <code-container
+            [code]="iconSizeSnippet"
+            language="angular-html"
+            fileName="icons.html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Best Practices Section -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">Core Principles</h3>
+        <ul>
+          <li>All sizing must be applied via VD scale tokens.</li>
+          <li>Do not hardcode spacing, border width, border radius, or icon size.</li>
+          <li>Apply scale semantically, reflecting layout, separation, and emphasis.</li>
+          <li>Always use tokens for consistent UI rhythm and visual hierarchy.</li>
+        </ul>
+      </div>
+
+      <div class="guideline-section">
+        <h3 class="title-large">Priority Order</h3>
+        <ol>
+          <li>Component-defined scale (VD Angular component default)</li>
+          <li>Token-driven scale (spacing, border, radius, icon)</li>
+          <li>Project-specific overrides (only when VD token cannot achieve the layout)</li>
+        </ol>
+      </div>
+
+      <div class="guideline-section">
+        <h3 class="title-large">Do's and Don'ts</h3>
+        <div class="guideline">
+          <code-container
+            [code]="bestPracticeDoSnippet"
+            language="css"
+            fileName="do.css"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="bestPracticeDontSnippet"
+            language="css"
+            fileName="dont.css"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

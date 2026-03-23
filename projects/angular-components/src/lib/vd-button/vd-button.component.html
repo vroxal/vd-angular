@@ -1,0 +1,45 @@
+<button
+  [attr.type]="type"
+  [disabled]="!!disabled || !!loading"
+  class="vd-button not-initialized"
+  [class.vd-button--subtle]="variant === 'subtle'"
+  [class.vd-button--outline]="variant === 'outline'"
+  [class.vd-button--transparent]="variant === 'transparent'"
+  [class.vd-button--neutral]="color === 'neutral'"
+  [class.vd-button--error]="color === 'error'"
+  [class.vd-button--sm]="size === 'sm'"
+  [class.vd-button--lg]="size === 'lg'"
+  [class.vd-button--rounded]="!!rounded"
+  [class.vd-button--disabled]="!!disabled"
+  [class.vd-button--loading]="!!loading"
+>
+  <!-- Left icon -->
+  <vd-icon
+    *ngIf="leftIcon"
+    [name]="leftIcon"
+    [size]="effectiveIconSize"
+    class="vd-button__icon"
+  ></vd-icon>
+
+  <!-- Label (ALWAYS PRESENT) -->
+  <span
+    class="vd-button__label"
+    [class.label-small]="size === 'sm'"
+    [class.label-large]="size === 'lg'"
+  >
+    {{ label }}
+  </span>
+
+  <!-- Right icon -->
+  <vd-icon
+    *ngIf="rightIcon"
+    [name]="rightIcon"
+    [size]="effectiveIconSize"
+    class="vd-button__icon"
+  ></vd-icon>
+
+  <!-- Loading spinner -->
+  <span *ngIf="!!loading" class="vd-button__spinner">
+    <span class="vd-button__spinner-indicator"></span>
+  </span>
+</button>

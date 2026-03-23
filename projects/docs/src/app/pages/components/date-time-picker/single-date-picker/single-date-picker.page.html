@@ -1,0 +1,373 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Single Date Picker'"
+    [subtitle]="'Single date pickers let users choose one date from a calendar input.'"
+  >
+  </app-doc-page-header>
+
+  <!-- COMPONENT VARIATIONS -->
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component Variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Basic Single Date Picker</h3>
+        <p>Standard date picker for selecting a single date</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-single-date-picker
+            label="Select Date"
+            placeholder="Choose a date..."
+            [(value)]="singleDateValue"
+          ></vd-single-date-picker>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">States</h3>
+        <p>Contains: Default, Success, Error, Warning</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-single-date-picker
+            label="Default"
+            placeholder="Default state"
+          ></vd-single-date-picker>
+          <vd-single-date-picker
+            label="Success"
+            placeholder="Success state"
+            state="success"
+            helperText="Date is valid"
+          ></vd-single-date-picker>
+          <vd-single-date-picker
+            label="Error"
+            placeholder="Error state"
+            state="error"
+            helperText="Invalid date"
+          ></vd-single-date-picker>
+          <vd-single-date-picker
+            label="Warning"
+            placeholder="Warning state"
+            state="warning"
+            helperText="Check date"
+          ></vd-single-date-picker>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">With Month Year Selector</h3>
+        <p>Allow users to quickly navigate months and years</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-single-date-picker
+            label="Select Date"
+            placeholder="Choose a date..."
+            [showMonthYearSelector]="true"
+          ></vd-single-date-picker>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Dropdown Positions</h3>
+        <p>Contains: Bottom-Left, Bottom-Center, Bottom-Right, Top-Left, Top-Center, Top-Right</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-single-date-picker
+            label="Bottom Left (Default)"
+            placeholder="Choose a date..."
+            dropdownPosition="bottom-left"
+          ></vd-single-date-picker>
+          <vd-single-date-picker
+            label="Bottom Center"
+            placeholder="Choose a date..."
+            dropdownPosition="bottom-center"
+          ></vd-single-date-picker>
+          <vd-single-date-picker
+            label="Bottom Right"
+            placeholder="Choose a date..."
+            dropdownPosition="bottom-right"
+          ></vd-single-date-picker>
+          <vd-single-date-picker
+            label="Top Left"
+            placeholder="Choose a date..."
+            dropdownPosition="top-left"
+          ></vd-single-date-picker>
+          <vd-single-date-picker
+            label="Top Center"
+            placeholder="Choose a date..."
+            dropdownPosition="top-center"
+          ></vd-single-date-picker>
+          <vd-single-date-picker
+            label="Top Right"
+            placeholder="Choose a date..."
+            dropdownPosition="top-right"
+          ></vd-single-date-picker>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Input Field Variations</h3>
+        <p>Contains: Optional Label, Hint Text, Helper Text, Leading Icon</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-single-date-picker
+            label="Optional Field"
+            placeholder="Choose a date..."
+            [optional]="true"
+          ></vd-single-date-picker>
+          <vd-single-date-picker
+            label="With Hint Text"
+            placeholder="Choose a date..."
+            hintText="This is a hint text shown in tooltip on ? icon"
+          ></vd-single-date-picker>
+          <vd-single-date-picker
+            label="With Helper Text"
+            placeholder="Choose a date..."
+            helperText="This is helper text shown below the input field"
+          ></vd-single-date-picker>
+          <vd-single-date-picker
+            label="With Leading Icon"
+            placeholder="Choose a date..."
+            leadingIcon="vd-icon-calendar"
+          ></vd-single-date-picker>
+          <vd-single-date-picker
+            label="Combined (All Features)"
+            placeholder="Choose a date..."
+            [optional]="true"
+            hintText="Additional information about this field"
+            helperText="Helper text displayed below the field"
+            leadingIcon="vd-icon-calendar"
+          ></vd-single-date-picker>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- USAGE GUIDELINES -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">1. Import</h3>
+          <p>Import the single date picker component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-single-date-picker.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">2. Basic Usage</h3>
+          <p>Simplest form of the single date picker:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicUsageSnippet"
+            fileName="basic-usage-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">3. With Month Year Selector</h3>
+          <p>Enable quick navigation through months and years:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="withMonthYearSelectorSnippet"
+            fileName="month-year-selector-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">4. Dropdown Position</h3>
+          <p>Control the calendar dropdown position:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="dropdownPositionSnippet"
+            fileName="dropdown-position-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">5. All API Usage</h3>
+          <p>Comprehensive example with all available properties and events:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allApiSnippet"
+            fileName="single-date-picker-all-api.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- API REFERENCE -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+          <p>Properties that can be passed to the component:</p>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+          <p>Events emitted by the component:</p>
+        </div>
+
+        <vd-datatable
+          [data]="outputApiData"
+          [columns]="outputApiColumnsWithTemplate"
+        ></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <!-- BEST PRACTICES -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Single Date Picker when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Single Date Picker when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Always provide clear labels for date inputs</li>
+          <li>Use helper text to indicate date format (e.g., MM/DD/YYYY)</li>
+          <li>Set min and max dates to constrain valid selections</li>
+          <li>Use state prop to provide validation feedback</li>
+          <li>Use month year selectors for date ranges spanning multiple years</li>
+          <li>Disable past/future dates when appropriate</li>
+          <li>Provide meaningful error messages for invalid date selections</li>
+          <li>Consider accessibility - ensure keyboard navigation works properly</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+  </div>
+
+  <!-- PLAYGROUND -->
+  <div class="content-group playground">
+    <div class="content-group-title">
+      <h2 class="headline-large">Playground</h2>
+      <p class="body-large">Customize the single date picker features</p>
+      <div class="content-group-container playground-container">
+        <!-- Preview -->
+        <div class="component-preview">
+          <div class="component-control">
+            <!-- Controls -->
+            <div class="controls">
+              <vd-select
+                label="State"
+                [value]="singleDateState"
+                (valueChange)="singleDateState = $event"
+                [options]="stateOptions"
+              ></vd-select>
+
+              <vd-select
+                label="Dropdown Position"
+                [value]="singleDateDropdownPosition"
+                (valueChange)="$event && (singleDateDropdownPosition = $event)"
+                [options]="dropdownPositionOptions"
+              ></vd-select>
+
+              <label class="switch-label">
+                <span>Optional</span>
+                <vd-switch
+                  [checked]="singleDateOptional"
+                  (change)="singleDateOptional = $event"
+                ></vd-switch>
+              </label>
+
+              <label class="switch-label">
+                <span>Disabled</span>
+                <vd-switch
+                  [checked]="singleDateDisabled"
+                  (change)="singleDateDisabled = $event"
+                ></vd-switch>
+              </label>
+
+              <label class="switch-label">
+                <span>Show Month Year Selector</span>
+                <vd-switch
+                  [checked]="singleDateShowMonthYearSelector"
+                  (change)="singleDateShowMonthYearSelector = $event"
+                ></vd-switch>
+              </label>
+            </div>
+            <div class="divider"></div>
+            <div class="component-showcase-container">
+              <vd-single-date-picker
+                [label]="singleDateLabel"
+                [placeholder]="singleDatePlaceholder"
+                [(value)]="singleDateValue"
+                [optional]="singleDateOptional"
+                [disabled]="singleDateDisabled"
+                [state]="singleDateState"
+                [showMonthYearSelector]="singleDateShowMonthYearSelector"
+                [dropdownPosition]="singleDateDropdownPosition"
+              ></vd-single-date-picker>
+            </div>
+          </div>
+        </div>
+        <code-container
+          [code]="codeSnippet"
+          fileName="example.html"
+          language="angular-html"
+        ></code-container>
+      </div>
+    </div>
+  </div>
+</div>

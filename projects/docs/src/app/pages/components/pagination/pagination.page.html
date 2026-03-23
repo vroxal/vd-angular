@@ -1,0 +1,219 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Pagination'"
+    [subtitle]="'Pagination allows you to divide large amounts of content into smaller chunks across multiple pages.'"
+  >
+  </app-doc-page-header>
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Basic Pagination</h3>
+        <p>Standard pagination component with 5 pages</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-pagination [totalPages]="5" [currentPage]="1"></vd-pagination>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Small Dataset</h3>
+        <p>Pagination shows all pages when total is 7 or fewer</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-pagination [totalPages]="7" [currentPage]="1"></vd-pagination>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Large Dataset - First Pages</h3>
+        <p>Pagination on first pages shows first 5 pages, ellipsis, and last page</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-pagination [totalPages]="100" [currentPage]="3"></vd-pagination>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Large Dataset - Middle Pages</h3>
+        <p>
+          Pagination in the middle shows first page, ellipsis, current ±1, ellipsis, and last page
+        </p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-pagination [totalPages]="100" [currentPage]="50"></vd-pagination>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Large Dataset - Last Pages</h3>
+        <p>Pagination on last pages shows first page, ellipsis, and last 5 pages</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-pagination [totalPages]="100" [currentPage]="98"></vd-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the pagination component in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-pagination.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the pagination component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="pagination-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Listening to Page Change Events</h3>
+          <p>
+            Handle page navigation by listening to the (pageChange) event emitted by the component:
+          </p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="eventsSnippet"
+            fileName="pagination-events.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="eventsComponentSnippet"
+            fileName="pagination-events.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+        </div>
+        <vd-datatable [data]="outputsData" [columns]="eventsColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-group usage-guidelines">
+  <div class="content-group-title">
+    <h2 class="headline-large">Best Practices</h2>
+  </div>
+  <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Pagination when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Pagination when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Always set the currentPage to a valid page number between 1 and totalPages</li>
+          <li>Use pagination for datasets with more than 10-15 items</li>
+          <li>Implement data loading when pageChange event is emitted</li>
+          <li>Show loading states while fetching data for the new page</li>
+          <li>Preserve pagination state in your routing or component state management</li>
+          <li>Consider using pagination alongside filters to allow users to refine results</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+</div>
+
+<div class="content-group playground">
+  <div class="content-group-title">
+    <h2 class="headline-large">Component playground</h2>
+    <p class="body-large">Customize the pagination features in this section</p>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-select
+              label="Total Pages"
+              [value]="totalPages"
+              (valueChange)="$event && (totalPages = $event)"
+              [options]="totalPagesOptions"
+            ></vd-select>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-pagination
+              [totalPages]="totalPages"
+              [currentPage]="currentPage"
+              (pageChange)="onPageChange($event)"
+            ></vd-pagination>
+            <p style="margin-top: 16px; text-align: center">
+              <strong>Current Page: {{ currentPage }}</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

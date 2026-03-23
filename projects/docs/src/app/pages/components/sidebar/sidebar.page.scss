@@ -1,0 +1,16 @@
+.sidebar-demo {
+  height: 500px;
+  width: 280px;
+  border: 1px solid var(--vd-color-border-default);
+  border-radius: var(--vd-border-radius-md);
+  overflow: hidden;
+  position: relative;
+
+  // Override fixed positioning for demo purposes
+  ::ng-deep .vd-sidebar {
+    position: absolute;
+    margin-top: 0;
+    height: 100%;
+    border-right: none;
+  }
+}

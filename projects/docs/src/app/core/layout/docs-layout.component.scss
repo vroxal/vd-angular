@@ -1,0 +1,70 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.layout__brand {
+  display: flex;
+  align-items: center;
+  svg {
+    height: 32px;
+    fill: var(--vd-color-content-default-base);
+  }
+}
+
+.layout__brand p {
+  margin: 0;
+}
+
+.layout__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--vd-scale-spacing-600);
+}
+
+.control {
+  display: flex;
+}
+
+.segmented {
+  display: inline-flex;
+  background: var(--vd-color-background-default-tertiary);
+  border-radius: 9999px;
+  outline: 2px solid var(--vd-color-background-default-tertiary);
+}
+
+.segmented .segmented-item {
+  padding: var(--vd-scale-spacing-100) var(--vd-scale-spacing-400);
+  background: transparent;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  text-transform: capitalize;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+  color: var(--vd-color-content-default-base);
+}
+
+.segmented .active {
+  background: var(--vd-color-background-default-secondary);
+  color: var(--vd-color-content-default-base);
+}
+
+.segmented :not(.active):hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.segmented vd-icon {
+  cursor: pointer;
+  padding: var(--vd-scale-spacing-100);
+  border-radius: 9999px;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+  display: flex;
+}
+
+.segmented vd-icon:hover:not(.active) {
+  background: rgba(0, 0, 0, 0.06);
+}

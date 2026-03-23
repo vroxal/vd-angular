@@ -1,0 +1,100 @@
+:host {
+  width: 100%;
+
+  --vd-accordion-bg: transparent;
+  --vd-accordion-bg-active: var(--vd-color-background-primary-secondary);
+  --vd-accordion-bg-filled: var(--vd-color-background-default-secondary);
+  --vd-accordion-border-color: var(--vd-color-border-default-tertiary);
+  --vd-accordion-text-color: var(--vd-color-content-default-base);
+
+  --_vd-accordion-padding: var(--vd-scale-spacing-400);
+  --vd-accordion-padding: calc(var(--_vd-accordion-padding) - var(--vd-accordion-border-width));
+  --vd-accordion-gap: var(--vd-scale-spacing-200);
+  --vd-accordion-border-width: var(--vd-scale-border-width-sm);
+  --vd-accordion-radius: var(--vd-scale-border-radius-md);
+}
+
+.vd-accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--vd-accordion-bg);
+
+  &--filled {
+    --vd-accordion-bg: var(--vd-accordion-bg-filled);
+    border: var(--vd-accordion-border-width) solid var(--vd-accordion-border-color);
+    border-radius: var(--vd-accordion-radius);
+    overflow: hidden;
+
+    .vd-accordion__header {
+      border-radius: var(--vd-accordion-radius);
+    }
+  }
+
+  &--divided {
+    --vd-accordion-bg: transparent;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: var(--vd-accordion-gap);
+    padding: var(--vd-accordion-padding);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.2s ease;
+    box-sizing: border-box;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &--active {
+    .vd-accordion__header {
+      background-color: var(--vd-accordion-bg-active);
+    }
+
+    .vd-accordion__caret {
+      transform: rotate(180deg);
+    }
+
+    .vd-accordion__content {
+      grid-template-rows: 1fr;
+    }
+
+    .vd-accordion__content-inner {
+      padding: var(--vd-accordion-padding);
+      opacity: 1;
+    }
+  }
+
+  &__title {
+    flex: 1;
+    color: var(--vd-accordion-text-color);
+    min-width: 0;
+  }
+
+  &__caret {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+    overflow: hidden;
+  }
+
+  &__content-inner {
+    min-height: 0;
+    padding: 0 var(--vd-accordion-padding);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+}

@@ -1,0 +1,384 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Toast'"
+    [subtitle]="'Toasts show brief, non-blocking feedback messages for completed or failed actions.'"
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Colors</h3>
+        <p>
+          Contains four different color variations for different types of messages; Success, Error,
+          Warning, and Info.
+        </p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button
+            label="Show Success Toast"
+            color="neutral"
+            variant="subtle"
+            (click)="showSuccessToast()"
+          ></vd-button>
+          <vd-button
+            label="Show Error Toast"
+            color="neutral"
+            variant="subtle"
+            (click)="showErrorToast()"
+          ></vd-button>
+          <vd-button
+            label="Show Warning Toast"
+            color="neutral"
+            variant="subtle"
+            (click)="showWarningToast()"
+          ></vd-button>
+          <vd-button
+            label="Show Info Toast"
+            color="neutral"
+            variant="subtle"
+            (click)="showInfoToast()"
+          ></vd-button>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Toast Positions</h3>
+        <p>Toasts can be displayed in 6 different positions</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button
+            label="Top Right"
+            color="neutral"
+            variant="subtle"
+            (click)="showTopRight()"
+          ></vd-button>
+          <vd-button
+            label="Top Left"
+            color="neutral"
+            variant="subtle"
+            (click)="showTopLeft()"
+          ></vd-button>
+          <vd-button
+            label="Top Center"
+            color="neutral"
+            variant="subtle"
+            (click)="showTopCenter()"
+          ></vd-button>
+          <vd-button
+            label="Bottom Right"
+            color="neutral"
+            variant="subtle"
+            (click)="showBottomRight()"
+          ></vd-button>
+          <vd-button
+            label="Bottom Left"
+            color="neutral"
+            variant="subtle"
+            (click)="showBottomLeft()"
+          ></vd-button>
+          <vd-button
+            label="Bottom Center"
+            color="neutral"
+            variant="subtle"
+            (click)="showBottomCenter()"
+          ></vd-button>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Persistent toast</h3>
+        <p>Configure the persistence of toasts so they do not auto-dismiss.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button
+            label="Persistent Toast"
+            color="neutral"
+            variant="subtle"
+            (click)="showPersistentToast()"
+          ></vd-button>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Stack Control</h3>
+        <p>
+          Configure the maximum number of toasts that can be displayed at once using maxStack. The
+          default is 5.
+        </p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button
+            label="Set Max Stack to 2"
+            color="neutral"
+            variant="subtle"
+            (click)="showMaxStackToast('maxStack set to 2', 2)"
+          ></vd-button>
+          <vd-button
+            label="Set Max Stack to 5"
+            color="neutral"
+            variant="subtle"
+            (click)="showMaxStackToast('maxStack set to 5', 5)"
+          ></vd-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the ToastService in your component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="example.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of showing a toast:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">
+            1. Add the toast container component to your main layout or app component template to
+            enable toast.
+          </h4>
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="layout.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">
+            2. Inject the VdToastService into your component:
+          </h4>
+          <code-container
+            [code]="componentSetupSnippet"
+            fileName="example.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">3. Add Toast Triggers if needed (HTML)</h4>
+          <code-container
+            [code]="triggerSnippet"
+            fileName="toast-triggers.html"
+            language="html"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">4. Implement Toast Methods (TypeScript)</h4>
+          <code-container
+            [code]="typeScriptTriggerSnippet"
+            fileName="example.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Toast Configuration</h3>
+          <p>Configure default toast settings globally in your app:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="globalConfigSnippet"
+            fileName="example.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Persistent Toast</h3>
+          <p>Show a toast that stays until manually dismissed:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="persistentToastSnippet"
+            fileName="toast-persistent.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Toast Colors (States)</h3>
+          <p>Examples of toasts for success, error, warning, and info states:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="colorStatesSnippet"
+            fileName="toast-colors.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-group usage-guidelines">
+      <div class="content-group-title">
+        <h2 class="headline-large">API Reference</h2>
+      </div>
+      <div class="content-group-container">
+        <div class="guideline-section">
+          <div class="title-container">
+            <h3 class="title-large">Toast Interface</h3>
+          </div>
+
+          <ng-template #propertyBadge let-row>
+            <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+          </ng-template>
+
+          <vd-datatable
+            [data]="toastInterfaceData"
+            [columns]="toastInterfaceColumnsWithTemplate"
+          ></vd-datatable>
+        </div>
+
+        <div class="guideline-section">
+          <div class="title-container">
+            <h3 class="title-large">Toast Configuration Interface</h3>
+          </div>
+
+          <vd-datatable
+            [data]="configInterfaceData"
+            [columns]="configColumnsWithTemplate"
+          ></vd-datatable>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-group usage-guidelines">
+      <div class="content-group-title">
+        <h2 class="headline-large">Best Practices</h2>
+      </div>
+      <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Toast when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Toast when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>
+              Use appropriate toast colors to indicate message type (success, error, warning, info)
+            </li>
+          <li>Keep toast messages concise and actionable</li>
+          <li>
+              Toasts auto-dismiss by default after 5 seconds - set autoDismiss: false for persistent
+              messages
+            </li>
+          <li>
+              Configure toast position globally using toastService.configure() - all toasts will use
+              that position
+            </li>
+          <li>
+              Limit maximum visible toasts using maxStack configuration to avoid cluttering the UI
+            </li>
+          <li>Use descriptive titles for better context</li>
+          <li>Show toasts after user actions or important events</li>
+          <li>Consider position and maxStack based on your application layout</li>
+          <li>Test toast appearance on different screen sizes</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+    </div>
+
+    <div class="content-group playground">
+      <div class="content-group-title">
+        <h2 class="headline-large">Service playground</h2>
+        <p class="body-large">
+          Customize and test the toast service. Note: Position is configured globally before showing
+          the toast.
+        </p>
+      </div>
+      <div class="content-group-container playground-container">
+        <!-- Preview -->
+        <div class="component-preview">
+          <div class="component-control">
+            <!-- Controls -->
+            <div class="controls">
+              <vd-select
+                label="Toast Type"
+                [value]="toastColor"
+                (valueChange)="$event !== null && (toastColor = $event)"
+                [options]="colorOptions"
+              ></vd-select>
+
+              <vd-select
+                label="Position"
+                [value]="toastPosition"
+                (valueChange)="$event !== null && (toastPosition = $event)"
+                [options]="positionOptions"
+              ></vd-select>
+
+              <vd-input
+                label="Title"
+                [(value)]="toastTitle"
+                placeholder="Enter toast title"
+              ></vd-input>
+
+              <vd-input
+                label="Description"
+                [(value)]="toastDescription"
+                placeholder="Enter toast message"
+              ></vd-input>
+
+              <label class="switch-label">
+                <span>Auto Dismiss</span>
+                <vd-switch [checked]="autoDismiss" (change)="autoDismiss = $event"></vd-switch>
+              </label>
+            </div>
+            <div class="divider"></div>
+            <div class="component-showcase-container">
+              <vd-button
+                label="Show Toast"
+                color="neutral"
+                variant="subtle"
+                (click)="showDemoToast()"
+              ></vd-button>
+            </div>
+          </div>
+        </div>
+        <code-container
+          [code]="codeSnippet"
+          fileName="example.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+    </div>
+  </div>
+</div>

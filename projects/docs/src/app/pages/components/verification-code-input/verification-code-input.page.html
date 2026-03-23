@@ -1,0 +1,315 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Verification Code Input'"
+    [subtitle]="'Verification code inputs capture one-time codes using segmented input fields.'"
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <!-- 6-digit variant -->
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">6-Digit Code</h3>
+        <p>Standard 6-digit code input for OTP or verification codes</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-verification-code-input
+            label="Verification Code"
+            [length]="6"
+          ></vd-verification-code-input>
+        </div>
+      </div>
+
+      <!-- 4-digit variant -->
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">4-Digit Code</h3>
+        <p>Compact 4-digit code input for PINs or short codes</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-verification-code-input label="PIN" [length]="4"></vd-verification-code-input>
+        </div>
+      </div>
+
+      <!-- States -->
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">States</h3>
+        <p>Contains: Default, Focused, Disabled, Error</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-verification-code-input label="Default" [length]="4"></vd-verification-code-input>
+          <vd-verification-code-input
+            label="Disabled"
+            [length]="4"
+            [disabled]="true"
+            value="1234"
+          ></vd-verification-code-input>
+          <vd-verification-code-input
+            label="Error"
+            [length]="4"
+            state="error"
+            helperText="Invalid code. Please try again."
+            value="1234"
+          ></vd-verification-code-input>
+        </div>
+      </div>
+
+      <!-- With value -->
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Pre-filled Value</h3>
+        <p>Input code with a pre-filled value</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-verification-code-input
+            label="Verification Code"
+            [length]="6"
+            value="123456"
+          ></vd-verification-code-input>
+        </div>
+      </div>
+
+      <!-- Masked -->
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Masked Input</h3>
+        <p>Mask entered digits for sensitive data like PINs</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-verification-code-input
+            label="PIN"
+            [length]="4"
+            [mask]="true"
+            value="1234"
+          ></vd-verification-code-input>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the verification code input component in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-verification-code-input.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the verification code input component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="verification-code-input-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">4-Digit PIN with Masking</h3>
+          <p>Use 4-digit mode with masking for PIN entry:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="fourDigitSnippet"
+            fileName="pin-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Error State</h3>
+          <p>Display an error state with helper text for invalid codes:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="errorStateSnippet"
+            fileName="error-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Listening to Events</h3>
+          <p>Handle value changes and completion events:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="eventsSnippet"
+            fileName="verification-code-input-events.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="eventsComponentSnippet"
+            fileName="verification-code-input-events.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+        </div>
+        <vd-datatable [data]="outputsData" [columns]="eventsColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Verification Code Input when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Verification Code Input when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Use 6-digit length for OTP and verification codes</li>
+          <li>Use 4-digit length for PIN codes</li>
+          <li>Enable masking for sensitive inputs like PINs</li>
+          <li>Always provide a clear label to describe what code the user should enter</li>
+          <li>Use helper text with error state to guide the user on what went wrong</li>
+          <li>
+            Listen to the <code>completed</code> event to auto-submit the code once all digits are
+            entered
+          </li>
+          <li>
+            Consider enabling <code>autoFocus</code> when the verification code input is the primary
+            action on the page
+          </li>
+          <li>
+            The component supports paste — users can paste a full code and it will distribute across
+            cells
+          </li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+  </div>
+
+  <div class="content-group playground">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component playground</h2>
+      <p class="body-large">Customize the verification code input features in this section</p>
+    </div>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-select
+              label="Length"
+              [value]="length"
+              (valueChange)="$event && (length = $event); value = ''"
+              [options]="lengthOptions"
+            ></vd-select>
+
+            <vd-select
+              label="State"
+              [value]="state"
+              (valueChange)="state = $event"
+              [options]="stateOptions"
+            ></vd-select>
+
+            <label class="switch-label">
+              <span>Disabled</span>
+              <vd-switch [checked]="disabled" (change)="disabled = $event"></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Mask</span>
+              <vd-switch [checked]="mask" (change)="mask = $event"></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Auto Focus</span>
+              <vd-switch [checked]="autoFocus" (change)="autoFocus = $event"></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-verification-code-input
+              [label]="label"
+              [length]="length"
+              [(value)]="value"
+              [disabled]="disabled"
+              [state]="state"
+              [helperText]="helperText"
+              [mask]="mask"
+              [autoFocus]="autoFocus"
+              (completed)="onCompleted($event)"
+            ></vd-verification-code-input>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

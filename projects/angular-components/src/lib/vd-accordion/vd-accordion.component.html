@@ -1,0 +1,34 @@
+<div
+  [class.vd-accordion]="true"
+  [class.vd-accordion--filled]="variant === 'filled'"
+  [class.vd-accordion--divided]="variant === 'divided'"
+  [class.vd-accordion--active]="active"
+>
+  <!-- Title Row (clickable header) -->
+  <button
+    type="button"
+    class="vd-accordion__header"
+    (click)="toggle()"
+    [attr.aria-expanded]="active"
+  >
+    <!-- Optional Icon -->
+    <vd-icon *ngIf="icon" [name]="icon" size="md" class="vd-accordion__icon"></vd-icon>
+
+    <!-- Title -->
+    <span class="vd-accordion__title">{{ title }}</span>
+
+    <vd-icon name="vd-icon-caret-down" class="vd-accordion__caret" size="md"></vd-icon>
+  </button>
+
+  <!-- Content Row (expandable content) -->
+  <div class="vd-accordion__content">
+    <div class="vd-accordion__content-inner">
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+  <!-- Divider (only for divided style) -->
+  <div *ngIf="variant === 'divided'" class="vd-accordion__divider-container">
+    <vd-divider [inset]="true"></vd-divider>
+  </div>
+</div>

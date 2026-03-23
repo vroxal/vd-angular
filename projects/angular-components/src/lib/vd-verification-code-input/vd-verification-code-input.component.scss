@@ -1,0 +1,156 @@
+:host {
+  display: block;
+
+  // ── Local CSS custom properties (using design tokens) ──
+  --vd-verification-code-input-border-default: var(--vd-color-border-default-secondary);
+  --vd-verification-code-input-border-focus: var(--vd-color-border-neutral-secondary);
+  --vd-verification-code-input-border-disabled: var(--vd-color-border-default-disabled);
+  --vd-verification-code-input-border-error: var(--vd-color-border-error-base);
+  --vd-verification-code-input-outline-color: var(--vd-color-border-primary-tertiary);
+
+  --vd-verification-code-input-bg-default: var(--vd-color-background-default-secondary);
+  --vd-verification-code-input-bg-disabled: var(--vd-color-background-default-disabled);
+  --vd-verification-code-input-bg-error: var(--vd-color-background-error-secondary);
+
+  --vd-verification-code-input-text-base: var(--vd-color-content-default-base);
+  --vd-verification-code-input-text-disabled: var(--vd-color-content-default-disabled);
+  --vd-verification-code-input-text-error: var(--vd-color-content-error-base);
+
+  --vd-verification-code-input-cell-size: 48px;
+  --vd-verification-code-input-gap: var(--vd-scale-spacing-200);
+  --vd-verification-code-input-padding: var(--vd-scale-spacing-300);
+  --vd-verification-code-input-border-width: var(--vd-scale-border-width-sm);
+  --vd-verification-code-input-border-radius: var(--vd-scale-border-radius-md);
+  --vd-verification-code-input-outline-width: var(--vd-scale-border-width-md);
+}
+
+.vd-verification-code-input {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--vd-scale-spacing-100);
+  position: relative; /* <-- add this */
+
+  &__label {
+    color: var(--vd-verification-code-input-text-base);
+  }
+
+  &__cells {
+    display: flex;
+    gap: var(--vd-verification-code-input-gap);
+    align-items: center;
+  }
+
+  &__cell {
+    width: var(--vd-verification-code-input-cell-size);
+    height: var(--vd-verification-code-input-cell-size);
+    border: var(--vd-verification-code-input-border-width) solid
+      var(--vd-verification-code-input-border-default);
+    border-radius: var(--vd-verification-code-input-border-radius);
+    background: var(--vd-verification-code-input-bg-default);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      border-color 0.15s ease,
+      background-color 0.15s ease,
+      outline 0.15s ease;
+
+    &--focused {
+      border-color: var(--vd-verification-code-input-border-focus);
+      outline: var(--vd-verification-code-input-outline-width) solid
+        var(--vd-verification-code-input-outline-color);
+      outline-offset: var(--vd-scale-spacing-50);
+    }
+
+    &--filled {
+      border-color: var(--vd-verification-code-input-border-focus);
+    }
+  }
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    text-align: center;
+    color: var(--vd-verification-code-input-text-base);
+    padding: 0;
+    outline: none;
+    caret-color: var(--vd-verification-code-input-text-base);
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    color: transparent; // hides the actual digits
+    caret-color: transparent; // keeps caret visible
+    z-index: 1; // on top so clicks work
+
+    // Remove number input spinners
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    &::-webkit-contacts-auto-fill-button {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      right: 0;
+    }
+
+    -moz-appearance: textfield;
+    appearance: textfield;
+    &::selection {
+      background: transparent;
+    }
+  }
+  .vd-verification-code-input__input::-webkit-autofill {
+    -webkit-text-fill-color: transparent; /* hide autofill text */
+    caret-color: var(--vd-color-content-default-base); /* keep caret visible */
+  }
+
+  &__helper-text {
+    color: var(--vd-verification-code-input-text-base);
+  }
+
+  // ── Error state ──
+  &--error {
+    .vd-verification-code-input__cell {
+      border-color: var(--vd-verification-code-input-border-error);
+      background: var(--vd-verification-code-input-bg-error);
+    }
+
+    .vd-verification-code-input__cell--focused {
+      border-color: var(--vd-verification-code-input-border-error);
+      outline-color: var(--vd-verification-code-input-border-error);
+    }
+
+    .vd-verification-code-input__label,
+    .vd-verification-code-input__helper-text {
+      color: var(--vd-verification-code-input-text-error);
+    }
+  }
+
+  // ── Disabled state ──
+  &--disabled {
+    .vd-verification-code-input__cell {
+      border-color: var(--vd-verification-code-input-border-disabled);
+      background: var(--vd-verification-code-input-bg-disabled);
+      cursor: not-allowed;
+    }
+
+    .vd-verification-code-input__input {
+      color: transparent;
+      cursor: not-allowed;
+    }
+
+    .vd-verification-code-input__label,
+    .vd-verification-code-input__helper-text {
+      color: var(--vd-verification-code-input-text-disabled);
+    }
+  }
+}

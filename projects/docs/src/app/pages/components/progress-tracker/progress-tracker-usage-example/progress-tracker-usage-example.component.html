@@ -1,0 +1,94 @@
+<div class="component-showcase-container">
+  <vd-progress-tracker
+    [items]="usageExampleItems"
+    direction="horizontal"
+    (itemClick)="onUsageExampleClick($event)"
+  ></vd-progress-tracker>
+  <div class="component-preview">
+    <div [ngSwitch]="usageExampleActiveIndex">
+      <div *ngSwitchCase="0">
+        <h3 class="title-large">Account Setup</h3>
+        <div class="controls">
+          <vd-input
+            label="Email"
+            placeholder="you@example.com"
+            [value]="usageForm.email"
+            (valueChange)="onUsageFieldChange('email', $event)"
+            [state]="getFieldState('email')"
+            [helperText]="getFieldHelperText('email')"
+          ></vd-input>
+          <vd-input
+            label="Password"
+            type="password"
+            placeholder="Minimum 8 characters"
+            [value]="usageForm.password"
+            (valueChange)="onUsageFieldChange('password', $event)"
+            [state]="getFieldState('password')"
+            [helperText]="getFieldHelperText('password')"
+          ></vd-input>
+        </div>
+      </div>
+      <div *ngSwitchCase="1">
+        <h3 class="title-large">Business Details</h3>
+        <div class="controls">
+          <vd-input
+            label="Business Name"
+            placeholder="Company name"
+            [value]="usageForm.businessName"
+            (valueChange)="onUsageFieldChange('businessName', $event)"
+            [state]="getFieldState('businessName')"
+            [helperText]="getFieldHelperText('businessName')"
+          ></vd-input>
+          <vd-select
+            label="Business Type"
+            [options]="businessTypeOptions"
+            [value]="usageForm.businessType"
+            (valueChange)="onUsageFieldChange('businessType', $event)"
+            [state]="getFieldState('businessType')"
+            [helperText]="getFieldHelperText('businessType')"
+          ></vd-select>
+        </div>
+      </div>
+      <div *ngSwitchCase="2">
+        <h3 class="title-large">Identity Verification</h3>
+        <div class="controls">
+          <vd-input
+            label="ID Number"
+            placeholder="Enter ID number"
+            [value]="usageForm.idNumber"
+            (valueChange)="onUsageFieldChange('idNumber', $event)"
+            [state]="getFieldState('idNumber')"
+            [helperText]="getFieldHelperText('idNumber')"
+          ></vd-input>
+        </div>
+      </div>
+      <div *ngSwitchCase="3">
+        <h3 class="title-large">Review &amp; Submit</h3>
+        <div class="controls">
+          <label class="switch-label">
+            <span>Accept terms and conditions</span>
+            <vd-switch
+              [checked]="usageForm.acceptTerms"
+              (change)="onUsageFieldChange('acceptTerms', $event)"
+            ></vd-switch>
+          </label>
+          <p class="body-large" *ngIf="getFieldState('acceptTerms') === 'error'">
+            {{ getFieldHelperText('acceptTerms') }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="component-showcase-container">
+      <vd-button
+        label="Previous"
+        variant="subtle"
+        [disabled]="usageExampleActiveIndex === 0"
+        (click)="onUsageExamplePrev()"
+      ></vd-button>
+      <vd-button
+        [label]="usageExampleActiveIndex === 3 ? 'Submit' : 'Next'"
+        (click)="onUsageExampleNext()"
+      ></vd-button>
+    </div>
+  </div>
+</div>

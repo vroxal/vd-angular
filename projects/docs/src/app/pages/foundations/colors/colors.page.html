@@ -1,0 +1,362 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Colors'"
+    [subtitle]="
+      'Reference color palettes and semantic tokens with practical usage guidance for consistent UI theming.'
+    "
+  ></app-doc-page-header>
+
+  <!-- Overview Section -->
+  <div class="content-group overview">
+    <div class="content-group-title">
+      <h2 class="headline-large">Overview</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <p class="body-large">
+          The VD color system is built on a comprehensive palette of colors organized by semantic
+          meaning. Colors are theme-aware and adapt automatically between light and dark modes while
+          maintaining accessibility standards. The colors are divided into three tiers:
+        </p>
+        <ul>
+          <li>
+            <div class="title-container">
+              <h3 class="title-medium">Root colors</h3>
+              <p class="body-medium">
+                Root colors, contains color definitin in the pureset form of colors. In this tier,
+                the color tokens are mapped to the hex color value.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="title-container">
+              <h3 class="title-medium">Brand colors</h3>
+              <p class="body-medium">
+                Brand colors contains the mapping of semantic color tokens to the root colors. The
+                different brands can have different mapped root colors for same semantic color.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="title-container">
+              <h3 class="title-medium">Mapped colors</h3>
+              <p class="body-medium" style="margin-bottom: var(--vd-scale-spacing-400)">
+                Mapped colors are the actual colors that are used in the UI. These colors are mapped
+                to the brand colors and are used to create the UI.
+              </p>
+              <vd-alert
+                color="info"
+                description="All the colors are not available from mapped variables.Colors that doesn't depends on dark and light mode like Opaque colors (Black and White) are not available on mapped tokens, those are available from brand tokens"
+                [action]="false"
+                [closable]="false"
+                [showIcon]="false"
+              >
+              </vd-alert>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Root Color Palettes Section -->
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Root Color Palettes</h2>
+    </div>
+    <div class="content-group-container color-palette-container">
+      <div *ngFor="let palette of rootPalette" class="component-variation-group color-group">
+        <div class="title-container">
+          <h3 class="title-large">{{ palette.name }}</h3>
+        </div>
+        <div class="color-grid">
+          <div *ngFor="let color of palette.colors" class="color-card">
+            <div
+              class="color-swatch"
+              [style.background-color]="color.hex"
+              [style.color]="getTextColor(color.hex!)"
+            >
+              <div class="label-medium color-name">{{ color.name }}</div>
+              <div class="body-medium">{{ color.hex }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Brand Color Palettes Section -->
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Brand Color Palettes</h2>
+      <p class="body-large">
+        The brand color palettes can be different based on the brand. You can change the color for
+        different brand from the theme configuration on the navbar.
+      </p>
+    </div>
+    <div class="content-group-container color-palette-container">
+      <div *ngFor="let palette of brandPalette" class="component-variation-group color-group">
+        <div class="title-container">
+          <h3 class="title-large">{{ palette.name }}</h3>
+        </div>
+        <div class="color-grid">
+          <div *ngFor="let color of palette.colors" class="color-card">
+            <div
+              class="color-swatch"
+              [style.background-color]="'var(' + color.variable + ')'"
+              [style.color]="getTextColor(color.hex!)"
+            >
+              <div class="label-medium color-name">{{ color.name }}</div>
+              <div class="body-medium">{{ color.variable }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mapped Color Palettes Section -->
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Mapped Color Palettes</h2>
+      <p class="body-large">
+        The brand color palettes can be different based on the theme (Light and dark). You can
+        change the color for different theme from the theme configuration on the navbar.
+      </p>
+    </div>
+    <div class="content-group-container">
+      <div
+        *ngFor="let palette of mappedPalette"
+        class="component-variation-group color-master-group"
+      >
+        <div class="title-container">
+          <h3 class="title-large">{{ palette.name }}</h3>
+        </div>
+
+        <div class="color-collection-container">
+          <ng-container *ngFor="let type of palette.paletteType">
+            <!-- optional: show subtype title -->
+            <div class="color-group">
+              <div class="title-container">
+                <h4 class="title-medium">{{ type.name }}</h4>
+              </div>
+
+              <div class="color-grid">
+                <div
+                  *ngFor="let color of type.colors"
+                  class="color-card"
+                  [style.background-color]="palette.name === 'Opaque White' ? '#000000' : null"
+                >
+                  <div
+                    class="color-swatch"
+                    [style.background-color]="'var(' + color.variable + ')'"
+                    [style.color]="getTextColor(color.hex!)"
+                  >
+                    <div class="label-medium color-name">{{ color.name }}</div>
+                    <div class="body-medium">{{ color.variable }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Usage Section -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Color Implementation</h3>
+          <p class="body-medium">Apply color tokens using CSS custom properties:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="colorUsageSnippet"
+            language="css"
+            fileName="colors-usage.css"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Brand Switching</h3>
+          <p class="body-medium">
+            Toggle between different brand by setting the data-brand attribute on the root HTML
+            element. All semantic colors automatically adjust.
+          </p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="brandSnippet"
+            language="html"
+            fileName="index.html"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Theme Switching</h3>
+          <p class="body-medium">
+            Toggle between light and dark themes by setting the data-theme attribute on the root
+            HTML element. All semantic colors automatically adjust.
+          </p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="themeSnippet"
+            language="html"
+            fileName="theme-switching.html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <!-- General Rules -->
+      <div class="guideline-section">
+        <h3 class="title-large">General Rules</h3>
+        <ul>
+          <li>
+            All colors <strong>must</strong> be applied using <strong>VD tokens</strong> — never
+            hardcode hex, RGB, or HSL values in CSS, HTML, or component templates.
+          </li>
+          <li>
+            Apply colors <strong>semantically</strong>, reflecting status, state, or purpose (e.g.,
+            use <code>error</code> tokens for errors, not a raw red).
+          </li>
+          <li>
+            Differentiate usage across <strong>content</strong>, <strong>background</strong>, and
+            <strong>border</strong> categories. Text and icon colors now share the same
+            <code>content</code> token family.
+          </li>
+          <li>
+            Always prefer <strong>mapped tokens</strong> over brand or root tokens in application
+            code, as they are theme-aware.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Token Naming Convention -->
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Token Naming Convention</h3>
+          <p class="body-medium">All mapped color tokens follow a consistent naming pattern:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="tokenNamingSnippet"
+            language="sh"
+            fileName="token-pattern"
+          ></code-container>
+        </div>
+        <ul style="margin-top: var(--vd-scale-spacing-400)">
+          <li>
+            <p class="title-medium">Category:</p>
+            <p class="body-medium">content, background, border</p>
+          </li>
+          <li>
+            <p class="title-medium">Semantic:</p>
+            <p class="body-medium">default,primary,success,error,warning,info,neutral</p>
+          </li>
+          <li>
+            <p class="title-medium">Variant:</p>
+            <p class="body-medium">
+              base,secondary,tertiary,disabled,on-base/on-secondary/on-tertiary (for
+              content on colored backgrounds)
+            </p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Content Colors -->
+      <div class="guideline-section">
+        <h3 class="title-large">Content Colors</h3>
+        <p class="body-medium" style="margin-bottom: var(--vd-scale-spacing-400)">
+          Use --vd-color-content-{{ '{' }}semantic{{ '}' }}-{{ '{' }}variant{{ '}' }} tokens for all
+          text and icon content. Available semantics: default, primary, success, error, warning,
+          info, neutral. Each offers base, secondary, and tertiary variants. The default semantic
+          also includes a disabled variant.
+        </p>
+        <vd-alert
+          color="info"
+          description="Use -on-* tokens (e.g., --vd-color-content-primary-on-base) when placing content on colored backgrounds to ensure proper contrast."
+          [action]="false"
+          [closable]="false"
+          [showIcon]="false"
+        ></vd-alert>
+      </div>
+
+      <!-- Background Colors -->
+      <div class="guideline-section">
+        <h3 class="title-large">Background Colors</h3>
+        <p class="body-medium">
+          Use --vd-color-background-{{ '{' }}semantic{{ '}' }}-{{ '{' }}variant{{ '}' }} tokens for
+          surfaces and containers. Each semantic (primary, success, error, warning, info, neutral)
+          provides base, secondary, tertiary variants plus corresponding *-hover states. Use
+          --vd-color-background-overlay-default for modals, tooltips, and overlay backdrops.
+        </p>
+      </div>
+
+      <!-- Border Colors -->
+      <div class="guideline-section">
+        <h3 class="title-large">Border Colors</h3>
+        <p class="body-medium">
+          Use --vd-color-border-{{ '{' }}semantic{{ '}' }}-{{ '{' }}variant{{ '}' }} tokens for all
+          borders and outlines. Each semantic provides base, secondary, and tertiary variants.
+          The default semantic also includes a disabled variant for inactive UI elements.
+        </p>
+      </div>
+
+      <!-- Icon Colors -->
+      <div class="guideline-section">
+        <h3 class="title-large">Icon Colors</h3>
+        <p class="body-medium">
+          Use the same --vd-color-content-{{ '{' }}semantic{{ '}' }}-{{ '{' }}variant{{ '}' }}
+          tokens for icon fills and strokes. Icon colors should always reflect
+          <strong>semantic meaning</strong>, not visual preference. The default semantic includes a
+          disabled variant; themed semantics include on-* variants for icons on colored
+          backgrounds.
+        </p>
+      </div>
+
+      <!-- White & Black Tokens -->
+      <div class="guideline-section">
+        <h3 class="title-large">White &amp; Black Tokens</h3>
+        <p class="body-medium">
+          For opaque color scales, use --vd-color-white-100 through --vd-color-white-1000 and
+          --vd-color-black-100 through --vd-color-black-1000. These are available from brand
+          tokens only (not mapped), as they do not change between light and dark themes. Never use
+          raw hex codes.
+        </p>
+      </div>
+
+      <!-- Do's and Don'ts -->
+      <div class="guideline-section">
+        <h3 class="title-large">Do's and Don'ts</h3>
+        <div class="guideline">
+          <code-container
+            [code]="bestPracticeDoSnippet"
+            language="css"
+            fileName="do.css"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="bestPracticeDontSnippet"
+            language="css"
+            fileName="dont.css"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div
+  class="vd-single-date-picker"
+  [class.vd-single-date-picker--error]="visualState === 'error'"
+  [class.vd-single-date-picker--success]="visualState === 'success'"
+  [class.vd-single-date-picker--warning]="visualState === 'warning'"
+  [class.vd-single-date-picker--disabled]="disabled"
+  [class.vd-single-date-picker--open]="isOpen"
+>
+  <div class="vd-single-date-picker__field" #trigger>
+    <vd-input
+      [label]="label"
+      [hintText]="hintText"
+      [helperText]="helperText"
+      [optional]="optional"
+      [leadingIcon]="leadingIcon"
+      [trailingActionIcon]="'vd-icon-calendar'"
+      [placeholder]="placeholder"
+      [value]="displayValue"
+      [readOnly]="true"
+      [disabled]="disabled"
+      [state]="visualState"
+      (trailingActionClick)="toggleCalendar()"
+      (inputFocus)="onInputFocus()"
+      (valueCommit)="onInputBlur()"
+    ></vd-input>
+  </div>
+</div>
+
+<ng-template #calendarPopupTemplate>
+  <div class="vd-single-date-picker__calendar-popup" (click)="$event.stopPropagation()">
+    <vd-single-date-inline
+      [value]="value"
+      (valueChange)="onDateSelect($event)"
+      [minDate]="minDate"
+      [maxDate]="maxDate"
+      [showMonthYearSelector]="showMonthYearSelector"
+      [disabled]="disabled"
+    ></vd-single-date-inline>
+  </div>
+</ng-template>

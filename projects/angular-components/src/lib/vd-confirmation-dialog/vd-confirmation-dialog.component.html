@@ -1,0 +1,37 @@
+<div
+  class="vd-confirmation-dialog"
+  [class.vd-confirmation-dialog--error]="config.color === 'error'"
+  [class.vd-confirmation-dialog--closing]="isClosing"
+  role="dialog"
+  aria-modal="true"
+>
+  <div class="vd-confirmation-dialog__header">
+    <div *ngIf="config.icon" class="vd-confirmation-dialog__icon-container">
+      <vd-icon [name]="config.icon" size="xl" class="vd-confirmation-dialog__icon"></vd-icon>
+    </div>
+
+    <h6 class="title-large">{{ config.title }}</h6>
+
+    <p
+      *ngIf="config.description"
+      class="vd-confirmation-dialog__description"
+      [textContent]="config.description"
+    ></p>
+  </div>
+
+  <div class="vd-confirmation-dialog__footer">
+    <vd-button
+      [label]="config.cancelLabel"
+      [variant]="config.color === 'error' ? 'transparent' : 'subtle'"
+      color="neutral"
+      (click)="handleCancel()"
+    ></vd-button>
+
+    <vd-button
+      [label]="config.confirmLabel"
+      [variant]="config.color === 'error' ? 'subtle' : 'solid'"
+      [color]="config.color === 'error' ? 'error' : 'primary'"
+      (click)="handleConfirm()"
+    ></vd-button>
+  </div>
+</div>

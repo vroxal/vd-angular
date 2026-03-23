@@ -1,0 +1,318 @@
+<div class="doc-content">
+  <app-doc-page-header [title]="'Button'" [subtitle]="'Buttons trigger user actions such as submit, save, cancel, or navigate.'">
+  </app-doc-page-header>
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Variants</h3>
+        <p>Contains: Solid, Subtle, Outline, Transparent. Solid is default</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button label="Button"></vd-button>
+          <vd-button label="Button" variant="subtle"></vd-button>
+          <vd-button label="Button" variant="outline"></vd-button>
+          <vd-button label="Button" variant="transparent"></vd-button>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Size</h3>
+        <p>Contains: Small as sm, medium as md, large as lg. Medium is default</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button label="Button" size="sm"></vd-button>
+          <vd-button label="Button" size="md"></vd-button>
+          <vd-button label="Button" size="lg"></vd-button>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Color Variations</h3>
+        <p>Contains: Primary, Neutral, Error. Primary is default</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button label="Button" color="primary"></vd-button>
+          <vd-button label="Button" color="neutral"></vd-button>
+          <vd-button label="Button" color="error"></vd-button>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Icons</h3>
+        <p>Is a string value representing the icon name to be displayed on the left or right</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button
+            label="Button"
+            color="primary"
+            variant="solid"
+            leftIcon="vd-icon-plus"
+            size="sm"
+          ></vd-button>
+          <vd-button
+            label="Button"
+            variant="subtle"
+            color="neutral"
+            rightIcon="vd-icon-arrow-right"
+          ></vd-button>
+          <vd-button
+            label="Button"
+            variant="outline"
+            color="primary"
+            leftIcon="vd-icon-plus"
+            rightIcon="vd-icon-arrow-right"
+            size="lg"
+          ></vd-button>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Roundness</h3>
+        <p>
+          Is a boolean value. True makes the button rounded. Otherwise the default roundness will be
+          applied.
+        </p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button label="Button" [rounded]="true" color="primary"></vd-button>
+          <vd-button label="Button" [rounded]="true" color="neutral"></vd-button>
+          <vd-button label="Button" [rounded]="true" color="error"></vd-button>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Disabled</h3>
+        <p>Is a boolean value. True disables the button. Otherwise the button will be enabled.</p>
+        </div>
+
+        <div class="component-showcase-container">
+          <vd-button label="Button" [disabled]="true" color="primary"></vd-button>
+          <vd-button label="Button" [disabled]="true" color="neutral"></vd-button>
+          <vd-button label="Button" [disabled]="true" color="error"></vd-button>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Loading</h3>
+        <p>
+          Is a boolean value. True makes the button in the loading state with loading indicator.
+        </p>
+        </div>
+
+        <div class="component-showcase-container">
+          <vd-button
+            label="Button"
+            [loading]="true"
+            leftIcon="vd-icon-plus"
+            color="primary"
+            variant="solid"
+            size="sm"
+          ></vd-button>
+          <vd-button label="Button" [loading]="true" color="neutral" variant="subtle"></vd-button>
+          <vd-button
+            label="Button"
+            [loading]="true"
+            leftIcon="vd-icon-plus"
+            variant="outline"
+            color="error"
+            size="lg"
+          ></vd-button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the button component in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-button.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the button component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="button-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">All Available APIs</h3>
+          <p class="body-large">
+            Here is an example of using the button component with all available APIs:
+          </p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allImplementationSnippet"
+            fileName="button-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Button when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Button when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Use clear, action-oriented labels that describe what happens when clicked</li>
+          <li>Choose solid variant for primary actions; outline for secondary actions</li>
+          <li>Use size consistently within a page to maintain visual hierarchy</li>
+          <li>
+            Prefer neutral color for general actions; use semantic colors for destructive or
+            important actions
+          </li>
+          <li>Include icons to provide additional context but keep the label clear</li>
+          <li>Use loading state to provide feedback during async operations</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+  </div>
+  <div class="content-group playground">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component playground</h2>
+      <p class="body-large">Customize the button features in this section</p>
+    </div>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-select
+              label="Variant"
+              [value]="variant"
+              (valueChange)="$event && (variant = $event)"
+              [options]="variantOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Color"
+              [value]="color"
+              (valueChange)="$event && (color = $event)"
+              [options]="colorOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Size"
+              [value]="size"
+              (valueChange)="$event && (size = $event)"
+              [options]="sizeOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Left Icon"
+              [value]="leftIcon"
+              (valueChange)="leftIcon = $event || ''"
+              [options]="icons"
+            ></vd-select>
+
+            <vd-select
+              label="Right Icon"
+              [value]="rightIcon"
+              (valueChange)="rightIcon = $event || ''"
+              [options]="icons"
+            ></vd-select>
+
+            <vd-switch
+              [checked]="rounded"
+              label="Rounded"
+              (change)="rounded = $event"
+            ></vd-switch>
+
+            <vd-switch
+              [checked]="loading"
+              label="Loading"
+              (change)="loading = $event"
+            ></vd-switch>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-button
+              label="Button Component"
+              [variant]="variant"
+              [color]="color"
+              [size]="size"
+              [loading]="loading"
+              [rounded]="rounded"
+              [leftIcon]="leftIcon"
+              [rightIcon]="rightIcon"
+            ></vd-button>
+          </div>
+        </div>
+      </div>
+
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

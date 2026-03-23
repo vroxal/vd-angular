@@ -1,0 +1,38 @@
+.code-container {
+  flex: 1;
+  background: var(--vd-color-background-default-always-dark);
+  border-radius: var(--vd-scale-border-radius-lg);
+  overflow-x: auto;
+  position: relative;
+  padding: var(--vd-scale-spacing-200) var(--vd-scale-spacing-600) var(--vd-scale-spacing-400);
+  .code-preview__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--vd-scale-spacing-200);
+    color: var(--vd-color-white-500);
+    p {
+      margin: 0;
+    }
+  }
+  .copy-container {
+    display: flex;
+    gap: var(--vd-scale-spacing-100);
+    cursor: pointer;
+    padding: var(--vd-scale-spacing-200);
+    border-radius: var(--vd-scale-border-radius-full);
+    &:hover:not(.disabled) {
+      cursor: disabled;
+      background-color: var(--vd-color-white-100);
+    }
+    &.disabled {
+      user-select: none;
+      cursor: not-allowed;
+    }
+  }
+  .code-body {
+    pre.shiki.tokyo-night {
+      background: none !important;
+    }
+  }
+}

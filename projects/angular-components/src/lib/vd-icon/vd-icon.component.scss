@@ -1,0 +1,46 @@
+:host {
+  display: inline-flex;
+  line-height: 0;
+
+  --vd-icon-size: var(--vd-scale-icon-size-md);
+  --vd-icon-color: currentColor;
+}
+
+// Size variants map
+$vd-icon-sizes: (
+  xs: xs,
+  sm: sm,
+  md: md,
+  lg: lg,
+  xl: xl,
+);
+
+// Color variants loop
+@each $color in primary, success, error, warning, info, neutral {
+  .vd-icon--#{$color} {
+    --vd-icon-color: var(--vd-color-content-#{$color}-base);
+  }
+}
+
+// Size variants loop
+@each $class, $token in $vd-icon-sizes {
+  .vd-icon--#{$class} {
+    --vd-icon-size: var(--vd-scale-icon-size-#{$token});
+  }
+}
+
+.vd-icon {
+  color: var(--vd-icon-color);
+  // display: inline-flex;
+  font-size: var(--vd-icon-size);
+  line-height: 1;
+  width: 1em;
+  height: 1em;
+
+  &::before {
+    display: block;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+  }
+}

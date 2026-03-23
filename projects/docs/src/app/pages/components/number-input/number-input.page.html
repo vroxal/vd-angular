@@ -1,0 +1,347 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Number Input'"
+    [subtitle]="'Number inputs capture numeric values with increment, decrement, and validation support.'"
+  >
+  </app-doc-page-header>
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Basic Number Input</h3>
+        <p>Standard input for numeric data entry</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-number-input label="Amount" placeholder="Enter amount"></vd-number-input>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">States</h3>
+        <p>Contains: Default, Success, Error, Warning</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-number-input label="Default" placeholder="Default state"></vd-number-input>
+          <vd-number-input
+            label="Success"
+            placeholder="Success state"
+            state="success"
+            helperText="Looks good"
+            [value]="1000"
+          ></vd-number-input>
+          <vd-number-input
+            label="Error"
+            placeholder="Error state"
+            state="error"
+            helperText="This field is required"
+          ></vd-number-input>
+          <vd-number-input
+            label="Warning"
+            placeholder="Warning state"
+            state="warning"
+            helperText="Double-check this value"
+          ></vd-number-input>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Leading Icon</h3>
+        <p>Leading icon and optional trailing action icon</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-number-input
+            label="Price"
+            placeholder="0.00"
+            leadingIcon="vd-icon-placeholder"
+          ></vd-number-input>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Trailing action</h3>
+        <p>Trailing action with icon button.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-number-input
+            label="Phone"
+            placeholder="Enter phone number"
+            trailingActionIcon="vd-icon-cross"
+          ></vd-number-input>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Min, Max, and Step</h3>
+        <p>Inputs can enforce ranges and step intervals natively</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-number-input label="Quantity" placeholder="1-10" [min]="1" [max]="10" [step]="1">
+          </vd-number-input>
+          <vd-number-input
+            label="Percentage"
+            placeholder="0.0-100.0"
+            [min]="0"
+            [max]="100"
+            [step]="0.1"
+          >
+          </vd-number-input>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Optional & Disabled</h3>
+        <p>Inputs can be marked optional or disabled</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-number-input
+            label="Optional Code"
+            [optional]="true"
+            placeholder="Optional..."
+          ></vd-number-input>
+          <vd-number-input
+            label="Disabled Amount"
+            [disabled]="true"
+            placeholder="Disabled..."
+          ></vd-number-input>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Hint & Helper Text</h3>
+        <p>Use hint for tooltips and helper text for guidance</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-number-input
+            label="Account Number"
+            placeholder="123456"
+            hintText="Use the number printed on your card"
+            helperText="Digits only"
+          ></vd-number-input>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the number input component in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-number-input.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the number input component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="number-input-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Implementation with all available APIs</h3>
+          <p>Here is an example of using the number input component with all available APIs:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allImplementationSnippet"
+            fileName="number-input-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Listening to Events</h3>
+          <p>Handle numeric changes and blur commits:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="eventsSnippet"
+            fileName="number-input-events.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="eventsComponentSnippet"
+            fileName="number-input-events.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+        </div>
+        <vd-datatable [data]="outputsData" [columns]="eventsColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-group usage-guidelines">
+  <div class="content-group-title">
+    <h2 class="headline-large">Best Practices</h2>
+  </div>
+  <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Number Input when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Number Input when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Use clear labels to specify what the number represents</li>
+          <li>Show helper text to clarify constraints (e.g., "Between 1 and 100")</li>
+          <li>Reserve error state for actionable feedback or out-of-range values</li>
+          <li>Use trailing actions for contextual helpers like clearing the input</li>
+          <li>Pass min/max/step values to leverage native device keyboards correctly on mobile</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+</div>
+
+<div class="content-group playground">
+  <div class="content-group-title">
+    <h2 class="headline-large">Component playground</h2>
+    <p class="body-large">Customize the input features in this section</p>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-select
+              label="State"
+              [value]="state"
+              (valueChange)="state = $event"
+              [options]="stateOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Leading Icon"
+              [value]="leadingIcon"
+              (valueChange)="leadingIcon = $event || ''"
+              [options]="icons"
+            ></vd-select>
+
+            <vd-select
+              label="Trailing Action"
+              [value]="trailingActionIcon"
+              (valueChange)="trailingActionIcon = $event || ''"
+              [options]="icons"
+            ></vd-select>
+
+            <vd-select
+              label="Min Value"
+              [value]="min"
+              (valueChange)="min = $event"
+              [options]="numberOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Max Value"
+              [value]="max"
+              (valueChange)="max = $event"
+              [options]="numberOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Step"
+              [value]="step"
+              (valueChange)="step = $event"
+              [options]="stepOptions"
+            ></vd-select>
+
+            <label class="switch-label">
+              <span>Optional</span>
+              <vd-switch [checked]="optional" (change)="optional = $event"></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Disabled</span>
+              <vd-switch [checked]="disabled" (change)="disabled = $event"></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-number-input
+              [label]="label"
+              [placeholder]="placeholder"
+              [(value)]="value"
+              [optional]="optional"
+              [disabled]="disabled"
+              [state]="state"
+              [helperText]="helperText"
+              [hintText]="hintText"
+              [leadingIcon]="leadingIcon"
+              [trailingActionIcon]="trailingActionIcon"
+              [min]="min !== null ? min : undefined"
+              [max]="max !== null ? max : undefined"
+              [step]="step !== null ? step : undefined"
+              (trailingActionClick)="onTrailingActionClick()"
+            ></vd-number-input>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

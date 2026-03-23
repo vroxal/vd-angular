@@ -1,0 +1,91 @@
+<div class="vd-single-date-inline">
+  <!-- Single Month -->
+  <div class="vd-single-date-inline__month-container">
+    <!-- Header: Month Navigation -->
+    <div class="vd-single-date-inline__header">
+      <vd-icon-button
+        icon="vd-icon-caret-left"
+        variant="transparent"
+        color="neutral"
+        size="sm"
+        (click)="prevMonth($event)"
+      >
+      </vd-icon-button>
+
+      <!-- Show dropdowns for month and year selection if enabled -->
+      <div *ngIf="showMonthYearSelector" class="vd-single-date-inline__selectors">
+        <div class="vd-single-date-inline__month-selector">
+          <select
+            class="vd-single-date-inline__month-select label-medium"
+            [value]="selectedMonthValue"
+            (change)="onMonthChange($event)"
+            (click)="$event.stopPropagation()"
+          >
+            <option
+              *ngFor="let month of months; let i = index"
+              [value]="i.toString()"
+              [selected]="i.toString() === selectedMonthValue"
+            >
+              {{ month }}
+            </option>
+          </select>
+          <vd-icon name="vd-icon-caret-down" class="vd-single-date-inline__caret"></vd-icon>
+        </div>
+        <div class="vd-single-date-inline__year-selector">
+          <select
+            class="vd-single-date-inline__year-select label-medium"
+            [value]="selectedYearValue"
+            (change)="onYearChange($event)"
+            (click)="$event.stopPropagation()"
+          >
+            <option
+              *ngFor="let year of years"
+              [value]="year.toString()"
+              [selected]="year === selectedYear"
+            >
+              {{ year }}
+            </option>
+          </select>
+          <vd-icon name="vd-icon-caret-down" class="vd-single-date-inline__caret"></vd-icon>
+        </div>
+      </div>
+
+      <!-- Without selectors: Show month label -->
+      <span
+        *ngIf="!showMonthYearSelector"
+        class="vd-single-date-inline__month-label label-medium"
+        >{{ currentMonthLabel }}</span
+      >
+
+      <vd-icon-button
+        icon="vd-icon-caret-right"
+        variant="transparent"
+        color="neutral"
+        size="sm"
+        (click)="nextMonth($event)"
+      >
+      </vd-icon-button>
+    </div>
+
+    <!-- Calendar Grid -->
+    <div class="vd-single-date-inline__grid">
+      <!-- Weekday Headers -->
+      <div class="vd-single-date-inline__weekday label-small" *ngFor="let day of weekDays">
+        {{ day }}
+      </div>
+
+      <!-- Days -->
+      <div
+        class="vd-single-date-inline__day body-medium"
+        *ngFor="let dayObj of calendarDays"
+        [class.outside-month]="!dayObj.inMonth"
+        [class.today]="dayObj.isToday"
+        [class.selected]="dayObj.isSelected"
+        [class.disabled]="dayObj.isDisabled"
+        (click)="onDateClick(dayObj, $event)"
+      >
+        <span class="vd-single-date-inline__day-number">{{ dayObj.date.getDate() }}</span>
+      </div>
+    </div>
+  </div>
+</div>

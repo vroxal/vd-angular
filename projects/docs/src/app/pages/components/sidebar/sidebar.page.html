@@ -1,0 +1,268 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Sidebar'"
+    [subtitle]="'Sidebars organize navigation links and sections for quick access across the app.'"
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Basic Sidebar</h3>
+        <p>A simple sidebar with navigation items and icons</p>
+        </div>
+        <div class="component-showcase-container">
+          <div class="sidebar-demo">
+            <vd-sidebar [sections]="basicSections"></vd-sidebar>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Nested Navigation</h3>
+        <p>Sidebar with expandable nested menu items</p>
+        </div>
+        <div class="component-showcase-container">
+          <div class="sidebar-demo">
+            <vd-sidebar [sections]="nestedSections"></vd-sidebar>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Multiple Sections</h3>
+        <p>Sidebar with multiple grouped sections</p>
+        </div>
+        <div class="component-showcase-container">
+          <div class="sidebar-demo">
+            <vd-sidebar [sections]="multiSectionNav"></vd-sidebar>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the sidebar component and interfaces in your module or component:</p>
+        </div>
+        <code-container
+          [code]="importCodeSnippet"
+          fileName="import-sidebar.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Interfaces</h3>
+          <p>Understanding the sidebar navigation interfaces:</p>
+        </div>
+        <code-container
+          [code]="interfaceSnippet"
+          fileName="sidebar-interfaces.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Create a simple sidebar navigation:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define navigation sections</h4>
+          <code-container
+            [code]="basicImplementationTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Use in template</h4>
+          <code-container
+            [code]="basicImplementationTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Nested Navigation Implementation</h3>
+          <p>Create expandable menu items with children:</p>
+        </div>
+        <code-container
+          [code]="nestedImplementationTypescriptSnippet"
+          fileName="nested-navigation.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Without Icons</h3>
+          <p>Navigation items without icons (optional icon property):</p>
+        </div>
+        <code-container
+          [code]="withoutIconsSnippet"
+          fileName="without-icons.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Hide Section Titles</h3>
+          <p>Control section title visibility with showTitle property:</p>
+        </div>
+        <code-container
+          [code]="noSectionTitlesSnippet"
+          fileName="no-section-titles.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Component Inputs</h3>
+        </div>
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">VdSidebarNavItem Interface</h3>
+          <p class="body-large">Properties for individual navigation items:</p>
+        </div>
+        <vd-datatable
+          [data]="interfaceData"
+          [columns]="interfaceColumnsWithTemplate"
+        ></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">VdSidebarNavSection Interface</h3>
+          <p class="body-large">Properties for navigation sections:</p>
+        </div>
+        <vd-datatable
+          [data]="sectionInterfaceData"
+          [columns]="interfaceColumnsWithTemplate"
+        ></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Sidebar when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Sidebar when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Keep navigation hierarchy shallow - limit to 2 levels when possible</li>
+          <li>Use clear, concise labels that describe the destination</li>
+          <li>Include icons for better visual recognition and accessibility</li>
+          <li>Group related navigation items into logical sections</li>
+          <li>Limit the number of top-level items to 5-7 for better scannability</li>
+          <li>Use consistent icon styles throughout the navigation</li>
+          <li>Provide visual feedback for active/current routes</li>
+          <li>Consider using section titles to organize complex navigation structures</li>
+          <li>Test navigation on mobile devices to ensure usability</li>
+          <li>Use expandable items for categories with multiple sub-pages</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+  </div>
+
+  <div class="content-group playground">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component playground</h2>
+    </div>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <label class="switch-label">
+              <span>Show Icons</span>
+              <vd-switch [checked]="showIcons" (change)="showIcons = $event"></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Show Section Titles</span>
+              <vd-switch
+                [checked]="showSectionTitles"
+                (change)="showSectionTitles = $event"
+              ></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Has Nested Items</span>
+              <vd-switch
+                [checked]="hasNestedItems"
+                (change)="hasNestedItems = $event"
+              ></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <div class="sidebar-demo">
+              <vd-sidebar [sections]="playgroundSections"></vd-sidebar>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="component-code">
+        <code-container
+          [code]="codeSnippet"
+          fileName="sidebar-playground.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+    </div>
+  </div>
+</div>

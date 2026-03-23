@@ -1,0 +1,209 @@
+:host {
+  --vd-toast-gap: var(--vd-scale-spacing-300);
+  --vd-toast-offset: var(--vd-scale-spacing-600);
+  --vd-toast-width: calc(3 * var(--vd-scale-spacing-3000));
+  --vd-toast-padding: var(--vd-scale-spacing-400);
+  --vd-toast-padding-right: var(--vd-scale-spacing-1000);
+  --vd-toast-border-width: var(--vd-scale-border-width-md);
+  --vd-toast-border-width-accent: var(--vd-scale-border-width-xl);
+  --vd-toast-radius: var(--vd-scale-border-radius-md);
+  --vd-toast-close-offset: calc(var(--vd-scale-spacing-300) + var(--vd-scale-border-width-md));
+  --vd-toast-max-height: 200px;
+
+  --vd-toast-border-color: var(--vd-color-border-info-secondary);
+  --vd-toast-bg: var(--vd-color-background-info-secondary);
+  --vd-toast-text: var(--vd-color-content-info-on-secondary);
+  --vd-toast-description: var(--vd-color-content-default-base);
+}
+
+.vd-toast-container {
+  position: fixed;
+  z-index: 2100;
+  display: flex;
+  flex-direction: column;
+  gap: var(--vd-toast-gap);
+  pointer-events: none;
+
+  &--top-right {
+    top: var(--vd-toast-offset);
+    right: var(--vd-toast-offset);
+  }
+
+  &--top-left {
+    top: var(--vd-toast-offset);
+    left: var(--vd-toast-offset);
+  }
+
+  &--top-center {
+    top: var(--vd-toast-offset);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &--bottom-right {
+    bottom: var(--vd-toast-offset);
+    right: var(--vd-toast-offset);
+    flex-direction: column-reverse;
+  }
+
+  &--bottom-left {
+    bottom: var(--vd-toast-offset);
+    left: var(--vd-toast-offset);
+    flex-direction: column-reverse;
+  }
+
+  &--bottom-center {
+    bottom: var(--vd-toast-offset);
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: column-reverse;
+  }
+}
+
+.vd-toast-wrapper {
+  position: relative;
+  max-height: var(--vd-toast-max-height);
+  transform: translateX(120%);
+  animation: toast-enter-right 0.3s ease forwards;
+  transition:
+    transform 0.3s ease,
+    max-height 0.3s ease,
+    margin 0.3s ease,
+    padding 0.3s ease,
+    opacity 0.3s ease;
+  pointer-events: auto;
+
+  .vd-toast-container--top-left &,
+  .vd-toast-container--bottom-left & {
+    transform: translateX(-120%);
+    animation: toast-enter-left 0.3s ease forwards;
+  }
+
+  .vd-toast-container--top-center &,
+  .vd-toast-container--bottom-center & {
+    transform: translateY(-120%);
+    animation: toast-enter-center 0.3s ease forwards;
+  }
+
+  &--leaving {
+    animation: toast-exit-right 0.3s ease forwards !important;
+    max-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    .vd-toast-container--top-left &,
+    .vd-toast-container--bottom-left & {
+      animation: toast-exit-left 0.3s ease forwards !important;
+    }
+
+    .vd-toast-container--top-center &,
+    .vd-toast-container--bottom-center & {
+      animation: toast-exit-center 0.3s ease forwards !important;
+    }
+  }
+}
+
+.vd-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--vd-scale-spacing-200);
+  width: var(--vd-toast-width);
+  padding: var(--vd-toast-padding);
+  padding-right: var(--vd-toast-padding-right);
+  border: var(--vd-toast-border-width) solid var(--vd-toast-border-color);
+  border-left-width: var(--vd-toast-border-width-accent);
+  border-radius: var(--vd-toast-radius);
+  background: var(--vd-toast-bg);
+  color: var(--vd-toast-text);
+
+  &__content {
+    flex: 1;
+  }
+
+  &__title {
+    margin: 0;
+    color: var(--vd-toast-text);
+  }
+
+  &__description {
+    margin: 0;
+    color: var(--vd-toast-description);
+  }
+
+  &__close {
+    position: absolute;
+    display: flex;
+    top: var(--vd-toast-close-offset);
+    right: var(--vd-toast-close-offset);
+  }
+}
+
+@each $variant in success, warning, error, info {
+  .vd-toast--#{$variant} {
+    --vd-toast-border-color: var(--vd-color-border-#{$variant}-secondary);
+    --vd-toast-bg: var(--vd-color-background-#{$variant}-secondary);
+    --vd-toast-text: var(--vd-color-content-#{$variant}-on-secondary);
+  }
+}
+
+/* Animations */
+// Right-side animations (top-right, bottom-right)
+@keyframes toast-enter-right {
+  from {
+    transform: translateX(120%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes toast-exit-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(120%);
+  }
+}
+
+// Left-side animations (top-left, bottom-left)
+@keyframes toast-enter-left {
+  from {
+    transform: translateX(-120%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes toast-exit-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-120%);
+  }
+}
+
+// Center animations (top-center, bottom-center)
+@keyframes toast-enter-center {
+  from {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toast-exit-center {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,136 @@
+:host {
+  --vd-drawer-bg: var(--vd-color-background-default-secondary);
+  --vd-drawer-content-bg: var(--vd-color-background-default-base);
+  --vd-drawer-border: var(--vd-color-border-default-tertiary);
+  --vd-drawer-header-bg: var(--vd-color-background-default-secondary);
+  --vd-drawer-footer-bg: var(--vd-color-background-default-secondary);
+  --vd-drawer-content-padding: var(--vd-scale-spacing-400);
+  --vd-drawer-header-padding: var(--vd-scale-spacing-400);
+  --vd-drawer-footer-padding: var(--vd-scale-spacing-400);
+  --vd-drawer-gap: var(--vd-scale-spacing-400);
+  --vd-drawer-width-sm: calc(var(--vd-scale-spacing-1800) * 4);
+  --vd-drawer-width-md: calc(var(--vd-scale-spacing-1800) * 7);
+  --vd-drawer-width-lg: calc(var(--vd-scale-spacing-1800) * 11 + var(--vd-scale-spacing-1000));
+  --vd-drawer-width: var(--vd-drawer-width-md);
+
+  display: block;
+  width: 100%;
+}
+
+::ng-deep {
+  .vd-drawer-panel {
+    padding: 0;
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+  }
+
+  .vd-drawer-backdrop {
+    background-color: var(--vd-color-background-overlay-base);
+  }
+
+  .vd-drawer__footer--sm vd-button .vd-button {
+    width: 100%;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.vd-drawer {
+  background-color: var(--vd-drawer-content-bg);
+  border-left: var(--vd-scale-border-width-md) solid var(--vd-drawer-border);
+  width: var(--vd-drawer-width);
+  max-width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  animation: slideInRight 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+
+  &--closing {
+    animation: slideOutRight 0.15s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  &--sm {
+    --vd-drawer-width: var(--vd-drawer-width-sm);
+  }
+
+  &--md {
+    --vd-drawer-width: var(--vd-drawer-width-md);
+  }
+
+  &--lg {
+    --vd-drawer-width: var(--vd-drawer-width-lg);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--vd-scale-spacing-400);
+    padding: var(--vd-drawer-header-padding);
+    background-color: var(--vd-drawer-header-bg);
+  }
+
+  &__header-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--vd-scale-spacing-0);
+
+    .title-medium {
+      margin: 0;
+      color: var(--vd-color-content-default-secondary);
+    }
+  }
+
+  &__content {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: var(--vd-drawer-content-padding);
+    background-color: var(--vd-drawer-content-bg);
+
+    > :only-child {
+      height: 100%;
+      min-height: 0;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: var(--vd-scale-spacing-400);
+    padding: var(--vd-drawer-footer-padding);
+    background-color: var(--vd-drawer-footer-bg);
+
+    &--sm {
+      > vd-button {
+        flex: 1;
+      }
+    }
+  }
+}

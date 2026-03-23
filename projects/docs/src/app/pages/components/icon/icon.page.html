@@ -1,0 +1,217 @@
+<div class="doc-content">
+  <app-doc-page-header [title]="'Icon'" [subtitle]="'Icons provide visual meaning and improve recognition for actions and content.'">
+  </app-doc-page-header>
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Size</h3>
+        <p>
+          Contains: Extra Small as xs, Small as sm, Medium as md, Large as lg, Extra large as xl.
+          Medium is default
+        </p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-icon name="vd-icon-placeholder" size="xs"></vd-icon>
+          <vd-icon name="vd-icon-placeholder" size="sm"></vd-icon>
+          <vd-icon name="vd-icon-placeholder" size="md"></vd-icon>
+          <vd-icon name="vd-icon-placeholder" size="lg"></vd-icon>
+          <vd-icon name="vd-icon-placeholder" size="xl"></vd-icon>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Color</h3>
+        <p>
+          Contains: Primary, Neutral, Success, Error, Info, Warning. Default inherits from parent.
+        </p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-icon name="vd-icon-placeholder" color="primary"></vd-icon>
+          <vd-icon name="vd-icon-placeholder" color="neutral"></vd-icon>
+          <vd-icon name="vd-icon-placeholder" color="success"></vd-icon>
+          <vd-icon name="vd-icon-placeholder" color="error"></vd-icon>
+          <vd-icon name="vd-icon-placeholder" color="info"></vd-icon>
+          <vd-icon name="vd-icon-placeholder" color="warning"></vd-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Available icons</h2>
+      <p class="body-large">Click on the icon to copy its name.</p>
+    </div>
+    <div class="content-group-container icons-list-container">
+      <input type="text" class="icon-search" placeholder="Search icons" [(ngModel)]="search" />
+      <div class="component-variation-group">
+        <div class="icon-grid">
+          <div
+            *ngFor="let icon of filteredIcons"
+            class="icon-card"
+            (click)="copyIconName(icon.value)"
+          >
+            <vd-icon [name]="icon.value" size="xl"></vd-icon>
+            <p class="body-extra-small icon-name">{{ icon.value }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the icon component in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-icon.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the icon component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="icon-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">All Available APIs</h3>
+          <p class="body-large">
+            Here is an example of using the icon component with all available APIs:
+          </p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allImplementationSnippet"
+            fileName="icon-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Icon when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Icon when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>
+            Use semantic colors to convey meaning (error for warnings, success for confirmations)
+          </li>
+          <li>Choose appropriate icon sizes to match surrounding text or UI elements</li>
+          <li>Keep icon usage consistent across the application</li>
+          <li>Use descriptive icon names that clearly represent their purpose</li>
+          <li>Pair icons with text labels for clarity, especially for critical actions</li>
+          <li>Consider accessibility by ensuring icons have proper context</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+  </div>
+  <div class="content-group playground">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component playground</h2>
+      <p class="body-large">Check all the variations in this section</p>
+    </div>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-select
+              label="Size"
+              [value]="size"
+              (valueChange)="$event && (size = $event)"
+              [options]="sizeOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Icon"
+              [value]="icon"
+              (valueChange)="$event && (icon = $event)"
+              [options]="icons"
+            ></vd-select>
+
+            <vd-select
+              label="Color"
+              [value]="color"
+              (valueChange)="color = $event || ''"
+              [options]="colorOptions"
+            ></vd-select>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-icon [name]="icon" [size]="size" [color]="color || undefined"></vd-icon>
+          </div>
+        </div>
+      </div>
+
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

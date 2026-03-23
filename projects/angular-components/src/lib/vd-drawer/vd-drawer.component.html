@@ -1,0 +1,60 @@
+<div
+  class="vd-drawer"
+  [class.vd-drawer--closing]="isClosing"
+  [class.vd-drawer--sm]="config.size === 'sm'"
+  [class.vd-drawer--md]="config.size === 'md'"
+  [class.vd-drawer--lg]="config.size === 'lg'"
+  role="dialog"
+  aria-modal="true"
+  [attr.aria-label]="config.title"
+>
+  <div class="vd-drawer__header">
+    <div class="vd-drawer__header-text">
+      <h6 class="title-medium">
+        {{ config.title }}
+      </h6>
+    </div>
+
+    <vd-icon-button
+      class="vd-drawer__close"
+      icon="vd-icon-cross"
+      variant="transparent"
+      color="neutral"
+      size="sm"
+      [rounded]="true"
+      ariaLabel="Close drawer"
+      (click)="handleClose()"
+    ></vd-icon-button>
+  </div>
+
+  <div
+    class="vd-drawer__content"
+    [class.vd-drawer__content--sm]="config.size === 'sm'"
+    [class.vd-drawer__content--md]="config.size === 'md'"
+    [class.vd-drawer__content--lg]="config.size === 'lg'"
+  >
+    <ng-container
+      *ngTemplateOutlet="config.contentTemplate; context: config.context ?? null"
+    ></ng-container>
+  </div>
+
+  <div *ngIf="hasActions" class="vd-drawer__footer" [class.vd-drawer__footer--sm]="config.size === 'sm'">
+    <vd-button
+      *ngIf="config.secondaryActionLabel"
+      [label]="config.secondaryActionLabel"
+      variant="subtle"
+      color="neutral"
+      size="md"
+      (click)="handleSecondaryAction()"
+    ></vd-button>
+
+    <vd-button
+      *ngIf="config.primaryActionLabel"
+      [label]="config.primaryActionLabel"
+      variant="solid"
+      color="primary"
+      size="md"
+      (click)="handlePrimaryAction()"
+    ></vd-button>
+  </div>
+</div>

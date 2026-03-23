@@ -1,0 +1,307 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Radio Group'"
+    [subtitle]="'Radio groups let users choose exactly one option from a predefined set.'"
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Direction</h3>
+        <p>Radio groups can be displayed vertically or horizontally.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-radio-group [items]="verticalItems" [value]="'email'"></vd-radio-group>
+          <vd-radio-group
+            [items]="horizontalItems"
+            direction="horizontal"
+            [value]="'sms'"
+          ></vd-radio-group>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">With Description</h3>
+        <p>Radio buttons can include descriptions for additional context.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-radio-group [items]="withDescriptionItems" [value]="'standard'"></vd-radio-group>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Disabled</h3>
+        <p>The entire group or individual items can be disabled.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-radio-group
+            [items]="disabledGroupItems"
+            [value]="'email'"
+            [disabled]="true"
+          ></vd-radio-group>
+          <vd-radio-group [items]="partialDisabledItems" [value]="'email'"></vd-radio-group>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the radio group component and item interface:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-radio-group.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Provide a list of items and track the selected value:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define items in TypeScript</h4>
+          <code-container
+            [code]="basicImplementationTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Render in template</h4>
+          <code-container
+            [code]="basicImplementationTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">With Descriptions</h3>
+          <p>Add descriptions to provide additional context for each option:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define items with descriptions</h4>
+          <code-container
+            [code]="withDescriptionTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Render in template</h4>
+          <code-container
+            [code]="withDescriptionTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Disabled State</h3>
+          <p>Disable the entire group or individual items:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Disable the entire group</h4>
+          <code-container
+            [code]="disabledGroupTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="disabledGroupTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Disable individual items</h4>
+          <code-container
+            [code]="disabledItemsTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="disabledItemsTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Handling Output</h3>
+          <p>
+            Listen to the <code>valueChange</code> event to react when the selected value changes:
+          </p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define handler in TypeScript</h4>
+          <code-container
+            [code]="outputHandlingComponentSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Bind in template</h4>
+          <code-container
+            [code]="outputHandlingTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">All Available APIs</h3>
+          <p class="body-large">Example using all available APIs:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allImplementationSnippet"
+            fileName="radio-group-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+        </div>
+        <vd-datatable [data]="outputData" [columns]="outputColumns"></vd-datatable>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">VdRadioGroupItem Interface</h3>
+          <p>Each item in the <code>items</code> array follows this interface:</p>
+        </div>
+        <vd-datatable
+          [data]="itemInterfaceData"
+          [columns]="itemInterfaceColumnsWithTemplate"
+        ></vd-datatable>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-group usage-guidelines">
+  <div class="content-group-title">
+    <h2 class="headline-large">Best Practices</h2>
+  </div>
+  <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Radio Group when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Radio Group when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Use radio groups when only one option can be selected from a list</li>
+          <li>Use checkboxes instead when multiple selections are allowed</li>
+          <li>Prefer vertical layout for more than 3 options to improve readability</li>
+          <li>Keep option labels short and descriptive</li>
+          <li>Use descriptions when options need additional context</li>
+          <li>Always provide a default selection when possible</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+</div>
+
+<div class="content-group playground">
+  <div class="content-group-title">
+    <h2 class="headline-large">Component playground</h2>
+    <p class="body-large">Interact with the radio group in this section</p>
+    <div class="content-group-container playground-container">
+      <div class="component-preview">
+        <div class="component-control">
+          <div class="controls">
+            <vd-select
+              label="Direction"
+              [value]="direction"
+              (valueChange)="$event && (direction = $event)"
+              [options]="directionOptions"
+            ></vd-select>
+            <vd-switch
+              label="Disabled"
+              [checked]="playgroundDisabled"
+              (change)="playgroundDisabled = $event"
+            ></vd-switch>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-radio-group
+              [items]="playgroundItems"
+              [value]="selectedValue"
+              [direction]="direction"
+              [disabled]="playgroundDisabled"
+              (valueChange)="onValueChange($event)"
+            ></vd-radio-group>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<!-- //toast component -->
+<ng-container *ngIf="toastsByPosition$ | async as toastsByPosition">
+  <div
+    *ngFor="let position of positions"
+    class="vd-toast-container"
+    [ngClass]="'vd-toast-container--' + position"
+  >
+    <div
+      *ngFor="let toast of toastsByPosition[position]; trackBy: trackById"
+      class="vd-toast-wrapper"
+      [class.vd-toast-wrapper--leaving]="toast.isLeaving"
+    >
+      <div
+        class="vd-toast"
+        [ngClass]="['vd-toast--' + toast.color]"
+        (mouseenter)="onMouseEnter(toast)"
+        (mouseleave)="onMouseLeave(toast)"
+      >
+        <vd-icon
+          *ngIf="getIconName(toast)"
+          class="vd-toast__icon"
+          [name]="getIconName(toast)"
+        ></vd-icon>
+
+        <div class="vd-toast__content">
+          <h6 *ngIf="toast.title" class="vd-toast__title title-medium">
+            {{ toast.title }}
+          </h6>
+          <p class="vd-toast__description label-medium">
+            {{ toast.description }}
+          </p>
+        </div>
+
+        <vd-icon-button
+          class="vd-toast__close"
+          icon="vd-icon-cross"
+          variant="transparent"
+          color="neutral"
+          size="sm"
+          [rounded]="true"
+          (click)="close(toast.id!)"
+        ></vd-icon-button>
+      </div>
+    </div>
+  </div>
+</ng-container>

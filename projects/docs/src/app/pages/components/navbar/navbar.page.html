@@ -1,0 +1,119 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Navbar'"
+    [subtitle]="'Navbars provide top-level navigation and utility actions across the application.'"
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Basic Navbar</h3>
+          <p>A simple navbar with content projection</p>
+        </div>
+
+        <div
+          class="component-showcase-container"
+          style="
+            position: relative;
+            height: 80px;
+            display: block;
+            overflow: hidden;
+            border-radius: var(--vd-scale-border-radius-md);
+          "
+        >
+          <vd-navbar style="position: absolute; top: 0; left: 0; width: 100%">
+            <div style="font-weight: bold; color: var(--vd-color-content-default-base)">
+              My App
+            </div>
+            <div style="display: flex; gap: 16px">
+              <vd-icon-button icon="vd-icon-sun" size="md"></vd-icon-button>
+              <vd-icon-button icon="vd-icon-user" size="md"></vd-icon-button>
+            </div>
+          </vd-navbar>
+        </div>
+      </div>
+    </div>
+    <div class="content-group usage-guidelines">
+      <div class="content-group-title">
+        <h2 class="headline-large">Usage Guidelines</h2>
+      </div>
+      <div class="content-group-container">
+        <div class="guideline-section">
+          <div class="title-container">
+            <h3 class="title-large">Import</h3>
+            <p>Import the navbar component in your module or component:</p>
+          </div>
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-navbar.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+
+        <div class="guideline-section">
+          <div class="title-container">
+            <h3 class="title-large">Basic Implementation</h3>
+            <p>
+              Here is a basic example of using the navbar component with Angular content projection:
+            </p>
+          </div>
+          <div class="guideline">
+            <h4 class="guideline-info title-medium">1. Implementation in template</h4>
+            <code-container
+              [code]="basicImplementationTemplateSnippet"
+              fileName="my.component.html"
+              language="angular-html"
+            ></code-container>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-group usage-guidelines">
+      <div class="content-group-title">
+        <h2 class="headline-large">Best Practices</h2>
+      </div>
+      <div class="content-group-container">
+        <div class="guideline-section">
+          <h3 class="title-large">When to Use</h3>
+          <ul>
+            <li>Use Navbar when this pattern clearly supports the user task.</li>
+            <li>Use it to keep similar interactions consistent across the product.</li>
+          </ul>
+        </div>
+        <div class="guideline-section">
+          <h3 class="title-large">When Not to Use</h3>
+          <ul>
+            <li>Avoid using Navbar when a simpler component communicates the same intent.</li>
+            <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+          </ul>
+        </div>
+        <div class="guideline-section">
+          <h3 class="title-large">Design Guidelines</h3>
+          <ul>
+            <li>
+              Use the navbar exclusively as the top-level application header, not inside child
+              sections.
+            </li>
+            <li>
+              Keep the content projected into the navbar visually balanced (e.g. Logo on left,
+              controls on right).
+            </li>
+            <li>
+              Ensure any interactive elements placed within the navbar are accessible and reachable
+              by keyboard.
+            </li>
+            <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+            <li>Use VD variants and states consistently for predictable behavior.</li>
+            <li>Ensure keyboard access and clear focus order for accessibility.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+.doc-page-header {
+  background-color: var(--vd-color-background-primary-secondary);
+  padding: var(--vd-scale-spacing-3000);
+  border-radius: var(--vd-scale-border-radius-xxl);
+  &__content {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  h1 {
+    margin-bottom: var(--vd-scale-spacing-200);
+  }
+}

@@ -1,0 +1,127 @@
+<div class="main">
+  <app-doc-page-header
+    [title]="'Getting Started'"
+    [subtitle]="
+      'Install packages, configure tokens, and start building with Vroxal Design components quickly.'
+    "
+  ></app-doc-page-header>
+
+  <!-- Designers -->
+  <section class="content-group">
+    <div class="content-group-title">
+      <h2 class="headline-large">For designers</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <p class="body-large">
+          Designers can access the official Vroxal Design System on Figma. This file includes
+          foundations, components, and usage guidelines that stay in sync with the development
+          packages.
+        </p>
+        <ul class="body-large">
+          <li>Design tokens (colors, typography, spacing)</li>
+          <li>Ready-to-use components</li>
+          <li>Usage guidelines and best practices</li>
+        </ul>
+
+        <p class="body-large">
+          Use the Figma file as the single source of truth while designing new features or iterating
+          on existing ones.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Developers -->
+  <section class="content-group">
+    <div class="content-group-title">
+      <h2 class="headline-large">For developers</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <p class="body-large">
+          The Vroxal Design System is distributed as npm packages. Install the required packages and
+          start using the components directly in your Angular project.
+        </p>
+        <div class="content-group-section">
+          <div class="content-group-title">
+            <h3 class="title-large">Install required packages</h3>
+            <p class="body-large">
+              To use the design system, you need to install the following packages:
+            </p>
+          </div>
+          <code-container
+            [code]="installSnippet"
+            fileName="terminal"
+            language="sh"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="content-group-title">
+          <h3 class="title-large">Import styles</h3>
+          <p class="body-large">
+            Add the design system styles to your <code>angular.json</code> file so that tokens,
+            icons, and components are available globally.
+          </p>
+        </div>
+
+        <code-container
+          [code]="stylesSnippet"
+          fileName="angular.json"
+          language="json5"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import components</h3>
+          <p class="body-large">
+            Import the required components from the Angular components package
+          </p>
+        </div>
+
+        <code-container
+          [code]="importSnippet"
+          fileName="example.component.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Use components</h3>
+          <p class="body-large">Use the imported components directly in your templates.</p>
+        </div>
+
+        <code-container
+          [code]="usageSnippet"
+          fileName="example.component.html"
+          language="angular-html"
+        ></code-container>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agentic AI -->
+  <section class="content-group">
+    <div class="content-group-title">
+      <h2 class="headline-large">Agentic AI Instructions</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="content-group-title">
+          <h3 class="title-large">Governance content for AI instructions</h3>
+          <p class="body-large">
+            Copy this into your agent instruction file (for example, <code>AGENTS.md</code>) in the
+            consuming project.
+          </p>
+        </div>
+        <code-container
+          [code]="agenticAiGovernanceSnippet"
+          fileName="AGENTS.md"
+          language="markdown"
+        ></code-container>
+      </div>
+    </div>
+  </section>
+</div>

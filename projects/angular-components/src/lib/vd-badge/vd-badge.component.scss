@@ -1,0 +1,60 @@
+:host {
+  display: inline-block;
+  line-height: 0;
+
+  --vd-badge-bg-base: var(--vd-color-background-primary-base);
+  --vd-badge-bg-secondary: var(--vd-color-background-primary-secondary);
+  --vd-badge-text-on-base: var(--vd-color-content-primary-on-base);
+  --vd-badge-text-on-secondary: var(--vd-color-content-primary-on-secondary);
+  --vd-badge-border-color: var(--vd-color-border-primary-secondary);
+
+  --_vd-badge-padding-x: var(--vd-scale-spacing-300);
+  --_vd-badge-padding-y: var(--vd-scale-spacing-100);
+
+  --vd-badge-radius: var(--vd-scale-border-radius-xs);
+  --vd-badge-border-width: var(--vd-scale-border-width-sm);
+}
+
+// Color variants loop
+@each $color in primary, success, error, warning, info, neutral {
+  .vd-badge--#{$color} {
+    --vd-badge-bg-base: var(--vd-color-background-#{$color}-base);
+    --vd-badge-bg-secondary: var(--vd-color-background-#{$color}-secondary);
+    --vd-badge-text-on-base: var(--vd-color-content-#{$color}-on-base);
+    --vd-badge-text-on-secondary: var(--vd-color-content-#{$color}-on-secondary);
+    --vd-badge-border-color: var(--vd-color-border-#{$color}-secondary);
+  }
+}
+
+.vd-badge {
+  --vd-badge-bg: var(--vd-badge-bg-base);
+  --vd-badge-text: var(--vd-badge-text-on-base);
+  --vd-badge-padding-x: var(--_vd-badge-padding-x);
+  --vd-badge-padding-y: var(--_vd-badge-padding-y);
+
+  display: inline-block;
+  align-items: center;
+  white-space: nowrap;
+  padding: var(--vd-badge-padding-y) var(--vd-badge-padding-x);
+  background: var(--vd-badge-bg);
+  color: var(--vd-badge-text);
+  border-radius: var(--vd-badge-radius);
+  border: none;
+  vertical-align: middle;
+
+  &--sm {
+    --_vd-badge-padding-y: var(--vd-scale-spacing-50);
+  }
+
+  &--rounded {
+    --vd-badge-radius: var(--vd-scale-border-radius-full);
+  }
+
+  &--subtle {
+    --vd-badge-bg: var(--vd-badge-bg-secondary);
+    --vd-badge-text: var(--vd-badge-text-on-secondary);
+    --vd-badge-padding-x: calc(var(--_vd-badge-padding-x) - var(--vd-badge-border-width));
+    --vd-badge-padding-y: calc(var(--_vd-badge-padding-y) - var(--vd-badge-border-width));
+    border: var(--vd-badge-border-width) solid var(--vd-badge-border-color);
+  }
+}

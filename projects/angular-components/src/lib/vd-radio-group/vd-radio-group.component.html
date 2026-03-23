@@ -1,0 +1,20 @@
+<div
+  class="vd-radio-group"
+  [class.vd-radio-group--horizontal]="direction === 'horizontal'"
+  [class.vd-radio-group--vertical]="direction === 'vertical'"
+  role="radiogroup"
+>
+  <div class="vd-radio-group__list" [class.vd-radio-group__list--root]="true">
+    <div *ngFor="let item of items; trackBy: trackByItem" class="vd-radio-group__item">
+      <vd-radio-button
+        [label]="item.label"
+        [description]="item.description"
+        [value]="item.value"
+        [name]="name"
+        [checked]="isChecked(item)"
+        [disabled]="disabled || !!item.disabled"
+        (select)="onItemSelect(item)"
+      ></vd-radio-button>
+    </div>
+  </div>
+</div>

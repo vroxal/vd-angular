@@ -1,0 +1,170 @@
+:host {
+  --vd-icon-button-bg-base: var(--vd-color-background-primary-base);
+  --vd-icon-button-bg-base-hover: var(--vd-color-background-primary-base-hover);
+  --vd-icon-button-bg-secondary: var(--vd-color-background-primary-secondary);
+  --vd-icon-button-bg-secondary-hover: var(--vd-color-background-primary-secondary-hover);
+
+  --vd-icon-button-text-on-base: var(--vd-color-content-primary-on-base);
+  --vd-icon-button-text-base: var(--vd-color-content-primary-base);
+  --vd-icon-button-text-on-secondary: var(--vd-color-content-primary-on-secondary);
+  --vd-icon-button-border-color: var(--vd-color-border-primary-base);
+
+  --vd-icon-button-outline-color: var(--vd-color-border-primary-tertiary);
+
+  --_vd-icon-button-padding: var(--vd-scale-spacing-200);
+
+  --vd-icon-button-radius: var(--vd-scale-border-radius-md);
+  --vd-icon-button-border-width: var(--vd-scale-border-width-sm);
+  --vd-icon-button-outline-width: var(--vd-scale-border-width-md);
+  --vd-icon-button-outline-offset: var(--vd-scale-border-width-md);
+  --vd-icon-button-spinner-size: var(--vd-scale-icon-size-md);
+  display: inline-flex;
+}
+
+// Color variants loop
+@each $color in primary, neutral, error {
+  .vd-icon-button--#{$color} {
+    --vd-icon-button-bg-base: var(--vd-color-background-#{$color}-base);
+    --vd-icon-button-bg-base-hover: var(--vd-color-background-#{$color}-base-hover);
+    --vd-icon-button-bg-secondary: var(--vd-color-background-#{$color}-secondary);
+    --vd-icon-button-bg-secondary-hover: var(--vd-color-background-#{$color}-secondary-hover);
+
+    --vd-icon-button-text-on-base: var(--vd-color-content-#{$color}-on-base);
+    --vd-icon-button-text-on-secondary: var(--vd-color-content-#{$color}-on-secondary);
+    --vd-icon-button-text-base: var(--vd-color-content-#{$color}-base);
+    --vd-icon-button-border-color: var(--vd-color-border-#{$color}-base);
+  }
+}
+
+.vd-icon-button {
+  --vd-icon-button-bg: var(--vd-icon-button-bg-base);
+  --vd-icon-button-bg-hover: var(--vd-icon-button-bg-base-hover);
+  --vd-icon-button-text: var(--vd-icon-button-text-on-base);
+  --vd-icon-button-padding: var(--_vd-icon-button-padding);
+
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--vd-icon-button-padding);
+  border-radius: var(--vd-icon-button-radius);
+  border: none;
+  background-color: var(--vd-icon-button-bg);
+  color: var(--vd-icon-button-text);
+  cursor: pointer;
+  width: auto;
+  height: fit-content;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.1s ease;
+  &.not-initialized {
+    transition: none; /* disable initially */
+  }
+  &:hover:not(&--disabled):not(:disabled) {
+    background-color: var(--vd-icon-button-bg-hover);
+  }
+
+  &:focus:not(&--disabled):not(:disabled) {
+    outline: var(--vd-icon-button-outline-width) solid var(--vd-icon-button-outline-color);
+    outline-offset: var(--vd-icon-button-outline-offset);
+  }
+
+  &--disabled:not(&--loading),
+  &:disabled:not(&--loading) {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &--loading {
+    cursor: wait;
+    .vd-icon-button__icon {
+      visibility: hidden;
+    }
+  }
+
+  &--rounded {
+    --vd-icon-button-radius: var(--vd-scale-border-radius-full);
+  }
+
+  &--sm {
+    --_vd-icon-button-padding: var(--vd-scale-spacing-100);
+    --vd-icon-button-spinner-size: var(--vd-scale-icon-size-xs);
+  }
+
+  &--lg {
+    --_vd-icon-button-padding: var(--vd-scale-spacing-300);
+    --vd-icon-button-radius: var(--vd-scale-border-radius-lg);
+    --vd-icon-button-spinner-size: var(--vd-scale-icon-size-lg);
+    &.vd-icon-button--rounded {
+      --vd-icon-button-radius: var(--vd-scale-border-radius-full);
+    }
+  }
+
+  &--subtle {
+    --vd-icon-button-bg: var(--vd-icon-button-bg-secondary);
+    --vd-icon-button-bg-hover: var(--vd-icon-button-bg-secondary-hover);
+    --vd-icon-button-text: var(--vd-icon-button-text-on-secondary);
+  }
+
+  &--outline {
+    --vd-icon-button-bg: transparent;
+    --vd-icon-button-bg-hover: var(--vd-icon-button-bg-secondary);
+    --vd-icon-button-text: var(--vd-icon-button-text-base);
+    --vd-icon-button-padding: calc(
+      var(--_vd-icon-button-padding) - var(--vd-icon-button-border-width)
+    );
+    border: var(--vd-icon-button-border-width) solid var(--vd-icon-button-border-color);
+  }
+
+  &--transparent {
+    --vd-icon-button-bg: transparent;
+    --vd-icon-button-bg-hover: var(--vd-icon-button-bg-secondary);
+    --vd-icon-button-text: var(--vd-icon-button-text-base);
+  }
+
+  &__icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.15s ease;
+
+    &.is-hidden {
+      opacity: 0;
+    }
+  }
+
+  &__spinner {
+    position: absolute;
+    width: var(--vd-icon-button-spinner-size);
+    height: var(--vd-icon-button-spinner-size);
+    display: inline-flex;
+
+    &-indicator {
+      width: 100%;
+      height: 100%;
+      border: var(--vd-scale-border-width-md) solid
+        color-mix(in srgb, var(--vd-icon-button-text) 20%, transparent);
+      border-radius: 50%;
+      border-top-color: var(--vd-icon-button-text);
+      animation: spin 1s ease-in-out infinite;
+      -webkit-animation: spin 1s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}

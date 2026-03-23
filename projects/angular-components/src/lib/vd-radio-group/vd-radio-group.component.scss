@@ -1,0 +1,33 @@
+:host {
+  display: block;
+
+  --vd-radio-group-gap: var(--vd-scale-spacing-200);
+  --vd-radio-group-row-gap: var(--vd-scale-spacing-200);
+  --vd-radio-group-column-gap: var(--vd-scale-spacing-400);
+}
+
+.vd-radio-group {
+  display: flex;
+  flex-direction: column;
+
+  &--horizontal {
+    .vd-radio-group__list--root {
+      flex-direction: row;
+      flex-wrap: wrap;
+      column-gap: var(--vd-radio-group-column-gap);
+      row-gap: var(--vd-radio-group-row-gap);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--vd-radio-group-gap);
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--vd-radio-group-gap);
+  }
+}

@@ -1,0 +1,250 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Time Picker'"
+    [subtitle]="'Time pickers let users select a specific time value in a consistent format.'"
+  >
+  </app-doc-page-header>
+
+  <!-- COMPONENT VARIATIONS -->
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component Variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Basic Time Picker</h3>
+        <p>Standard time picker for selecting a time</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-time-picker
+            label="Select Time"
+            placeholder="Choose time..."
+            [(value)]="timeValue"
+          ></vd-time-picker>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">States</h3>
+        <p>Contains: Default, Success, Error, Warning</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-time-picker label="Default" placeholder="Default state"></vd-time-picker>
+          <vd-time-picker
+            label="Success"
+            placeholder="Success state"
+            state="success"
+            helperText="Time is valid"
+          ></vd-time-picker>
+          <vd-time-picker
+            label="Error"
+            placeholder="Error state"
+            state="error"
+            helperText="Invalid time"
+          ></vd-time-picker>
+          <vd-time-picker
+            label="Warning"
+            placeholder="Warning state"
+            state="warning"
+            helperText="Check time"
+          ></vd-time-picker>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">With Leading Icon</h3>
+        <p>Time picker with a leading icon</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-time-picker
+            label="Select Time"
+            placeholder="Choose time..."
+            leadingIcon="clock"
+          ></vd-time-picker>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Optional and Disabled</h3>
+        <p>Optional and disabled states</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-time-picker
+            label="Optional"
+            placeholder="Optional field"
+            [optional]="true"
+          ></vd-time-picker>
+          <vd-time-picker
+            label="Disabled"
+            placeholder="Disabled field"
+            [disabled]="true"
+          ></vd-time-picker>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- USAGE GUIDELINES -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the time picker component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-time-picker.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the time picker:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicSnippet"
+            fileName="time-picker-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">All API Usage</h3>
+          <p>Example with all available properties:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allApiSnippet"
+            fileName="time-picker-all-api.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- API REFERENCE -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <!-- BEST PRACTICES -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Time Picker when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Time Picker when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Always provide clear labels for time inputs</li>
+          <li>Use helper text to indicate time format (e.g., HH:MM)</li>
+          <li>Use state prop to provide validation feedback</li>
+          <li>Consider timezone handling for time pickers</li>
+          <li>Validate time input format to ensure consistency</li>
+          <li>Use 24-hour or 12-hour format consistently across your application</li>
+          <li>Provide meaningful error messages for invalid time selections</li>
+          <li>Consider accessibility - ensure keyboard navigation works properly</li>
+          <li>Use leading icons to provide visual context (e.g., clock icon)</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+  </div>
+
+  <!-- PLAYGROUND -->
+  <div class="content-group playground">
+    <div class="content-group-title">
+      <h2 class="headline-large">Playground</h2>
+      <p class="body-large">Customize the time picker features</p>
+      <div class="content-group-container playground-container">
+        <!-- Preview -->
+        <div class="component-preview">
+          <div class="component-control">
+            <!-- Controls -->
+            <div class="controls">
+              <vd-select
+                label="State"
+                [value]="timeState"
+                (valueChange)="timeState = $event"
+                [options]="stateOptions"
+              ></vd-select>
+
+              <label class="switch-label">
+                <span>Optional</span>
+                <vd-switch [checked]="timeOptional" (change)="timeOptional = $event"></vd-switch>
+              </label>
+
+              <label class="switch-label">
+                <span>Disabled</span>
+                <vd-switch [checked]="timeDisabled" (change)="timeDisabled = $event"></vd-switch>
+              </label>
+            </div>
+            <div class="divider"></div>
+            <div class="component-showcase-container">
+              <vd-time-picker
+                [label]="timeLabel"
+                [placeholder]="timePlaceholder"
+                [(value)]="timeValue"
+                [optional]="timeOptional"
+                [disabled]="timeDisabled"
+                [state]="timeState"
+              ></vd-time-picker>
+            </div>
+          </div>
+        </div>
+        <code-container
+          [code]="codeSnippet"
+          fileName="example.html"
+          language="angular-html"
+        ></code-container>
+      </div>
+    </div>
+  </div>
+</div>

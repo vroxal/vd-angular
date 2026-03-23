@@ -1,0 +1,286 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Alert'"
+    [subtitle]="'Alerts communicate important status messages and actions directly within a page.'"
+  >
+  </app-doc-page-header>
+
+  <!-- Component Variations -->
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Color Variants</h3>
+        <p>Contains: Primary, Success, Error, Warning, Info, Neutral. Primary is default</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-alert
+            color="primary"
+            title="Primary Alert"
+            description="This is a primary alert message"
+          ></vd-alert>
+          <vd-alert
+            color="success"
+            title="Success Alert"
+            description="This is a success alert message"
+          ></vd-alert>
+          <vd-alert
+            color="error"
+            title="Error Alert"
+            description="This is an error alert message"
+          ></vd-alert>
+          <vd-alert
+            color="warning"
+            title="Warning Alert"
+            description="This is a warning alert message"
+          ></vd-alert>
+          <vd-alert
+            color="info"
+            title="Info Alert"
+            description="This is an info alert message"
+          ></vd-alert>
+          <vd-alert
+            color="neutral"
+            title="Neutral Alert"
+            description="This is a neutral alert message"
+          ></vd-alert>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">With Action Button</h3>
+        <p>Alert with an action button</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-alert
+            color="primary"
+            title="Alert with Action"
+            description="This alert has an action button you can interact with"
+            [action]="true"
+            actionLabel="Learn More"
+          ></vd-alert>
+          <vd-alert
+            color="success"
+            description="This alert has an action button displayed inline"
+            [action]="true"
+            [actionInline]="true"
+            actionLabel="Confirm"
+          ></vd-alert>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Without Close Button</h3>
+        <p>Alert without a close button</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-alert
+            color="success"
+            title="No Close Button"
+            description="This alert does not have a close button"
+            [closable]="false"
+          ></vd-alert>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Minimal Alert</h3>
+        <p>Alert with only title, no action or close button</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-alert
+            color="info"
+            title="Minimal Alert"
+            description="Simple alert message"
+            [action]="false"
+            [closable]="false"
+          ></vd-alert>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Custom Icon</h3>
+        <p>Alert with a custom icon instead of default color-based icons</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-alert
+            color="primary"
+            title="Custom Icon Alert"
+            description="This alert uses a custom icon provided via the icon input"
+            [action]="true"
+            actionLabel="Learn More"
+            icon="vd-icon-placeholder"
+          ></vd-alert>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Usage Guidelines -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the alert component in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-alert.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the alert component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="alert-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Implementation with all available APIs</h3>
+          <p>Here is an example of using the alert component with all available APIs:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allImplementationSnippet"
+            fileName="alert-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- API Reference -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyAlert let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+        </div>
+        <vd-datatable [data]="outputsData" [columns]="outputsColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <!-- Best Practices -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Alert when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Alert when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Use appropriate color variants to convey the message type (error, success, etc.)</li>
+          <li>Keep titles and descriptions concise and actionable</li>
+          <li>Use action buttons for alerts that require user interaction</li>
+          <li>Provide a close button for dismissible alerts</li>
+          <li>Place alerts prominently where users will see them</li>
+          <li>
+            Use semantic colors: success for positive outcomes, error for failures, warning for
+            caution, and info for informational messages
+          </li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+  </div>
+
+  <!-- Playground -->
+  <div class="content-group playground">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component playground</h2>
+    </div>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-select label="Color" [options]="colorOptions" [(value)]="color"></vd-select>
+
+            <vd-switch label="Show Action Button" [(ngModel)]="action"></vd-switch>
+            <vd-switch label="Inline Action" [(ngModel)]="actionInline"></vd-switch>
+            <vd-switch label="Show Close Button" [(ngModel)]="closable"></vd-switch>
+          </div>
+          <div class="divider"></div>
+
+          <!-- Preview Area -->
+          <div class="preview-area">
+            <vd-alert
+              [color]="color"
+              [title]="title"
+              [description]="description"
+              [action]="action"
+              [closable]="closable"
+              [actionInline]="actionInline"
+              [actionLabel]="actionLabel"
+              (onClose)="handleClose()"
+              (onAction)="handleAction()"
+            ></vd-alert>
+          </div>
+        </div>
+      </div>
+      <!-- Code Display -->
+      <code-container
+        [code]="codeSnippet"
+        fileName="alert-usage.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

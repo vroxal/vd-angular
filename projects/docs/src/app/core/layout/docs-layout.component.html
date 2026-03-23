@@ -1,0 +1,70 @@
+<vd-toast></vd-toast>
+
+<div class="layout" [class.layout--has-navbar]="hasNavbar" [class.layout--has-sidebar]="hasSidebar">
+  @if (hasNavbar) {
+    <header class="layout__header">
+      <vd-navbar>
+        <div class="layout__brand">
+          <div class="logo">
+            <svg
+              width="280"
+              height="147"
+              viewBox="0 0 280 147"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M248.715 130.231C248.715 125.897 250.214 122.173 253.212 119.058C256.341 115.943 260.056 114.385 264.358 114.385C268.529 114.385 272.179 115.875 275.307 118.855C278.436 121.834 280 125.491 280 129.825C280 134.159 278.436 137.883 275.307 140.998C272.309 144.113 268.659 145.67 264.358 145.67C262.272 145.67 260.251 145.264 258.296 144.452C256.471 143.639 254.842 142.555 253.408 141.201C251.974 139.847 250.801 138.222 249.888 136.326C249.106 134.43 248.715 132.398 248.715 130.231Z"
+              />
+              <path
+                d="M170.087 35C179.212 35 186.968 37.1509 193.355 41.4525C199.873 45.7542 204.566 51.555 207.434 58.8548V2.28882e-05H234.808V144.693H207.434V122.011C204.566 129.311 199.873 135.177 193.355 139.609C186.968 143.911 179.212 146.061 170.087 146.061C160.963 146.061 152.75 143.845 145.45 139.413C138.151 134.981 132.415 128.594 128.244 120.251C124.203 111.778 122.182 101.872 122.182 90.5307C122.182 79.19 124.203 69.3482 128.244 61.0056C132.415 52.5326 138.151 46.0801 145.45 41.6481C152.75 37.216 160.963 35 170.087 35ZM178.691 59.0503C170.087 59.0503 163.179 61.8529 157.964 67.4581C152.75 73.0633 150.143 80.7542 150.143 90.5307C150.143 100.307 152.75 107.998 157.964 113.603C163.179 119.078 170.087 121.816 178.691 121.816C187.033 121.816 193.877 119.013 199.221 113.408C204.696 107.672 207.434 100.047 207.434 90.5307C207.434 80.8846 204.696 73.2589 199.221 67.6537C193.877 61.9181 187.033 59.0503 178.691 59.0503Z"
+              />
+              <path
+                d="M57.095 117.123L84.4693 36.3687H113.799L73.7151 144.693H40.0838L0 36.3687H29.5251L57.095 117.123Z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="layout__actions">
+          <div class="control">
+            <div class="segmented">
+              <div
+                class="segmented-item label-medium"
+                *ngFor="let brand of brands"
+                (click)="selectBrand(brand)"
+                [class.active]="brand === selectedBrand"
+              >
+                {{ brand }}
+              </div>
+            </div>
+          </div>
+
+          <div class="control">
+            <div class="segmented">
+              <vd-icon
+                *ngFor="let theme of themes"
+                [name]="theme === 'light' ? 'vd-icon-sun' : 'vd-icon-moon'"
+                size="md"
+                [class.active]="theme === selectedTheme"
+                (click)="selectTheme(theme)"
+              ></vd-icon>
+            </div>
+          </div>
+        </div>
+      </vd-navbar>
+    </header>
+  }
+
+  <div class="layout__body">
+    @if (hasSidebar) {
+      <aside class="layout__aside">
+        <vd-sidebar [sections]="sections"></vd-sidebar>
+      </aside>
+    }
+
+    <main class="layout__content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

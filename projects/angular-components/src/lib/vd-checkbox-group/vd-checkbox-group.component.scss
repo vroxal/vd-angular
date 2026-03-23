@@ -1,0 +1,38 @@
+:host {
+  display: block;
+
+  --vd-checkbox-group-gap: var(--vd-scale-spacing-200);
+  --vd-checkbox-group-row-gap: var(--vd-scale-spacing-200);
+  --vd-checkbox-group-column-gap: var(--vd-scale-spacing-400);
+  --vd-checkbox-group-nested-padding: var(--vd-scale-spacing-400);
+}
+
+.vd-checkbox-group {
+  display: flex;
+  flex-direction: column;
+
+  &--horizontal {
+    .vd-checkbox-group__list--root {
+      flex-direction: row;
+      flex-wrap: wrap;
+      column-gap: var(--vd-checkbox-group-column-gap);
+      row-gap: var(--vd-checkbox-group-row-gap);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--vd-checkbox-group-gap);
+  }
+
+  &__list--nested {
+    padding-left: var(--vd-checkbox-group-nested-padding);
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--vd-checkbox-group-gap);
+  }
+}

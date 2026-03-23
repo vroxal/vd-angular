@@ -1,0 +1,61 @@
+<div
+  class="vd-textarea"
+  [class.vd-textarea--error]="state === 'error'"
+  [class.vd-textarea--disabled]="disabled"
+  [class.vd-textarea--success]="state === 'success'"
+  [class.vd-textarea--warning]="state === 'warning'"
+>
+  <!-- Label row -->
+  <div class="vd-textarea__label-row" *ngIf="label || optional || hintText">
+    <label *ngIf="label" class="vd-textarea__label" [attr.for]="inputId">
+      {{ label }}
+    </label>
+
+    <vd-icon *ngIf="hintText" name="vd-icon-help" [vdTooltip]="hintText"> ></vd-icon>
+    <p *ngIf="optional" class="vd-textarea__optional body-medium-italic">Optional</p>
+  </div>
+
+  <div class="vd-textarea__container" (click)="focusInput()">
+    <span *ngIf="leadingIcon" class="vd-textarea__leading-icon">
+      <vd-icon [name]="leadingIcon"></vd-icon>
+    </span>
+    <textarea
+      #inputElement
+      [id]="inputId"
+      class="vd-textarea__input body-medium"
+      [placeholder]="placeholder"
+      [value]="value"
+      [attr.maxlength]="maxInputCount ? maxInputCount : null"
+      (input)="onInput($event)"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+      [disabled]="disabled"
+    ></textarea>
+
+    <span *ngIf="trailingStateIcon" class="vd-textarea__trailing-icon state">
+      <vd-icon [name]="trailingStateIcon"></vd-icon>
+    </span>
+
+    <span class="vd-textarea__trailing-action-container" *ngIf="trailingActionIcon">
+      <vd-icon-button
+        class="vd-textarea__trailing-action"
+        variant="transparent"
+        color="neutral"
+        [disabled]="disabled"
+        [icon]="trailingActionIcon"
+        (click)="onTrailingActionClick(); $event.stopPropagation()"
+      ></vd-icon-button>
+    </span>
+  </div>
+
+  <!-- Helper & counter row -->
+  <div class="vd-textarea__helper-row" *ngIf="helperText || maxInputCount">
+    <span *ngIf="helperText" class="vd-textarea__helper-text body-small">
+      {{ helperText }}
+    </span>
+
+    <span *ngIf="maxInputCount" class="vd-textarea__input-counter body-small">
+      {{ value.length || 0 }}/{{ maxInputCount }}
+    </span>
+  </div>
+</div>

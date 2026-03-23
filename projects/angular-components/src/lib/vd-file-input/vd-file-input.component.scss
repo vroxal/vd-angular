@@ -1,0 +1,250 @@
+:host {
+  display: block;
+  width: 100%;
+
+  // --- Token aliases (component-scoped CSS variables) ---
+  --vd-file-input-dropzone-bg: var(--vd-color-background-default-secondary);
+  --vd-file-input-dropzone-bg-disabled: var(--vd-color-background-default-disabled);
+
+  --vd-file-input-border-color: var(--vd-color-border-default-secondary);
+  --vd-file-input-border-hover: var(--vd-color-border-default-base);
+  --vd-file-input-border-disabled: var(--vd-color-border-default-disabled);
+  --vd-file-input-border-drag: var(--vd-color-border-info-base);
+  --vd-file-input-bg-drag: var(--vd-color-background-info-secondary);
+
+  --vd-file-input-text-label: var(--vd-color-content-default-base);
+  --vd-file-input-text-secondary: var(--vd-color-content-default-secondary);
+  --vd-file-input-text-disabled: var(--vd-color-content-default-disabled);
+  --vd-file-input-text-error: var(--vd-color-content-error-base);
+  --vd-file-input-text-action: var(--vd-color-content-primary-base);
+
+  --vd-file-input-icon-color: var(--vd-color-content-default-secondary);
+  --vd-file-input-icon-bg: var(--vd-color-background-default-tertiary);
+
+  --vd-file-input-radius: var(--vd-scale-border-radius-lg);
+  --vd-file-input-border-width: var(--vd-scale-border-width-sm);
+  --vd-file-input-padding: var(--vd-scale-spacing-300);
+  --vd-file-input-gap: var(--vd-scale-spacing-200);
+}
+
+// --- Error state variable overrides ---
+.vd-file-input--error {
+  --vd-file-input-border-color: var(--vd-color-border-error-base);
+  --vd-file-input-text-label: var(--vd-color-content-error-base);
+  --vd-file-input-dropzone-bg: var(--vd-color-background-error-secondary);
+
+  // When focused in error state, revert label to default color
+  &:focus-within {
+    --vd-file-input-text-label: var(--vd-color-content-default-base);
+  }
+}
+
+// --- Disabled state variable overrides ---
+.vd-file-input--disabled {
+  --vd-file-input-dropzone-bg: var(--vd-file-input-dropzone-bg-disabled);
+  --vd-file-input-border-color: var(--vd-file-input-border-disabled);
+  --vd-file-input-text-label: var(--vd-file-input-text-disabled);
+  --vd-file-input-text-secondary: var(--vd-file-input-text-disabled);
+  --vd-file-input-text-action: var(--vd-file-input-text-disabled);
+  --vd-file-input-icon-color: var(--vd-color-content-default-disabled);
+}
+
+.vd-file-input {
+  width: 100%;
+
+  // --- Label row ---
+  &__label-row {
+    display: flex;
+    align-items: center;
+    gap: var(--vd-scale-spacing-200);
+    margin-bottom: var(--vd-scale-spacing-100);
+  }
+
+  &__label {
+    color: var(--vd-file-input-text-label);
+    cursor: default;
+  }
+
+  &__optional {
+    flex: 1;
+    text-align: right;
+    margin: 0;
+    color: var(--vd-file-input-text-secondary);
+  }
+
+  // --- Dropzone ---
+  &__dropzone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--vd-file-input-padding);
+    background: var(--vd-file-input-dropzone-bg);
+    border: var(--vd-file-input-border-width) solid var(--vd-file-input-border-color);
+    border-radius: var(--vd-file-input-radius);
+
+    cursor: pointer;
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease;
+    outline: none;
+
+    &:hover:not(.vd-file-input__dropzone--disabled) {
+      border-color: var(--vd-file-input-border-hover);
+    }
+
+    &:focus-visible:not(.vd-file-input__dropzone--disabled) {
+      border-color: var(--vd-file-input-border-hover);
+      outline: var(--vd-scale-border-width-md) solid var(--vd-color-border-primary-tertiary);
+      outline-offset: var(--vd-scale-spacing-50);
+
+      --vd-file-input-dropzone-bg: var(--vd-color-background-default-secondary);
+      //   --vd-file-input-border-color: var(--vd-color-border-default-secondary);
+    }
+
+    &--drag-over {
+      border-color: var(--vd-file-input-border-drag) !important;
+      background: var(--vd-file-input-bg-drag) !important;
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+  }
+
+  // --- Horizontal layout (compact inline) ---
+  &--horizontal &__dropzone {
+    gap: var(--vd-file-input-gap);
+    border-radius: var(--vd-scale-border-radius-md);
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: calc(var(--vd-scale-spacing-300) - var(--vd-file-input-border-width));
+  }
+
+  &--horizontal &__icon-wrapper {
+    display: inline-flex;
+    color: var(--vd-file-input-icon-color);
+    flex-shrink: 0;
+  }
+
+  // --- Vertical layout (large centered) ---
+  &--vertical &__dropzone {
+    flex-direction: column;
+    gap: var(--vd-scale-spacing-200);
+    padding: var(--vd-scale-spacing-600) var(--vd-file-input-padding);
+    min-height: 160px;
+  }
+
+  &--vertical &__icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--vd-scale-border-radius-full);
+    background: var(--vd-file-input-icon-bg);
+    color: var(--vd-file-input-icon-color);
+    flex-shrink: 0;
+  }
+
+  &--vertical &__placeholder {
+    text-align: center;
+  }
+  // --- Shared content text ---
+  &__action-text {
+    color: var(--vd-file-input-text-action);
+    font-weight: 600;
+    margin-right: var(--vd-scale-spacing-100);
+  }
+  &__max-size {
+    flex: 1;
+    text-align: right;
+  }
+
+  &__drag-text {
+    color: var(--vd-file-input-text-secondary);
+  }
+
+  // --- Footer row ---
+  &__footer-row {
+    display: flex;
+    justify-content: space-between;
+    color: var(--vd-file-input-text-secondary);
+  }
+  // Error helper text
+  &--error &__helper-text {
+    color: var(--vd-file-input-text-error);
+  }
+  &__helper-row {
+    margin-top: var(--vd-scale-spacing-100);
+  }
+  // --- Selected file list ---
+  &__file-list {
+    list-style: none;
+    margin: var(--vd-scale-spacing-100) 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--vd-scale-spacing-100);
+  }
+
+  &__file-item {
+    display: flex;
+    align-items: center;
+    gap: var(--vd-scale-spacing-200);
+    padding: var(--vd-scale-spacing-200) var(--vd-scale-spacing-300);
+    background: var(--vd-color-background-default-secondary);
+    border: var(--vd-file-input-border-width) solid var(--vd-color-border-default-secondary);
+    border-radius: var(--vd-file-input-radius);
+    transition: border-color 0.15s ease;
+
+    &:hover {
+      border-color: var(--vd-color-border-default-base);
+    }
+  }
+
+  &__file-icon {
+    display: inline-flex;
+    color: var(--vd-file-input-icon-color);
+    flex-shrink: 0;
+  }
+
+  &__file-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  &__file-name {
+    color: var(--vd-file-input-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__file-size {
+    color: var(--vd-file-input-text-secondary);
+  }
+
+  &__file-remove {
+    flex-shrink: 0;
+  }
+
+  // --- Add more files button ---
+  &__add-more {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--vd-scale-spacing-100);
+    margin-top: var(--vd-scale-spacing-100);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: var(--vd-file-input-text-action);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

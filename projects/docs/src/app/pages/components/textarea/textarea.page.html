@@ -1,0 +1,348 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Textarea'"
+    [subtitle]="'Textareas capture multi-line user input such as comments, notes, or descriptions.'"
+  >
+  </app-doc-page-header>
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Basic Textarea</h3>
+        <p>Standard textarea for multi-line input</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-textarea label="Description" placeholder="Enter description..."></vd-textarea>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">States</h3>
+        <p>Contains: Default, Success, Error, Warning</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-textarea label="Default" placeholder="Default state"></vd-textarea>
+          <vd-textarea
+            label="Success"
+            placeholder="Success state"
+            state="success"
+            helperText="Input is valid"
+          ></vd-textarea>
+          <vd-textarea
+            label="Error"
+            placeholder="Error state"
+            state="error"
+            helperText="Input has an error"
+          ></vd-textarea>
+          <vd-textarea
+            label="Warning"
+            placeholder="Warning state"
+            state="warning"
+            helperText="Input has a warning"
+          ></vd-textarea>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Optional & Disabled</h3>
+        <p>Textarea can be marked as optional or disabled</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-textarea
+            label="Optional Field"
+            [optional]="true"
+            placeholder="Optional..."
+          ></vd-textarea>
+          <vd-textarea
+            label="Disabled Field"
+            [disabled]="true"
+            placeholder="Disabled..."
+          ></vd-textarea>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Character Limit</h3>
+        <p>Textarea can have a maximum character count with counter</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-textarea
+            label="Limited Text"
+            placeholder="Max 250 characters..."
+            [maxInputCount]="250"
+          ></vd-textarea>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Hint & Helper Text</h3>
+        <p>Use hint for tooltips and helper text for guidance</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-textarea
+            label="Biography"
+            placeholder="Tell us about yourself..."
+            hintText="This will appear on your profile"
+            helperText="Maximum 500 characters for optimal display"
+          ></vd-textarea>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">With Icons</h3>
+        <p>Textarea with leading icon</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-textarea
+            label="Comment"
+            placeholder="Write your thoughts..."
+            leadingIcon="vd-icon-placeholder"
+          ></vd-textarea>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Trailing Action</h3>
+        <p>Textarea with trailing action icon for buttons like send or submit</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-textarea
+            label="Message"
+            placeholder="Type your message..."
+            trailingActionIcon="vd-icon-arrow-right"
+          ></vd-textarea>
+          <vd-textarea
+            label="Feedback"
+            placeholder="Share your feedback..."
+            trailingActionIcon="vd-icon-plus"
+          ></vd-textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the textarea component in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-textarea.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the textarea component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="textarea-example.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Implementation with all available APIs</h3>
+          <p>Here is an example of using the textarea component with all available APIs:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allImplementationSnippet"
+            fileName="textarea-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Listening to Events</h3>
+          <p>Handle input changes by listening to the (valueChange) and (valueCommit) events:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="eventsSnippet"
+            fileName="textarea-events.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="eventsComponentSnippet"
+            fileName="textarea-events.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Using Character Limits</h3>
+          <p>Control maximum character input and display a counter:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="characterLimitSnippet"
+            fileName="textarea-character-limit.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Using Trailing Action</h3>
+          <p>Add a trailing action icon for buttons like send, submit, or attachment:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="trailingActionSnippet"
+            fileName="textarea-trailing-action.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="trailingActionComponentSnippet"
+            fileName="textarea-trailing-action.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+        </div>
+        <vd-datatable [data]="outputsData" [columns]="eventsColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-group usage-guidelines">
+  <div class="content-group-title">
+    <h2 class="headline-large">Best Practices</h2>
+  </div>
+  <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Textarea when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Textarea when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Use textareas for multi-line input like comments, descriptions, or feedback</li>
+          <li>Provide clear labels that describe the expected content</li>
+          <li>Use placeholder text to give users hints about format or content</li>
+          <li>Set appropriate maxInputCount for character-constrained fields</li>
+          <li>Use helper text to guide users on expected content length or format</li>
+          <li>Show validation feedback with state prop and helper text</li>
+          <li>Consider default height that accommodates typical input</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+</div>
+
+<div class="content-group playground">
+  <div class="content-group-title">
+    <h2 class="headline-large">Component playground</h2>
+    <p class="body-large">Customize the textarea features in this section</p>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-select
+              label="State"
+              [value]="state"
+              (valueChange)="$event !== null && (state = $event)"
+              [options]="stateOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Max Characters"
+              [value]="maxInputCount"
+              (valueChange)="maxInputCount = $event"
+              [options]="maxInputOptions"
+            ></vd-select>
+
+            <label class="switch-label">
+              <span>Optional</span>
+              <vd-switch [checked]="optional" (change)="optional = $event"></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Disabled</span>
+              <vd-switch [checked]="disabled" (change)="disabled = $event"></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-textarea
+              [label]="label"
+              [placeholder]="placeholder"
+              [(value)]="value"
+              [optional]="optional"
+              [disabled]="disabled"
+              [state]="state"
+              [helperText]="helperText"
+              [hintText]="hintText"
+              [maxInputCount]="maxInputCount || undefined"
+            ></vd-textarea>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

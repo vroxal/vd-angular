@@ -1,0 +1,377 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Tab'"
+    [subtitle]="'Tabs are used to organize content by grouping similar information on the same page.'"
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Type</h3>
+        <p>Contains default and boxed tab styles</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-tab
+            [tabs]="demoTabs"
+            value="tab1"
+            type="default"
+            direction="horizontal"
+          ></vd-tab
+          ><vd-tab
+            [tabs]="demoTabs"
+            value="tab1"
+            type="boxed"
+            direction="horizontal"
+          ></vd-tab>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Boxed</h3>
+        <p>Boxed tab style with a filled background on the active tab</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-tab
+            [tabs]="demoTabs"
+            value="tab1"
+            type="boxed"
+            direction="horizontal"
+          ></vd-tab>
+        </div>
+      </div>
+
+      <!-- Default type - Vertical -->
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Vertical</h3>
+        <p>Vertical layout of the tabs with left-aligned underline indicator</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-tab
+            [tabs]="demoTabs"
+            value="tab1"
+            type="default"
+            direction="vertical"
+          ></vd-tab>
+          <vd-tab
+            [tabs]="demoTabs"
+            value="tab1"
+            type="boxed"
+            direction="vertical"
+          ></vd-tab>
+        </div>
+      </div>
+
+      <!-- Without icons -->
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Without Icons</h3>
+        <p>Tabs can be used with labels only</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-tab [tabs]="demoTabsNoIcons" value="tab1"></vd-tab>
+        </div>
+      </div>
+
+      <!-- With disabled tab -->
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Disabled Tab</h3>
+        <p>Individual tabs can be disabled to prevent selection</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-tab [tabs]="demoTabsWithDisabled" value="tab1"></vd-tab>
+        </div>
+      </div>
+
+      <!-- With tab content -->
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">With Tab Content</h3>
+        <p>Use the active value to conditionally render content for each tab panel</p>
+        </div>
+        <div class="component-showcase-container tab-group-showcase">
+          <vd-tab [tabs]="demoTabsNoIcons" [(value)]="contentDemoTab"></vd-tab>
+          <div style="padding: var(--vd-scale-spacing-300)">
+            @if (contentDemoTab === 'tab1') {
+              <p class="body-medium">This is the <strong>Overview</strong> panel content.</p>
+            }
+            @if (contentDemoTab === 'tab2') {
+              <p class="body-medium">This is the <strong>Settings</strong> panel content.</p>
+            }
+            @if (contentDemoTab === 'tab3') {
+              <p class="body-medium">This is the <strong>Profile</strong> panel content.</p>
+            }
+            @if (contentDemoTab === 'tab4') {
+              <p class="body-medium">This is the <strong>Reports</strong> panel content.</p>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the tab group component and configuration interface:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-tab.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the tab group component:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define tabs in TypeScript</h4>
+          <code-container
+            [code]="basicComponentSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Use in template</h4>
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Boxed Style</h3>
+          <p>Use the boxed type for a filled background style:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="boxedImplementationSnippet"
+            fileName="boxed-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Vertical Layout</h3>
+          <p>Use vertical direction for sidebar-style tab navigation:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="verticalImplementationSnippet"
+            fileName="vertical-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Listening to Events</h3>
+          <p>Handle tab changes with value binding and event callbacks:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="eventsSnippet"
+            fileName="tab-events.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="eventsComponentSnippet"
+            fileName="tab-events.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Rendering Tab Content</h3>
+          <p>
+            Use the two-way bound <code>value</code> to conditionally render content for each tab
+            panel in your own template:
+          </p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define tabs in TypeScript</h4>
+          <code-container
+            [code]="tabContentComponentSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Render content conditionally in template</h4>
+          <code-container
+            [code]="tabContentTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Disabled Tabs</h3>
+          <p>Disable individual tabs in the config:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="disabledSnippet"
+            fileName="disabled-tabs.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">VdTabConfig Interface</h3>
+          <p class="body-large">Properties for each tab configuration object:</p>
+        </div>
+        <vd-datatable
+          [data]="tabConfigData"
+          [columns]="tabConfigColumnsWithTemplate"
+        ></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+        </div>
+        <vd-datatable [data]="outputsData" [columns]="eventsColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Tab when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Tab when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Use tabs to organize related content that users need to switch between</li>
+          <li>Keep the number of tabs between 2–6 for optimal usability</li>
+          <li>Use concise, descriptive labels for each tab</li>
+          <li>Use the 'default' type for primary page-level navigation</li>
+          <li>Use the 'boxed' type for secondary or embedded tab navigation</li>
+          <li>Use icons alongside labels to improve scanability</li>
+          <li>Disable tabs that are temporarily unavailable rather than hiding them</li>
+          <li>Use vertical tabs for sidebar-style navigation with many items</li>
+          <li>Always set one tab as the default active tab</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+  </div>
+
+  <div class="content-group playground">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component playground</h2>
+      <p class="body-large">Customize the tab features in this section</p>
+    </div>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-select
+              label="Type"
+              [value]="type"
+              (valueChange)="$event && (type = $event)"
+              [options]="typeOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Direction"
+              [value]="direction"
+              (valueChange)="$event && (direction = $event)"
+              [options]="directionOptions"
+            ></vd-select>
+
+            <label class="switch-label">
+              <span>Show Icons</span>
+              <vd-switch [checked]="showIcons" (change)="showIcons = $event"></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-tab
+              [tabs]="playgroundTabs"
+              [(value)]="activeTab"
+              [type]="type"
+              [direction]="direction"
+            ></vd-tab>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

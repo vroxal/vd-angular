@@ -1,0 +1,272 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Typography'"
+    [subtitle]="
+      'Use typography scales and semantic text styles to maintain readable, brand-aligned content hierarchy.'
+    "
+  ></app-doc-page-header>
+
+  <!-- Overview Section -->
+  <div class="content-group overview">
+    <div class="content-group-title">
+      <h2 class="headline-large">Overview</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <p class="body-large" style="margin-bottom: var(--vd-scale-spacing-400)">
+          The VD typography system provides a comprehensive set of predefined semantic mappings and
+          typography classes. All text must use these predefined scales — never choose size based on
+          visual preference. Choose based on semantic intent.
+        </p>
+        <vd-alert
+          color="info"
+          description="Typography must communicate meaning, hierarchy, and readability. Scale for responsiveness is handled by the classes automatically."
+          [action]="false"
+          [closable]="false"
+          [showIcon]="false"
+        >
+        </vd-alert>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="headline-small">Type face</h3>
+          <p class="body-large" style="margin-bottom: var(--vd-scale-spacing-400)">
+            The typeface used can be different based on the brand, each brand has its own typeface.
+            Vroxal Design uses Poppins as its default typeface. The following typeface are used by
+            different brand
+          </p>
+        </div>
+        <div class="brand-typeface-container">
+          <div class="typeface-example">
+            <div class="headline-large">Poppins</div>
+            <p class="label-large">Consumer</p>
+          </div>
+          <div class="typeface-example">
+            <div class="headline-large">Avenier Next</div>
+            <p class="label-large">Business</p>
+          </div>
+          <div class="typeface-example">
+            <div class="headline-large">Inter</div>
+            <p class="label-large">Corporate</p>
+          </div>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="headline-small">Font weight</h3>
+          <p class="body-large" style="margin-bottom: var(--vd-scale-spacing-400)">
+            Vroxal Design uses four font weights across all its brand variants. The following font weights
+            are used by different brand
+          </p>
+        </div>
+        <div class="brand-typeface-container">
+          <div class="typeface-example">
+            <div class="title-large">Regular</div>
+            <p class="label-large">400</p>
+          </div>
+          <div class="typeface-example">
+            <div class="title-large">Medium</div>
+            <p class="label-large">500</p>
+          </div>
+          <div class="typeface-example">
+            <div class="title-large">SemiBold</div>
+            <p class="label-large">600</p>
+          </div>
+          <div class="typeface-example">
+            <div class="title-large">Bold</div>
+            <p class="label-large">700</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Type Scale Section -->
+    <div class="content-group component-variations">
+      <div class="content-group-title">
+        <h2 class="headline-large">Type Scale</h2>
+        <p class="body-large">
+          The typography scale provides predefined sizes with corresponding line heights and letter
+          spacing for optimal readability and hierarchy.
+        </p>
+      </div>
+      <div class="content-group-container">
+        <div class="component-variation-group type-scale-group">
+          <div class="type-examples">
+            <div *ngFor="let item of typeScale" class="type-example" [ngClass]="item.className">
+              <div class="example-text">{{ item.label }}</div>
+              <p>{{ item.specs }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Semantic HTML Mapping Section -->
+    <div class="content-group component-variations">
+      <div class="content-group-title">
+        <h2 class="headline-large">Semantic HTML Mapping</h2>
+        <p class="body-large">
+          Each HTML element is mapped to a specific typography level based on its semantic purpose.
+          Use these mappings to ensure consistent hierarchy across all pages.
+        </p>
+      </div>
+      <div class="content-group-container">
+        <vd-datatable [data]="semanticMappings" [columns]="semanticMappingColumns"></vd-datatable>
+      </div>
+    </div>
+
+    <!-- Type Scale Reference Table -->
+    <div class="content-group component-variations">
+      <div class="content-group-title">
+        <h2 class="headline-large">Type Scale Reference</h2>
+        <p class="body-large">Complete reference table for all typography tokens:</p>
+      </div>
+      <div class="content-group-container">
+        <vd-datatable [data]="typeScales" [columns]="typeScaleColumns"></vd-datatable>
+      </div>
+    </div>
+
+    <!-- Utility Classes Section -->
+    <div class="content-group component-variations">
+      <div class="content-group-title">
+        <h2 class="headline-large">Utility Classes</h2>
+        <p class="body-large">
+          Use classes when semantic HTML is not sufficient. Apply these classes directly to elements
+          to override their default typography.
+        </p>
+      </div>
+      <div class="content-group-container utility-classes-container">
+        <div
+          *ngFor="let group of utilityClassGroups"
+          class="component-variation-group utility-class-group"
+        >
+          <div class="title-container">
+            <h3 class="title-large">{{ group.name }}</h3>
+          </div>
+          <div class="utility-class-list">
+            <span *ngFor="let cls of group.classes" class="utility-class-chip label-medium">{{
+              cls
+            }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Usage Guidelines Section -->
+    <div class="content-group usage-guidelines">
+      <div class="content-group-title">
+        <h2 class="headline-large">Usage Guidelines</h2>
+      </div>
+      <div class="content-group-container">
+        <div class="guideline-section">
+          <div class="title-container">
+            <h3 class="title-large">Applying Typography</h3>
+            <p class="body-medium">Use utility classes to ensure consistent sizing and styling:</p>
+          </div>
+          <div class="guideline">
+            <code-container
+              [code]="typeScaleSnippet"
+              language="angular-html"
+              fileName="typography-usage.html"
+            ></code-container>
+          </div>
+        </div>
+        <div class="guideline-section">
+          <div class="title-container">
+            <h3 class="title-large">Using Font Families</h3>
+            <p class="body-medium">Font family automatically adjusts based on the active brand:</p>
+          </div>
+          <div class="guideline">
+            <code-container
+              [code]="fontFamilySnippet"
+              language="css"
+              fileName="font-families.css"
+            ></code-container>
+          </div>
+        </div>
+        <div class="guideline-section">
+          <div class="title-container">
+            <h3 class="title-large">Brand Variants</h3>
+            <p class="body-medium">
+              Switch between brand variants to change the active font family:
+            </p>
+          </div>
+          <div class="guideline">
+            <code-container
+              [code]="brandVariantSnippet"
+              language="html"
+              fileName="brand-variants.html"
+            ></code-container>
+          </div>
+        </div>
+        <div class="guideline-section">
+          <div class="title-container">
+            <h3 class="title-large">Color Rules</h3>
+            <p class="body-medium">
+              Text color must use <code>var(--vd-color-content-default-base)</code>. Do not
+              override unless using a semantic color token.
+            </p>
+          </div>
+          <div class="guideline">
+            <code-container
+              [code]="colorRuleSnippet"
+              language="css"
+              fileName="color-rules.css"
+            ></code-container>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Implementation Examples Section -->
+
+    <!-- Best Practices Section -->
+    <div class="content-group usage-guidelines">
+      <div class="content-group-title">
+        <h2 class="headline-large">Best Practices</h2>
+      </div>
+      <div class="content-group-container">
+        <!-- Typography Decision Flow -->
+        <div class="guideline-section">
+          <h3 class="title-large">Typography Decision Flow</h3>
+          <ul>
+            <li>Is it a page hero? → Use display scale</li>
+            <li>Is it section structure? → Use headline scale</li>
+            <li>Is it a component title? → Use title scale</li>
+            <li>Is it reading content? → Use body scale</li>
+            <li>Is it UI control text? → Use label scale</li>
+          </ul>
+        </div>
+
+        <!-- Disallowed Practices -->
+        <div class="guideline-section">
+          <h3 class="title-large">Disallowed Practices</h3>
+          <ul>
+            <li>Do not style headings manually with custom font sizes or weights.</li>
+            <li>Do not create custom text classes outside of the VD typography system.</li>
+            <li>Do not mix typography levels arbitrarily across components.</li>
+            <li>Do not skip hierarchy levels (e.g., jumping from display to body).</li>
+            <li>Do not use &lt;h1&gt; multiple times per page hero context.</li>
+          </ul>
+        </div>
+
+        <!-- Do's and Don'ts -->
+        <div class="guideline-section">
+          <h3 class="title-large">Do's and Don'ts</h3>
+          <div class="guideline">
+            <code-container
+              [code]="bestPracticeDoSnippet"
+              language="css"
+              fileName="do.css"
+            ></code-container>
+          </div>
+          <div class="guideline">
+            <code-container
+              [code]="bestPracticeDontSnippet"
+              language="css"
+              fileName="dont.css"
+            ></code-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

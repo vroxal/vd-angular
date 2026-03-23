@@ -1,0 +1,316 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Dialog'"
+    [subtitle]="'Dialogs display focused content in a modal surface with optional confirm and cancel actions.'"
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Actions</h3>
+          <p>Dialog can be opened with footer actions or as a read-only modal.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button
+            variant="subtle"
+            color="neutral"
+            label="Open Action Dialog"
+            (click)="openDefaultExample(dialogContent)"
+          ></vd-button>
+          <vd-button
+            variant="subtle"
+            color="neutral"
+            label="Open No-Actions Dialog"
+            (click)="openNoActionsExample(readOnlyDialogContent)"
+          ></vd-button>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Template Context</h3>
+          <p>Pass runtime values into the slot template with the context option.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button
+            variant="subtle"
+            color="neutral"
+            label="Open Context Slot"
+            (click)="openContextExample(contextDialogContent)"
+          ></vd-button>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Long Form Content</h3>
+          <p>
+            Long content demonstrates max-height capping and internal content scrolling for
+            overflow.
+          </p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button
+            variant="subtle"
+            color="neutral"
+            label="Open Long Form Dialog"
+            (click)="openLongContentExample(longFormDialogContent)"
+          ></vd-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the dialog service in your component:</p>
+        </div>
+        <code-container
+          [code]="importCodeSnippet"
+          fileName="my.component.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Define Dialog Content</h3>
+          <p>Use an ng-template for dynamic slot content.</p>
+        </div>
+        <code-container
+          [code]="basicImplementationTemplateSnippet"
+          fileName="my.component.html"
+          language="angular-html"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Open Dialog</h3>
+          <p>Call open() with template and configuration.</p>
+        </div>
+        <code-container
+          [code]="basicImplementationTypescriptSnippet"
+          fileName="my.component.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Pass Slot Context</h3>
+          <p>Use the context option to provide runtime data to your template.</p>
+        </div>
+        <code-container
+          [code]="slotWithContextSnippet"
+          fileName="context-slot.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Render Without Footer Actions</h3>
+          <p>Omit action labels to keep the dialog read-only.</p>
+        </div>
+        <code-container
+          [code]="noActionsSnippet"
+          fileName="no-actions-dialog.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Handle Output Result</h3>
+          <p>The promise from open() identifies how the dialog was closed.</p>
+        </div>
+        <code-container
+          [code]="outputHandlingSnippet"
+          fileName="output-handling.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Overflow Behavior</h3>
+          <p>
+            Dialog height is capped to
+            <code>calc(100vh - (var(--vd-scale-spacing-1600) * 2))</code>. When content exceeds
+            the available height, only the content area scrolls.
+          </p>
+        </div>
+        <code-container
+          [code]="longContentSnippet"
+          fileName="long-content-dialog.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Configuration Object (VdDialogConfig)</h3>
+          <p class="body-large">Properties passed to open().</p>
+        </div>
+        <vd-datatable [data]="apiConfigData" [columns]="apiColumns"></vd-datatable>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs (Promise Result)</h3>
+          <p class="body-large">Result returned by open() after user interaction.</p>
+        </div>
+        <vd-datatable [data]="outputData" [columns]="outputColumns"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>For focused tasks that require temporary modal attention</li>
+          <li>When content must be injected dynamically via templates</li>
+          <li>For review flows that need explicit confirm/cancel actions</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>For long, multi-step flows (use dedicated pages or drawer)</li>
+          <li>For transient feedback (use toast or alert)</li>
+          <li>When users should keep interacting with background content</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Keep title concise and action-oriented</li>
+          <li>Use clear primary and secondary action labels</li>
+          <li>Reserve the primary action for the most important outcome</li>
+          <li>Keep content scannable and avoid overcrowding the modal</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group playgrouund">
+    <div class="content-group-title">
+      <h2 class="headline-large">Service playground</h2>
+      <p class="body-large">Customize dialog configuration and open it.</p>
+    </div>
+    <div class="content-group-container playground-container">
+      <div class="component-control">
+        <div class="controls">
+          <vd-input label="Title" [(value)]="title"></vd-input>
+
+          <vd-switch
+            label="Show Primary Action"
+            [checked]="showPrimaryAction"
+            (change)="showPrimaryAction = $event"
+          ></vd-switch>
+          <vd-input
+            label="Primary Action Label"
+            [(value)]="primaryActionLabel"
+            [disabled]="!showPrimaryAction"
+          ></vd-input>
+
+          <vd-switch
+            label="Show Secondary Action"
+            [checked]="showSecondaryAction"
+            (change)="showSecondaryAction = $event"
+          ></vd-switch>
+          <vd-input
+            label="Secondary Action Label"
+            [(value)]="secondaryActionLabel"
+            [disabled]="!showSecondaryAction"
+          ></vd-input>
+
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="component-showcase-container">
+          <vd-button label="Open Dialog" (click)="openPlayground(playgroundContent)"></vd-button>
+          <p class="body-medium" *ngIf="lastResult">{{ lastResult }}</p>
+        </div>
+      </div>
+
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.ts"
+        language="angular-ts"
+      ></code-container>
+    </div>
+  </div>
+
+  <ng-template #dialogContent>
+    <vd-input label="Name" placeholder="Enter name"></vd-input>
+    <vd-textarea label="Details" placeholder="Enter details"></vd-textarea>
+  </ng-template>
+
+  <ng-template #readOnlyDialogContent>
+    <vd-alert
+      title="Read-only details"
+      description="This dialog intentionally omits action buttons."
+      color="info"
+    ></vd-alert>
+  </ng-template>
+
+  <ng-template #contextDialogContent let-summary="summary">
+    <h3 class="title-medium">{{ summary.title }}</h3>
+    <p class="body-medium">{{ summary.description }}</p>
+    <vd-alert
+      [title]="summary.alertTitle"
+      [description]="summary.alertDescription"
+      color="info"
+    ></vd-alert>
+  </ng-template>
+
+  <ng-template #playgroundContent>
+    <vd-input label="Name" placeholder="Enter name" [(value)]="slotContentData.name"></vd-input>
+    <vd-textarea
+      label="Details"
+      placeholder="Enter details"
+      [(value)]="slotContentData.details"
+    ></vd-textarea>
+  </ng-template>
+
+  <ng-template #longFormDialogContent>
+    <vd-input label="Business Name" placeholder="Enter business name"></vd-input>
+    <vd-input label="Registration Number" placeholder="Enter registration number"></vd-input>
+    <vd-input label="Primary Contact" placeholder="Enter contact name"></vd-input>
+    <vd-input label="Contact Email" placeholder="Enter contact email"></vd-input>
+    <vd-input label="Contact Phone" placeholder="Enter contact phone"></vd-input>
+    <vd-input label="Address Line 1" placeholder="Enter address line 1"></vd-input>
+    <vd-input label="Address Line 2" placeholder="Enter address line 2"></vd-input>
+    <vd-input label="City" placeholder="Enter city"></vd-input>
+    <vd-input label="Province/State" placeholder="Enter province/state"></vd-input>
+    <vd-input label="Country" placeholder="Enter country"></vd-input>
+    <vd-textarea label="Business Description" placeholder="Enter description"></vd-textarea>
+    <vd-textarea label="Compliance Notes" placeholder="Add compliance notes"></vd-textarea>
+    <vd-textarea label="Reviewer Remarks" placeholder="Add reviewer remarks"></vd-textarea>
+  </ng-template>
+</div>

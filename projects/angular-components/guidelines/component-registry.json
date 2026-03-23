@@ -1,0 +1,723 @@
+{
+  "schemaVersion": "1.0.0",
+  "packageName": "@vroxal/vd-angular",
+  "importPath": "@vroxal/vd-angular",
+  "sourceOfTruth": "projects/angular-components/src/public-api.ts",
+  "lastReviewed": "2026-03-08",
+  "rules": [
+    "If a listed component matches the requirement, use it instead of creating custom UI.",
+    "Import from the package root only; do not deep import from src/lib.",
+    "Use Vroxal Design token variables and semantic typography for any custom CSS around components.",
+    "Prefer service-based APIs for toast, dialog, drawer, and confirmation-dialog flows."
+  ],
+  "components": [
+    {
+      "name": "Button",
+      "className": "VdButton",
+      "selector": "vd-button",
+      "kind": "component",
+      "category": "actions",
+      "useFor": ["primary actions", "secondary actions", "form submission"],
+      "avoidFor": ["route navigation links"],
+      "inputs": [
+        "label",
+        "variant",
+        "color",
+        "size",
+        "rounded",
+        "disabled",
+        "loading",
+        "leftIcon",
+        "rightIcon",
+        "type"
+      ],
+      "outputs": []
+    },
+    {
+      "name": "Icon",
+      "className": "VdIcon",
+      "selector": "vd-icon",
+      "kind": "component",
+      "category": "display",
+      "useFor": ["decorative icons", "status/context icons next to text"],
+      "avoidFor": ["standalone critical actions without accessible label"],
+      "inputs": ["name", "size", "color"],
+      "outputs": []
+    },
+    {
+      "name": "Icon Button",
+      "className": "VdIconButton",
+      "selector": "vd-icon-button",
+      "kind": "component",
+      "category": "actions",
+      "useFor": ["icon-only actions", "toolbar actions"],
+      "avoidFor": ["actions requiring text-heavy labels"],
+      "inputs": ["icon", "ariaLabel", "variant", "color", "size", "rounded", "disabled", "loading"],
+      "outputs": []
+    },
+    {
+      "name": "Input",
+      "className": "VdInput",
+      "selector": "vd-input",
+      "kind": "component",
+      "category": "forms",
+      "useFor": ["single-line text input", "email/password/text fields"],
+      "avoidFor": ["multi-line text", "numeric stepper interactions"],
+      "inputs": [
+        "label",
+        "hintText",
+        "helperText",
+        "optional",
+        "leadingIcon",
+        "trailingActionIcon",
+        "placeholder",
+        "type",
+        "value",
+        "maxInputCount",
+        "readOnly",
+        "disabled",
+        "state"
+      ],
+      "outputs": ["valueChange", "valueCommit", "trailingActionClick", "inputFocus"]
+    },
+    {
+      "name": "Textarea",
+      "className": "VdTextarea",
+      "selector": "vd-textarea",
+      "kind": "component",
+      "category": "forms",
+      "useFor": ["multi-line text input", "notes and descriptions"],
+      "avoidFor": ["single-line compact input"],
+      "inputs": [
+        "label",
+        "hintText",
+        "helperText",
+        "optional",
+        "leadingIcon",
+        "trailingActionIcon",
+        "placeholder",
+        "type",
+        "value",
+        "maxInputCount",
+        "disabled",
+        "state"
+      ],
+      "outputs": ["valueChange", "valueCommit", "trailingActionClick", "inputFocus"]
+    },
+    {
+      "name": "Select",
+      "className": "VdSelect",
+      "selector": "vd-select",
+      "kind": "component",
+      "category": "forms",
+      "useFor": ["single selection from predefined options"],
+      "avoidFor": ["free text entry"],
+      "inputs": [
+        "label",
+        "hintText",
+        "helperText",
+        "optional",
+        "leadingIcon",
+        "placeholder",
+        "disabled",
+        "options",
+        "value",
+        "state"
+      ],
+      "outputs": ["valueChange", "valueCommit", "inputFocus"]
+    },
+    {
+      "name": "Number Input",
+      "className": "VdNumberInput",
+      "selector": "vd-number-input",
+      "kind": "component",
+      "category": "forms",
+      "useFor": ["numeric input with increment/decrement behavior"],
+      "avoidFor": ["plain text fields"],
+      "inputs": [
+        "label",
+        "hintText",
+        "helperText",
+        "optional",
+        "leadingIcon",
+        "trailingActionIcon",
+        "placeholder",
+        "value",
+        "min",
+        "max",
+        "step",
+        "readOnly",
+        "disabled",
+        "state"
+      ],
+      "outputs": ["valueChange", "valueCommit", "trailingActionClick", "inputFocus"]
+    },
+    {
+      "name": "File Input",
+      "className": "VdFileInput",
+      "selector": "vd-file-input",
+      "kind": "component",
+      "category": "forms",
+      "useFor": ["file upload selection"],
+      "avoidFor": ["text or number entry"],
+      "inputs": [
+        "label",
+        "hintText",
+        "optional",
+        "layout",
+        "supportedFiles",
+        "supportingText",
+        "maxSize",
+        "multiple",
+        "disabled",
+        "state",
+        "helperText"
+      ],
+      "outputs": ["filesChange"]
+    },
+    {
+      "name": "Verification Code Input",
+      "className": "VdVerificationCodeInput",
+      "selector": "vd-verification-code-input",
+      "kind": "component",
+      "category": "forms",
+      "useFor": ["OTP and verification code entry"],
+      "avoidFor": ["general text input"],
+      "inputs": [
+        "length",
+        "value",
+        "disabled",
+        "state",
+        "label",
+        "helperText",
+        "autoFocus",
+        "mask"
+      ],
+      "outputs": ["valueChange", "completed"]
+    },
+    {
+      "name": "Checkbox",
+      "className": "VdCheckbox",
+      "selector": "vd-checkbox",
+      "kind": "component",
+      "category": "selection",
+      "useFor": ["independent true/false options", "multi-select option items"],
+      "avoidFor": ["exclusive single-choice selection"],
+      "inputs": [
+        "label",
+        "description",
+        "checked",
+        "indeterminate",
+        "disabled",
+        "id",
+        "name",
+        "ariaLabel"
+      ],
+      "outputs": ["change"]
+    },
+    {
+      "name": "Checkbox Group",
+      "className": "VdCheckboxGroup",
+      "selector": "vd-checkbox-group",
+      "kind": "component",
+      "category": "selection",
+      "useFor": ["grouping related checkbox options"],
+      "avoidFor": ["single-choice selections"],
+      "inputs": ["items", "direction", "value", "disabled"],
+      "outputs": ["valueChange"]
+    },
+    {
+      "name": "Radio Button",
+      "className": "VdRadioButton",
+      "selector": "vd-radio-button",
+      "kind": "component",
+      "category": "selection",
+      "useFor": ["single option in a radio set"],
+      "avoidFor": ["multi-select requirements"],
+      "inputs": ["label", "description", "value", "checked", "disabled", "id", "name", "ariaLabel"],
+      "outputs": ["select"]
+    },
+    {
+      "name": "Radio Group",
+      "className": "VdRadioGroup",
+      "selector": "vd-radio-group",
+      "kind": "component",
+      "category": "selection",
+      "useFor": ["single-choice selection across options"],
+      "avoidFor": ["independent toggles"],
+      "inputs": ["items", "direction", "value", "disabled", "name"],
+      "outputs": ["valueChange"]
+    },
+    {
+      "name": "Switch",
+      "className": "VdSwitch",
+      "selector": "vd-switch",
+      "kind": "component",
+      "category": "selection",
+      "useFor": ["on/off settings toggles"],
+      "avoidFor": ["multi-state selection"],
+      "inputs": ["label", "checked", "disabled"],
+      "outputs": ["change"]
+    },
+    {
+      "name": "Tab",
+      "className": "VdTab",
+      "selector": "vd-tab",
+      "kind": "component",
+      "category": "navigation",
+      "useFor": ["switching between sibling views or sections"],
+      "avoidFor": ["wizard-style step progression"],
+      "inputs": ["tabs", "value", "type", "direction"],
+      "outputs": ["valueChange", "tabChange"]
+    },
+    {
+      "name": "Date Time Picker",
+      "className": "VdDateTimePicker",
+      "selector": "vd-date-time-picker",
+      "kind": "component",
+      "category": "date-time",
+      "useFor": ["single or range date selection with optional time"],
+      "avoidFor": ["simple time-only input"],
+      "inputs": [
+        "mode",
+        "withTime",
+        "label",
+        "hintText",
+        "helperText",
+        "optional",
+        "placeholder",
+        "disabled",
+        "leadingIcon",
+        "showMonthYearSelector",
+        "dropdownPosition",
+        "minDate",
+        "maxDate",
+        "value",
+        "state"
+      ],
+      "outputs": ["valueChange", "inputFocus", "inputBlur"]
+    },
+    {
+      "name": "Single Date Picker",
+      "className": "VdSingleDatePicker",
+      "selector": "vd-single-date-picker",
+      "kind": "component",
+      "category": "date-time",
+      "useFor": ["single date selection"],
+      "avoidFor": ["date range selection"],
+      "inputs": [
+        "label",
+        "hintText",
+        "helperText",
+        "optional",
+        "placeholder",
+        "disabled",
+        "leadingIcon",
+        "showMonthYearSelector",
+        "dropdownPosition",
+        "minDate",
+        "maxDate",
+        "value",
+        "state"
+      ],
+      "outputs": ["valueChange", "inputFocus", "inputBlur"]
+    },
+    {
+      "name": "Range Date Picker",
+      "className": "VdRangeDatePicker",
+      "selector": "vd-range-date-picker",
+      "kind": "component",
+      "category": "date-time",
+      "useFor": ["start and end date selection"],
+      "avoidFor": ["single date selection"],
+      "inputs": [
+        "label",
+        "hintText",
+        "helperText",
+        "optional",
+        "placeholder",
+        "disabled",
+        "leadingIcon",
+        "dropdownPosition",
+        "minDate",
+        "maxDate",
+        "value",
+        "state"
+      ],
+      "outputs": ["valueChange", "inputFocus", "inputBlur"]
+    },
+    {
+      "name": "Time Picker",
+      "className": "VdTimePicker",
+      "selector": "vd-time-picker",
+      "kind": "component",
+      "category": "date-time",
+      "useFor": ["time-only selection"],
+      "avoidFor": ["date selection"],
+      "inputs": [
+        "label",
+        "hintText",
+        "helperText",
+        "optional",
+        "leadingIcon",
+        "trailingActionIcon",
+        "placeholder",
+        "type",
+        "value",
+        "maxInputCount",
+        "disabled",
+        "state"
+      ],
+      "outputs": ["valueChange", "valueCommit", "trailingActionClick", "inputFocus"]
+    },
+    {
+      "name": "Single Date Inline",
+      "className": "VdSingleDateInline",
+      "selector": "vd-single-date-inline",
+      "kind": "component",
+      "category": "date-time",
+      "useFor": ["always-visible single-date calendar interactions"],
+      "avoidFor": ["compact input field workflows"],
+      "inputs": ["value", "showMonthYearSelector", "minDate", "maxDate", "disabled"],
+      "outputs": ["valueChange"]
+    },
+    {
+      "name": "Range Date Inline",
+      "className": "VdRangeDateInline",
+      "selector": "vd-range-date-inline",
+      "kind": "component",
+      "category": "date-time",
+      "useFor": ["always-visible date-range calendar interactions"],
+      "avoidFor": ["single-date workflows"],
+      "inputs": ["value", "minDate", "maxDate", "disabled"],
+      "outputs": ["valueChange"]
+    },
+    {
+      "name": "Datatable",
+      "className": "VdDatatable",
+      "selector": "vd-datatable",
+      "kind": "component",
+      "category": "data",
+      "useFor": ["tabular data rendering with defined columns"],
+      "avoidFor": ["small card-style content"],
+      "inputs": [
+        "data",
+        "columns",
+        "expandedColumns",
+        "actions",
+        "currentPage",
+        "totalPages",
+        "rowsPerPage",
+        "totalRows"
+      ],
+      "outputs": ["actionTriggered", "rowClicked", "pageChange"]
+    },
+    {
+      "name": "Pagination",
+      "className": "VdPagination",
+      "selector": "vd-pagination",
+      "kind": "component",
+      "category": "data",
+      "useFor": ["navigating paged datasets"],
+      "avoidFor": ["infinite-scroll-only experiences"],
+      "inputs": ["totalPages", "currentPage"],
+      "outputs": ["pageChange"]
+    },
+    {
+      "name": "Accordion",
+      "className": "VdAccordion",
+      "selector": "vd-accordion",
+      "kind": "component",
+      "category": "data",
+      "useFor": ["collapsible content sections"],
+      "avoidFor": ["critical always-visible content"],
+      "inputs": ["title", "variant", "icon", "active"],
+      "outputs": []
+    },
+    {
+      "name": "Badge",
+      "className": "VdBadge",
+      "selector": "vd-badge",
+      "kind": "component",
+      "category": "feedback",
+      "useFor": ["small status labels", "counts and tags"],
+      "avoidFor": ["long descriptive messages"],
+      "inputs": ["label", "variant", "color", "size", "rounded"],
+      "outputs": []
+    },
+    {
+      "name": "Alert",
+      "className": "VdAlert",
+      "selector": "vd-alert",
+      "kind": "component",
+      "category": "feedback",
+      "useFor": ["inline status, warning, success, or error messages"],
+      "avoidFor": ["short-lived toasts"],
+      "inputs": [
+        "title",
+        "description",
+        "color",
+        "action",
+        "closable",
+        "actionLabel",
+        "actionInline",
+        "icon",
+        "onClose",
+        "onAction"
+      ],
+      "outputs": []
+    },
+    {
+      "name": "Toast",
+      "className": "VdToast",
+      "selector": "vd-toast",
+      "kind": "component",
+      "category": "feedback",
+      "useFor": ["transient notification host"],
+      "avoidFor": ["blocking confirmation flows"],
+      "preferredApi": "VdToastService.show(...)",
+      "inputs": ["maxStack"],
+      "outputs": []
+    },
+    {
+      "name": "Progress Tracker",
+      "className": "VdProgressTracker",
+      "selector": "vd-progress-tracker",
+      "kind": "component",
+      "category": "feedback",
+      "useFor": ["multi-step process progress"],
+      "avoidFor": ["single-step status"],
+      "inputs": [
+        "items",
+        "direction",
+        "indicatorType",
+        "showDescription",
+        "showConnector",
+        "defaultIcon"
+      ],
+      "outputs": ["itemClick"]
+    },
+    {
+      "name": "Empty State",
+      "className": "VdEmptyState",
+      "selector": "vd-empty-state",
+      "kind": "component",
+      "category": "feedback",
+      "useFor": [
+        "empty data views",
+        "first-use screens with no content yet",
+        "guiding users to the next action when content is unavailable"
+      ],
+      "avoidFor": ["loading states", "error alert messaging", "content-rich instructional pages"],
+      "inputs": [
+        "title",
+        "description",
+        "icon",
+        "showIcon",
+        "boxed",
+        "primaryActionLabel",
+        "secondaryActionLabel"
+      ],
+      "outputs": ["primaryActionClick", "secondaryActionClick"]
+    },
+    {
+      "name": "Loading State",
+      "className": "VdLoadingState",
+      "selector": "vd-loading-state",
+      "kind": "component",
+      "category": "feedback",
+      "useFor": [
+        "loading placeholders while async data is being fetched",
+        "communicating in-progress operations with contextual text"
+      ],
+      "avoidFor": ["empty data states after loading completes", "error or warning messages"],
+      "inputs": ["title", "description"],
+      "outputs": []
+    },
+    {
+      "name": "Divider",
+      "className": "VdDivider",
+      "selector": "vd-divider",
+      "kind": "component",
+      "category": "layout",
+      "useFor": ["visual separation between sections"],
+      "avoidFor": ["spacing-only adjustments"],
+      "inputs": ["dashed", "color", "direction", "inset"],
+      "outputs": []
+    },
+    {
+      "name": "Breadcrumb",
+      "className": "VdBreadcrumb",
+      "selector": "vd-breadcrumb",
+      "kind": "component",
+      "category": "navigation",
+      "useFor": ["hierarchical page path navigation"],
+      "avoidFor": ["top-level site navigation"],
+      "inputs": ["items", "separatorIcon", "size"],
+      "outputs": ["itemClick"]
+    },
+    {
+      "name": "Navbar",
+      "className": "VdNavbar",
+      "selector": "vd-navbar",
+      "kind": "component",
+      "category": "navigation",
+      "useFor": ["top-level app or page navigation bar"],
+      "avoidFor": ["contextual side navigation"],
+      "inputs": ["logoUrl", "logoAlt"],
+      "outputs": []
+    },
+    {
+      "name": "Sidebar",
+      "className": "VdSidebar",
+      "selector": "vd-sidebar",
+      "kind": "component",
+      "category": "navigation",
+      "useFor": ["persistent section/app side navigation"],
+      "avoidFor": ["single inline menu"],
+      "inputs": ["sections"],
+      "outputs": []
+    },
+    {
+      "name": "Dropdown",
+      "className": "VdDropdown",
+      "selector": "vd-dropdown",
+      "kind": "component",
+      "category": "overlay",
+      "useFor": ["action menus and contextual menu containers"],
+      "avoidFor": ["long-form selection requiring search"],
+      "inputs": ["position"],
+      "outputs": []
+    },
+    {
+      "name": "Dropdown Item",
+      "className": "VdDropdownItem",
+      "selector": "vd-dropdown-item",
+      "kind": "component",
+      "category": "overlay",
+      "useFor": ["actionable row within dropdown content"],
+      "avoidFor": ["standalone page actions"],
+      "inputs": ["title", "description", "icon", "disabled"],
+      "outputs": ["select"]
+    },
+    {
+      "name": "Dropdown Item Link",
+      "className": "VdDropdownItemLink",
+      "selector": "vd-dropdown-item-link",
+      "kind": "component",
+      "category": "overlay",
+      "useFor": ["navigation link row in dropdown content"],
+      "avoidFor": ["button-like command actions"],
+      "inputs": ["href", "target", "title", "disabled"],
+      "outputs": ["select"]
+    },
+    {
+      "name": "Dropdown Item Divider",
+      "className": "VdDropdownItemDivider",
+      "selector": "vd-dropdown-item-divider",
+      "kind": "component",
+      "category": "overlay",
+      "useFor": ["visual grouping separators inside dropdown menus"],
+      "avoidFor": ["layout spacing outside dropdown"],
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "name": "Dropdown Item Group",
+      "className": "VdDropdownItemGroup",
+      "selector": "vd-dropdown-item-group",
+      "kind": "component",
+      "category": "overlay",
+      "useFor": ["grouping related dropdown items under a section"],
+      "avoidFor": ["single flat menu rows"],
+      "inputs": ["name"],
+      "outputs": []
+    },
+    {
+      "name": "Tooltip",
+      "className": "VdTooltip",
+      "selector": "vd-tooltip",
+      "kind": "component",
+      "category": "overlay",
+      "useFor": ["custom tooltip host/content rendering"],
+      "avoidFor": ["persistent inline helper text"],
+      "inputs": ["text", "position"],
+      "outputs": []
+    },
+    {
+      "name": "Tooltip Directive",
+      "className": "VdTooltipDirective",
+      "selector": "[vdTooltip]",
+      "kind": "directive",
+      "category": "overlay",
+      "useFor": ["attaching tooltip text to existing elements"],
+      "avoidFor": ["static always-visible content"],
+      "inputs": ["vdTooltip", "vdTooltipPosition"],
+      "outputs": []
+    },
+    {
+      "name": "Dialog",
+      "className": "VdDialog",
+      "selector": "vd-dialog",
+      "kind": "component",
+      "category": "overlay",
+      "useFor": ["general modal dialogs"],
+      "avoidFor": ["non-blocking notifications"],
+      "preferredApi": "VdDialogService.open(...)",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "name": "Drawer",
+      "className": "VdDrawer",
+      "selector": "vd-drawer",
+      "kind": "component",
+      "category": "overlay",
+      "useFor": ["side panel workflows and detail editing"],
+      "avoidFor": ["small confirmation prompts"],
+      "preferredApi": "VdDrawerService.open(...)",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "name": "Confirmation Dialog",
+      "className": "VdConfirmationDialog",
+      "selector": "vd-confirmation-dialog",
+      "kind": "component",
+      "category": "overlay",
+      "useFor": ["destructive or high-impact confirmations"],
+      "avoidFor": ["multi-step forms or long content"],
+      "preferredApi": "VdConfirmationDialogService.confirm(...)",
+      "inputs": [],
+      "outputs": []
+    }
+  ],
+  "nonComponentExports": {
+    "modules": [
+      {
+        "name": "AngularComponentsModule",
+        "useFor": "Bulk NgModule import of standalone Vroxal components"
+      }
+    ],
+    "services": [
+      {
+        "name": "VdToastService",
+        "methods": ["configure", "setMaxToasts", "show", "dismiss", "pause", "resume"],
+        "requires": ["vd-toast"]
+      },
+      {
+        "name": "VdDialogService",
+        "methods": ["open"]
+      },
+      {
+        "name": "VdDrawerService",
+        "methods": ["open"]
+      },
+      {
+        "name": "VdConfirmationDialogService",
+        "methods": ["confirm"]
+      }
+    ],
+    "models": ["Toast", "ToastColor", "ToastPosition"]
+  }
+}

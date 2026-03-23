@@ -1,0 +1,34 @@
+<div
+  class="vd-checkbox-group"
+  [class.vd-checkbox-group--horizontal]="direction === 'horizontal'"
+  [class.vd-checkbox-group--vertical]="direction === 'vertical'"
+>
+  <ng-container
+    *ngTemplateOutlet="itemsTemplate; context: { items: items, level: 0 }"
+  ></ng-container>
+</div>
+
+<ng-template #itemsTemplate let-items="items" let-level="level">
+  <div
+    class="vd-checkbox-group__list"
+    [class.vd-checkbox-group__list--root]="level === 0"
+    [class.vd-checkbox-group__list--nested]="level > 0"
+  >
+    <div *ngFor="let item of items; trackBy: trackByItem" class="vd-checkbox-group__item">
+      <vd-checkbox
+        [label]="item.label"
+        [description]="item.description"
+        [checked]="isChecked(item)"
+        [indeterminate]="isIndeterminate(item)"
+        [disabled]="disabled || item.disabled"
+        (change)="onItemChange(item, $event)"
+      ></vd-checkbox>
+
+      <ng-container *ngIf="item.children?.length">
+        <ng-container
+          *ngTemplateOutlet="itemsTemplate; context: { items: item.children, level: level + 1 }"
+        ></ng-container>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>

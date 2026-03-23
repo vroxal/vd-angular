@@ -1,0 +1,43 @@
+<label
+  class="vd-checkbox"
+  [class.vd-checkbox--checked]="checked"
+  [class.vd-checkbox--indeterminate]="indeterminate"
+  [class.vd-checkbox--disabled]="disabled"
+>
+  <span class="vd-checkbox__icon-container">
+    <input
+      #inputRef
+      class="vd-checkbox__input"
+      type="checkbox"
+      [id]="inputId"
+      [name]="name"
+      [checked]="checked"
+      [indeterminate]="indeterminate"
+      [disabled]="disabled"
+      [attr.aria-checked]="indeterminate ? 'mixed' : checked"
+      [attr.aria-label]="ariaLabel || label"
+      (change)="onInputChange($event)"
+      (blur)="onBlur()"
+    />
+    <span class="vd-checkbox__box">
+      <vd-icon
+        *ngIf="checked && !indeterminate"
+        class="vd-checkbox__icon"
+        name="vd-icon-tick"
+        size="sm"
+      ></vd-icon>
+      <vd-icon
+        *ngIf="indeterminate"
+        class="vd-checkbox__icon"
+        name="vd-icon-minus"
+        size="sm"
+      ></vd-icon>
+    </span>
+  </span>
+  <span *ngIf="label || description" class="vd-checkbox__content">
+    <span *ngIf="label" class="vd-checkbox__label label-medium">{{ label }}</span>
+    <span *ngIf="description" class="vd-checkbox__description body-small">
+      {{ description }}
+    </span>
+  </span>
+</label>

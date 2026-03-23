@@ -1,0 +1,361 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Drawer'"
+    [subtitle]="'A drawer is a panel that slides in from the side of the screen.'"
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Sizes</h3>
+          <p>Small, medium, and large drawers with 1, 2, and 3 column layouts</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button
+            variant="subtle"
+            color="neutral"
+            label="Open Small Drawer"
+            (click)="openDrawer(drawerContent, 'sm')"
+          ></vd-button>
+          <vd-button
+            variant="subtle"
+            color="neutral"
+            label="Open Medium Drawer"
+            (click)="openDrawer(drawerContent, 'md')"
+          ></vd-button>
+          <vd-button
+            variant="subtle"
+            color="neutral"
+            label="Open Large Drawer"
+            (click)="openDrawer(drawerContent, 'lg')"
+          ></vd-button>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Slot Content Flexibility</h3>
+          <p>
+            The content slot can render forms, tables, contextual summaries, or read-only views.
+          </p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button
+            variant="subtle"
+            color="neutral"
+            label="Open Form Slot"
+            (click)="openSlotFormExample(formSlotContent)"
+          ></vd-button>
+          <vd-button
+            variant="subtle"
+            color="neutral"
+            label="Open Data Slot"
+            (click)="openSlotDataExample(dataSlotContent)"
+          ></vd-button>
+          <vd-button
+            variant="subtle"
+            color="neutral"
+            label="Open Context Slot"
+            (click)="openSlotContextExample(contextSlotContent)"
+          ></vd-button>
+          <vd-button
+            variant="subtle"
+            color="neutral"
+            label="Open No-Actions Slot"
+            (click)="openNoActionsExample(readOnlySlotContent)"
+          ></vd-button>
+        </div>
+        <div class="component-showcase-container" *ngIf="submittedFormData">
+          <h4 class="title-medium">Last submitted form data</h4>
+          <p class="body-medium">Display name: {{ submittedFormData.displayName || '-' }}</p>
+          <p class="body-medium">Email: {{ submittedFormData.email || '-' }}</p>
+          <p class="body-medium">Status: {{ submittedFormData.status || '-' }}</p>
+          <p class="body-medium">Notes: {{ submittedFormData.notes || '-' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the drawer service in your component:</p>
+        </div>
+        <code-container
+          [code]="importCodeSnippet"
+          fileName="my.component.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Define Drawer Content</h3>
+          <p>Use an ng-template to define the content injected into the drawer.</p>
+        </div>
+        <code-container
+          [code]="basicImplementationTemplateSnippet"
+          fileName="my.component.html"
+          language="angular-html"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Open Drawer</h3>
+          <p>Call the open() method with the template and configuration.</p>
+        </div>
+        <code-container
+          [code]="basicImplementationTypescriptSnippet"
+          fileName="my.component.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Size Configuration</h3>
+          <p>
+            Change the size to control width and columns:
+            <strong>sm 320px / 1 column</strong>, <strong>md 560px / 2 columns</strong>,
+            <strong>lg 920px / 3 columns</strong>. Grid items are top-aligned and keep intrinsic
+            height (rows do not stretch to fill the drawer).
+          </p>
+        </div>
+        <code-container
+          [code]="sizeExampleSnippet"
+          fileName="size-example.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Pass Slot Context</h3>
+          <p>Use the <code>context</code> option to inject runtime data into the slot template.</p>
+        </div>
+        <code-container
+          [code]="slotWithContextSnippet"
+          fileName="context-slot.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Handle Output Result</h3>
+          <p>
+            The promise from <code>open()</code> tells you which action closed the drawer. Custom
+            action labels do not change result values.
+          </p>
+        </div>
+        <code-container
+          [code]="outputHandlingSnippet"
+          fileName="output-handling.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Form Submit Handling</h3>
+          <p>For form slots, persist form data only when the result is <code>'primary'</code>.</p>
+        </div>
+        <code-container
+          [code]="formSubmitHandlingSnippet"
+          fileName="form-submit-handling.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Configuration Object (VdDrawerConfig)</h3>
+          <p class="body-large">
+            Properties passed to the open() method. The close icon button is always visible in the
+            drawer header.
+          </p>
+        </div>
+        <vd-datatable [data]="apiConfigData" [columns]="apiColumns"></vd-datatable>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs (Promise Result)</h3>
+          <p class="body-large">Result returned by <code>open()</code> after user interaction.</p>
+        </div>
+        <vd-datatable [data]="outputData" [columns]="outputColumns"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>For secondary tasks that should not block the main flow</li>
+          <li>When editing a subset of data alongside a primary view</li>
+          <li>For review and approval flows that need additional context</li>
+          <li>To surface forms or details without full navigation</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>For destructive confirmations (use confirmation dialog instead)</li>
+          <li>When the content requires full-screen focus</li>
+          <li>For multi-step processes that require navigation</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Keep primary actions aligned to the right in the footer</li>
+          <li>Use concise titles and clear field labels</li>
+          <li>Choose drawer size based on form complexity</li>
+          <li>Limit content to avoid excessive scrolling</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group playgrouund">
+    <div class="content-group-title">
+      <h2 class="headline-large">Service playground</h2>
+      <p class="body-large">Customize the drawer configuration and open it.</p>
+    </div>
+    <div class="content-group-container playground-container">
+      <div class="component-control">
+        <div class="controls">
+          <vd-input label="Title" [(value)]="title"></vd-input>
+
+          <vd-select
+            label="Size"
+            [value]="size"
+            (valueChange)="$event && (size = $event)"
+            [options]="sizeOptions"
+          ></vd-select>
+          <vd-switch
+            label="Show Primary Action"
+            [checked]="showPrimaryAction"
+            (change)="showPrimaryAction = $event"
+          ></vd-switch>
+
+          <vd-input
+            label="Primary Action Label"
+            [(value)]="primaryActionLabel"
+            [disabled]="!showPrimaryAction"
+          ></vd-input>
+
+          <vd-switch
+            label="Show Secondary Action"
+            [checked]="showSecondaryAction"
+            (change)="showSecondaryAction = $event"
+          ></vd-switch>
+
+          <vd-input
+            label="Secondary Action Label"
+            [(value)]="secondaryActionLabel"
+            [disabled]="!showSecondaryAction"
+          ></vd-input>
+        </div>
+        <div class="divider"></div>
+        <div class="component-showcase-container">
+          <vd-button label="Open Drawer" (click)="openPlayground(drawerContent)"></vd-button>
+          <p class="body-medium" *ngIf="lastResult">{{ lastResult }}</p>
+        </div>
+      </div>
+
+      <code-container
+        [code]="basicImplementationTypescriptSnippet"
+        fileName="example.ts"
+        language="angular-ts"
+      ></code-container>
+    </div>
+  </div>
+
+  <ng-template #drawerContent>
+    <vd-input label="Full name" placeholder="Enter full name"></vd-input>
+    <vd-input label="Email" placeholder="Enter email"></vd-input>
+    <vd-select label="Status" placeholder="Select status" [options]="statusOptions"></vd-select>
+    <vd-input label="Phone" placeholder="Enter phone"></vd-input>
+    <vd-textarea label="Notes" placeholder="Add notes"></vd-textarea>
+    <vd-input label="Department" placeholder="Enter department"></vd-input>
+  </ng-template>
+
+  <ng-template #formSlotContent>
+    <vd-input
+      label="Display name"
+      placeholder="Enter display name"
+      [(value)]="formSlotData.displayName"
+    ></vd-input>
+    <vd-input
+      label="Email address"
+      placeholder="Enter email"
+      [(value)]="formSlotData.email"
+    ></vd-input>
+    <vd-select
+      label="Status"
+      placeholder="Select status"
+      [value]="formSlotData.status || null"
+      (valueChange)="onFormSlotStatusChange($event)"
+      [options]="statusOptions"
+    ></vd-select>
+    <vd-textarea
+      label="Notes"
+      placeholder="Add notes"
+      [(value)]="formSlotData.notes"
+    ></vd-textarea>
+  </ng-template>
+
+  <ng-template #dataSlotContent>
+    <div class="drawer-content-dataslot">
+      <vd-alert
+        title="High value transactions"
+        description="Review pending transactions before confirming."
+        color="info"
+      ></vd-alert>
+      <vd-datatable [data]="slotData" [columns]="slotColumns"></vd-datatable>
+      <vd-textarea label="Reviewer Note" placeholder="Add reviewer note"></vd-textarea>
+    </div>
+  </ng-template>
+
+  <ng-template #contextSlotContent let-summary="summary">
+    <h3 class="title-medium">{{ summary.title }}</h3>
+    <p class="body-medium">{{ summary.description }}</p>
+    <vd-alert
+      [title]="summary.alertTitle"
+      [description]="summary.alertDescription"
+      color="info"
+    ></vd-alert>
+  </ng-template>
+
+  <ng-template #readOnlySlotContent>
+    <vd-alert
+      title="Read-only mode"
+      description="This drawer is opened without footer action buttons."
+      color="neutral"
+    ></vd-alert>
+    <p class="body-medium">Use this pattern for audit details, logs, or passive previews.</p>
+  </ng-template>
+</div>

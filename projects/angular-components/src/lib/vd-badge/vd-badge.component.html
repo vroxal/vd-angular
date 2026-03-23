@@ -1,0 +1,13 @@
+<span
+  class="vd-badge label-small"
+  [class.vd-badge--subtle]="variant === 'subtle'"
+  [class.vd-badge--neutral]="color === 'neutral'"
+  [class.vd-badge--error]="color === 'error'"
+  [class.vd-badge--success]="color === 'success'"
+  [class.vd-badge--info]="color === 'info'"
+  [class.vd-badge--warning]="color === 'warning'"
+  [class.vd-badge--sm]="size === 'sm'"
+  [class.vd-badge--rounded]="rounded"
+>
+  {{ label }}
+</span>

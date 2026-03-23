@@ -1,0 +1,263 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Tooltip'"
+    [subtitle]="'Tooltips provide short contextual guidance when users hover or focus an element.'"
+  >
+  </app-doc-page-header>
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Basic Tooltip</h3>
+        <p>Standard button with tooltip on hover</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button
+            color="neutral"
+            variant="subtle"
+            label="Hover me"
+            [vdTooltip]="'This is a helpful tooltip'"
+          ></vd-button>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Positions</h3>
+        <p>Tooltip positions relative to the target element</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button
+            color="neutral"
+            variant="subtle"
+            label="Top left"
+            [vdTooltip]="'Top left'"
+            [vdTooltipPosition]="'top-left'"
+          >
+          </vd-button>
+          <vd-button
+            color="neutral"
+            variant="subtle"
+            label="Top center"
+            [vdTooltip]="'Top center'"
+            [vdTooltipPosition]="'top-center'"
+          >
+          </vd-button>
+          <vd-button
+            color="neutral"
+            variant="subtle"
+            label="Top right"
+            [vdTooltip]="'Top Right'"
+            [vdTooltipPosition]="'top-right'"
+          >
+          </vd-button>
+          <vd-button
+            color="neutral"
+            variant="subtle"
+            label="Center left"
+            [vdTooltip]="'Center left'"
+            [vdTooltipPosition]="'center-left'"
+          >
+          </vd-button>
+          <vd-button
+            color="neutral"
+            variant="subtle"
+            label="Center right"
+            [vdTooltip]="'Center right'"
+            [vdTooltipPosition]="'center-right'"
+          >
+          </vd-button>
+          <vd-button
+            color="neutral"
+            variant="subtle"
+            label="Bottom left"
+            [vdTooltip]="'Bottom left'"
+            [vdTooltipPosition]="'bottom-left'"
+          >
+          </vd-button>
+          <vd-button
+            color="neutral"
+            variant="subtle"
+            label="Bottom center"
+            [vdTooltip]="'Bottom center'"
+            [vdTooltipPosition]="'bottom-center'"
+          >
+          </vd-button>
+          <vd-button
+            color="neutral"
+            variant="subtle"
+            label="Bottom right"
+            [vdTooltip]="'Bottom right'"
+            [vdTooltipPosition]="'bottom-right'"
+          >
+          </vd-button>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">With Long Content</h3>
+        <p>Tooltip with longer descriptive text</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button
+            color="neutral"
+            variant="subtle"
+            label="With long content"
+            [vdTooltip]="'This is a more detailed tooltip with comprehensive information'"
+          >
+            Hover for details
+          </vd-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the tooltip directive in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-tooltip.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the tooltip directive:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="tooltip-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Positioning Tooltips</h3>
+          <p>
+            Tooltips can be positioned in 8 different locations. Choose positioning based on
+            available space and layout:
+          </p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="positionsSnippet"
+            fileName="tooltip-positions.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Directive Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Tooltip when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Tooltip when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Keep tooltip text concise and informative - ideally under 15 words</li>
+          <li>Use tooltips for explanatory text, not for critical information</li>
+          <li>Position tooltips to avoid obscuring important content</li>
+          <li>Ensure tooltips don't overlap with other interactive elements</li>
+          <li>Use for clarifying icon buttons or abbreviations</li>
+          <li>Automatically shows on hover and hides on mouse leave</li>
+          <li>Choose position based on available screen space</li>
+          <li>Test tooltip content for clarity and brevity</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+  </div>
+
+  <div class="content-group playground">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component playground</h2>
+      <p class="body-large">Customize the tooltip features in this section</p>
+    </div>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-select
+              label="Position"
+              [value]="position"
+              (valueChange)="$event !== null && (position = $event)"
+              [options]="positionOptions"
+            ></vd-select>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-button
+              [vdTooltip]="tooltipText"
+              [vdTooltipPosition]="position"
+              label="Hover for tooltip"
+            ></vd-button>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

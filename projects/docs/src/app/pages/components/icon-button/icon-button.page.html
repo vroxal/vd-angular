@@ -1,0 +1,331 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Icon Button'"
+    [subtitle]="'Icon buttons trigger actions using a compact icon-only control.'"
+  >
+  </app-doc-page-header>
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Variants</h3>
+        <p>Contains: Solid, Subtle, Outline, Transparent. Solid is default</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-icon-button icon="vd-icon-plus" ariaLabel="Add"></vd-icon-button>
+          <vd-icon-button icon="vd-icon-plus" ariaLabel="Add" variant="subtle"></vd-icon-button>
+          <vd-icon-button icon="vd-icon-plus" ariaLabel="Add" variant="outline"></vd-icon-button>
+          <vd-icon-button
+            icon="vd-icon-plus"
+            ariaLabel="Add"
+            variant="transparent"
+          ></vd-icon-button>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Size</h3>
+        <p>Contains: Small as sm, medium as md, large as lg. Medium is default</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-icon-button icon="vd-icon-plus" ariaLabel="Add" size="sm"></vd-icon-button>
+          <vd-icon-button icon="vd-icon-plus" ariaLabel="Add" size="md"></vd-icon-button>
+          <vd-icon-button icon="vd-icon-plus" ariaLabel="Add" size="lg"></vd-icon-button>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Color Variations</h3>
+        <p>Contains: Primary, Neutral, Error. Primary is default</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-icon-button icon="vd-icon-plus" ariaLabel="Add" color="primary"></vd-icon-button>
+          <vd-icon-button icon="vd-icon-plus" ariaLabel="Add" color="neutral"></vd-icon-button>
+          <vd-icon-button icon="vd-icon-plus" ariaLabel="Add" color="error"></vd-icon-button>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Roundness</h3>
+        <p>
+          Is a boolean value. True makes the button fully rounded (circular). Otherwise the default
+          roundness will be applied.
+        </p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-icon-button
+            icon="vd-icon-plus"
+            ariaLabel="Add"
+            [rounded]="true"
+            color="primary"
+          ></vd-icon-button>
+          <vd-icon-button
+            icon="vd-icon-plus"
+            ariaLabel="Add"
+            [rounded]="true"
+            color="neutral"
+          ></vd-icon-button>
+          <vd-icon-button
+            icon="vd-icon-plus"
+            ariaLabel="Add"
+            [rounded]="true"
+            color="error"
+          ></vd-icon-button>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Disabled</h3>
+        <p>Is a boolean value. True disables the button. Otherwise the button will be enabled.</p>
+        </div>
+
+        <div class="component-showcase-container">
+          <vd-icon-button
+            icon="vd-icon-plus"
+            ariaLabel="Add"
+            [disabled]="true"
+            color="primary"
+          ></vd-icon-button>
+          <vd-icon-button
+            icon="vd-icon-plus"
+            ariaLabel="Add"
+            [disabled]="true"
+            color="neutral"
+          ></vd-icon-button>
+          <vd-icon-button
+            icon="vd-icon-plus"
+            ariaLabel="Add"
+            [disabled]="true"
+            color="error"
+          ></vd-icon-button>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Loading</h3>
+        <p>
+          Is a boolean value. True makes the button in the loading state with loading indicator.
+        </p>
+        </div>
+
+        <div class="component-showcase-container">
+          <vd-icon-button
+            icon="vd-icon-plus"
+            ariaLabel="Add"
+            [loading]="true"
+            color="primary"
+            variant="solid"
+            size="sm"
+          ></vd-icon-button>
+          <vd-icon-button
+            icon="vd-icon-plus"
+            ariaLabel="Add"
+            [loading]="true"
+            color="neutral"
+            variant="subtle"
+          ></vd-icon-button>
+          <vd-icon-button
+            icon="vd-icon-plus"
+            ariaLabel="Add"
+            [loading]="true"
+            variant="outline"
+            color="error"
+            size="lg"
+          ></vd-icon-button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the icon button component in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-icon-button.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the icon button component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="icon-button-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">All Available APIs</h3>
+          <p class="body-large">
+            Here is an example of using the icon button component with all available APIs:
+          </p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allImplementationSnippet"
+            fileName="icon-button-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Icon Button when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Icon Button when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Always provide a descriptive ariaLabel for accessibility</li>
+          <li>Use solid variant for primary actions; outline or subtle for secondary actions</li>
+          <li>
+            Prefer neutral color for general actions; use semantic colors for specific actions
+          </li>
+          <li>Use size consistently within a page to maintain visual hierarchy</li>
+          <li>Consider rounded variant for a more modern, friendly appearance</li>
+          <li>Use loading state to provide feedback during async operations</li>
+          <li>Ensure sufficient touch target size on mobile (minimum 44x44px)</li>
+          <li>Choose icons that clearly represent the action being performed</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+  </div>
+  <div class="content-group playground">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component playground</h2>
+      <p class="body-large">Customize the icon button features in this section</p>
+    </div>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-select
+              label="Variant"
+              [value]="variant"
+              (valueChange)="$event && (variant = $event)"
+              [options]="variantOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Color"
+              [value]="color"
+              (valueChange)="$event && (color = $event)"
+              [options]="colorOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Size"
+              [value]="size"
+              (valueChange)="$event && (size = $event)"
+              [options]="sizeOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Icon"
+              [value]="icon"
+              (valueChange)="icon = $event || 'vd-icon-plus'"
+              [options]="icons"
+            ></vd-select>
+
+            <vd-switch
+              [checked]="rounded"
+              label="Rounded"
+              (change)="rounded = $event"
+            ></vd-switch>
+
+            <vd-switch
+              [checked]="loading"
+              label="Loading"
+              (change)="loading = $event"
+            ></vd-switch>
+
+            <vd-switch
+              [checked]="disabled"
+              label="Disabled"
+              (change)="disabled = $event"
+            ></vd-switch>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-icon-button
+              [icon]="icon"
+              ariaLabel="Icon Button"
+              [variant]="variant"
+              [color]="color"
+              [size]="size"
+              [loading]="loading"
+              [rounded]="rounded"
+              [disabled]="disabled"
+            ></vd-icon-button>
+          </div>
+        </div>
+      </div>
+
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

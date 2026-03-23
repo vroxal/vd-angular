@@ -1,0 +1,271 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Confirmation Dialog'"
+    [subtitle]="'Confirmation dialogs ask users to verify important actions before proceeding.'"
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Colors</h3>
+          <p>Contains default and error color variants</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button
+            variant="subtle"
+            color="neutral"
+            label="Open Default Dialog"
+            (click)="openPrimaryExample()"
+          ></vd-button>
+          <vd-button
+            label="Open Error Dialog"
+            variant="subtle"
+            color="neutral"
+            (click)="openErrorExample()"
+          ></vd-button>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Icon</h3>
+          <p>Confirmation dialog with or without icon display</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button
+            variant="subtle"
+            label="Open Dialog with icon"
+            color="neutral"
+            (click)="openPrimaryExample()"
+          ></vd-button>
+          <vd-button
+            variant="subtle"
+            label="Open Dialog without icon"
+            color="neutral"
+            (click)="openPlainExample()"
+          ></vd-button>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Custom Button Labels</h3>
+          <p>Confirmation dialog with customized button labels</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-button
+            variant="subtle"
+            label="Open Logout Dialog"
+            color="neutral"
+            (click)="openLogoutExample()"
+          ></vd-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the dialog service in your component:</p>
+        </div>
+        <code-container
+          [code]="importCodeSnippet"
+          fileName="my.component.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Inject the VdConfirmationDialogService and call the confirm() method:</p>
+        </div>
+        <code-container
+          [code]="basicImplementationTypescriptSnippet"
+          fileName="my.component.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Service API Overview</h3>
+          <p>
+            The VdConfirmationDialogService provides a single method to open confirmation dialogs:
+          </p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">
+            confirm(config: VdConfirmationDialogConfig): Promise
+          </h4>
+          <p>
+            Opens a confirmation dialog with the provided configuration and returns a Promise that
+            resolves when the user interacts with the dialog.
+          </p>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Primary Dialog Implementation</h3>
+          <p>Use primary dialog for general confirmations:</p>
+        </div>
+        <code-container
+          [code]="primaryDialogSnippet"
+          fileName="primary-dialog.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Error Dialog Implementation</h3>
+          <p>Use error dialog for destructive or critical actions:</p>
+        </div>
+        <code-container
+          [code]="errorDialogSnippet"
+          fileName="error-dialog.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Without Icon</h3>
+          <p>Hide the icon for simpler dialogs:</p>
+        </div>
+        <code-container
+          [code]="withoutIconSnippet"
+          fileName="no-icon-dialog.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Custom Button Labels</h3>
+          <p>Customize button labels for specific contexts:</p>
+        </div>
+        <code-container
+          [code]="customLabelsSnippet"
+          fileName="custom-labels-dialog.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Configuration Object (VdConfirmationDialogConfig)</h3>
+          <p class="body-large">Properties passed to the confirm() method:</p>
+        </div>
+        <vd-datatable [data]="apiConfigData" [columns]="apiConfigColumns"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>When users need to confirm important or irreversible actions</li>
+          <li>Before deleting data or performing destructive operations</li>
+          <li>When saving or discarding changes</li>
+          <li>To confirm navigation away from unsaved work</li>
+          <li>For logout or session termination confirmations</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>For simple notifications that don't require user action</li>
+          <li>When the action is easily reversible</li>
+          <li>For displaying detailed information (use a modal instead)</li>
+          <li>When multiple options are needed (use a dropdown or menu)</li>
+          <li>For form validation errors (use inline validation)</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Keep titles short and action-oriented (e.g., "Delete File")</li>
+          <li>Use clear, concise descriptions that explain the consequences</li>
+          <li>Use error variant for destructive actions like delete</li>
+          <li>Make button labels specific to the action (e.g., "Delete" instead of "OK")</li>
+          <li>Place the primary action (confirm) on the right side</li>
+          <li>Ensure the cancel option is always available</li>
+          <li>Use icons to reinforce the dialog's purpose</li>
+          <li>Avoid using confirmation dialogs for trivial actions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group playgrouund">
+    <div class="content-group-title">
+      <h2 class="headline-large">Service playground</h2>
+      <p class="body-large">
+        Customize the dialog configuration below and click the button to open it
+      </p>
+    </div>
+    <div class="content-group-container playground-container">
+      <!-- Controls -->
+      <div class="component-control">
+        <div class="controls">
+          <vd-input label="Title" [(value)]="title"></vd-input>
+
+          <vd-input label="Description" [(value)]="description"></vd-input>
+
+          <vd-select
+            label="Color"
+            [value]="color"
+            (valueChange)="$event && (color = $event)"
+            [options]="colorOptions"
+          ></vd-select>
+
+          <vd-select
+            label="Icon"
+            [value]="icon"
+            (valueChange)="icon = $event || ''"
+            [options]="icons"
+          ></vd-select>
+
+          <vd-input label="Cancel Label" [(value)]="cancelLabel"></vd-input>
+
+          <vd-input label="Confirm Label" [(value)]="confirmLabel"></vd-input>
+        </div>
+        <div class="divider"></div>
+        <div class="component-showcase-container">
+          <vd-button label="Open Dialog" (click)="openDialogExample()"></vd-button>
+        </div>
+      </div>
+
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.ts"
+        language="angular-ts"
+      ></code-container>
+    </div>
+  </div>
+</div>

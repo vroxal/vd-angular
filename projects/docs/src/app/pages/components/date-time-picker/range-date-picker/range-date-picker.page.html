@@ -1,0 +1,362 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Range Date Picker'"
+    [subtitle]="'Range date pickers let users select a start date and end date together.'"
+  >
+  </app-doc-page-header>
+
+  <!-- COMPONENT VARIATIONS -->
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component Variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Basic Range Date Picker</h3>
+        <p>Date picker for selecting a date range</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-range-date-picker
+            label="Select Date Range"
+            placeholder="Choose date range..."
+            [(value)]="rangeDateValue"
+          ></vd-range-date-picker>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">States</h3>
+        <p>Contains: Default, Success, Error, Warning</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-range-date-picker
+            label="Default"
+            placeholder="Default state"
+          ></vd-range-date-picker>
+          <vd-range-date-picker
+            label="Success"
+            placeholder="Success state"
+            state="success"
+            helperText="Date range is valid"
+          ></vd-range-date-picker>
+          <vd-range-date-picker
+            label="Error"
+            placeholder="Error state"
+            state="error"
+            helperText="Invalid date range"
+          ></vd-range-date-picker>
+          <vd-range-date-picker
+            label="Warning"
+            placeholder="Warning state"
+            state="warning"
+            helperText="Check date range"
+          ></vd-range-date-picker>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Dropdown Positions</h3>
+        <p>Contains: Bottom-Left, Bottom-Center, Bottom-Right, Top-Left, Top-Center, Top-Right</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-range-date-picker
+            label="Bottom Left (Default)"
+            placeholder="Choose date range..."
+            dropdownPosition="bottom-left"
+          ></vd-range-date-picker>
+          <vd-range-date-picker
+            label="Bottom Center"
+            placeholder="Choose date range..."
+            dropdownPosition="bottom-center"
+          ></vd-range-date-picker>
+          <vd-range-date-picker
+            label="Bottom Right"
+            placeholder="Choose date range..."
+            dropdownPosition="bottom-right"
+          ></vd-range-date-picker>
+          <vd-range-date-picker
+            label="Top Left"
+            placeholder="Choose date range..."
+            dropdownPosition="top-left"
+          ></vd-range-date-picker>
+          <vd-range-date-picker
+            label="Top Center"
+            placeholder="Choose date range..."
+            dropdownPosition="top-center"
+          ></vd-range-date-picker>
+          <vd-range-date-picker
+            label="Top Right"
+            placeholder="Choose date range..."
+            dropdownPosition="top-right"
+          ></vd-range-date-picker>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Input Field Variations</h3>
+        <p>Contains: Optional Label, Hint Text, Helper Text, Leading Icon</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-range-date-picker
+            label="Optional Field"
+            placeholder="Choose date range..."
+            [optional]="true"
+          ></vd-range-date-picker>
+          <vd-range-date-picker
+            label="With Hint Text"
+            placeholder="Choose date range..."
+            hintText="This is a hint text shown in tooltip on ? icon"
+          ></vd-range-date-picker>
+          <vd-range-date-picker
+            label="With Helper Text"
+            placeholder="Choose date range..."
+            helperText="This is helper text shown below the input field"
+          ></vd-range-date-picker>
+          <vd-range-date-picker
+            label="With Leading Icon"
+            placeholder="Choose date range..."
+            leadingIcon="vd-icon-calendar"
+          ></vd-range-date-picker>
+          <vd-range-date-picker
+            label="Combined (All Features)"
+            placeholder="Choose date range..."
+            [optional]="true"
+            hintText="Additional information about this field"
+            helperText="Helper text displayed below the field"
+            leadingIcon="vd-icon-calendar"
+          ></vd-range-date-picker>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- USAGE GUIDELINES -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">1. Import</h3>
+          <p>Import the range date picker component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-range-date-picker.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">2. Basic Usage</h3>
+          <p>Simplest form of the range date picker:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicUsageSnippet"
+            fileName="basic-usage-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">3. Dropdown Position</h3>
+          <p>Control the calendar dropdown position:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="dropdownPositionSnippet"
+            fileName="dropdown-position-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">4. All API Usage</h3>
+          <p>Comprehensive example with all available properties and events:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allApiSnippet"
+            fileName="range-date-picker-all-api.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- API REFERENCE -->
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+          <p>Properties that can be passed to the component:</p>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+          <p>Events emitted by the component:</p>
+        </div>
+
+        <vd-datatable
+          [data]="outputApiData"
+          [columns]="outputApiColumnsWithTemplate"
+        ></vd-datatable>
+      </div>
+    </div>
+  </div>
+  <div class="guideline-section">
+    <div class="title-container">
+      <h3 class="title-large">Inputs</h3>
+    </div>
+
+    <ng-template #propertyBadge let-row>
+      <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+    </ng-template>
+
+    <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+  </div>
+
+  <div class="guideline-section">
+    <div class="title-container">
+      <h3 class="title-large">DateRange Interface</h3>
+      <p>The value property accepts an object with the following structure:</p>
+    </div>
+    <div class="guideline">
+      <code-container
+        [code]="'interface DateRange {\n  start: Date | null;\n  end: Date | null;\n}'"
+        fileName="date-range-interface.ts"
+        language="angular-ts"
+      ></code-container>
+    </div>
+  </div>
+</div>
+
+<!-- BEST PRACTICES -->
+<div class="content-group usage-guidelines">
+  <div class="content-group-title">
+    <h2 class="headline-large">Best Practices</h2>
+  </div>
+  <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>Use Range Date Picker when this pattern clearly supports the user task.</li>
+          <li>Use it to keep similar interactions consistent across the product.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Range Date Picker when a simpler component communicates the same intent.</li>
+          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Always provide clear labels indicating that a date range is expected</li>
+          <li>Use helper text to clarify the date range format or constraints</li>
+          <li>Set min and max dates to constrain valid selections</li>
+          <li>Use state prop to provide validation feedback for invalid ranges</li>
+          <li>Consider pre-selecting common date ranges (last 7 days, last month, etc.)</li>
+          <li>Validate that the end date is after the start date</li>
+          <li>Provide meaningful error messages for invalid date range selections</li>
+          <li>Consider the typical use case when choosing dropdown position</li>
+          <li>Use consistent date formats across your application</li>
+          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+          <li>Use VD variants and states consistently for predictable behavior.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+</div>
+</div>
+
+<!-- PLAYGROUND -->
+<div class="content-group playground">
+  <div class="content-group-title">
+    <h2 class="headline-large">Playground</h2>
+    <p class="body-large">Customize the range date picker features</p>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <vd-select
+              label="State"
+              [value]="rangeDateState"
+              (valueChange)="rangeDateState = $event"
+              [options]="stateOptions"
+            ></vd-select>
+
+            <vd-select
+              label="Dropdown Position"
+              [value]="rangeDateDropdownPosition"
+              (valueChange)="$event && (rangeDateDropdownPosition = $event)"
+              [options]="dropdownPositionOptions"
+            ></vd-select>
+
+            <label class="switch-label">
+              <span>Optional</span>
+              <vd-switch
+                [checked]="rangeDateOptional"
+                (change)="rangeDateOptional = $event"
+              ></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Disabled</span>
+              <vd-switch
+                [checked]="rangeDateDisabled"
+                (change)="rangeDateDisabled = $event"
+              ></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-range-date-picker
+              [label]="rangeDateLabel"
+              [placeholder]="rangeDatePlaceholder"
+              [(value)]="rangeDateValue"
+              [optional]="rangeDateOptional"
+              [disabled]="rangeDateDisabled"
+              [state]="rangeDateState"
+              [dropdownPosition]="rangeDateDropdownPosition"
+            ></vd-range-date-picker>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

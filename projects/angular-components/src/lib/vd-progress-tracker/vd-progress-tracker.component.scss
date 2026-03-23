@@ -1,0 +1,177 @@
+:host {
+  display: block;
+  width: 100%;
+  --vd-progress-tracker-gap: var(--vd-scale-spacing-200);
+  --vd-progress-tracker-content-padding: var(--vd-scale-spacing-200);
+  --vd-progress-tracker-gap-sm: var(--vd-scale-spacing-100);
+  --vd-progress-tracker-item-padding-x: var(--vd-scale-spacing-300);
+  --vd-progress-tracker-item-padding-y: var(--vd-scale-spacing-200);
+  --vd-progress-tracker-item-radius: var(--vd-scale-border-radius-md);
+  --vd-progress-tracker-indicator-size-lg: var(--vd-scale-icon-size-xl);
+  --vd-progress-tracker-indicator-size-sm: var(--vd-scale-icon-size-md);
+  --vd-progress-tracker-indicator-border-width: var(--vd-scale-border-width-sm);
+  --vd-progress-tracker-connector-height: var(--vd-scale-spacing-200);
+  --vd-progress-tracker-connector-radius: var(--vd-scale-border-radius-sm);
+  --vd-progress-tracker-item-hover-bg: var(--vd-color-background-neutral-secondary);
+}
+
+.vd-progress-tracker {
+  display: flex;
+  gap: var(--vd-progress-tracker-gap);
+
+  &--horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &--vertical {
+    flex-direction: column;
+  }
+
+  &__item {
+    --vd-progress-item-bg: transparent;
+    --vd-progress-indicator-bg: var(--vd-color-background-neutral-base);
+    --vd-progress-indicator-text: var(--vd-color-content-neutral-on-base);
+    --vd-progress-indicator-icon: var(--vd-color-content-neutral-on-base);
+    --vd-progress-indicator-border: transparent;
+    --vd-progress-indicator-border-width: 0;
+    --vd-progress-connector-bg: var(--vd-color-background-neutral-base);
+    --vd-progress-title-color: var(--vd-color-content-default-secondary);
+    --vd-progress-description-color: var(--vd-color-content-default-secondary);
+    flex: 1;
+    display: flex;
+    gap: var(--vd-progress-tracker-gap);
+    background: var(--vd-progress-item-bg);
+    border-radius: var(--vd-progress-tracker-item-radius);
+    cursor: pointer;
+
+    &:hover:not(.vd-progress-tracker__item--disabled):not(.vd-progress-tracker__item--active) {
+      --vd-progress-title-color: var(--vd-color-content-default-base);
+      --vd-progress-description-color: var(--vd-color-content-default-base);
+    }
+    &--vertical {
+      align-items: center;
+      padding: var(--vd-progress-tracker-item-padding-y) var(--vd-progress-tracker-item-padding-x);
+      &:hover:not(.vd-progress-tracker__item--disabled):not(.vd-progress-tracker__item--active) {
+        --vd-progress-item-bg: var(--vd-progress-tracker-item-hover-bg);
+      }
+    }
+
+    &--horizontal {
+      flex-direction: column;
+      align-items: flex-start;
+      &:hover:not(.vd-progress-tracker__item--disabled):not(.vd-progress-tracker__item--active) {
+        --vd-progress-item-bg: transparent;
+      }
+    }
+
+    &--active {
+      --vd-progress-indicator-bg: transparent;
+      --vd-progress-item-bg: var(--vd-color-background-primary-secondary);
+      --vd-progress-indicator-text: var(--vd-color-content-primary-on-secondary);
+      --vd-progress-indicator-icon: var(--vd-color-content-primary-on-secondary);
+      --vd-progress-indicator-border: var(--vd-color-border-primary-secondary);
+      --vd-progress-indicator-border-width: var(--vd-progress-tracker-indicator-border-width);
+      --vd-progress-connector-bg: var(--vd-color-background-primary-base);
+      --vd-progress-title-color: var(--vd-color-content-primary-on-secondary);
+      --vd-progress-description-color: var(--vd-color-content-default-base);
+      cursor: default;
+    }
+
+    &--active.vd-progress-tracker__item--horizontal {
+      --vd-progress-item-bg: transparent;
+      --vd-progress-indicator-bg: var(--vd-color-background-primary-base);
+      --vd-progress-indicator-text: var(--vd-color-content-primary-on-base);
+      --vd-progress-indicator-icon: var(--vd-color-content-primary-on-base);
+      --vd-progress-indicator-border: var(--vd-color-border-primary-base);
+      --vd-progress-title-color: var(--vd-color-content-primary-base);
+    }
+
+    &--completed {
+      --vd-progress-indicator-bg: var(--vd-color-background-success-secondary);
+      --vd-progress-indicator-icon: var(--vd-color-content-success-base);
+      --vd-progress-connector-bg: var(--vd-color-background-success-base);
+    }
+
+    &--error {
+      --vd-progress-indicator-bg: var(--vd-color-background-error-tertiary);
+      --vd-progress-indicator-icon: var(--vd-color-content-error-on-tertiary);
+      --vd-progress-connector-bg: var(--vd-color-background-error-tertiary);
+    }
+
+    &--disabled {
+      --vd-progress-indicator-bg: var(--vd-color-background-default-disabled);
+      --vd-progress-indicator-text: var(--vd-color-content-default-disabled);
+      --vd-progress-indicator-icon: var(--vd-color-content-default-disabled);
+      --vd-progress-connector-bg: var(--vd-color-background-default-disabled);
+      --vd-progress-title-color: var(--vd-color-content-default-disabled);
+      --vd-progress-description-color: var(--vd-color-content-default-disabled);
+      cursor: not-allowed;
+    }
+
+    &--clickable {
+      cursor: pointer;
+    }
+  }
+
+  &__indicator-row {
+    display: flex;
+    align-items: center;
+    gap: var(--vd-progress-tracker-gap-sm);
+    width: 100%;
+  }
+
+  &__indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: var(--vd-progress-tracker-indicator-size-lg);
+    height: var(--vd-progress-tracker-indicator-size-lg);
+    border-radius: var(--vd-scale-border-radius-full);
+    background: var(--vd-progress-indicator-bg);
+    border: var(--vd-progress-indicator-border-width) solid var(--vd-progress-indicator-border);
+    color: var(--vd-progress-indicator-text);
+  }
+
+  &__indicator--sm {
+    width: var(--vd-progress-tracker-indicator-size-sm);
+    height: var(--vd-progress-tracker-indicator-size-sm);
+  }
+
+  &__indicator-label {
+    color: var(--vd-progress-indicator-text);
+  }
+
+  &__indicator-icon {
+    color: var(--vd-progress-indicator-icon);
+  }
+
+  &__connector {
+    flex: 1;
+    height: var(--vd-progress-tracker-connector-height);
+    background: var(--vd-progress-connector-bg);
+    border-radius: var(--vd-progress-tracker-connector-radius);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-right: var(--vd-progress-tracker-content-padding);
+  }
+
+  &__title,
+  &__description {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__title {
+    color: var(--vd-progress-title-color);
+  }
+
+  &__description {
+    color: var(--vd-progress-description-color);
+  }
+}

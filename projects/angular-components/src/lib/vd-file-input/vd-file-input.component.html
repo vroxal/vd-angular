@@ -1,0 +1,97 @@
+<div
+  class="vd-file-input"
+  [class.vd-file-input--horizontal]="layout === 'horizontal'"
+  [class.vd-file-input--vertical]="layout === 'vertical'"
+  [class.vd-file-input--error]="state === 'error'"
+  [class.vd-file-input--disabled]="disabled"
+>
+  <!-- Hidden native file input -->
+  <input
+    #fileInput
+    type="file"
+    [id]="inputId"
+    [accept]="supportedFiles ?? ''"
+    [multiple]="multiple"
+    [disabled]="disabled"
+    style="display: none"
+    (change)="onFileSelected($event)"
+  />
+
+  <!-- Label row -->
+  <div class="vd-file-input__label-row" *ngIf="label || optional || hintText">
+    <label *ngIf="label" class="vd-file-input__label body-medium" [attr.for]="inputId">
+      {{ label }}
+    </label>
+    <vd-icon *ngIf="hintText" name="vd-icon-help" size="md" [vdTooltip]="hintText"></vd-icon>
+    <p *ngIf="optional" class="vd-file-input__optional body-medium-italic">Optional</p>
+  </div>
+
+  <!-- Dropzone (hidden in single mode once a file is selected) -->
+  <div
+    *ngIf="!hideDropzone"
+    class="vd-file-input__dropzone"
+    [class.vd-file-input__dropzone--drag-over]="isDragOver"
+    [class.vd-file-input__dropzone--disabled]="disabled"
+    [attr.tabindex]="disabled ? null : 0"
+    [attr.role]="'button'"
+    [attr.aria-label]="'Upload file'"
+    [attr.aria-disabled]="disabled"
+    (click)="openFilePicker()"
+    (keydown.enter)="openFilePicker()"
+    (keydown.space)="openFilePicker()"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+    (drop)="onDrop($event)"
+  >
+    <!-- Upload icon -->
+    <span class="vd-file-input__icon-wrapper">
+      <vd-icon name="vd-icon-upload" size="md"></vd-icon>
+    </span>
+
+    <!-- Text content -->
+    <div class="vd-file-input__content">
+      <div class="vd-file-input__placeholder body-medium">
+        <span class="vd-file-input__action-text body-medium">Click to upload</span>
+        <span class="vd-file-input__drag-text body-medium">or drag and drop</span>
+      </div>
+      <div class="vd-file-input__footer-row" *ngIf="supportingText">
+        <p classlass="vd-file-input__supported-files body-small" *ngIf="supportingText">
+          {{ supportingText }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer: supported files / max size -->
+
+  <!-- Selected files list -->
+  <ul class="vd-file-input__file-list" *ngIf="selectedFiles.length > 0">
+    <li class="vd-file-input__file-item" *ngFor="let file of selectedFiles; let i = index">
+      <!-- File icon -->
+      <span class="vd-file-input__file-icon">
+        <vd-icon name="vd-icon-file" size="md"></vd-icon>
+      </span>
+
+      <!-- File info -->
+      <span class="vd-file-input__file-info">
+        <span class="vd-file-input__file-name label-medium">{{ file.name }}</span>
+        <span class="vd-file-input__file-size body-small">{{ formatSize(file.size) }}</span>
+      </span>
+
+      <!-- Remove button -->
+      <vd-icon-button
+        class="vd-file-input__file-remove"
+        icon="vd-icon-trash"
+        ariaLabel="Remove {{ file.name }}"
+        variant="transparent"
+        color="neutral"
+        [disabled]="disabled"
+        (click)="removeFile(i, $event)"
+      ></vd-icon-button>
+    </li>
+  </ul>
+  <!-- Helper text -->
+  <div class="vd-file-input__helper-row" *ngIf="helperText">
+    <p class="vd-file-input__helper-text body-small">{{ helperText }}</p>
+  </div>
+</div>

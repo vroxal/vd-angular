@@ -1,0 +1,103 @@
+:host {
+  --spacing-section: var(--vd-scale-spacing-800);
+  --spacing-card: var(--vd-scale-spacing-400);
+}
+
+.spacer {
+  height: var(--vd-scale-spacing-600);
+}
+
+/* Type Scale Groups */
+.type-scale-group {
+  margin-bottom: var(--vd-scale-spacing-600);
+}
+
+.type-examples {
+  display: flex;
+  flex-direction: column;
+  gap: var(--vd-scale-spacing-400);
+}
+
+.type-example {
+  padding: var(--vd-scale-spacing-600) 0;
+  /* background-color: var(--vd-color-background-default-tertiary);
+  border-radius: var(--vd-scale-border-radius-md);
+  border: var(--vd-scale-border-width-sm) solid var(--vd-color-border-default-tertiary); */
+}
+
+.example-text {
+  margin-bottom: var(--vd-scale-spacing-300);
+}
+
+.example-specs {
+  font-size: var(--vd-font-size-body-small);
+  color: var(--vd-color-content-default-tertiary);
+  font-family: 'Courier New', monospace;
+  margin-bottom: var(--vd-scale-spacing-200);
+}
+
+.example-usage {
+  font-size: var(--vd-font-size-body-small);
+  color: var(--vd-color-content-default-secondary);
+  font-style: italic;
+}
+
+/* Utility Classes Section */
+.utility-classes-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--vd-scale-spacing-400);
+}
+
+.utility-class-group {
+  flex: 1;
+  min-width: 240px;
+}
+
+.utility-class-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--vd-scale-spacing-200);
+}
+
+.utility-class-chip {
+  display: inline-block;
+  background-color: var(--vd-color-background-default-secondary);
+  padding: var(--vd-scale-spacing-200) var(--vd-scale-spacing-300);
+  border-radius: var(--vd-scale-border-radius-sm);
+  color: var(--vd-color-content-default-base);
+  border: var(--vd-scale-border-width-sm) solid var(--vd-color-border-default-tertiary);
+}
+
+/* Guideline Cards */
+.guideline-card {
+  background-color: var(--vd-color-background-default-tertiary);
+  padding: var(--vd-scale-spacing-600);
+  border-radius: var(--vd-scale-border-radius-md);
+  border-left: var(--vd-scale-border-width-lg) solid var(--vd-color-base-500);
+  margin-bottom: var(--vd-scale-spacing-600);
+}
+
+.guideline-card h3 {
+  margin-top: 0;
+  color: var(--vd-color-base-600);
+}
+
+.guideline-card p {
+  margin-bottom: 0;
+}
+.brand-typeface-container {
+  display: flex;
+  gap: var(--vd-scale-spacing-400);
+}
+.typeface-example {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--vd-scale-spacing-200);
+  background-color: var(--vd-color-background-default-base);
+  padding: var(--vd-scale-spacing-600);
+  border-radius: var(--vd-scale-border-radius-md);
+  /* width: 200px; */
+}

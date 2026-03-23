@@ -1,0 +1,58 @@
+:host {
+  width: 100%;
+  height: auto;
+
+  --vd-divider-border-base: var(--vd-color-border-default-secondary);
+  --vd-divider-border-secondary: var(--vd-color-border-default-tertiary);
+  --vd-divider-border-width: var(--vd-scale-border-width-sm);
+  --vd-divider-inset-spacing: var(--vd-scale-spacing-400);
+}
+
+:host([direction='vertical']) {
+  width: auto;
+  height: 100%;
+}
+
+.vd-divider {
+  --vd-divider-border-color: var(--vd-divider-border-base);
+  --vd-divider-border-style: solid;
+
+  width: 100%;
+  display: block;
+
+  span {
+    display: block;
+    background: none;
+    border-bottom: var(--vd-divider-border-width) var(--vd-divider-border-style)
+      var(--vd-divider-border-color);
+  }
+
+  &--secondary {
+    --vd-divider-border-color: var(--vd-divider-border-secondary);
+  }
+
+  &--dashed {
+    --vd-divider-border-style: dashed;
+  }
+
+  &--inset {
+    padding: 0 var(--vd-divider-inset-spacing);
+  }
+
+  &--vertical {
+    width: var(--vd-divider-border-width);
+    height: 100%;
+
+    span {
+      width: var(--vd-divider-border-width);
+      height: 100%;
+      border-bottom: none;
+      border-left: var(--vd-divider-border-width) var(--vd-divider-border-style)
+        var(--vd-divider-border-color);
+    }
+
+    &.vd-divider--inset {
+      padding: var(--vd-divider-inset-spacing) 0;
+    }
+  }
+}

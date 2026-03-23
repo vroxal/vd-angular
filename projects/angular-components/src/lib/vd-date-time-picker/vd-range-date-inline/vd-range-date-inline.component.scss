@@ -1,0 +1,111 @@
+:host {
+  display: block;
+
+  --vd-range-date-inline-gap: 16px;
+  --vd-range-date-inline-min-width: 280px;
+  --vd-range-date-inline-header-gap: var(--vd-scale-spacing-400);
+  --vd-range-date-inline-grid-row-gap: 2px;
+  --vd-range-date-inline-weekday-padding-y: 8px;
+}
+
+.vd-range-date-inline {
+  display: flex;
+  gap: var(--vd-range-date-inline-gap);
+
+  &__month-container {
+    display: flex;
+    flex-direction: column;
+    min-width: var(--vd-range-date-inline-min-width);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--vd-range-date-inline-header-gap);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    row-gap: var(--vd-range-date-inline-grid-row-gap);
+  }
+
+  &__weekday {
+    text-align: center;
+    color: var(--vd-color-content-default-tertiary);
+    padding: var(--vd-range-date-inline-weekday-padding-y) 0;
+  }
+
+  &__day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: var(--vd-scale-border-radius-md);
+    color: var(--vd-color-content-default-base);
+    position: relative;
+
+    &:hover:not(.outside-month) {
+      background-color: var(--vd-color-background-neutral-secondary);
+    }
+
+    &.outside-month {
+      color: var(--vd-color-content-default-disabled);
+      cursor: default;
+    }
+
+    &.disabled {
+      color: var(--vd-color-content-default-disabled);
+      cursor: not-allowed;
+      pointer-events: none;
+      opacity: 0.6;
+      background-color: transparent;
+      border: none;
+      &.selected,
+      &.today,
+      &.in-range,
+      &.range-start,
+      &.range-end {
+        color: var(--vd-color-content-default-disabled);
+        background-color: transparent;
+        border: none;
+      }
+    }
+
+    &.today {
+      color: var(--vd-color-content-primary-base);
+      border: 1px solid var(--vd-color-border-primary-base);
+    }
+
+    &.selected {
+      background-color: var(--vd-color-background-primary-base);
+      color: var(--vd-color-content-primary-on-base);
+
+      &:hover {
+        background-color: var(--vd-color-background-primary-base-hover);
+      }
+    }
+
+    // Range styles
+    &.in-range {
+      background-color: var(--vd-color-background-primary-secondary);
+      border-radius: 0;
+
+      &:hover {
+        background-color: var(--vd-color-background-primary-secondary-hover);
+      }
+    }
+
+    &.range-start {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &.range-end {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}

@@ -1,0 +1,103 @@
+:host {
+  --vd-modal-dialog-shell-bg: var(--vd-color-background-default-secondary);
+  --vd-modal-dialog-content-bg: var(--vd-color-background-default-base);
+  --vd-modal-dialog-border-color: var(--vd-color-border-default-tertiary);
+  --vd-modal-dialog-title-color: var(--vd-color-content-default-secondary);
+  --vd-modal-dialog-width: calc(var(--vd-scale-spacing-1600) * 10);
+  --vd-modal-dialog-padding: var(--vd-scale-spacing-400);
+  --vd-modal-dialog-gap: var(--vd-scale-spacing-400);
+
+  display: block;
+  width: 100%;
+}
+
+::ng-deep {
+  .vd-dialog-backdrop {
+    background-color: var(--vd-color-background-overlay-base);
+  }
+
+  .vd-dialog-panel {
+    padding: var(--vd-modal-dialog-padding);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@keyframes vdDialogSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes vdDialogSlideUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+.vd-dialog {
+  background-color: var(--vd-modal-dialog-content-bg);
+  border: var(--vd-scale-border-width-md) solid var(--vd-modal-dialog-border-color);
+  border-radius: var(--vd-scale-border-radius-xl);
+  width: var(--vd-modal-dialog-width);
+  max-height: calc(100vh - (var(--vd-scale-spacing-1600) * 2));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: vdDialogSlideDown 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+
+  &--closing {
+    animation: vdDialogSlideUp 0.15s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--vd-modal-dialog-gap);
+    padding: var(--vd-modal-dialog-padding);
+    background-color: var(--vd-modal-dialog-shell-bg);
+  }
+
+  &__header-text {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &__title {
+    margin: 0;
+    color: var(--vd-modal-dialog-title-color);
+  }
+
+  &__content {
+    flex: 1 1 auto;
+    background-color: var(--vd-modal-dialog-content-bg);
+    padding: var(--vd-modal-dialog-padding);
+    display: flex;
+    flex-direction: column;
+    gap: var(--vd-modal-dialog-gap);
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: var(--vd-modal-dialog-gap);
+    padding: var(--vd-modal-dialog-padding);
+    background-color: var(--vd-modal-dialog-shell-bg);
+  }
+}

@@ -1,0 +1,37 @@
+<div class="vd-empty-state" [class.vd-empty-state--unboxed]="!boxed">
+  @if (showIcon) {
+    <div class="vd-empty-state__icon-container">
+      <vd-icon [name]="icon" size="xl" color="neutral"></vd-icon>
+    </div>
+  }
+
+  <div class="vd-empty-state__text-content">
+    <h3 class="vd-empty-state__title title-large">{{ title }}</h3>
+    @if (description) {
+      <p class="vd-empty-state__description body-medium">{{ description }}</p>
+    }
+  </div>
+
+  @if (hasPrimaryAction || hasSecondaryAction) {
+    <div class="vd-empty-state__actions">
+      @if (hasSecondaryAction) {
+        <vd-button
+          [label]="secondaryActionLabel"
+          variant="subtle"
+          color="neutral"
+          size="sm"
+          (click)="onSecondaryActionClick()"
+        ></vd-button>
+      }
+
+      @if (hasPrimaryAction) {
+        <vd-button
+          [label]="primaryActionLabel"
+          color="primary"
+          size="sm"
+          (click)="onPrimaryActionClick()"
+        ></vd-button>
+      }
+    </div>
+  }
+</div>

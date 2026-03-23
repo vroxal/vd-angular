@@ -1,0 +1,78 @@
+:host {
+  --vd-empty-state-padding: var(--vd-scale-spacing-1000);
+  --vd-empty-state-gap: var(--vd-scale-spacing-600);
+  --vd-empty-state-text-gap: var(--vd-scale-spacing-100);
+  --vd-empty-state-text-max-width: calc(var(--vd-scale-spacing-3000) * 4);
+  --vd-empty-state-actions-gap: var(--vd-scale-spacing-400);
+  --vd-empty-state-border-width: var(--vd-scale-border-width-sm);
+  --vd-empty-state-border-radius: var(--vd-scale-border-radius-xl);
+  --vd-empty-state-icon-padding: var(--vd-scale-spacing-400);
+  --vd-empty-state-bg: var(--vd-color-background-default-tertiary);
+  --vd-empty-state-border-color: var(--vd-color-border-default-tertiary);
+  --vd-empty-state-icon-bg: var(--vd-color-background-default-base);
+  --vd-empty-state-title-color: var(--vd-color-content-default-base);
+  --vd-empty-state-description-color: var(--vd-color-content-default-secondary);
+
+  display: block;
+  width: 100%;
+}
+
+.vd-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--vd-empty-state-gap);
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--vd-empty-state-padding);
+  border: var(--vd-empty-state-border-width) solid var(--vd-empty-state-border-color);
+  border-radius: var(--vd-empty-state-border-radius);
+  background-color: var(--vd-empty-state-bg);
+
+  &__icon-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--vd-empty-state-icon-padding);
+    border-radius: var(--vd-empty-state-border-radius);
+    background-color: var(--vd-empty-state-icon-bg);
+  }
+
+  &__text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--vd-empty-state-text-gap);
+    text-align: center;
+    max-width: var(--vd-empty-state-text-max-width);
+  }
+
+  &__title,
+  &__description {
+    margin: 0;
+    width: 100%;
+  }
+
+  &__title {
+    color: var(--vd-empty-state-title-color);
+  }
+
+  &__description {
+    color: var(--vd-empty-state-description-color);
+  }
+
+  &__actions {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--vd-empty-state-actions-gap);
+  }
+
+  &--unboxed {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    .vd-empty-state__icon-container {
+      background-color: var(--vd-color-background-default-tertiary);
+    }
+  }
+}
