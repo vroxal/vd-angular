@@ -1,0 +1,198 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Search'"
+    [subtitle]="'Search captures search queries with a fixed leading icon and a clear action.'"
+  >
+  </app-doc-page-header>
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Basic Search</h3>
+          <p>Standard search input with a clear button when text is entered</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-search placeholder="Search records..."></vd-search>
+        </div>
+      </div>
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Disabled</h3>
+          <p>Search input in its disabled state</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-search [disabled]="true" placeholder="Search is unavailable"></vd-search>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the search component in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-search.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Here is a basic example of using the search component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="search-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Implementation with all available APIs</h3>
+          <p>Here is an example of using the search component with all available APIs:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allImplementationSnippet"
+            fileName="search-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Listening to Events</h3>
+          <p>Handle live changes and committed search queries:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="eventsSnippet"
+            fileName="search-events.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="eventsComponentSnippet"
+            fileName="search-events.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-badge
+            [label]="row.property"
+            variant="subtle"
+            [rounded]="true"
+            color="neutral"
+          ></vd-badge>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+        </div>
+        <vd-datatable [data]="outputsData" [columns]="eventsColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-group usage-guidelines">
+  <div class="content-group-title">
+    <h2 class="headline-large">Best Practices</h2>
+  </div>
+  <div class="content-group-container">
+    <div class="guideline-section">
+      <h3 class="title-large">When to Use</h3>
+      <ul>
+        <li>Use Search when this pattern clearly supports the user task.</li>
+        <li>Use it to keep similar interactions consistent across the product.</li>
+      </ul>
+    </div>
+    <div class="guideline-section">
+      <h3 class="title-large">When Not to Use</h3>
+      <ul>
+        <li>Avoid using Search when a simpler component communicates the same intent.</li>
+        <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+      </ul>
+    </div>
+    <div class="guideline-section">
+      <h3 class="title-large">Design Guidelines</h3>
+      <ul>
+        <li>Use concise placeholder text that describes what the user can search for</li>
+        <li>The clear action only appears when the search field has a value</li>
+        <li>Use the search commit event to trigger searches on Enter key or blur</li>
+        <li>For standard form text entry, use <code>vd-input</code> instead</li>
+        <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+        <li>Use VD variants and states consistently for predictable behavior.</li>
+        <li>Ensure keyboard access and clear focus order for accessibility.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="content-group playground">
+  <div class="content-group-title">
+    <h2 class="headline-large">Component playground</h2>
+    <p class="body-large">Customize the search features in this section</p>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <label class="switch-label">
+              <span>Disabled</span>
+              <vd-switch [checked]="disabled" (change)="disabled = $event"></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-search
+              [placeholder]="placeholder"
+              [(value)]="value"
+              [disabled]="disabled"
+            ></vd-search>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

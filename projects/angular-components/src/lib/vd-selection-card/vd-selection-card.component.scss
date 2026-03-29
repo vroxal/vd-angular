@@ -1,0 +1,33 @@
+:host {
+  display: block;
+
+  --vd-selection-card-group-gap: var(--vd-scale-spacing-200);
+  --vd-selection-card-group-columns: 1;
+}
+
+.vd-selection-card-group {
+  display: flex;
+  flex-direction: column;
+
+  &--horizontal {
+    .vd-selection-card-group__list {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    vd-selection-card {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(var(--vd-selection-card-group-columns), 1fr);
+    gap: var(--vd-selection-card-group-gap);
+  }
+
+  &--horizontal &__list {
+    display: flex;
+  }
+}

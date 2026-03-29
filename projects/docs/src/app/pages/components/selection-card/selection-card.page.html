@@ -1,0 +1,344 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Selection Card'"
+    [subtitle]="
+      'Selection cards provide a visually rich alternative to radio buttons and checkboxes, combining an optional icon, title, and description into a selectable card layout.'
+    "
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Radio Mode (Single Selection)</h3>
+          <p>Use radio mode when only one option can be selected at a time.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-selection-card-group
+            [items]="radioItems"
+            type="radio"
+            direction="horizontal"
+            [value]="radioValue"
+            (valueChange)="radioValue = $event"
+          ></vd-selection-card-group>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Checkbox Mode (Multiple Selection)</h3>
+          <p>Use checkbox mode when multiple options can be selected simultaneously.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-selection-card-group
+            [items]="checkboxItems"
+            type="checkbox"
+            direction="horizontal"
+            [value]="checkboxValue"
+            (valueChange)="checkboxValue = $event"
+          ></vd-selection-card-group>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">With Description</h3>
+          <p>Selection cards with supporting description text below the title.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-selection-card-group
+            [items]="withDescriptionItems"
+            type="radio"
+            [value]="descriptionValue"
+            (valueChange)="descriptionValue = $event"
+          ></vd-selection-card-group>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">With Icons</h3>
+          <p>Selection cards with leading icons for visual context.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-selection-card-group
+            [items]="withIconItems"
+            type="radio"
+            direction="horizontal"
+            [value]="iconValue"
+            (valueChange)="iconValue = $event"
+          ></vd-selection-card-group>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Disabled State</h3>
+          <p>Selection cards in a disabled state.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-selection-card-group
+            [items]="disabledItems"
+            type="radio"
+            direction="horizontal"
+            [value]="disabledValue"
+            [disabled]="true"
+          ></vd-selection-card-group>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the selection card group component and item interface:</p>
+        </div>
+        <code-container
+          [code]="importCodeSnippet"
+          fileName="import-selection-card.ts"
+          language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Radio Mode (Single Selection)</h3>
+          <p>Use radio mode for mutually exclusive selections:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define items in TypeScript</h4>
+          <code-container
+            [code]="basicRadioTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Use in template</h4>
+          <code-container
+            [code]="basicRadioTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Checkbox Mode (Multiple Selection)</h3>
+          <p>Use checkbox mode for multi-select options:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define items in TypeScript</h4>
+          <code-container
+            [code]="checkboxTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Use in template</h4>
+          <code-container
+            [code]="checkboxTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">With Description</h3>
+          <p>Add descriptions for additional context:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define items with descriptions</h4>
+          <code-container
+            [code]="withDescriptionTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Use in template</h4>
+          <code-container
+            [code]="withDescriptionTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Disabled State</h3>
+          <p>Disable the entire group or individual items:</p>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">1. Define items in TypeScript</h4>
+          <code-container
+            [code]="disabledTypescriptSnippet"
+            fileName="my.component.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+        <div class="guideline">
+          <h4 class="guideline-info title-medium">2. Use in template</h4>
+          <code-container
+            [code]="disabledTemplateSnippet"
+            fileName="my.component.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">VdSelectionCard Interface</h3>
+          <p class="body-large">Properties for each selection card item:</p>
+        </div>
+        <ng-template #propertyBadge let-row>
+          <vd-badge [label]="row.property" variant="subtle" color="neutral"></vd-badge>
+        </ng-template>
+        <vd-datatable
+          [data]="itemInterfaceData"
+          [columns]="itemInterfaceColumnsWithTemplate"
+        ></vd-datatable>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+          <p class="body-large">Event emitters for selection changes:</p>
+        </div>
+        <vd-datatable [data]="outputData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Best Practices</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <h3 class="title-large">When to Use</h3>
+        <ul>
+          <li>
+            Use Selection Card when each option needs a richer visual representation than a standard
+            radio/checkbox.
+          </li>
+          <li>
+            Use it for settings, plan selection, delivery options, or payment method selection.
+          </li>
+          <li>
+            Use radio mode for mutually exclusive choices, and checkbox mode for multi-select
+            options.
+          </li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">When Not to Use</h3>
+        <ul>
+          <li>Avoid using Selection Card for simple yes/no toggles — use a switch instead.</li>
+          <li>
+            Avoid using it for long lists of options — use a standard radio/checkbox group instead.
+          </li>
+          <li>Avoid using it when space is limited and cards would stack poorly.</li>
+        </ul>
+      </div>
+      <div class="guideline-section">
+        <h3 class="title-large">Design Guidelines</h3>
+        <ul>
+          <li>Always use within a group context — never render a single selection card alone.</li>
+          <li>Keep titles concise and descriptive.</li>
+          <li>Use icons consistently across all cards in a group.</li>
+          <li>Descriptions are optional but should be brief when used.</li>
+          <li>Limit to 3-5 cards per group for optimal usability.</li>
+          <li>Ensure keyboard access and clear focus order for accessibility.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group playgrouund">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component playground</h2>
+      <p class="body-large">Customize the selection card in this section</p>
+    </div>
+    <div class="content-group-container playground-container">
+      <!-- Preview -->
+      <div class="component-preview">
+        <div class="component-control">
+          <!-- Controls -->
+          <div class="controls">
+            <label class="switch-label">
+              <span>Type</span>
+              <vd-select
+                [options]="typeOptions"
+                [value]="playgroundType!"
+                (valueChange)="playgroundType = $any($event)"
+              ></vd-select>
+            </label>
+
+            <label class="switch-label">
+              <span>Direction</span>
+              <vd-select
+                [options]="directionOptions"
+                [value]="playgroundDirection!"
+                (valueChange)="playgroundDirection = $any($event)"
+              ></vd-select>
+            </label>
+
+            <label class="switch-label">
+              <span>Disabled</span>
+              <vd-switch
+                [checked]="playgroundDisabled"
+                (change)="playgroundDisabled = $event"
+              ></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-selection-card-group
+              [items]="playgroundItems"
+              [type]="playgroundType"
+              [direction]="playgroundDirection"
+              [disabled]="playgroundDisabled"
+              [value]="playgroundValue"
+              (valueChange)="onPlaygroundValueChange($event)"
+            ></vd-selection-card-group>
+          </div>
+        </div>
+      </div>
+
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>

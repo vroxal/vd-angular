@@ -4,6 +4,7 @@ import { VdIcon } from './vd-icon/vd-icon.component';
 import { VdIconButton } from './vd-icon-button/vd-icon-button.component';
 import { VdToast } from './vd-toast/vd-toast.component';
 import { VdInput } from './vd-input/vd-input.component';
+import { VdSearch } from './vd-search/vd-search.component';
 import { VdCheckbox } from './vd-checkbox/vd-checkbox.component';
 import { VdCheckboxGroup } from './vd-checkbox-group/vd-checkbox-group.component';
 import { VdTooltip } from './vd-tooltip/vd-tooltip.component';
@@ -41,6 +42,8 @@ import { VdBreadcrumb } from './vd-breadcrumb/vd-breadcrumb.component';
 import { VdNavbar } from './vd-navbar/vd-navbar.component';
 import { VdEmptyState } from './vd-empty-state/vd-empty-state.component';
 import { VdLoadingState } from './vd-loading-state/vd-loading-state.component';
+import { VdSelectionCardItem } from './vd-selection-card/vd-selection-card-item/vd-selection-card-item.component';
+import { VdSelectionCardGroup } from './vd-selection-card/vd-selection-card.component';
 
 @NgModule({
   imports: [
@@ -49,6 +52,7 @@ import { VdLoadingState } from './vd-loading-state/vd-loading-state.component';
     VdIconButton,
     VdToast,
     VdInput,
+    VdSearch,
     VdCheckbox,
     VdCheckboxGroup,
     VdTooltip,
@@ -86,6 +90,8 @@ import { VdLoadingState } from './vd-loading-state/vd-loading-state.component';
     VdNavbar,
     VdEmptyState,
     VdLoadingState,
+    VdSelectionCardItem,
+    VdSelectionCardGroup,
   ], // standalone component import
   exports: [
     VdButton,
@@ -93,6 +99,7 @@ import { VdLoadingState } from './vd-loading-state/vd-loading-state.component';
     VdIconButton,
     VdToast,
     VdInput,
+    VdSearch,
     VdCheckbox,
     VdCheckboxGroup,
     VdTooltip,
@@ -130,6 +137,8 @@ import { VdLoadingState } from './vd-loading-state/vd-loading-state.component';
     VdNavbar,
     VdEmptyState,
     VdLoadingState,
+    VdSelectionCardItem,
+    VdSelectionCardGroup,
   ], // export to make available in apps
 })
 export class VdAngularComponentsModule {}

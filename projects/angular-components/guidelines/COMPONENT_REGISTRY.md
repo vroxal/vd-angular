@@ -20,6 +20,7 @@ Human-readable registry of the exported API in `@vroxal/vd-angular`.
 | Component               | Selector                     | Angular Symbol            | Primary Usage                     |
 | ----------------------- | ---------------------------- | ------------------------- | --------------------------------- |
 | Input                   | `vd-input`                   | `VdInput`                 | Single-line text input            |
+| Search                  | `vd-search`                  | `VdSearch`                | Search query input field          |
 | Textarea                | `vd-textarea`                | `VdTextarea`              | Multi-line text input             |
 | Select                  | `vd-select`                  | `VdSelect`                | Single-option selection from list |
 | Number Input            | `vd-number-input`            | `VdNumberInput`           | Numeric entry                     |
@@ -29,6 +30,8 @@ Human-readable registry of the exported API in `@vroxal/vd-angular`.
 | Checkbox Group          | `vd-checkbox-group`          | `VdCheckboxGroup`         | Grouped multi-select options      |
 | Radio Button            | `vd-radio-button`            | `VdRadioButton`           | Single option item in radio sets  |
 | Radio Group             | `vd-radio-group`             | `VdRadioGroup`            | Exclusive single-choice selection |
+| Selection Card          | `vd-selection-card`          | `VdSelectionCard`         | Visually rich selection item      |
+| Selection Card Group    | `vd-selection-card-group`    | `VdSelectionCardGroup`    | Grouped visual selection options  |
 | Switch                  | `vd-switch`                  | `VdSwitch`                | On/off settings toggles           |
 | Tab                     | `vd-tab`                     | `VdTab`                   | Switching sibling content views   |
 

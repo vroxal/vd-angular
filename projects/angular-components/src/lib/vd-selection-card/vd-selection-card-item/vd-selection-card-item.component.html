@@ -1,0 +1,36 @@
+<div
+  class="vd-selection-card-item"
+  [class.vd-selection-card--checked]="checked"
+  [class.vd-selection-card--disabled]="disabled"
+  [attr.role]="type === 'radio' ? 'radio' : 'checkbox'"
+  [attr.aria-checked]="checked"
+  [attr.aria-disabled]="disabled"
+  [attr.aria-label]="ariaLabel || title"
+  [attr.tabindex]="disabled ? -1 : 0"
+  (click)="onCardClick()"
+  (keydown)="onKeydown($event)"
+>
+  <vd-icon *ngIf="icon" class="vd-selection-card-item__icon" [name]="icon" size="md"></vd-icon>
+
+  <div class="vd-selection-card-item__content">
+    <p class="vd-selection-card-item__title label-medium">{{ title }}</p>
+    <span *ngIf="description" class="vd-selection-card-item__description body-medium">
+      {{ description }}
+    </span>
+  </div>
+
+  <vd-checkbox
+    *ngIf="type === 'checkbox'"
+    [checked]="checked"
+    [disabled]="disabled"
+    [attr.tabindex]="-1"
+  ></vd-checkbox>
+  <vd-radio-button
+    *ngIf="type === 'radio'"
+    [checked]="checked"
+    [disabled]="disabled"
+    [name]="name"
+    [value]="value"
+    [attr.tabindex]="-1"
+  ></vd-radio-button>
+</div>

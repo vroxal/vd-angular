@@ -1,0 +1,156 @@
+:host {
+  display: block;
+
+  // Card layout
+  --vd-selection-card-padding: var(--vd-scale-spacing-400);
+  --vd-selection-card-gap: var(--vd-scale-spacing-200);
+  --vd-selection-card-radius: var(--vd-scale-border-radius-md);
+  --vd-selection-card-border-width: var(--vd-scale-border-width-sm);
+
+  // Default state
+  --vd-selection-card-bg: var(--vd-color-background-default-secondary);
+  --vd-selection-card-border: var(--vd-color-border-default-tertiary);
+  --vd-selection-card-title-color: var(--vd-color-content-default-base);
+  --vd-selection-card-description-color: var(--vd-color-content-default-secondary);
+  --vd-selection-card-icon-color: var(--vd-color-content-default-secondary);
+
+  // Hover state
+  --vd-selection-card-border-hover: var(--vd-color-border-primary-base);
+
+  // Checked state
+  --vd-selection-card-bg-checked: var(--vd-color-background-primary-secondary);
+  --vd-selection-card-border-checked: var(--vd-color-border-primary-secondary);
+  --vd-selection-card-title-color-checked: var(--vd-color-content-default-base);
+  --vd-selection-card-description-color-checked: var(--vd-color-content-default-secondary);
+  --vd-selection-card-icon-color-checked: var(--vd-color-content-default-base);
+
+  // Disabled state
+  --vd-selection-card-bg-disabled: var(--vd-color-background-default-disabled);
+  --vd-selection-card-border-disabled: var(--vd-color-border-default-disabled);
+  --vd-selection-card-text-disabled: var(--vd-color-content-default-disabled);
+
+  // Focus state
+  --vd-selection-card-focus-width: var(--vd-scale-border-width-md);
+  --vd-selection-card-focus-color: var(--vd-color-border-primary-tertiary);
+  --vd-selection-card-focus-offset: var(--vd-scale-border-width-md);
+}
+
+.vd-selection-card-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--vd-selection-card-gap);
+  padding: var(--vd-selection-card-padding);
+  border-radius: var(--vd-selection-card-radius);
+  border: var(--vd-selection-card-border-width) solid var(--vd-selection-card-border);
+  background: var(--vd-selection-card-bg);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+  outline: none;
+
+  &__icon {
+    flex-shrink: 0;
+    color: var(--vd-selection-card-icon-color);
+    transition: color 0.2s ease;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    color: var(--vd-selection-card-title-color);
+    transition: color 0.2s ease;
+  }
+
+  &__description {
+    color: var(--vd-selection-card-description-color);
+    transition: color 0.2s ease;
+  }
+
+  &__control {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    pointer-events: none;
+  }
+
+  // Hover state
+  &:not(.vd-selection-card--disabled):not(.vd-selection-card--checked):hover {
+    --vd-selection-card-border: var(--vd-color-border-primary-base);
+    // --vd-selection-card-border: var(--vd-selection-card-border-hover);;
+    // --vd-checkbox-border-color: var(--vd-color-border-primary-base);
+    // --vd-radio-border-color: var(--vd-color-border-primary-base);
+    ::ng-deep {
+      .vd-checkbox__box {
+        background: var(--vd-color-background-primary-secondary-hover);
+        border-color: var(--vd-color-border-primary-base);
+      }
+      // &.vd-checkbox--checked:not(.vd-checkbox--disabled):hover,
+      // &.vd-checkbox--indeterminate:not(.vd-checkbox--disabled):hover {
+      //   --vd-checkbox-bg: var(--vd-checkbox-bg-checked-hover);
+      //   --vd-checkbox-border: var(--vd-checkbox-bg-checked-hover);
+      // }
+
+      // &:not(&--disabled):focus-within {
+      //   --vd-checkbox-label-current: var(--vd-checkbox-label-color-hover);
+      //   --vd-checkbox-description-current: var(--vd-checkbox-description-color-hover);
+      // }
+
+      // &__input:focus-visible + &__box {
+      //   outline: var(--vd-checkbox-focus-width) solid var(--vd-checkbox-focus-color);
+      //   outline-offset: var(--vd-checkbox-focus-offset);
+      // }
+
+      // &:not(&--checked):not(&--indeterminate) &__input:focus-visible + &__box {
+      //   border-color: var(--vd-checkbox-border-unchecked-focus);
+      // }
+      // }
+      // .vd-checkbox__box {
+      //   width: var(--vd-checkbox-size);
+      //   height: var(--vd-checkbox-size);
+      //   border-radius: var(--vd-checkbox-radius);
+      //   border: var(--vd-checkbox-border-width) solid var(--vd-checkbox-border);
+      //   background: var(--vd-checkbox-)
+      //   color: var(--vd-checkbox-icon-current);
+      //   opacity: var(--vd-checkbox-box-opacity);
+      //   display: inline-flex;
+      //   align-items: center;
+      //   justify-content: center;
+      //   transition:
+      //     background-color 0.2s ease,
+      //     border-color 0.2s ease,
+      //     color 0.2s ease;
+      // }
+    }
+  }
+
+  // Focus state
+  &:not(&--disabled):focus-visible {
+    outline: var(--vd-selection-card-focus-width) solid var(--vd-selection-card-focus-color);
+    outline-offset: var(--vd-selection-card-focus-offset);
+  }
+
+  // Checked state
+  &--checked {
+    --vd-selection-card-bg: var(--vd-selection-card-bg-checked);
+    --vd-selection-card-border: var(--vd-selection-card-border-checked);
+    --vd-selection-card-title-color: var(--vd-selection-card-title-color-checked);
+    --vd-selection-card-description-color: var(--vd-selection-card-description-color-checked);
+    --vd-selection-card-icon-color: var(--vd-selection-card-icon-color-checked);
+  }
+
+  // Disabled state
+  &--disabled {
+    cursor: not-allowed;
+    --vd-selection-card-bg: var(--vd-selection-card-bg-disabled);
+    --vd-selection-card-border: var(--vd-selection-card-border-disabled);
+    --vd-selection-card-title-color: var(--vd-selection-card-text-disabled);
+    --vd-selection-card-description-color: var(--vd-selection-card-text-disabled);
+    --vd-selection-card-icon-color: var(--vd-selection-card-text-disabled);
+  }
+}

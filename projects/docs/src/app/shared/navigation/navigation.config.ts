@@ -128,6 +128,7 @@ export const SIDEBAR_SECTIONS: NavSection[] = [
             route: '/components/file-input',
           },
           { label: 'Number Input', route: '/components/number-input' },
+          { label: 'Search', route: '/components/search' },
           {
             label: 'Verification Code Input',
             route: '/components/verification-code-input',
@@ -147,6 +148,14 @@ export const SIDEBAR_SECTIONS: NavSection[] = [
       {
         label: 'Radio Group',
         route: '/components/radio-group',
+      },
+      {
+        label: 'Search',
+        route: '/components/search',
+      },
+      {
+        label: 'Selection Card',
+        route: '/components/selection-card',
       },
       {
         label: 'Select',
@@ -286,6 +295,7 @@ export const INTRODUCTION_PAGE_SECTIONS = [
       },
       { label: 'Input', route: '/components/input', image: 'input' },
       { label: 'Loading State', route: '/components/loading-state', image: 'loading-state' },
+      { label: 'Search', route: '/components/search', image: 'search' },
       { label: 'Navbar', route: '/components/navbar', image: 'navbar' },
       { label: 'Number Input', route: '/components/number-input', image: 'number-input' },
       {
@@ -302,6 +312,16 @@ export const INTRODUCTION_PAGE_SECTIONS = [
         label: 'Radio Group',
         route: '/components/radio-group',
         image: 'radio-group',
+      },
+      {
+        label: 'Search',
+        route: '/components/search',
+        image: 'search',
+      },
+      {
+        label: 'Selection Card',
+        route: '/components/selection-card',
+        image: 'selection-card',
       },
       {
         label: 'Select',

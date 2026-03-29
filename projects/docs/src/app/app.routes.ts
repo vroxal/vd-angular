@@ -197,4 +197,14 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/components/loading-state/loading-state.page').then((m) => m.default),
   },
+  {
+    path: 'components/search',
+    loadComponent: () =>
+      import('./pages/components/search/search.page').then((m) => m.default),
+  },
+  {
+    path: 'components/selection-card',
+    loadComponent: () =>
+      import('./pages/components/selection-card/selection-card.page').then((m) => m.default),
+  },
 ];

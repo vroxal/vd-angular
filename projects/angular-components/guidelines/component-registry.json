@@ -81,6 +81,17 @@
       "outputs": ["valueChange", "valueCommit", "trailingActionClick", "inputFocus"]
     },
     {
+      "name": "Search",
+      "className": "VdSearch",
+      "selector": "vd-search",
+      "kind": "component",
+      "category": "forms",
+      "useFor": ["dedicated search entry fields", "filtering lists or tables"],
+      "avoidFor": ["general text input", "multi-line input"],
+      "inputs": ["placeholder", "value", "disabled", "leadingIcon", "trailingActionIcon", "state"],
+      "outputs": ["valueChange", "searchCommit"]
+    },
+    {
       "name": "Textarea",
       "className": "VdTextarea",
       "selector": "vd-textarea",
@@ -246,6 +257,28 @@
       "useFor": ["single-choice selection across options"],
       "avoidFor": ["independent toggles"],
       "inputs": ["items", "direction", "value", "disabled", "name"],
+      "outputs": ["valueChange"]
+    },
+    {
+      "name": "Selection Card",
+      "className": "VdSelectionCard",
+      "selector": "vd-selection-card",
+      "kind": "component",
+      "category": "selection",
+      "useFor": ["visually rich options combining icon, title, and description"],
+      "avoidFor": ["simple toggles", "long lists where regular radios/checkboxes fit better"],
+      "inputs": ["title", "description", "icon", "value", "checked", "disabled", "type", "name", "ariaLabel"],
+      "outputs": ["select"]
+    },
+    {
+      "name": "Selection Card Group",
+      "className": "VdSelectionCardGroup",
+      "selector": "vd-selection-card-group",
+      "kind": "component",
+      "category": "selection",
+      "useFor": ["managing a group of selection cards"],
+      "avoidFor": ["standalone options outside of a group"],
+      "inputs": ["items", "type", "direction", "disabled", "name", "columns", "value"],
       "outputs": ["valueChange"]
     },
     {

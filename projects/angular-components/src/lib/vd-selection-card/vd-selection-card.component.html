@@ -1,0 +1,22 @@
+<div
+  class="vd-selection-card-group"
+  [class.vd-selection-card-group--horizontal]="direction === 'horizontal'"
+  [class.vd-selection-card-group--vertical]="direction === 'vertical'"
+  [style.--vd-selection-card-group-columns]="columns"
+  [attr.role]="type === 'radio' ? 'radiogroup' : 'group'"
+>
+  <div class="vd-selection-card-group__list">
+    <vd-selection-card-item
+      *ngFor="let item of items; trackBy: trackByItem"
+      [title]="item.title"
+      [description]="item.description"
+      [icon]="item.icon"
+      [value]="item.value"
+      [checked]="isChecked(item)"
+      [disabled]="disabled || !!item.disabled"
+      [type]="type"
+      [name]="name"
+      (select)="onItemSelect(item)"
+    ></vd-selection-card-item>
+  </div>
+</div>

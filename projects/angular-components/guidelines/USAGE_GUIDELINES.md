@@ -22,8 +22,8 @@ This guide is for agentic AI and developers using `@vroxal/vd-angular`.
 ## Selection Guide By Intent
 
 - Actions: `vd-button`, `vd-icon-button`
-- Form input: `vd-input`, `vd-textarea`, `vd-select`, `vd-number-input`, `vd-file-input`, `vd-verification-code-input`
-- Choice controls: `vd-checkbox`, `vd-checkbox-group`, `vd-radio-button`, `vd-radio-group`, `vd-switch`, `vd-tab`
+- Form input: `vd-input`, `vd-search`, `vd-textarea`, `vd-select`, `vd-number-input`, `vd-file-input`, `vd-verification-code-input`
+- Choice controls: `vd-checkbox`, `vd-checkbox-group`, `vd-radio-button`, `vd-radio-group`, `vd-selection-card`, `vd-selection-card-group`, `vd-switch`, `vd-tab`
 - Date and time: `vd-date-time-picker`, `vd-single-date-picker`, `vd-range-date-picker`, `vd-time-picker`, `vd-single-date-inline`, `vd-range-date-inline`
 - Navigation: `vd-breadcrumb`, `vd-navbar`, `vd-sidebar`, `vd-pagination`
 - Data display and structure: `vd-datatable`, `vd-accordion`, `vd-divider`, `vd-icon`
