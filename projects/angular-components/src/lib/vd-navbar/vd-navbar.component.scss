@@ -5,11 +5,6 @@
 .vd-navbar {
   background-color: var(--vd-color-background-default-secondary);
   padding: var(--vd-scale-spacing-400);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: var(--vd-layout-navbar-height, var(--vd-scale-spacing-1600));
   box-sizing: border-box;
   z-index: 2000;
   border-bottom: var(--vd-scale-border-width-sm) solid var(--vd-color-border-default-tertiary);

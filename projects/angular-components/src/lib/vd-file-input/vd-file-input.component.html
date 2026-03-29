@@ -22,7 +22,12 @@
     <label *ngIf="label" class="vd-file-input__label body-medium" [attr.for]="inputId">
       {{ label }}
     </label>
-    <vd-icon *ngIf="hintText" name="vd-icon-help" size="md" [vdTooltip]="hintText"></vd-icon>
+    <vd-icon
+      *ngIf="hintText"
+      name="vd-icon-question-circle"
+      size="md"
+      [vdTooltip]="hintText"
+    ></vd-icon>
     <p *ngIf="optional" class="vd-file-input__optional body-medium-italic">Optional</p>
   </div>
 

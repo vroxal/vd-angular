@@ -17,11 +17,10 @@
 
     <vd-icon-button
       class="vd-drawer__close"
-      icon="vd-icon-cross"
+      icon="vd-icon-xmark"
       variant="transparent"
       color="neutral"
       size="sm"
-      [rounded]="true"
       ariaLabel="Close drawer"
       (click)="handleClose()"
     ></vd-icon-button>
@@ -38,7 +37,11 @@
     ></ng-container>
   </div>
 
-  <div *ngIf="hasActions" class="vd-drawer__footer" [class.vd-drawer__footer--sm]="config.size === 'sm'">
+  <div
+    *ngIf="hasActions"
+    class="vd-drawer__footer"
+    [class.vd-drawer__footer--sm]="config.size === 'sm'"
+  >
     <vd-button
       *ngIf="config.secondaryActionLabel"
       [label]="config.secondaryActionLabel"

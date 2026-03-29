@@ -289,7 +289,7 @@ export class DeleteItemComponent {
         description:
           'Are you sure you want to delete your account? This action is permanent and cannot be undone.',
         color: 'error',
-        icon: 'vd-icon-error-filled',
+        icon: 'vd-icon-danger-circle-filled',
         confirmLabel: 'Delete',
         cancelLabel: 'Cancel',
       })

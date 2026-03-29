@@ -26,7 +26,7 @@
 
       <!-- Separator for normally visible items -->
       <li *ngIf="!isLast" class="vd-breadcrumb__separator" aria-hidden="true">
-        <vd-icon name="vd-icon-caret-right"></vd-icon>
+        <vd-icon name="vd-icon-chevron-right"></vd-icon>
       </li>
 
       <!-- Render the overflow dropdown right after the first item if there are overflow items -->
@@ -38,7 +38,7 @@
               variant="transparent"
               color="neutral"
               size="sm"
-              icon="vd-icon-horizontal-dot"
+              icon="vd-icon-menu-dots-horizontal-filled"
               class="vd-breadcrumb__overflow-button"
             ></vd-icon-button>
             <ng-container vdDropdownContent>
@@ -52,7 +52,7 @@
         </li>
 
         <li class="vd-breadcrumb__separator" aria-hidden="true">
-          <vd-icon name="vd-icon-caret-right"></vd-icon>
+          <vd-icon name="vd-icon-chevron-right"></vd-icon>
         </li>
       </ng-container>
     </ng-container>

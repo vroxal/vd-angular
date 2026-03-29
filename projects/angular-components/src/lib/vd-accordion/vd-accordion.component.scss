@@ -59,7 +59,7 @@
       background-color: var(--vd-accordion-bg-active);
     }
 
-    .vd-accordion__caret {
+    .vd-accordion__chevron {
       transform: rotate(180deg);
     }
 
@@ -79,7 +79,7 @@
     min-width: 0;
   }
 
-  &__caret {
+  &__chevron {
     flex-shrink: 0;
     transition: transform 0.3s ease;
   }

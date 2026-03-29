@@ -32,8 +32,8 @@ export class VdProgressTracker {
 
   @Output() itemClick = new EventEmitter<number>();
 
-  private readonly completedIcon = 'vd-icon-tick';
-  private readonly errorIcon = 'vd-icon-error-filled';
+  private readonly completedIcon = 'vd-icon-check';
+  private readonly errorIcon = 'vd-icon-danger-circle-filled';
 
   get indicatorSize(): VdProgressTrackerSize {
     return this.direction === 'horizontal' ? 'sm' : 'lg';

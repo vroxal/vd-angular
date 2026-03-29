@@ -21,16 +21,12 @@
             (click)="toggleExpand(item.label, $event)"
           >
             <span class="vd-sidebar__item-content">
-              <vd-icon
-                *ngIf="item.icon"
-                class="vd-sidebar__item-icon"
-                [name]="item.icon"
-              ></vd-icon>
+              <vd-icon *ngIf="item.icon" class="vd-sidebar__item-icon" [name]="item.icon"></vd-icon>
               <span class="vd-sidebar__item-label">{{ item.label }}</span>
             </span>
             <vd-icon
               [class.vd-sidebar__icon--expanded]="isExpanded(item.label)"
-              name="vd-icon-caret-right"
+              name="vd-icon-chevron-right"
             ></vd-icon>
           </a>
           <!-- If parent doesn't have a route, make it a div -->
@@ -42,16 +38,12 @@
             (click)="toggleExpand(item.label)"
           >
             <span class="vd-sidebar__item-content">
-              <vd-icon
-                *ngIf="item.icon"
-                class="vd-sidebar__item-icon"
-                [name]="item.icon"
-              ></vd-icon>
+              <vd-icon *ngIf="item.icon" class="vd-sidebar__item-icon" [name]="item.icon"></vd-icon>
               <span class="vd-sidebar__item-label">{{ item.label }}</span>
             </span>
             <vd-icon
               [class.vd-sidebar__icon--expanded]="isExpanded(item.label)"
-              name="vd-icon-caret-right"
+              name="vd-icon-chevron-right"
             ></vd-icon>
           </div>
           <!-- Nested children -->
@@ -86,11 +78,7 @@
             [attr.aria-current]="isRouteActive(item.route, item.matchMode) ? 'page' : null"
           >
             <span class="vd-sidebar__item-content">
-              <vd-icon
-                *ngIf="item.icon"
-                class="vd-sidebar__item-icon"
-                [name]="item.icon"
-              ></vd-icon>
+              <vd-icon *ngIf="item.icon" class="vd-sidebar__item-icon" [name]="item.icon"></vd-icon>
               <span class="vd-sidebar__item-label">{{ item.label }}</span>
             </span>
           </a>

@@ -79,11 +79,11 @@ export class VdToast implements OnInit {
   getIconName(toast: Toast): string {
     switch (toast.color) {
       case 'success':
-        return 'vd-icon-tick-circle-filled';
+        return 'vd-icon-check-circle-filled';
       case 'error':
-        return 'vd-icon-error-filled';
+        return 'vd-icon-danger-circle-filled';
       case 'warning':
-        return 'vd-icon-warning-filled';
+        return 'vd-icon-danger-triangle-filled';
       case 'info':
         return 'vd-icon-info-circle-filled';
       default:
