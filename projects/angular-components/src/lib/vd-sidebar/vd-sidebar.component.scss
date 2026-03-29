@@ -7,15 +7,12 @@
   --vd-sidebar-outline-width: var(--vd-scale-border-width-md);
   --vd-sidebar-outline-offset: var(--vd-scale-border-width-md);
   width: 100%;
-  max-width: var(--vd-layout-sidebar-width);
-  padding: var(--vd-sidebar-padding-top) var(--vd-sidebar-padding)
-    var(--vd-sidebar-padding-bottom) var(--vd-sidebar-padding);
-  background: var(--vd-color-background-default-secondary);
+  padding: var(--vd-sidebar-padding-top) var(--vd-sidebar-padding) var(--vd-sidebar-padding-bottom)
+    var(--vd-sidebar-padding);
   height: 100%;
   overflow-y: auto;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer and Edge */
-  border-right: var(--vd-scale-border-width-sm) solid var(--vd-color-border-default-tertiary);
   ul {
     list-style: none;
     padding-left: 0;
@@ -67,8 +64,8 @@
 
     &--parent {
       justify-content: space-between;
-      padding: var(--vd-scale-spacing-200) var(--vd-scale-spacing-200)
-        var(--vd-scale-spacing-200) var(--vd-scale-spacing-400);
+      padding: var(--vd-scale-spacing-200) var(--vd-scale-spacing-200) var(--vd-scale-spacing-200)
+        var(--vd-scale-spacing-400);
       cursor: pointer;
       user-select: none;
       transition: all 0.2s ease;
