@@ -89,7 +89,7 @@ export * from './lib/vd-empty-state/vd-empty-state.component';
 //Loading State
 export * from './lib/vd-loading-state/vd-loading-state.component';
 //Search
-export * from './lib/vd-search/vd-search.component';
+export * from './lib/vd-search-input/vd-search-input.component';
 //Selection Card
 export * from './lib/vd-selection-card/vd-selection-card-item/vd-selection-card-item.component';
 //Selection Card Group

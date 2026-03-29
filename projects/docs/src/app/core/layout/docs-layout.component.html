@@ -29,19 +29,6 @@
         <div class="layout__actions">
           <div class="control">
             <div class="segmented">
-              <div
-                class="segmented-item label-medium"
-                *ngFor="let brand of brands"
-                (click)="selectBrand(brand)"
-                [class.active]="brand === selectedBrand"
-              >
-                {{ brand }}
-              </div>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="segmented">
               <vd-icon
                 *ngFor="let theme of themes"
                 [name]="theme === 'light' ? 'vd-icon-sun' : 'vd-icon-moon'"

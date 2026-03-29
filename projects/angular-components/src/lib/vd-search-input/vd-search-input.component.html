@@ -1,13 +1,13 @@
-<div class="vd-input vd-search" [class.vd-input--disabled]="disabled">
-  <div class="vd-input__container" (click)="focusInput()">
-    <span class="vd-input__leading-icon">
+<div class="vd-search-input" [class.vd-search-input--disabled]="disabled">
+  <div class="vd-search-input__container" (click)="focusInput()">
+    <span class="vd-search-input__leading-icon">
       <vd-icon name="vd-icon-magnifier"></vd-icon>
     </span>
 
     <input
       #inputElement
       [id]="inputId"
-      class="vd-input__input body-medium"
+      class="vd-search-input__input body-medium"
       type="text"
       [placeholder]="placeholder"
       [value]="value"
@@ -18,9 +18,9 @@
       [disabled]="disabled"
     />
 
-    <span class="vd-input__trailing-action-container" *ngIf="value">
+    <span class="vd-search-input__trailing-action-container" *ngIf="value">
       <vd-icon-button
-        class="vd-input__trailing-action"
+        class="vd-search-input__trailing-action"
         variant="transparent"
         color="neutral"
         [disabled]="disabled"

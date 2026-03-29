@@ -4,7 +4,7 @@ import { VdIcon } from './vd-icon/vd-icon.component';
 import { VdIconButton } from './vd-icon-button/vd-icon-button.component';
 import { VdToast } from './vd-toast/vd-toast.component';
 import { VdInput } from './vd-input/vd-input.component';
-import { VdSearch } from './vd-search/vd-search.component';
+import { VdSearchInput } from './vd-search-input/vd-search-input.component';
 import { VdCheckbox } from './vd-checkbox/vd-checkbox.component';
 import { VdCheckboxGroup } from './vd-checkbox-group/vd-checkbox-group.component';
 import { VdTooltip } from './vd-tooltip/vd-tooltip.component';
@@ -52,7 +52,7 @@ import { VdSelectionCardGroup } from './vd-selection-card/vd-selection-card.comp
     VdIconButton,
     VdToast,
     VdInput,
-    VdSearch,
+    VdSearchInput,
     VdCheckbox,
     VdCheckboxGroup,
     VdTooltip,
@@ -99,7 +99,7 @@ import { VdSelectionCardGroup } from './vd-selection-card/vd-selection-card.comp
     VdIconButton,
     VdToast,
     VdInput,
-    VdSearch,
+    VdSearchInput,
     VdCheckbox,
     VdCheckboxGroup,
     VdTooltip,

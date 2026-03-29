@@ -80,52 +80,17 @@
   }
 
   // Hover state
-  &:not(.vd-selection-card--disabled):not(.vd-selection-card--checked):hover {
+  &:not(.vd-selection-card-item--disabled):not(.vd-selection-card-item--checked):hover {
     --vd-selection-card-border: var(--vd-color-border-primary-base);
-    // --vd-selection-card-border: var(--vd-selection-card-border-hover);;
-    // --vd-checkbox-border-color: var(--vd-color-border-primary-base);
-    // --vd-radio-border-color: var(--vd-color-border-primary-base);
     ::ng-deep {
       .vd-checkbox__box {
         background: var(--vd-color-background-primary-secondary-hover);
         border-color: var(--vd-color-border-primary-base);
       }
-      // &.vd-checkbox--checked:not(.vd-checkbox--disabled):hover,
-      // &.vd-checkbox--indeterminate:not(.vd-checkbox--disabled):hover {
-      //   --vd-checkbox-bg: var(--vd-checkbox-bg-checked-hover);
-      //   --vd-checkbox-border: var(--vd-checkbox-bg-checked-hover);
-      // }
-
-      // &:not(&--disabled):focus-within {
-      //   --vd-checkbox-label-current: var(--vd-checkbox-label-color-hover);
-      //   --vd-checkbox-description-current: var(--vd-checkbox-description-color-hover);
-      // }
-
-      // &__input:focus-visible + &__box {
-      //   outline: var(--vd-checkbox-focus-width) solid var(--vd-checkbox-focus-color);
-      //   outline-offset: var(--vd-checkbox-focus-offset);
-      // }
-
-      // &:not(&--checked):not(&--indeterminate) &__input:focus-visible + &__box {
-      //   border-color: var(--vd-checkbox-border-unchecked-focus);
-      // }
-      // }
-      // .vd-checkbox__box {
-      //   width: var(--vd-checkbox-size);
-      //   height: var(--vd-checkbox-size);
-      //   border-radius: var(--vd-checkbox-radius);
-      //   border: var(--vd-checkbox-border-width) solid var(--vd-checkbox-border);
-      //   background: var(--vd-checkbox-)
-      //   color: var(--vd-checkbox-icon-current);
-      //   opacity: var(--vd-checkbox-box-opacity);
-      //   display: inline-flex;
-      //   align-items: center;
-      //   justify-content: center;
-      //   transition:
-      //     background-color 0.2s ease,
-      //     border-color 0.2s ease,
-      //     color 0.2s ease;
-      // }
+      .vd-radio__circle {
+        background: var(--vd-color-background-primary-secondary-hover);
+        border-color: var(--vd-color-border-primary-base);
+      }
     }
   }
 

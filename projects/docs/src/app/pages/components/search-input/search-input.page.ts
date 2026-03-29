@@ -1,7 +1,7 @@
 import { Component, TemplateRef, ViewChild, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { VdSearch, VdDatatable, VdDatatableColumn, VdSwitch, VdBadge } from 'vd-angular';
+import { VdSearchInput, VdDatatable, VdDatatableColumn, VdSwitch, VdBadge } from 'vd-angular';
 
 import DocPageHeader from '../../../components/doc-page-header/doc-page-header.component';
 import CodeContainer from '../../../components/code-container/code-container.component';
@@ -10,7 +10,7 @@ import CodeContainer from '../../../components/code-container/code-container.com
   selector: 'app-search-page',
   standalone: true,
   imports: [
-    VdSearch,
+    VdSearchInput,
     VdDatatable,
     VdSwitch,
     VdBadge,
@@ -19,8 +19,8 @@ import CodeContainer from '../../../components/code-container/code-container.com
     DocPageHeader,
     CodeContainer,
   ],
-  templateUrl: './search.page.html',
-  styleUrl: './search.page.scss',
+  templateUrl: './search-input.page.html',
+  styleUrl: './search-input.page.scss',
 })
 export default class SearchPage implements OnInit {
   placeholder = 'Search...';

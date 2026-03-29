@@ -15,7 +15,7 @@
           <p>Standard search input with a clear button when text is entered</p>
         </div>
         <div class="component-showcase-container">
-          <vd-search placeholder="Search records..."></vd-search>
+          <vd-search-input placeholder="Search records..."></vd-search-input>
         </div>
       </div>
       <div class="component-variation-group">
@@ -24,7 +24,7 @@
           <p>Search input in its disabled state</p>
         </div>
         <div class="component-showcase-container">
-          <vd-search [disabled]="true" placeholder="Search is unavailable"></vd-search>
+          <vd-search-input [disabled]="true" placeholder="Search is unavailable"></vd-search-input>
         </div>
       </div>
     </div>
@@ -180,11 +180,11 @@
           </div>
           <div class="divider"></div>
           <div class="component-showcase-container">
-            <vd-search
+            <vd-search-input
               [placeholder]="placeholder"
               [(value)]="value"
               [disabled]="disabled"
-            ></vd-search>
+            ></vd-search-input>
           </div>
         </div>
       </div>

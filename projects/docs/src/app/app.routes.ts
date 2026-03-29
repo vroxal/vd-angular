@@ -200,7 +200,7 @@ export const routes: Routes = [
   {
     path: 'components/search',
     loadComponent: () =>
-      import('./pages/components/search/search.page').then((m) => m.default),
+      import('./pages/components/search-input/search-input.page').then((m) => m.default),
   },
   {
     path: 'components/selection-card',

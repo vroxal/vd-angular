@@ -128,7 +128,7 @@ export const SIDEBAR_SECTIONS: NavSection[] = [
             route: '/components/file-input',
           },
           { label: 'Number Input', route: '/components/number-input' },
-          { label: 'Search', route: '/components/search' },
+          { label: 'Search Input', route: '/components/search' },
           {
             label: 'Verification Code Input',
             route: '/components/verification-code-input',
@@ -148,10 +148,6 @@ export const SIDEBAR_SECTIONS: NavSection[] = [
       {
         label: 'Radio Group',
         route: '/components/radio-group',
-      },
-      {
-        label: 'Search',
-        route: '/components/search',
       },
       {
         label: 'Selection Card',
@@ -314,9 +310,9 @@ export const INTRODUCTION_PAGE_SECTIONS = [
         image: 'radio-group',
       },
       {
-        label: 'Search',
+        label: 'Search Input',
         route: '/components/search',
-        image: 'search',
+        image: 'search_input',
       },
       {
         label: 'Selection Card',

@@ -13,20 +13,20 @@ import { VdIconButton } from '../vd-icon-button/vd-icon-button.component';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
-  selector: 'vd-search',
+  selector: 'vd-search-input',
   standalone: true,
   imports: [CommonModule, VdIcon, VdIconButton],
-  templateUrl: './vd-search.component.html',
-  styleUrls: ['./vd-search.component.scss'],
+  templateUrl: './vd-search-input.component.html',
+  styleUrls: ['./vd-search-input.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => VdSearch),
+      useExisting: forwardRef(() => VdSearchInput),
       multi: true,
     },
   ],
 })
-export class VdSearch implements ControlValueAccessor {
+export class VdSearchInput implements ControlValueAccessor {
   @Input() placeholder: string = 'Search';
   @Input() value: string = '';
   @Input() disabled?: boolean;
