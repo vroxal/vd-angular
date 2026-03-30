@@ -6,6 +6,7 @@ import {
   ViewChild,
   ElementRef,
   AfterViewInit,
+  OnDestroy,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -16,9 +17,9 @@ let verificationCodeInputId = 0;
   standalone: true,
   imports: [CommonModule],
   templateUrl: './vd-verification-code-input.component.html',
-  styleUrls: ['./vd-verification-code-input.component.scss'],
+  styleUrl: './vd-verification-code-input.component.scss',
 })
-export class VdVerificationCodeInput implements AfterViewInit {
+export class VdVerificationCodeInput implements AfterViewInit, OnDestroy {
   /** Number of code input cells */
   @Input() length: 4 | 6 = 6;
 
@@ -66,17 +67,17 @@ export class VdVerificationCodeInput implements AfterViewInit {
     return Array.from({ length: this.length });
   }
 
+  private autoFocusTimer?: ReturnType<typeof setTimeout>;
+
   ngAfterViewInit(): void {
     if (this.autoFocus && !this.disabled) {
-      setTimeout(() => this.focusInput());
+      this.autoFocusTimer = setTimeout(() => this.focusInput());
     }
   }
 
-  // focusInput(): void {
-  //   if (this.disabled) return;
-  //   this.hiddenInput.nativeElement.focus();
-  //   this.setCaret(this.value.length);
-  // }
+  ngOnDestroy(): void {
+    clearTimeout(this.autoFocusTimer);
+  }
   focusInput(): void {
     if (this.disabled) return;
     const index = Math.min(this.value.length, this.length - 1); // <-- cap to last cell

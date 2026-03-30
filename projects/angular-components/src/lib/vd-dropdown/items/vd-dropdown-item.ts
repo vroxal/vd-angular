@@ -22,7 +22,7 @@ import { VD_DROPDOWN, VdDropdownControl } from '../vd-dropdown.token';
       </div>
     </div>
   `,
-  styleUrls: ['./vd-dropdown-item.scss'],
+  styleUrl: './vd-dropdown-item.scss',
 })
 export class VdDropdownItem {
   @Input() title!: string;

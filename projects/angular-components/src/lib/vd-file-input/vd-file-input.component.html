@@ -60,7 +60,7 @@
         <span class="vd-file-input__drag-text body-medium">or drag and drop</span>
       </div>
       <div class="vd-file-input__footer-row" *ngIf="supportingText">
-        <p classlass="vd-file-input__supported-files body-small" *ngIf="supportingText">
+        <p class="vd-file-input__supported-files body-small" *ngIf="supportingText">
           {{ supportingText }}
         </p>
       </div>
@@ -74,7 +74,7 @@
     <li class="vd-file-input__file-item" *ngFor="let file of selectedFiles; let i = index">
       <!-- File icon -->
       <span class="vd-file-input__file-icon">
-        <vd-icon name="vd-icon-file" size="md"></vd-icon>
+        <vd-icon name="vd-icon-file-text" size="md"></vd-icon>
       </span>
 
       <!-- File info -->
@@ -86,7 +86,7 @@
       <!-- Remove button -->
       <vd-icon-button
         class="vd-file-input__file-remove"
-        icon="vd-icon-trash"
+        icon="vd-icon-trash-bin"
         ariaLabel="Remove {{ file.name }}"
         variant="transparent"
         color="neutral"

@@ -17,7 +17,7 @@ export interface VdTabConfig {
   standalone: true,
   imports: [CommonModule, VdIcon],
   templateUrl: './vd-tab.component.html',
-  styleUrls: ['./vd-tab.component.scss'],
+  styleUrl: './vd-tab.component.scss',
 })
 export class VdTab implements OnInit {
   /** Array of tab configurations */

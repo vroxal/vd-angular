@@ -13,7 +13,8 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Overlay, OverlayRef, ConnectedPosition } from '@angular/cdk/overlay';
+import { Overlay, OverlayRef } from '@angular/cdk/overlay';
+import { OVERLAY_POSITION_MAP } from '../../shared/overlay-positions';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { VdSingleDateInline } from '../vd-single-date-inline/vd-single-date-inline.component';
 import {
@@ -36,7 +37,7 @@ import { VdDivider } from '../../vd-divider/vd-divider.component';
     VdDivider,
   ],
   templateUrl: './vd-date-time-picker.component.html',
-  styleUrls: ['./vd-date-time-picker.component.scss'],
+  styleUrl: './vd-date-time-picker.component.scss',
 })
 export class VdDateTimePicker implements OnInit, OnChanges, OnDestroy {
   // Mode Configuration
@@ -356,7 +357,7 @@ export class VdDateTimePicker implements OnInit, OnChanges, OnDestroy {
     return this.overlay
       .position()
       .flexibleConnectedTo(this.getOverlayOriginElement())
-      .withPositions([POSITION_MAP[this.dropdownPosition]])
+      .withPositions([OVERLAY_POSITION_MAP[this.dropdownPosition]])
       .withFlexibleDimensions(false)
       .withGrowAfterOpen(true)
       .withPush(false);
@@ -380,50 +381,3 @@ export class VdDateTimePicker implements OnInit, OnChanges, OnDestroy {
   }
 }
 
-const POSITION_MAP: Record<
-  'bottom-left' | 'bottom-center' | 'bottom-right' | 'top-left' | 'top-center' | 'top-right',
-  ConnectedPosition
-> = {
-  'bottom-left': {
-    originX: 'start',
-    originY: 'bottom',
-    overlayX: 'start',
-    overlayY: 'top',
-    offsetY: 8,
-  },
-  'bottom-center': {
-    originX: 'center',
-    originY: 'bottom',
-    overlayX: 'center',
-    overlayY: 'top',
-    offsetY: 8,
-  },
-  'bottom-right': {
-    originX: 'end',
-    originY: 'bottom',
-    overlayX: 'end',
-    overlayY: 'top',
-    offsetY: 8,
-  },
-  'top-left': {
-    originX: 'start',
-    originY: 'top',
-    overlayX: 'start',
-    overlayY: 'bottom',
-    offsetY: -8,
-  },
-  'top-center': {
-    originX: 'center',
-    originY: 'top',
-    overlayX: 'center',
-    overlayY: 'bottom',
-    offsetY: -8,
-  },
-  'top-right': {
-    originX: 'end',
-    originY: 'top',
-    overlayX: 'end',
-    overlayY: 'bottom',
-    offsetY: -8,
-  },
-};

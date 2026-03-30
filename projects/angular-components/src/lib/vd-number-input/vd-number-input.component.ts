@@ -1,18 +1,27 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, forwardRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { VdIcon } from '../vd-icon/vd-icon.component';
 import { VdIconButton } from '../vd-icon-button/vd-icon-button.component';
 import { VdTooltipDirective } from '../vd-tooltip/vd-tooltip.directive';
+
+let vdNumberInputId = 0;
 
 @Component({
   selector: 'vd-number-input',
   standalone: true,
   imports: [CommonModule, FormsModule, VdIcon, VdIconButton, VdTooltipDirective],
   templateUrl: './vd-number-input.component.html',
-  styleUrls: ['./vd-number-input.component.scss'],
+  styleUrl: './vd-number-input.component.scss',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => VdNumberInput),
+      multi: true,
+    },
+  ],
 })
-export class VdNumberInput {
+export class VdNumberInput implements ControlValueAccessor {
   // Basic properties
   @Input() label?: string;
   @Input() hintText?: string; // ? icon tooltip content
@@ -21,6 +30,7 @@ export class VdNumberInput {
 
   @Input() leadingIcon?: string;
   @Input() trailingActionIcon?: string;
+  @Input() trailingActionAriaLabel: string = 'Action';
 
   @Input() placeholder: string = '';
   @Input() value: number | null = null;
@@ -41,8 +51,29 @@ export class VdNumberInput {
   @Output() trailingActionClick = new EventEmitter<void>();
   @Output() inputFocus = new EventEmitter<void>(); // optional focus event
 
+  onChange: any = () => {};
+  onTouched: any = () => {};
+
+  writeValue(value: any): void {
+    if (value !== undefined) {
+      this.value = value;
+    }
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
   // Internal
-  inputId = 'vd-number-input-' + Math.random().toString(36).substring(2, 9);
+  inputId = `vd-number-input-${vdNumberInputId++}`;
   showHint = false;
   isFocused = false;
 
@@ -80,6 +111,7 @@ export class VdNumberInput {
       }
     }
 
+    this.onTouched();
     this.valueCommit.emit(this.value); // emit value on blur
   }
 
@@ -89,16 +121,11 @@ export class VdNumberInput {
     const rawValue = inputElement.value;
 
     // We emit null if empty, otherwise parsed number
-    let numVal: number | null = rawValue === '' ? null : Number(rawValue);
-
-    // Enforce max immediately on input
-    if (numVal !== null && this.max !== undefined && numVal > this.max) {
-      numVal = this.max;
-      inputElement.value = String(numVal);
-    }
+    const numVal: number | null = rawValue === '' ? null : Number(rawValue);
 
     this.value = numVal;
     this.valueChange.emit(this.value); // emit live value
+    this.onChange(this.value);
   }
 
   // Trailing action

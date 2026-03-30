@@ -44,6 +44,35 @@
         </div>
       </div>
 
+      <!-- Multiple file upload -->
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Multiple File Upload</h3>
+          <p>
+            Enable <code>[multiple]="true"</code> to allow users to select and accumulate more than
+            one file. Each selected file is listed below the dropzone with its name, size, and a
+            remove button. Duplicate files (matched by name and size) are automatically ignored.
+          </p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-file-input
+            label="Attachments"
+            [multiple]="true"
+            supportedFiles=".png, .jpeg, .pdf"
+            maxSize="12 MB"
+            (filesChange)="onExampleFilesSelected($event)"
+          ></vd-file-input>
+          <vd-file-input
+            layout="vertical"
+            label="Attachments"
+            [multiple]="true"
+            supportedFiles=".png, .jpeg, .pdf"
+            maxSize="12 MB"
+            (filesChange)="onExampleFilesSelected($event)"
+          ></vd-file-input>
+        </div>
+      </div>
+
       <!-- Error state -->
       <div class="component-variation-group">
         <div class="title-container">
@@ -148,6 +177,27 @@
           [code]="verticalImplementationSnippet"
           fileName="my.component.html"
           language="angular-html"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Multiple File Upload</h3>
+          <p>
+            Set <code>[multiple]="true"</code> to allow users to select multiple files. The
+            <code>filesChange</code> output always emits the full current list — store it in your
+            component to track the selection:
+          </p>
+        </div>
+        <code-container
+          [code]="multipleImplementationSnippet"
+          fileName="my.component.html"
+          language="angular-html"
+        ></code-container>
+        <code-container
+          [code]="multipleImplementationTsSnippet"
+          fileName="my.component.ts"
+          language="angular-ts"
         ></code-container>
       </div>
 

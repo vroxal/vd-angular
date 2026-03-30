@@ -8,7 +8,7 @@ import { VdIconButton } from '../../vd-icon-button/vd-icon-button.component';
   standalone: true,
   imports: [CommonModule, VdIcon, VdIconButton],
   templateUrl: './vd-single-date-inline.component.html',
-  styleUrls: ['./vd-single-date-inline.component.scss'],
+  styleUrl: './vd-single-date-inline.component.scss',
 })
 export class VdSingleDateInline implements OnInit {
   @Input() value: Date | null = null;

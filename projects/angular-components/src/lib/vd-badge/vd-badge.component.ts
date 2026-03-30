@@ -10,7 +10,7 @@ type BadgeSize = 'sm' | 'md';
   standalone: true, // standalone is required
   imports: [CommonModule], // for *ngIf and [class]
   templateUrl: './vd-badge.component.html',
-  styleUrls: ['./vd-badge.component.scss'],
+  styleUrl: './vd-badge.component.scss',
 })
 export class VdBadge {
   @Input() label: string = '';

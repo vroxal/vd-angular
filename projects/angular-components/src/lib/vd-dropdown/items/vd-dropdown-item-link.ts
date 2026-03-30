@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';
       </div>
     </a>
   `,
-  styleUrls: ['./vd-dropdown-item.scss'],
+  styleUrl: './vd-dropdown-item.scss',
 })
 export class VdDropdownItemLink {
   @Input() href!: string;

@@ -15,7 +15,7 @@
         <p>Standard pagination component with 5 pages</p>
         </div>
         <div class="component-showcase-container">
-          <vd-pagination [totalPages]="5" [currentPage]="1"></vd-pagination>
+          <vd-pagination [totalPages]="5" [currentPage]="showcase1Page" (pageChange)="showcase1Page = $event"></vd-pagination>
         </div>
       </div>
       <div class="component-variation-group">
@@ -24,7 +24,7 @@
         <p>Pagination shows all pages when total is 7 or fewer</p>
         </div>
         <div class="component-showcase-container">
-          <vd-pagination [totalPages]="7" [currentPage]="1"></vd-pagination>
+          <vd-pagination [totalPages]="7" [currentPage]="showcase2Page" (pageChange)="showcase2Page = $event"></vd-pagination>
         </div>
       </div>
       <div class="component-variation-group">
@@ -33,7 +33,7 @@
         <p>Pagination on first pages shows first 5 pages, ellipsis, and last page</p>
         </div>
         <div class="component-showcase-container">
-          <vd-pagination [totalPages]="100" [currentPage]="3"></vd-pagination>
+          <vd-pagination [totalPages]="100" [currentPage]="showcase3Page" (pageChange)="showcase3Page = $event"></vd-pagination>
         </div>
       </div>
       <div class="component-variation-group">
@@ -44,7 +44,7 @@
         </p>
         </div>
         <div class="component-showcase-container">
-          <vd-pagination [totalPages]="100" [currentPage]="50"></vd-pagination>
+          <vd-pagination [totalPages]="100" [currentPage]="showcase4Page" (pageChange)="showcase4Page = $event"></vd-pagination>
         </div>
       </div>
       <div class="component-variation-group">
@@ -53,7 +53,7 @@
         <p>Pagination on last pages shows first page, ellipsis, and last 5 pages</p>
         </div>
         <div class="component-showcase-container">
-          <vd-pagination [totalPages]="100" [currentPage]="98"></vd-pagination>
+          <vd-pagination [totalPages]="100" [currentPage]="showcase5Page" (pageChange)="showcase5Page = $event"></vd-pagination>
         </div>
       </div>
     </div>

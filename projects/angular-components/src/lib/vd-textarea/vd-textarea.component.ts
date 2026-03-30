@@ -1,17 +1,27 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, forwardRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { VdIcon } from '../vd-icon/vd-icon.component';
 import { VdIconButton } from '../vd-icon-button/vd-icon-button.component';
 import { VdTooltipDirective } from '../vd-tooltip/vd-tooltip.directive';
+
+let vdTextareaId = 0;
 
 @Component({
   selector: 'vd-textarea',
   standalone: true,
   imports: [CommonModule, VdIcon, VdIconButton, VdTooltipDirective],
   templateUrl: './vd-textarea.component.html',
-  styleUrls: ['./vd-textarea.component.scss'],
+  styleUrl: './vd-textarea.component.scss',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => VdTextarea),
+      multi: true,
+    },
+  ],
 })
-export class VdTextarea {
+export class VdTextarea implements ControlValueAccessor {
   // Basic properties
   @Input() label?: string;
   @Input() hintText?: string; // ? icon tooltip content
@@ -20,6 +30,7 @@ export class VdTextarea {
 
   @Input() leadingIcon?: string;
   @Input() trailingActionIcon?: string;
+  @Input() trailingActionAriaLabel: string = 'Action';
 
   @Input() placeholder: string = '';
   @Input() type: 'text' | 'password' = 'text';
@@ -37,8 +48,29 @@ export class VdTextarea {
   @Output() trailingActionClick = new EventEmitter<void>();
   @Output() inputFocus = new EventEmitter<void>(); // optional focus event
 
+  onChange: any = () => {};
+  onTouched: any = () => {};
+
+  writeValue(value: any): void {
+    if (value !== undefined) {
+      this.value = value;
+    }
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
   // Internal
-  inputId = 'vd-textarea-' + Math.random().toString(36).substring(2, 9);
+  inputId = `vd-textarea-${vdTextareaId++}`;
   showHint = false;
   isFocused = false;
 
@@ -50,6 +82,7 @@ export class VdTextarea {
 
   onBlur() {
     this.isFocused = false;
+    this.onTouched();
     this.valueCommit.emit(this.value); // emit value on blur
   }
   @ViewChild('inputElement', { static: true })
@@ -70,6 +103,7 @@ export class VdTextarea {
     }
     this.value = val;
     this.valueChange.emit(val); // emit live value
+    this.onChange(val);
   }
 
   // Trailing action

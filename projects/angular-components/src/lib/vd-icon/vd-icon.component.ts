@@ -8,7 +8,7 @@ type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './vd-icon.component.html',
-  styleUrls: ['./vd-icon.component.scss'],
+  styleUrl: './vd-icon.component.scss',
 })
 export class VdIcon {
   /** CSS class for the icon (e.g., "vd-icon-save") */

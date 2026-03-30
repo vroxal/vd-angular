@@ -17,7 +17,7 @@ import { VdDivider } from '../../vd-divider/vd-divider.component';
     </div>
     <ng-content></ng-content>
   </div>`,
-  styleUrls: ['./vd-dropdown-item.scss'],
+  styleUrl: './vd-dropdown-item.scss',
 })
 export class VdDropdownItemGroup {
   @Input() name?: string;

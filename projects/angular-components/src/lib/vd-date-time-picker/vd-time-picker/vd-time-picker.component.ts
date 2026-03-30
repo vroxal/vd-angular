@@ -7,7 +7,7 @@ import { VdInput } from '../../vd-input/vd-input.component';
   standalone: true,
   imports: [CommonModule, VdInput],
   templateUrl: './vd-time-picker.component.html',
-  styleUrls: ['./vd-time-picker.component.scss'],
+  styleUrl: './vd-time-picker.component.scss',
 })
 export class VdTimePicker {
   // Basic properties

@@ -11,7 +11,7 @@ type AlertColor = 'primary' | 'success' | 'error' | 'warning' | 'info' | 'neutra
   standalone: true,
   imports: [CommonModule, VdIcon, VdIconButton, VdButton],
   templateUrl: './vd-alert.component.html',
-  styleUrls: ['./vd-alert.component.scss'],
+  styleUrl: './vd-alert.component.scss',
 })
 export class VdAlert {
   /** Alert title (optional) */

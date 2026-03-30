@@ -11,11 +11,14 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Overlay, OverlayRef, ConnectedPosition } from '@angular/cdk/overlay';
+import { Overlay, OverlayRef } from '@angular/cdk/overlay';
+import { OVERLAY_POSITION_MAP } from '../shared/overlay-positions';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Subject, takeUntil } from 'rxjs';
 import { VdDropdownService } from './vd-dropdown.service';
 import { VD_DROPDOWN } from './vd-dropdown.token';
+
+let vdDropdownId = 0;
 
 @Component({
   selector: 'vd-dropdown',
@@ -28,7 +31,7 @@ import { VD_DROPDOWN } from './vd-dropdown.token';
     },
   ],
   templateUrl: './vd-dropdown.component.html',
-  styleUrls: ['./vd-dropdown.component.scss'],
+  styleUrl: './vd-dropdown.component.scss',
 })
 export class VdDropdown implements OnInit, OnDestroy, OnChanges {
   @Input() position:
@@ -46,7 +49,7 @@ export class VdDropdown implements OnInit, OnDestroy, OnChanges {
 
   private overlayRef?: OverlayRef;
   private destroy$ = new Subject<void>();
-  private id = Math.random().toString(36).slice(2);
+  private id = `vd-dropdown-${vdDropdownId++}`;
 
   constructor(
     private overlay: Overlay,
@@ -88,7 +91,7 @@ export class VdDropdown implements OnInit, OnDestroy, OnChanges {
         positionStrategy: this.overlay
           .position()
           .flexibleConnectedTo(this.trigger)
-          .withPositions([POSITION_MAP[this.position]])
+          .withPositions([OVERLAY_POSITION_MAP[this.position]])
           .withFlexibleDimensions(true)
           .withGrowAfterOpen(true)
           .withPush(false),
@@ -127,61 +130,3 @@ export class VdDropdown implements OnInit, OnDestroy, OnChanges {
   }
 }
 
-const POSITION_MAP: Record<string, ConnectedPosition> = {
-  'bottom-left': {
-    originX: 'start',
-    originY: 'bottom',
-    overlayX: 'start',
-    overlayY: 'top',
-    offsetY: 8,
-  },
-  'bottom-center': {
-    originX: 'center',
-    originY: 'bottom',
-    overlayX: 'center',
-    overlayY: 'top',
-    offsetY: 8,
-  },
-  'bottom-right': {
-    originX: 'end',
-    originY: 'bottom',
-    overlayX: 'end',
-    overlayY: 'top',
-    offsetY: 8,
-  },
-  'top-left': {
-    originX: 'start',
-    originY: 'top',
-    overlayX: 'start',
-    overlayY: 'bottom',
-    offsetY: -8,
-  },
-  'top-center': {
-    originX: 'center',
-    originY: 'top',
-    overlayX: 'center',
-    overlayY: 'bottom',
-    offsetY: -8,
-  },
-  'top-right': {
-    originX: 'end',
-    originY: 'top',
-    overlayX: 'end',
-    overlayY: 'bottom',
-    offsetY: -8,
-  },
-  'left-start': {
-    originX: 'start',
-    originY: 'top',
-    overlayX: 'end',
-    overlayY: 'top',
-    offsetX: -8,
-  },
-  'right-start': {
-    originX: 'end',
-    originY: 'top',
-    overlayX: 'start',
-    overlayY: 'top',
-    offsetX: 8,
-  },
-};

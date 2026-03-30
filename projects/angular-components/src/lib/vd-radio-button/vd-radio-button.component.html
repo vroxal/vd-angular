@@ -1,8 +1,4 @@
-<label
-  class="vd-radio"
-  [class.vd-radio--checked]="checked"
-  [class.vd-radio--disabled]="disabled"
->
+<label class="vd-radio" [class.vd-radio--checked]="checked" [class.vd-radio--disabled]="disabled">
   <span class="vd-radio__icon-container">
     <input
       #inputRef
@@ -24,7 +20,7 @@
   </span>
   <span *ngIf="label || description" class="vd-radio__content">
     <span *ngIf="label" class="vd-radio__label label-medium">{{ label }}</span>
-    <span *ngIf="description" class="vd-radio__description body-small">
+    <span *ngIf="description" class="vd-radio__description body-medium">
       {{ description }}
     </span>
   </span>

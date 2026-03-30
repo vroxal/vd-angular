@@ -12,12 +12,14 @@ import { VdIcon } from '../vd-icon/vd-icon.component';
 import { VdIconButton } from '../vd-icon-button/vd-icon-button.component';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
+let vdSearchInputId = 0;
+
 @Component({
   selector: 'vd-search-input',
   standalone: true,
   imports: [CommonModule, VdIcon, VdIconButton],
   templateUrl: './vd-search-input.component.html',
-  styleUrls: ['./vd-search-input.component.scss'],
+  styleUrl: './vd-search-input.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -39,7 +41,7 @@ export class VdSearchInput implements ControlValueAccessor {
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  inputId = 'vd-search-' + Math.random().toString(36).substring(2, 9);
+  inputId = `vd-search-${vdSearchInputId++}`;
   isFocused = false;
 
   @ViewChild('inputElement', { static: true })

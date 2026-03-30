@@ -23,7 +23,7 @@ export type TooltipPosition =
       <span class="vd-tooltip__arrow"></span>
     </div>
   `,
-  styleUrls: ['./vd-tooltip.component.scss'],
+  styleUrl: './vd-tooltip.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VdTooltip {

@@ -1,13 +1,13 @@
 <div class="vd-sidebar">
   <!-- Other sections -->
-  <div *ngFor="let section of sections" class="vd-sidebar__section">
+  <div *ngFor="let section of sections; trackBy: trackBySection" class="vd-sidebar__section">
     <div *ngIf="section.showTitle !== false" class="vd-sidebar__title-container">
       <p class="vd-sidebar__title body-small">{{ section.title }}</p>
       <vd-divider></vd-divider>
     </div>
 
     <ul>
-      <li *ngFor="let item of section.items">
+      <li *ngFor="let item of section.items; trackBy: trackByItem">
         <!-- Parent item with children -->
         <ng-container *ngIf="item.children && item.children.length > 0">
           <!-- If parent has a route, make it a link -->
@@ -48,7 +48,7 @@
           </div>
           <!-- Nested children -->
           <ul *ngIf="isExpanded(item.label)" class="vd-sidebar__nested-items">
-            <li *ngFor="let child of item.children">
+            <li *ngFor="let child of item.children; trackBy: trackByItem">
               <a
                 [routerLink]="child.route"
                 class="vd-sidebar__item vd-sidebar__item--nested"

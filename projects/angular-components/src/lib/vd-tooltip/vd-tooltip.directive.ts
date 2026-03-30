@@ -7,7 +7,8 @@ import {
   ViewContainerRef,
   inject,
 } from '@angular/core';
-import { Overlay, OverlayRef, ConnectedPosition } from '@angular/cdk/overlay';
+import { Overlay, OverlayRef } from '@angular/cdk/overlay';
+import { OVERLAY_POSITION_MAP } from '../shared/overlay-positions';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { VdTooltip, TooltipPosition } from './vd-tooltip.component';
 
@@ -36,7 +37,7 @@ export class VdTooltipDirective implements OnDestroy {
     const positionStrategy = this.overlay
       .position()
       .flexibleConnectedTo(this.elementRef)
-      .withPositions([POSITIONS[this.vdTooltipPosition]])
+      .withPositions([OVERLAY_POSITION_MAP[this.vdTooltipPosition]])
       .withPush(false);
 
     this.overlayRef = this.overlay.create({
@@ -63,61 +64,3 @@ export class VdTooltipDirective implements OnDestroy {
   }
 }
 
-const POSITIONS: Record<TooltipPosition, ConnectedPosition> = {
-  'top-center': {
-    originX: 'center',
-    originY: 'top',
-    overlayX: 'center',
-    overlayY: 'bottom',
-    offsetY: -8,
-  },
-  'top-left': {
-    originX: 'start',
-    originY: 'top',
-    overlayX: 'start',
-    overlayY: 'bottom',
-    offsetY: -8,
-  },
-  'top-right': {
-    originX: 'end',
-    originY: 'top',
-    overlayX: 'end',
-    overlayY: 'bottom',
-    offsetY: -8,
-  },
-  'bottom-center': {
-    originX: 'center',
-    originY: 'bottom',
-    overlayX: 'center',
-    overlayY: 'top',
-    offsetY: 8,
-  },
-  'bottom-left': {
-    originX: 'start',
-    originY: 'bottom',
-    overlayX: 'start',
-    overlayY: 'top',
-    offsetY: 8,
-  },
-  'bottom-right': {
-    originX: 'end',
-    originY: 'bottom',
-    overlayX: 'end',
-    overlayY: 'top',
-    offsetY: 8,
-  },
-  'center-left': {
-    originX: 'start',
-    originY: 'center',
-    overlayX: 'end',
-    overlayY: 'center',
-    offsetX: -8,
-  },
-  'center-right': {
-    originX: 'end',
-    originY: 'center',
-    overlayX: 'start',
-    overlayY: 'center',
-    offsetX: 8,
-  },
-};

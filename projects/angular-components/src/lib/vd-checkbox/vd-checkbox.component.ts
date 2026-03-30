@@ -14,12 +14,14 @@ import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { VdIcon } from '../vd-icon/vd-icon.component';
 
+let vdCheckboxId = 0;
+
 @Component({
   selector: 'vd-checkbox',
   standalone: true,
   imports: [CommonModule, VdIcon],
   templateUrl: './vd-checkbox.component.html',
-  styleUrls: ['./vd-checkbox.component.scss'],
+  styleUrl: './vd-checkbox.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -48,7 +50,7 @@ export class VdCheckbox implements ControlValueAccessor, OnInit, OnChanges {
   private onTouched: () => void = () => {};
 
   ngOnInit(): void {
-    this.inputId = this.id ?? `vd-checkbox-${Math.random().toString(36).substring(2, 9)}`;
+    this.inputId = this.id ?? `vd-checkbox-${vdCheckboxId++}`;
   }
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -10,7 +10,7 @@ type AccordionStyle = 'filled' | 'divided';
   standalone: true,
   imports: [CommonModule, VdIcon, VdDivider],
   templateUrl: './vd-accordion.component.html',
-  styleUrls: ['./vd-accordion.component.scss'],
+  styleUrl: './vd-accordion.component.scss',
 })
 export class VdAccordion {
   @Input() title: string = 'Title';

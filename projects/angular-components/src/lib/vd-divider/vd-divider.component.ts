@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './vd-divider.component.html',
-  styleUrls: ['./vd-divider.component.scss'],
+  styleUrl: './vd-divider.component.scss',
 })
 export class VdDivider {
   /** CSS class for the icon (e.g., "vd-icon-save") */

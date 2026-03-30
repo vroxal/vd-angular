@@ -61,6 +61,22 @@ export default class FileInputPage implements OnInit {
   (filesChange)="onFilesSelected($event)"
 ></vd-file-input>`;
 
+  multipleImplementationSnippet = `<vd-file-input
+  label="Attachments"
+  [multiple]="true"
+  supportedFiles=".png, .jpeg, .pdf"
+  maxSize="12 MB"
+  (filesChange)="onFilesSelected($event)"
+></vd-file-input>`;
+
+  multipleImplementationTsSnippet = `export class MyComponent {
+  selectedFiles: File[] = [];
+
+  onFilesSelected(files: File[]): void {
+    this.selectedFiles = files;
+  }
+}`;
+
   errorImplementationSnippet = `<vd-file-input
   label="Attachment"
   state="error"

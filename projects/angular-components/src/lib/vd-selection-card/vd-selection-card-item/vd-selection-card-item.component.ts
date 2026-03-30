@@ -6,12 +6,14 @@ import { VdRadioButton } from '../../vd-radio-button/vd-radio-button.component';
 
 export type VdSelectionCardType = 'radio' | 'checkbox';
 
+let vdSelectionCardItemId = 0;
+
 @Component({
   selector: 'vd-selection-card-item',
   standalone: true,
   imports: [CommonModule, VdIcon, VdCheckbox, VdRadioButton],
   templateUrl: './vd-selection-card-item.component.html',
-  styleUrls: ['./vd-selection-card-item.component.scss'],
+  styleUrl: './vd-selection-card-item.component.scss',
 })
 export class VdSelectionCardItem implements OnInit {
   @Input() title = '';
@@ -29,7 +31,7 @@ export class VdSelectionCardItem implements OnInit {
   inputId = '';
 
   ngOnInit(): void {
-    this.inputId = `vd-selection-card-item-${Math.random().toString(36).substring(2, 9)}`;
+    this.inputId = `vd-selection-card-item-${vdSelectionCardItemId++}`;
   }
 
   onCardClick(): void {

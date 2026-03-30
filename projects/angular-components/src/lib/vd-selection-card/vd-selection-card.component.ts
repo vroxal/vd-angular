@@ -2,9 +2,7 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnChanges,
   Output,
-  SimpleChanges,
   forwardRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -24,12 +22,14 @@ export interface VdSelectionCard {
   disabled?: boolean;
 }
 
+let vdSelectionCardGroupId = 0;
+
 @Component({
   selector: 'vd-selection-card-group',
   standalone: true,
   imports: [CommonModule, VdSelectionCardItem],
   templateUrl: './vd-selection-card.component.html',
-  styleUrls: ['./vd-selection-card.component.scss'],
+  styleUrl: './vd-selection-card.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -38,12 +38,12 @@ export interface VdSelectionCard {
     },
   ],
 })
-export class VdSelectionCardGroup implements ControlValueAccessor, OnChanges {
+export class VdSelectionCardGroup implements ControlValueAccessor {
   @Input() items: VdSelectionCard[] = [];
   @Input() type: VdSelectionCardType = 'radio';
   @Input() direction: VdSelectionCardDirection = 'vertical';
   @Input() disabled = false;
-  @Input() name = `vd-selection-card-group-${Math.random().toString(36).substring(2, 9)}`;
+  @Input() name = `vd-selection-card-group-${vdSelectionCardGroupId++}`;
   @Input() columns = 1;
 
   /** For radio mode: single value. For checkbox mode: array of values. */
@@ -53,12 +53,6 @@ export class VdSelectionCardGroup implements ControlValueAccessor, OnChanges {
 
   private onChange: (value: string | number | Array<string | number>) => void = () => {};
   private onTouched: () => void = () => {};
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['value']) {
-      this.onChange(this.value as string | number | Array<string | number>);
-    }
-  }
 
   onItemSelect(item: VdSelectionCard): void {
     if (this.disabled || item.disabled) {

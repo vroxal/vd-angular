@@ -11,7 +11,7 @@
       {{ label }}
     </label>
 
-    <vd-icon *ngIf="hintText" name="vd-icon-question-circle" [vdTooltip]="hintText"> ></vd-icon>
+    <vd-icon *ngIf="hintText" name="vd-icon-question-circle" [vdTooltip]="hintText"></vd-icon>
     <p *ngIf="optional" class="vd-input__optional body-medium-italic">Optional</p>
   </div>
 
@@ -46,6 +46,7 @@
         color="neutral"
         [disabled]="disabled"
         [icon]="trailingActionIcon"
+        [ariaLabel]="trailingActionAriaLabel"
         (click)="onTrailingActionClick(); $event.stopPropagation()"
       ></vd-icon-button>
     </span>

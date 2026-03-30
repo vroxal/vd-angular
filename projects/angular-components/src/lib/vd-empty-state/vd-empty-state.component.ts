@@ -8,7 +8,7 @@ import { VdIcon } from '../vd-icon/vd-icon.component';
   standalone: true,
   imports: [CommonModule, VdIcon, VdButton],
   templateUrl: './vd-empty-state.component.html',
-  styleUrls: ['./vd-empty-state.component.scss'],
+  styleUrl: './vd-empty-state.component.scss',
 })
 export class VdEmptyState {
   /** Heading shown as the primary message. */

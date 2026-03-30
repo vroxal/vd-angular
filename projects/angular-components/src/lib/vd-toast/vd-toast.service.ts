@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Toast, ToastPosition } from './vd-toast.model';
 
+let vdToastId = 0;
+
 const AUTO_DISMISS_DURATION = 5000;
 const EXIT_ANIMATION_DURATION = 300;
 const DEFAULT_MAX_TOASTS = 5;
@@ -142,6 +144,6 @@ export class VdToastService {
   }
 
   private generateId(): string {
-    return Math.random().toString(36).slice(2, 9);
+    return `vd-toast-${vdToastId++}`;
   }
 }

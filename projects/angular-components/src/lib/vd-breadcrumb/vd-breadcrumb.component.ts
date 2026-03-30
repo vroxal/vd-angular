@@ -17,7 +17,7 @@ export interface BreadcrumbItem {
   standalone: true,
   imports: [CommonModule, VdIcon, VdDropdown, VdDropdownItemLink, VdIconButton],
   templateUrl: './vd-breadcrumb.component.html',
-  styleUrls: ['./vd-breadcrumb.component.scss'],
+  styleUrl: './vd-breadcrumb.component.scss',
 })
 export class VdBreadcrumb {
   @Input() items: BreadcrumbItem[] = [];

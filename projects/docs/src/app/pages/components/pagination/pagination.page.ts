@@ -33,6 +33,13 @@ export default class PaginationPage implements OnInit {
   totalPages = 10;
   currentPage = 1;
 
+  // Per-showcase current page trackers
+  showcase1Page = 1;
+  showcase2Page = 1;
+  showcase3Page = 3;
+  showcase4Page = 50;
+  showcase5Page = 98;
+
   @ViewChild('propertyBadge', { static: true }) propertyBadge!: TemplateRef<any>;
 
   // Code snippets

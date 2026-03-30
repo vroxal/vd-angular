@@ -7,7 +7,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './vd-switch.component.html',
-  styleUrls: ['./vd-switch.component.scss'],
+  styleUrl: './vd-switch.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

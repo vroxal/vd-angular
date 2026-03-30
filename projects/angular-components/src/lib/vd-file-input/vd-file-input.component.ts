@@ -6,12 +6,14 @@ import { VdTooltipDirective } from '../vd-tooltip/vd-tooltip.directive';
 
 type FileInputLayout = 'horizontal' | 'vertical';
 
+let vdFileInputId = 0;
+
 @Component({
   selector: 'vd-file-input',
   standalone: true,
   imports: [CommonModule, VdIcon, VdIconButton, VdTooltipDirective],
   templateUrl: './vd-file-input.component.html',
-  styleUrls: ['./vd-file-input.component.scss'],
+  styleUrl: './vd-file-input.component.scss',
 })
 export class VdFileInput {
   /** Field label displayed above the dropzone */
@@ -59,7 +61,7 @@ export class VdFileInput {
   isDragOver = false;
 
   /** Computed unique id */
-  inputId = 'vd-file-input-' + Math.random().toString(36).substring(2, 9);
+  inputId = `vd-file-input-${vdFileInputId++}`;
 
   /** Whether the dropzone should be hidden (single mode with a file selected) */
   get hideDropzone(): boolean {
@@ -79,13 +81,10 @@ export class VdFileInput {
     if (!incoming.length) return;
 
     if (this.multiple) {
-      // Append, de-duplicate by name+size
-      const existing = new Set(this.selectedFiles.map((f) => `${f.name}-${f.size}`));
-      for (const file of incoming) {
-        if (!existing.has(`${file.name}-${file.size}`)) {
-          this.selectedFiles.push(file);
-        }
-      }
+      // Append, de-duplicate by object identity
+      const existing = new WeakSet<File>(this.selectedFiles);
+      const newFiles = incoming.filter((f) => !existing.has(f));
+      this.selectedFiles = [...this.selectedFiles, ...newFiles];
     } else {
       this.selectedFiles = [incoming[0]];
     }
@@ -98,7 +97,7 @@ export class VdFileInput {
   /** Remove a specific file from the list */
   removeFile(index: number, event: MouseEvent): void {
     event.stopPropagation();
-    this.selectedFiles.splice(index, 1);
+    this.selectedFiles = this.selectedFiles.filter((_, i) => i !== index);
     this.filesChange.emit([...this.selectedFiles]);
   }
 
@@ -134,12 +133,10 @@ export class VdFileInput {
     if (!incoming.length) return;
 
     if (this.multiple) {
-      const existing = new Set(this.selectedFiles.map((f) => `${f.name}-${f.size}`));
-      for (const file of incoming) {
-        if (!existing.has(`${file.name}-${file.size}`)) {
-          this.selectedFiles.push(file);
-        }
-      }
+      // Append, de-duplicate by object identity
+      const existing = new WeakSet<File>(this.selectedFiles);
+      const newFiles = incoming.filter((f) => !existing.has(f));
+      this.selectedFiles = [...this.selectedFiles, ...newFiles];
     } else {
       this.selectedFiles = [incoming[0]];
     }

@@ -31,7 +31,7 @@ interface ResolvedConfig {
   standalone: true,
   imports: [CommonModule, VdIcon, VdButton],
   templateUrl: './vd-confirmation-dialog.component.html',
-  styleUrls: ['./vd-confirmation-dialog.component.scss'],
+  styleUrl: './vd-confirmation-dialog.component.scss',
 })
 export class VdConfirmationDialog implements OnInit, OnDestroy {
   readonly config: ResolvedConfig;

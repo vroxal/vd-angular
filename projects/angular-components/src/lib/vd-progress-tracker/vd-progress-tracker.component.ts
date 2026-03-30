@@ -20,7 +20,7 @@ export interface VdProgressTrackerItem {
   standalone: true,
   imports: [CommonModule, VdIcon],
   templateUrl: './vd-progress-tracker.component.html',
-  styleUrls: ['./vd-progress-tracker.component.scss'],
+  styleUrl: './vd-progress-tracker.component.scss',
 })
 export class VdProgressTracker {
   @Input() items: VdProgressTrackerItem[] = [];

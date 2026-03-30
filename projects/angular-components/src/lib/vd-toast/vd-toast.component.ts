@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
   standalone: true,
   imports: [CommonModule, VdIconButton, VdIcon],
   templateUrl: './vd-toast.component.html',
-  styleUrls: ['./vd-toast.component.scss'],
+  styleUrl: './vd-toast.component.scss',
 })
 export class VdToast implements OnInit {
   @Input() maxStack?: number;

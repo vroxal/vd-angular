@@ -7,6 +7,6 @@ import { VdDivider } from '../../vd-divider/vd-divider.component';
   standalone: true,
   imports: [CommonModule, VdDivider],
   template: ` <vd-divider class="vd-dropdown-item__divider" color="secondary"></vd-divider> `,
-  styleUrls: ['./vd-dropdown-item.scss'],
+  styleUrl: './vd-dropdown-item.scss',
 })
 export class VdDropdownItemDivider {}

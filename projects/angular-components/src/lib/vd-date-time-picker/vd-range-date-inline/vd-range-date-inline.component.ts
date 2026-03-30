@@ -12,7 +12,7 @@ export interface DateRange {
   standalone: true,
   imports: [CommonModule, VdIconButton],
   templateUrl: './vd-range-date-inline.component.html',
-  styleUrls: ['./vd-range-date-inline.component.scss'],
+  styleUrl: './vd-range-date-inline.component.scss',
 })
 export class VdRangeDateInline implements OnInit {
   @Input() value: DateRange | null = null;

@@ -26,7 +26,7 @@ export interface VdSidebarNavSection {
   standalone: true,
   selector: 'vd-sidebar',
   templateUrl: './vd-sidebar.component.html',
-  styleUrls: ['./vd-sidebar.component.scss'],
+  styleUrl: './vd-sidebar.component.scss',
   imports: [CommonModule, RouterModule, VdIcon, VdDivider],
 })
 export class VdSidebar implements OnInit, OnDestroy {
@@ -101,6 +101,11 @@ export class VdSidebar implements OnInit, OnDestroy {
   isItemActive(item: VdSidebarNavItem): boolean {
     return this.isRouteActive(item.route, item.matchMode);
   }
+
+  trackBySection = (_: number, section: VdSidebarNavSection): string =>
+    section.title ?? String(_);
+
+  trackByItem = (_: number, item: VdSidebarNavItem): string => item.label;
 
   isChildActive(item: VdSidebarNavItem): boolean {
     if (!item.children || item.children.length === 0) {

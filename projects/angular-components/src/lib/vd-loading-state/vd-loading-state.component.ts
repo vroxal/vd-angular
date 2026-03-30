@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './vd-loading-state.component.html',
-  styleUrls: ['./vd-loading-state.component.scss'],
+  styleUrl: './vd-loading-state.component.scss',
 })
 export class VdLoadingState {
   /** Heading shown as the primary message. */

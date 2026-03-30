@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, forwardRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { VdIcon } from '../vd-icon/vd-icon.component';
 import { VdTooltipDirective } from '../vd-tooltip/vd-tooltip.directive';
 
@@ -9,14 +10,23 @@ export interface VdSelectOption<T = any> {
   disabled?: boolean;
 }
 
+let vdSelectId = 0;
+
 @Component({
   selector: 'vd-select',
   standalone: true,
   imports: [CommonModule, VdIcon, VdTooltipDirective],
   templateUrl: './vd-select.component.html',
-  styleUrls: ['./vd-select.component.scss'],
+  styleUrl: './vd-select.component.scss',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => VdSelect),
+      multi: true,
+    },
+  ],
 })
-export class VdSelect<T = any> {
+export class VdSelect<T = any> implements ControlValueAccessor {
   // Basic properties
   @Input() label?: string;
   @Input() hintText?: string; // ? icon tooltip content
@@ -40,8 +50,29 @@ export class VdSelect<T = any> {
   @Output() valueCommit = new EventEmitter<T | null>(); // on blur
   @Output() inputFocus = new EventEmitter<void>(); // optional focus event
 
+  _onChange: any = () => {};
+  _onTouched: any = () => {};
+
+  writeValue(value: any): void {
+    if (value !== undefined) {
+      this.value = value;
+    }
+  }
+
+  registerOnChange(fn: any): void {
+    this._onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this._onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
   // Internal
-  selectId = 'vd-select-' + Math.random().toString(36).substring(2, 9);
+  selectId = `vd-select-${vdSelectId++}`;
   isFocused = false;
 
   // Focus / blur handling
@@ -52,6 +83,7 @@ export class VdSelect<T = any> {
 
   onBlur() {
     this.isFocused = false;
+    this._onTouched();
     this.valueCommit.emit(this.value);
   }
 
@@ -60,15 +92,16 @@ export class VdSelect<T = any> {
 
   focusSelect() {
     if (!this.disabled) {
-      if ('showPicker' in (this.selectElement.nativeElement as any)) {
+      const el = this.selectElement.nativeElement as HTMLSelectElement & { showPicker?: () => void };
+      if (el.showPicker) {
         try {
-          (this.selectElement.nativeElement as any).showPicker();
+          el.showPicker();
         } catch (error) {
           // Fallback if showPicker fails (e.g. not user activation)
-          this.selectElement.nativeElement.focus();
+          el.focus();
         }
       } else {
-        this.selectElement.nativeElement.focus();
+        el.focus();
       }
     }
   }
@@ -83,6 +116,7 @@ export class VdSelect<T = any> {
 
     this.value = val;
     this.valueChange.emit(val);
+    this._onChange(val);
   }
 
   // Computed visual state (removes error while focused)

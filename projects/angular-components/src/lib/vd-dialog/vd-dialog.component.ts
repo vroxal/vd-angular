@@ -20,7 +20,7 @@ export interface VdDialogConfig<T = unknown> {
   standalone: true,
   imports: [CommonModule, VdButton, VdIconButton],
   templateUrl: './vd-dialog.component.html',
-  styleUrls: ['./vd-dialog.component.scss'],
+  styleUrl: './vd-dialog.component.scss',
 })
 export class VdDialog<T = unknown> implements OnInit, OnDestroy {
   readonly config: VdDialogConfig<T>;

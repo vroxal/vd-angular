@@ -7,7 +7,7 @@ import { VdButton } from '../vd-button/vd-button.component'; // adjust path
   standalone: true,
   imports: [CommonModule, VdButton],
   templateUrl: './vd-pagination.component.html',
-  styleUrls: ['./vd-pagination.component.scss'],
+  styleUrl: './vd-pagination.component.scss',
 })
 export class VdPagination implements OnChanges {
   @Input() totalPages: number = 1;
@@ -62,9 +62,7 @@ export class VdPagination implements OnChanges {
 
   goToPage(page: number | '...') {
     if (page === '...') return;
-    this.currentPage = page;
     this.pageChange.emit(page);
-    this.generatePages();
   }
 
   goPrevious() {

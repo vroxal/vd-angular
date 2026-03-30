@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TemplateRef } from '@angular/core';
 import { VdPagination } from '../vd-pagination/vd-pagination.component';
@@ -29,10 +29,10 @@ export interface DatatableCellContext<T> {
   selector: 'vd-datatable',
   standalone: true,
   templateUrl: './vd-datatable.component.html',
-  styleUrls: ['./vd-datatable.component.scss'],
+  styleUrl: './vd-datatable.component.scss',
   imports: [CommonModule, VdPagination, VdDropdown, VdDropdownItem, VdIconButton],
 })
-export class VdDatatable<T extends Record<string, any> = any> {
+export class VdDatatable<T extends Record<string, any> = any> implements OnChanges {
   @Input() data: T[] = [];
 
   @Input() columns: VdDatatableColumn<T>[] = [];
@@ -51,13 +51,21 @@ export class VdDatatable<T extends Record<string, any> = any> {
 
   expandedRow: T | null = null;
 
-  get isExpandable(): boolean {
-    return this.expandedColumns.length > 0;
+  pagedData: T[] = [];
+  rangeStart = 0;
+  rangeEnd = 0;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['data'] || changes['currentPage'] || changes['rowsPerPage'] || changes['totalRows']) {
+      const start = (this.currentPage - 1) * this.rowsPerPage;
+      this.pagedData = this.data.slice(start, start + this.rowsPerPage);
+      this.rangeStart = start + 1;
+      this.rangeEnd = Math.min(this.currentPage * this.rowsPerPage, this.totalRows);
+    }
   }
 
-  get pagedData(): T[] {
-    const start = (this.currentPage - 1) * this.rowsPerPage;
-    return this.data.slice(start, start + this.rowsPerPage);
+  get isExpandable(): boolean {
+    return this.expandedColumns.length > 0;
   }
 
   toggleExpand(row: T) {
@@ -83,12 +91,5 @@ export class VdDatatable<T extends Record<string, any> = any> {
 
   onPageChanged(page: number) {
     this.pageChange.emit(page);
-  }
-  get rangeStart(): number {
-    return (this.currentPage - 1) * this.rowsPerPage + 1;
-  }
-
-  get rangeEnd(): number {
-    return Math.min(this.currentPage * this.rowsPerPage, this.totalRows);
   }
 }

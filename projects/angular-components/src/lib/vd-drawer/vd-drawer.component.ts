@@ -26,7 +26,7 @@ interface ResolvedConfig<T> extends VdDrawerConfig<T> {
   standalone: true,
   imports: [CommonModule, VdButton, VdIconButton],
   templateUrl: './vd-drawer.component.html',
-  styleUrls: ['./vd-drawer.component.scss'],
+  styleUrl: './vd-drawer.component.scss',
 })
 export class VdDrawer<T = unknown> implements OnInit, OnDestroy {
   readonly config: ResolvedConfig<T>;

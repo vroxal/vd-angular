@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, Renderer2 } from '@angular/core';
+import { Component, Input, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VdIcon } from '../vd-icon/vd-icon.component';
 
@@ -12,13 +12,10 @@ type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   standalone: true,
   imports: [CommonModule, VdIcon],
   templateUrl: './vd-icon-button.component.html',
-  styleUrls: ['./vd-icon-button.component.scss'],
+  styleUrl: './vd-icon-button.component.scss',
 })
-export class VdIconButton {
-  constructor(
-    private el: ElementRef,
-    private renderer: Renderer2,
-  ) {}
+export class VdIconButton implements AfterViewInit {
+  constructor(private el: ElementRef) {}
 
   ngAfterViewInit() {
     const buttonEl = this.el.nativeElement.querySelector('button');
@@ -28,8 +25,8 @@ export class VdIconButton {
       });
     }
   }
-  @Input() icon!: string;
-  @Input() ariaLabel!: string;
+  @Input({ required: true }) icon!: string;
+  @Input({ required: true }) ariaLabel!: string;
   @Input() variant?: ButtonVariant = 'solid';
   @Input() color?: ButtonColor = 'primary';
   @Input() size?: ButtonSize = 'md';

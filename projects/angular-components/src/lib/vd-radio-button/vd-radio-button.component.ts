@@ -11,12 +11,14 @@ import {
 import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+let vdRadioButtonId = 0;
+
 @Component({
   selector: 'vd-radio-button',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './vd-radio-button.component.html',
-  styleUrls: ['./vd-radio-button.component.scss'],
+  styleUrl: './vd-radio-button.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -45,7 +47,7 @@ export class VdRadioButton implements ControlValueAccessor, OnInit {
   private onTouched: () => void = () => {};
 
   ngOnInit(): void {
-    this.inputId = this.id ?? `vd-radio-${Math.random().toString(36).substring(2, 9)}`;
+    this.inputId = this.id ?? `vd-radio-${vdRadioButtonId++}`;
   }
 
   onInputChange(event: Event): void {

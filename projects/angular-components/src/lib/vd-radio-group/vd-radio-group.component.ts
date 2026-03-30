@@ -2,9 +2,7 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnChanges,
   Output,
-  SimpleChanges,
   forwardRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,12 +18,14 @@ export interface VdRadioGroupItem {
   disabled?: boolean;
 }
 
+let vdRadioGroupId = 0;
+
 @Component({
   selector: 'vd-radio-group',
   standalone: true,
   imports: [CommonModule, VdRadioButton],
   templateUrl: './vd-radio-group.component.html',
-  styleUrls: ['./vd-radio-group.component.scss'],
+  styleUrl: './vd-radio-group.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -34,23 +34,17 @@ export interface VdRadioGroupItem {
     },
   ],
 })
-export class VdRadioGroup implements ControlValueAccessor, OnChanges {
+export class VdRadioGroup implements ControlValueAccessor {
   @Input() items: VdRadioGroupItem[] = [];
   @Input() direction: VdRadioGroupDirection = 'vertical';
   @Input() value: string | number | null = null;
   @Input() disabled = false;
-  @Input() name = `vd-radio-group-${Math.random().toString(36).substring(2, 9)}`;
+  @Input() name = `vd-radio-group-${vdRadioGroupId++}`;
 
   @Output() valueChange = new EventEmitter<string | number>();
 
   private onChange: (value: string | number) => void = () => {};
   private onTouched: () => void = () => {};
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['value']) {
-      this.onChange(this.value as string | number);
-    }
-  }
 
   onItemSelect(item: VdRadioGroupItem): void {
     if (this.disabled || item.disabled) {

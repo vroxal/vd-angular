@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, Renderer2 } from '@angular/core';
+import { Component, Input, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VdIcon } from '../vd-icon/vd-icon.component';
 
@@ -13,13 +13,10 @@ type ButtonType = 'button' | 'submit' | 'reset';
   standalone: true, // standalone is required
   imports: [CommonModule, VdIcon], // for *ngIf and [class]
   templateUrl: './vd-button.component.html',
-  styleUrls: ['./vd-button.component.scss'],
+  styleUrl: './vd-button.component.scss',
 })
-export class VdButton {
-  constructor(
-    private el: ElementRef,
-    private renderer: Renderer2,
-  ) {}
+export class VdButton implements AfterViewInit {
+  constructor(private el: ElementRef) {}
 
   ngAfterViewInit() {
     const buttonEl = this.el.nativeElement.querySelector('button');
@@ -29,7 +26,7 @@ export class VdButton {
       });
     }
   }
-  @Input() label!: string;
+  @Input({ required: true }) label!: string;
   @Input() variant?: ButtonVariant;
   @Input() color?: ButtonColor;
   @Input() size?: ButtonSize;

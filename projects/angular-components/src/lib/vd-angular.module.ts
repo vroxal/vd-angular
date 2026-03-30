@@ -44,6 +44,7 @@ import { VdEmptyState } from './vd-empty-state/vd-empty-state.component';
 import { VdLoadingState } from './vd-loading-state/vd-loading-state.component';
 import { VdSelectionCardItem } from './vd-selection-card/vd-selection-card-item/vd-selection-card-item.component';
 import { VdSelectionCardGroup } from './vd-selection-card/vd-selection-card.component';
+import { VdConfirmationDialog } from './vd-confirmation-dialog/vd-confirmation-dialog.component';
 
 @NgModule({
   imports: [
@@ -92,6 +93,7 @@ import { VdSelectionCardGroup } from './vd-selection-card/vd-selection-card.comp
     VdLoadingState,
     VdSelectionCardItem,
     VdSelectionCardGroup,
+    VdConfirmationDialog,
   ], // standalone component import
   exports: [
     VdButton,
@@ -139,6 +141,7 @@ import { VdSelectionCardGroup } from './vd-selection-card/vd-selection-card.comp
     VdLoadingState,
     VdSelectionCardItem,
     VdSelectionCardGroup,
+    VdConfirmationDialog,
   ], // export to make available in apps
 })
 export class VdAngularComponentsModule {}

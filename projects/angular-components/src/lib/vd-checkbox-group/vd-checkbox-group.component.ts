@@ -17,7 +17,7 @@ export interface VdCheckboxGroupItem {
   standalone: true,
   imports: [CommonModule, VdCheckbox],
   templateUrl: './vd-checkbox-group.component.html',
-  styleUrls: ['./vd-checkbox-group.component.scss'],
+  styleUrl: './vd-checkbox-group.component.scss',
 })
 export class VdCheckboxGroup implements OnChanges {
   @Input() items: VdCheckboxGroupItem[] = [];
