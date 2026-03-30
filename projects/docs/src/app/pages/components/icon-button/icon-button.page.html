@@ -12,13 +12,54 @@
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Variants</h3>
-        <p>Contains: Solid, Subtle, Outline, Transparent. Solid is default</p>
+          <p>Contains: Solid, Subtle, Outline, Transparent. Solid is default</p>
         </div>
         <div class="component-showcase-container">
           <vd-icon-button icon="vd-icon-plus" ariaLabel="Add"></vd-icon-button>
+          <vd-icon-button color="neutral" icon="vd-icon-plus" ariaLabel="Add"></vd-icon-button>
+          <vd-icon-button color="error" icon="vd-icon-plus" ariaLabel="Add"></vd-icon-button>
+
           <vd-icon-button icon="vd-icon-plus" ariaLabel="Add" variant="subtle"></vd-icon-button>
+          <vd-icon-button
+            color="neutral"
+            icon="vd-icon-plus"
+            ariaLabel="Add"
+            variant="subtle"
+          ></vd-icon-button>
+          <vd-icon-button
+            color="error"
+            icon="vd-icon-plus"
+            ariaLabel="Add"
+            variant="subtle"
+          ></vd-icon-button>
+
           <vd-icon-button icon="vd-icon-plus" ariaLabel="Add" variant="outline"></vd-icon-button>
           <vd-icon-button
+            color="neutral"
+            icon="vd-icon-plus"
+            ariaLabel="Add"
+            variant="outline"
+          ></vd-icon-button>
+          <vd-icon-button
+            color="error"
+            icon="vd-icon-plus"
+            ariaLabel="Add"
+            variant="outline"
+          ></vd-icon-button>
+
+          <vd-icon-button
+            icon="vd-icon-plus"
+            ariaLabel="Add"
+            variant="transparent"
+          ></vd-icon-button>
+          <vd-icon-button
+            color="neutral"
+            icon="vd-icon-plus"
+            ariaLabel="Add"
+            variant="transparent"
+          ></vd-icon-button>
+          <vd-icon-button
+            color="error"
             icon="vd-icon-plus"
             ariaLabel="Add"
             variant="transparent"
@@ -28,7 +69,7 @@
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Size</h3>
-        <p>Contains: Small as sm, medium as md, large as lg. Medium is default</p>
+          <p>Contains: Small as sm, medium as md, large as lg. Medium is default</p>
         </div>
         <div class="component-showcase-container">
           <vd-icon-button icon="vd-icon-plus" ariaLabel="Add" size="sm"></vd-icon-button>
@@ -39,7 +80,7 @@
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Color Variations</h3>
-        <p>Contains: Primary, Neutral, Error. Primary is default</p>
+          <p>Contains: Primary, Neutral, Error. Primary is default</p>
         </div>
         <div class="component-showcase-container">
           <vd-icon-button icon="vd-icon-plus" ariaLabel="Add" color="primary"></vd-icon-button>
@@ -51,10 +92,10 @@
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Roundness</h3>
-        <p>
-          Is a boolean value. True makes the button fully rounded (circular). Otherwise the default
-          roundness will be applied.
-        </p>
+          <p>
+            Is a boolean value. True makes the button fully rounded (circular). Otherwise the
+            default roundness will be applied.
+          </p>
         </div>
         <div class="component-showcase-container">
           <vd-icon-button
@@ -80,7 +121,7 @@
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Disabled</h3>
-        <p>Is a boolean value. True disables the button. Otherwise the button will be enabled.</p>
+          <p>Is a boolean value. True disables the button. Otherwise the button will be enabled.</p>
         </div>
 
         <div class="component-showcase-container">
@@ -107,9 +148,9 @@
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Loading</h3>
-        <p>
-          Is a boolean value. True makes the button in the loading state with loading indicator.
-        </p>
+          <p>
+            Is a boolean value. True makes the button in the loading state with loading indicator.
+          </p>
         </div>
 
         <div class="component-showcase-container">
@@ -246,7 +287,7 @@
           <li>Ensure keyboard access and clear focus order for accessibility.</li>
         </ul>
       </div>
-</div>
+    </div>
   </div>
   <div class="content-group playground">
     <div class="content-group-title">
@@ -287,17 +328,9 @@
               [options]="icons"
             ></vd-select>
 
-            <vd-switch
-              [checked]="rounded"
-              label="Rounded"
-              (change)="rounded = $event"
-            ></vd-switch>
+            <vd-switch [checked]="rounded" label="Rounded" (change)="rounded = $event"></vd-switch>
 
-            <vd-switch
-              [checked]="loading"
-              label="Loading"
-              (change)="loading = $event"
-            ></vd-switch>
+            <vd-switch [checked]="loading" label="Loading" (change)="loading = $event"></vd-switch>
 
             <vd-switch
               [checked]="disabled"

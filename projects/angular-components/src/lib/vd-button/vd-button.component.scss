@@ -8,7 +8,7 @@
   --vd-button-text-base: var(--vd-color-content-primary-base);
   --vd-button-text-on-secondary: var(--vd-color-content-primary-on-secondary);
 
-  --vd-button-border-color: transparent;
+  --vd-button-border-color: var(--vd-color-border-primary-base);
   --vd-button-outline-color: var(--vd-color-border-primary-tertiary);
 
   --_vd-button-padding-x: var(--vd-scale-spacing-600);
@@ -26,9 +26,9 @@
   --vd-button-bg: var(--vd-button-bg-base);
   --vd-button-bg-hover: var(--vd-button-bg-base-hover);
   --vd-button-text: var(--vd-button-text-on-base);
+  --vd-button-text-hover: var(--vd-button-text-on-base);
   --vd-button-padding-x: var(--_vd-button-padding-x);
   --vd-button-padding-y: var(--_vd-button-padding-y);
-  --vd-button-border-color: transparent;
 
   position: relative;
   box-sizing: border-box;
@@ -36,11 +36,9 @@
   align-items: center;
   justify-content: center;
   gap: var(--vd-button-content-gap);
-
   padding: var(--vd-button-padding-y) var(--vd-button-padding-x);
   border-radius: var(--vd-button-radius);
   border: none;
-
   background-color: var(--vd-button-bg);
   color: var(--vd-button-text);
 
@@ -57,6 +55,7 @@
   }
   &:hover:not(&--disabled):not(:disabled) {
     background-color: var(--vd-button-bg-hover);
+    color: var(--vd-button-text-hover);
   }
 
   &:focus:not(&--disabled):not(:disabled) {
@@ -101,6 +100,7 @@
     --vd-button-bg: var(--vd-button-bg-secondary);
     --vd-button-bg-hover: var(--vd-button-bg-secondary-hover);
     --vd-button-text: var(--vd-button-text-on-secondary);
+    --vd-button-text-hover: var(--vd-button-text-on-secondary);
     --vd-button-border-color: transparent;
   }
 
@@ -108,7 +108,8 @@
     --vd-button-bg: transparent;
     --vd-button-bg-hover: var(--vd-button-bg-secondary);
     --vd-button-text: var(--vd-button-text-base);
-    --vd-button-border-color: currentColor;
+    --vd-button-text-hover: var(--vd-button-text-on-secondary);
+    --vg-button-border-color: var(--vd-color-border-primary-base);
     --vd-button-padding-x: calc(var(--_vd-button-padding-x) - var(--vd-button-border-width));
     --vd-button-padding-y: calc(var(--_vd-button-padding-y) - var(--vd-button-border-width));
     border: var(--vd-button-border-width) solid var(--vd-button-border-color);
@@ -118,6 +119,7 @@
     --vd-button-bg: transparent;
     --vd-button-bg-hover: var(--vd-button-bg-secondary);
     --vd-button-text: var(--vd-button-text-base);
+    --vd-button-text-hover: var(--vd-button-text-on-secondary);
     --vd-button-border-color: transparent;
   }
 

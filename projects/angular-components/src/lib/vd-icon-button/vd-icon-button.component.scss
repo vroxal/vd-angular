@@ -40,6 +40,7 @@
   --vd-icon-button-bg: var(--vd-icon-button-bg-base);
   --vd-icon-button-bg-hover: var(--vd-icon-button-bg-base-hover);
   --vd-icon-button-text: var(--vd-icon-button-text-on-base);
+  --vd-icon-button-text-hover: var(--vd-icon-button-text-on-base);
   --vd-icon-button-padding: var(--_vd-icon-button-padding);
 
   position: relative;
@@ -66,6 +67,7 @@
   }
   &:hover:not(&--disabled):not(:disabled) {
     background-color: var(--vd-icon-button-bg-hover);
+    color: var(--vd-icon-button-text-hover);
   }
 
   &:focus:not(&--disabled):not(:disabled) {
@@ -108,12 +110,14 @@
     --vd-icon-button-bg: var(--vd-icon-button-bg-secondary);
     --vd-icon-button-bg-hover: var(--vd-icon-button-bg-secondary-hover);
     --vd-icon-button-text: var(--vd-icon-button-text-on-secondary);
+    --vd-icon-button-text-hover: var(--vd-icon-button-text-on-secondary);
   }
 
   &--outline {
     --vd-icon-button-bg: transparent;
     --vd-icon-button-bg-hover: var(--vd-icon-button-bg-secondary);
     --vd-icon-button-text: var(--vd-icon-button-text-base);
+    --vd-icon-button-text-hover: var(--vd-icon-button-text-on-secondary);
     --vd-icon-button-padding: calc(
       var(--_vd-icon-button-padding) - var(--vd-icon-button-border-width)
     );
@@ -124,6 +128,7 @@
     --vd-icon-button-bg: transparent;
     --vd-icon-button-bg-hover: var(--vd-icon-button-bg-secondary);
     --vd-icon-button-text: var(--vd-icon-button-text-base);
+    --vd-icon-button-text-hover: var(--vd-icon-button-text-on-secondary);
   }
 
   &__icon {

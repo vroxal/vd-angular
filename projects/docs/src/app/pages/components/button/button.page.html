@@ -1,5 +1,8 @@
 <div class="doc-content">
-  <app-doc-page-header [title]="'Button'" [subtitle]="'Buttons trigger user actions such as submit, save, cancel, or navigate.'">
+  <app-doc-page-header
+    [title]="'Button'"
+    [subtitle]="'Buttons trigger user actions such as submit, save, cancel, or navigate.'"
+  >
   </app-doc-page-header>
   <div class="content-group component-variations">
     <div class="content-group-title">
@@ -9,19 +12,19 @@
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Variants</h3>
-        <p>Contains: Solid, Subtle, Outline, Transparent. Solid is default</p>
+          <p>Contains: Solid, Subtle, Outline, Transparent. Solid is default</p>
         </div>
         <div class="component-showcase-container">
           <vd-button label="Button"></vd-button>
           <vd-button label="Button" variant="subtle"></vd-button>
           <vd-button label="Button" variant="outline"></vd-button>
-          <vd-button label="Button" variant="transparent"></vd-button>
+          <vd-button color="neutral" label="Button" variant="outline"></vd-button>
         </div>
       </div>
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Size</h3>
-        <p>Contains: Small as sm, medium as md, large as lg. Medium is default</p>
+          <p>Contains: Small as sm, medium as md, large as lg. Medium is default</p>
         </div>
         <div class="component-showcase-container">
           <vd-button label="Button" size="sm"></vd-button>
@@ -32,7 +35,7 @@
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Color Variations</h3>
-        <p>Contains: Primary, Neutral, Error. Primary is default</p>
+          <p>Contains: Primary, Neutral, Error. Primary is default</p>
         </div>
         <div class="component-showcase-container">
           <vd-button label="Button" color="primary"></vd-button>
@@ -44,7 +47,7 @@
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Icons</h3>
-        <p>Is a string value representing the icon name to be displayed on the left or right</p>
+          <p>Is a string value representing the icon name to be displayed on the left or right</p>
         </div>
         <div class="component-showcase-container">
           <vd-button
@@ -74,10 +77,10 @@
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Roundness</h3>
-        <p>
-          Is a boolean value. True makes the button rounded. Otherwise the default roundness will be
-          applied.
-        </p>
+          <p>
+            Is a boolean value. True makes the button rounded. Otherwise the default roundness will
+            be applied.
+          </p>
         </div>
         <div class="component-showcase-container">
           <vd-button label="Button" [rounded]="true" color="primary"></vd-button>
@@ -88,7 +91,7 @@
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Disabled</h3>
-        <p>Is a boolean value. True disables the button. Otherwise the button will be enabled.</p>
+          <p>Is a boolean value. True disables the button. Otherwise the button will be enabled.</p>
         </div>
 
         <div class="component-showcase-container">
@@ -100,9 +103,9 @@
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Loading</h3>
-        <p>
-          Is a boolean value. True makes the button in the loading state with loading indicator.
-        </p>
+          <p>
+            Is a boolean value. True makes the button in the loading state with loading indicator.
+          </p>
         </div>
 
         <div class="component-showcase-container">
@@ -232,7 +235,7 @@
           <li>Ensure keyboard access and clear focus order for accessibility.</li>
         </ul>
       </div>
-</div>
+    </div>
   </div>
   <div class="content-group playground">
     <div class="content-group-title">
@@ -280,17 +283,9 @@
               [options]="icons"
             ></vd-select>
 
-            <vd-switch
-              [checked]="rounded"
-              label="Rounded"
-              (change)="rounded = $event"
-            ></vd-switch>
+            <vd-switch [checked]="rounded" label="Rounded" (change)="rounded = $event"></vd-switch>
 
-            <vd-switch
-              [checked]="loading"
-              label="Loading"
-              (change)="loading = $event"
-            ></vd-switch>
+            <vd-switch [checked]="loading" label="Loading" (change)="loading = $event"></vd-switch>
           </div>
           <div class="divider"></div>
           <div class="component-showcase-container">
