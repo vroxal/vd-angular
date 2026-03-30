@@ -7,9 +7,12 @@
   --vd-sidebar-outline-width: var(--vd-scale-border-width-md);
   --vd-sidebar-outline-offset: var(--vd-scale-border-width-md);
   width: 100%;
+  max-width: var(--vd-layout-sidebar-width);
   padding: var(--vd-sidebar-padding-top) var(--vd-sidebar-padding) var(--vd-sidebar-padding-bottom)
     var(--vd-sidebar-padding);
+  background: var(--vd-color-background-default-secondary);
   height: 100%;
+  border-right: var(--vd-scale-border-width-sm) solid var(--vd-color-border-default-tertiary);
   overflow-y: auto;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer and Edge */
