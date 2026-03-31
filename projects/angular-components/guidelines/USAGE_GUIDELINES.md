@@ -27,7 +27,7 @@ This guide is for agentic AI and developers using `@vroxal/vd-angular`.
 - Date and time: `vd-date-time-picker`, `vd-single-date-picker`, `vd-range-date-picker`, `vd-time-picker`, `vd-single-date-inline`, `vd-range-date-inline`
 - Navigation: `vd-breadcrumb`, `vd-navbar`, `vd-sidebar`, `vd-pagination`
 - Data display and structure: `vd-datatable`, `vd-accordion`, `vd-divider`, `vd-icon`
-- Feedback and status: `vd-alert`, `vd-toast`, `vd-badge`, `vd-progress-tracker`, `vd-empty-state`, `vd-loading-state`
+- Feedback and status: `vd-alert`, `vd-toast`, `vd-badge`, `vd-chip`, `vd-progress-tracker`, `vd-empty-state`, `vd-loading-state`
 - Menus, hints, and overlays: `vd-dropdown`, `vd-dropdown-item`, `vd-dropdown-item-link`, `vd-dropdown-item-divider`, `vd-dropdown-item-group`, `vd-tooltip`, `[vdTooltip]`, `vd-dialog`, `vd-drawer`, `vd-confirmation-dialog`
 
 ## Feedback Component Notes

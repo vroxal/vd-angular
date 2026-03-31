@@ -94,3 +94,5 @@ export * from './lib/vd-search-input/vd-search-input.component';
 export * from './lib/vd-selection-card/vd-selection-card-item/vd-selection-card-item.component';
 //Selection Card Group
 export * from './lib/vd-selection-card/vd-selection-card.component';
+//Chip
+export * from './lib/vd-chip/vd-chip.component';

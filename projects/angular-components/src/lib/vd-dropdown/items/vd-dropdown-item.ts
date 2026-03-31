@@ -11,6 +11,7 @@ import { VD_DROPDOWN, VdDropdownControl } from '../vd-dropdown.token';
     <div
       class="vd-dropdown-item"
       [class.vd-dropdown-item--disabled]="disabled"
+      [class.vd-dropdown-item--selected]="selectable && selected"
       (click)="onClick()"
     >
       <vd-icon *ngIf="icon" class="vd-dropdown-item__icon" [name]="icon"></vd-icon>
@@ -20,6 +21,11 @@ import { VD_DROPDOWN, VdDropdownControl } from '../vd-dropdown.token';
           {{ description }}
         </div>
       </div>
+      <vd-icon
+        *ngIf="selectable && selected"
+        class="vd-dropdown-item__check"
+        name="vd-icon-check"
+      ></vd-icon>
     </div>
   `,
   styleUrl: './vd-dropdown-item.scss',
@@ -29,14 +35,24 @@ export class VdDropdownItem {
   @Input() description?: string;
   @Input() icon?: string;
   @Input() disabled = false;
+  @Input() selectable = false;
+  @Input() selected = false;
 
   @Output() select = new EventEmitter<void>();
+  @Output() selectedChange = new EventEmitter<boolean>();
 
   constructor(@Optional() @Inject(VD_DROPDOWN) private dropdown: VdDropdownControl | null) {}
 
   onClick() {
     if (this.disabled) return;
+
+    if (this.selectable) {
+      this.selected = !this.selected;
+      this.selectedChange.emit(this.selected);
+      return;
+    }
+
     this.select.emit();
-    this.dropdown?.close(); // close the parent dropdown
+    this.dropdown?.close();
   }
 }

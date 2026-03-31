@@ -214,6 +214,86 @@
           </vd-dropdown>
         </div>
       </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Single select</h3>
+          <p>Items with <code>selectable</code> enabled show a check icon when selected. Only one item is active at a time — the parent manages exclusivity.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-dropdown>
+            <vd-button
+              label="Single Select"
+              color="neutral"
+              variant="subtle"
+              vdDropdownTrigger
+            ></vd-button>
+            <div vdDropdownContent>
+              <vd-dropdown-item
+                title="Option A"
+                icon="vd-icon-placeholder"
+                [selectable]="true"
+                [selected]="singleSelected === 'a'"
+                (selectedChange)="toggleSingle('a')"
+              ></vd-dropdown-item>
+              <vd-dropdown-item
+                title="Option B"
+                icon="vd-icon-placeholder"
+                [selectable]="true"
+                [selected]="singleSelected === 'b'"
+                (selectedChange)="toggleSingle('b')"
+              ></vd-dropdown-item>
+              <vd-dropdown-item
+                title="Option C"
+                icon="vd-icon-placeholder"
+                [selectable]="true"
+                [selected]="singleSelected === 'c'"
+                (selectedChange)="toggleSingle('c')"
+              ></vd-dropdown-item>
+            </div>
+          </vd-dropdown>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Multi select</h3>
+          <p>Multiple items can be selected simultaneously. The dropdown stays open on each selection to allow multiple choices.</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-dropdown>
+            <vd-button
+              label="Multi Select"
+              color="neutral"
+              variant="subtle"
+              vdDropdownTrigger
+            ></vd-button>
+            <div vdDropdownContent>
+              <vd-dropdown-item
+                title="Option A"
+                icon="vd-icon-placeholder"
+                [selectable]="true"
+                [selected]="isMultiSelected('a')"
+                (selectedChange)="toggleMulti('a')"
+              ></vd-dropdown-item>
+              <vd-dropdown-item
+                title="Option B"
+                icon="vd-icon-placeholder"
+                [selectable]="true"
+                [selected]="isMultiSelected('b')"
+                (selectedChange)="toggleMulti('b')"
+              ></vd-dropdown-item>
+              <vd-dropdown-item
+                title="Option C"
+                icon="vd-icon-placeholder"
+                [selectable]="true"
+                [selected]="isMultiSelected('c')"
+                (selectedChange)="toggleMulti('c')"
+              ></vd-dropdown-item>
+            </div>
+          </vd-dropdown>
+        </div>
+      </div>
     </div>
   </div>
   <div class="content-group usage-guidelines">
@@ -292,6 +372,34 @@
 
       <div class="guideline-section">
         <div class="title-container">
+          <h3 class="title-large">Single Select</h3>
+          <p>Use <code>selectable</code> and manage exclusivity in the parent by comparing against the selected value:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="singleSelectSnippet"
+            fileName="dropdown-single-select.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Multi Select</h3>
+          <p>Use a <code>Set</code> to track multiple active selections. The dropdown stays open so users can select multiple items:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="multiSelectSnippet"
+            fileName="dropdown-multi-select.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
           <h3 class="title-large">Listening to Select Events</h3>
           <p>
             Handle dropdown item selection by listening to the (select) event emitted by
@@ -347,6 +455,7 @@
       <div class="guideline-section">
         <div class="title-container">
           <h3 class="title-large">VdDropdownItem - Outputs</h3>
+          <p><code>select</code> fires for regular (non-selectable) items. <code>selectedChange</code> fires when a selectable item is toggled.</p>
         </div>
         <vd-datatable
           [data]="dropdownItemEventsData"

@@ -47,6 +47,30 @@ export default class DropdownPage implements OnInit {
     | 'left-start'
     | 'right-start' = 'bottom-left';
 
+  // Single select demo state
+  singleSelected: string | null = null;
+
+  // Multi select demo state
+  multiSelected: Set<string> = new Set();
+
+  toggleSingle(value: string): void {
+    this.singleSelected = this.singleSelected === value ? null : value;
+  }
+
+  toggleMulti(value: string): void {
+    if (this.multiSelected.has(value)) {
+      this.multiSelected.delete(value);
+    } else {
+      this.multiSelected.add(value);
+    }
+    // Trigger change detection
+    this.multiSelected = new Set(this.multiSelected);
+  }
+
+  isMultiSelected(value: string): boolean {
+    return this.multiSelected.has(value);
+  }
+
   @ViewChild('propertyBadge', { static: true }) propertyBadge!: TemplateRef<any>;
 
   // Code snippets
@@ -175,6 +199,75 @@ export default class DropdownPage implements OnInit {
   }
 }`;
 
+  singleSelectSnippet = `<!-- Template -->
+<vd-dropdown>
+  <button vdDropdownTrigger>Select option</button>
+  <div vdDropdownContent>
+    <vd-dropdown-item
+      title="Option A"
+      [selectable]="true"
+      [selected]="selected === 'a'"
+      (selectedChange)="selected = $event ? 'a' : null"
+    ></vd-dropdown-item>
+    <vd-dropdown-item
+      title="Option B"
+      [selectable]="true"
+      [selected]="selected === 'b'"
+      (selectedChange)="selected = $event ? 'b' : null"
+    ></vd-dropdown-item>
+    <vd-dropdown-item
+      title="Option C"
+      [selectable]="true"
+      [selected]="selected === 'c'"
+      (selectedChange)="selected = $event ? 'c' : null"
+    ></vd-dropdown-item>
+  </div>
+</vd-dropdown>
+
+<!-- Component TypeScript -->
+export class MyComponent {
+  selected: string | null = null;
+}`;
+
+  multiSelectSnippet = `<!-- Template -->
+<vd-dropdown>
+  <button vdDropdownTrigger>Select options</button>
+  <div vdDropdownContent>
+    <vd-dropdown-item
+      title="Option A"
+      [selectable]="true"
+      [selected]="selectedItems.has('a')"
+      (selectedChange)="toggle('a', $event)"
+    ></vd-dropdown-item>
+    <vd-dropdown-item
+      title="Option B"
+      [selectable]="true"
+      [selected]="selectedItems.has('b')"
+      (selectedChange)="toggle('b', $event)"
+    ></vd-dropdown-item>
+    <vd-dropdown-item
+      title="Option C"
+      [selectable]="true"
+      [selected]="selectedItems.has('c')"
+      (selectedChange)="toggle('c', $event)"
+    ></vd-dropdown-item>
+  </div>
+</vd-dropdown>
+
+<!-- Component TypeScript -->
+export class MyComponent {
+  selectedItems = new Set<string>();
+
+  toggle(value: string, checked: boolean): void {
+    if (checked) {
+      this.selectedItems.add(value);
+    } else {
+      this.selectedItems.delete(value);
+    }
+    this.selectedItems = new Set(this.selectedItems);
+  }
+}`;
+
   // API Reference data
   apiData = [
     {
@@ -215,13 +308,32 @@ export default class DropdownPage implements OnInit {
       required: 'No',
       description: 'Whether the item is disabled and cannot be clicked',
     },
+    {
+      property: 'selectable',
+      type: 'boolean',
+      default: 'false',
+      required: 'No',
+      description: 'Enables selection mode. When true, clicking toggles selected state and shows a check icon when selected. The dropdown stays open to support multi-select workflows.',
+    },
+    {
+      property: 'selected',
+      type: 'boolean',
+      default: 'false',
+      required: 'No',
+      description: 'Whether the item is currently selected. Only meaningful when selectable is true.',
+    },
   ];
 
   dropdownItemEventsData = [
     {
       property: 'select',
       type: 'EventEmitter<void>',
-      description: 'Emitted when the dropdown item is clicked (not emitted when disabled)',
+      description: 'Emitted when a non-selectable item is clicked. Not emitted when disabled or when selectable is true.',
+    },
+    {
+      property: 'selectedChange',
+      type: 'EventEmitter<boolean>',
+      description: 'Emitted when a selectable item is toggled. Emits the new selected value. Supports two-way binding with [(selected)].',
     },
   ];
 

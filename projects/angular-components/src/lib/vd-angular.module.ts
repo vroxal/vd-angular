@@ -46,6 +46,7 @@ import { VdSelectionCardItem } from './vd-selection-card/vd-selection-card-item/
 import { VdSelectionCardGroup } from './vd-selection-card/vd-selection-card.component';
 import { VdConfirmationDialog } from './vd-confirmation-dialog/vd-confirmation-dialog.component';
 import { VdTooltipDirective } from './vd-tooltip/vd-tooltip.directive';
+import { VdChip } from './vd-chip/vd-chip.component';
 
 @NgModule({
   imports: [
@@ -96,6 +97,7 @@ import { VdTooltipDirective } from './vd-tooltip/vd-tooltip.directive';
     VdSelectionCardGroup,
     VdConfirmationDialog,
     VdTooltipDirective,
+    VdChip,
   ], // standalone component import
   exports: [
     VdButton,
@@ -145,6 +147,7 @@ import { VdTooltipDirective } from './vd-tooltip/vd-tooltip.directive';
     VdSelectionCardGroup,
     VdConfirmationDialog,
     VdTooltipDirective,
+    VdChip,
   ], // export to make available in apps
 })
 export class VdAngularComponentsModule {}

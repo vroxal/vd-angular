@@ -1,0 +1,108 @@
+:host {
+  display: inline-block;
+  line-height: 0;
+
+  // Default (unselected) tokens
+  --vd-chip-bg: var(--vd-color-background-neutral-secondary);
+  --vd-chip-bg-hover: var(--vd-color-background-neutral-secondary-hover);
+  --vd-chip-border-color: var(--vd-color-border-default-secondary);
+  --vd-chip-text: var(--vd-color-content-default-secondary);
+  --vd-chip-text-hover: var(--vd-color-content-neutral-on-secondary);
+
+  --vd-chip-radius: var(--vd-scale-border-radius-md);
+  --vd-chip-border-width: var(--vd-scale-border-width-sm);
+  --vd-chip-focus-color: var(--vd-color-border-primary-tertiary);
+  --vd-chip-focus-width: var(--vd-scale-border-width-md);
+  --vd-chip-padding-y: var(--vd-scale-spacing-100);
+  --vd-chip-padding-x: var(--vd-scale-spacing-200);
+  --vd-chip-padding-x-closable: var(--vd-scale-spacing-800);
+}
+
+.vd-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--vd-chip-radius);
+  border: var(--vd-chip-border-width) solid var(--vd-chip-border-color);
+  background: var(--vd-chip-bg);
+  color: var(--vd-chip-text);
+  padding: var(--vd-chip-padding-y) var(--vd-chip-padding-x);
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+
+  &:hover:not(.vd-chip--disabled) {
+    background: var(--vd-chip-bg-hover);
+    color: var(--vd-chip-text-hover);
+  }
+
+  &:focus-visible {
+    outline: var(--vd-chip-focus-width) solid var(--vd-chip-focus-color);
+    outline-offset: 3px;
+  }
+
+  // Selected state
+  &--selected {
+    --vd-chip-bg: var(--vd-color-background-primary-secondary);
+    --vd-chip-bg-hover: var(--vd-color-background-primary-secondary-hover);
+    --vd-chip-border-color: var(--vd-color-border-primary-secondary);
+    --vd-chip-text: var(--vd-color-content-primary-on-secondary);
+    --vd-chip-text-hover: var(--vd-color-content-primary-on-secondary);
+  }
+
+  // Disabled state
+  &--disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+
+    &:not(.vd-chip--selected) {
+      --vd-chip-bg: var(--vd-color-background-default-disabled);
+      --vd-chip-border-color: var(--vd-color-border-default-tertiary);
+      --vd-chip-text: var(--vd-color-content-default-disabled);
+
+      .vd-chip__close {
+        opacity: 0.4;
+      }
+    }
+
+    &.vd-chip--selected {
+      opacity: 0.4;
+    }
+  }
+
+  // Closable: add right padding to make room for the absolute close button
+  &--closable {
+    padding-right: var(--vd-chip-padding-x-closable);
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  &__label {
+    padding: 0 var(--vd-scale-spacing-100);
+    white-space: nowrap;
+  }
+
+  &__close {
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    padding: var(--vd-scale-spacing-100);
+    border-radius: var(--vd-chip-radius);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    line-height: 0;
+    color: inherit;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}

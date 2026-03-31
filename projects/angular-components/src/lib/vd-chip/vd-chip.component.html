@@ -1,0 +1,27 @@
+<div
+  class="vd-chip label-medium"
+  [class.vd-chip--selected]="selected"
+  [class.vd-chip--closable]="closable"
+  [class.vd-chip--disabled]="disabled"
+  [attr.tabindex]="disabled ? -1 : 0"
+  [attr.aria-pressed]="selected"
+  [attr.aria-disabled]="disabled || null"
+  role="button"
+  (click)="onChipClick()"
+  (keydown)="onKeyDown($event)"
+>
+  <span *ngIf="icon" class="vd-chip__icon">
+    <vd-icon [name]="icon" size="md"></vd-icon>
+  </span>
+  <span class="vd-chip__label">{{ label }}</span>
+  <button
+    *ngIf="closable"
+    class="vd-chip__close"
+    type="button"
+    [attr.aria-label]="'Remove ' + label"
+    [disabled]="disabled || null"
+    (click)="onCloseClick($event)"
+  >
+    <vd-icon name="vd-icon-xmark" size="md"></vd-icon>
+  </button>
+</div>

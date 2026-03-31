@@ -14,6 +14,7 @@ Human-readable registry of the exported API in `@vroxal/vd-angular`.
 | Icon Button | `vd-icon-button` | `VdIconButton` | Icon-only actions                    |
 | Icon        | `vd-icon`        | `VdIcon`       | Contextual/decorative icon rendering |
 | Badge       | `vd-badge`       | `VdBadge`      | Compact status labels and counts     |
+| Chip        | `vd-chip`        | `VdChip`       | Filter, tag, and multi-select chips  |
 
 ## Inputs and Selection
 

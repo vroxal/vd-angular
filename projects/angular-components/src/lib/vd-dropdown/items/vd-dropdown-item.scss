@@ -49,6 +49,21 @@
       color: var(--vd-dropdown-item-text-disabled);
     }
   }
+
+  &--selected {
+    background: var(--vd-dropdown-item-bg-hover);
+    color: var(--vd-dropdown-item-text-hover);
+
+    &:hover {
+      background: var(--vd-dropdown-item-bg-hover);
+      color: var(--vd-dropdown-item-text-hover);
+    }
+  }
+
+  &__check {
+    flex-shrink: 0;
+    margin-left: auto;
+  }
   &__link {
     // display: block;
     color: var(--vd-color-content-default-secondary);

@@ -723,6 +723,17 @@
       "preferredApi": "VdConfirmationDialogService.confirm(...)",
       "inputs": [],
       "outputs": []
+    },
+    {
+      "name": "Chip",
+      "className": "VdChip",
+      "selector": "vd-chip",
+      "kind": "component",
+      "category": "display",
+      "useFor": ["filter chips", "tag/label chips", "multi-select options"],
+      "avoidFor": ["primary call-to-action buttons", "navigation elements"],
+      "inputs": ["label", "selected", "closable", "icon", "disabled"],
+      "outputs": ["selectedChange", "closed"]
     }
   ],
   "nonComponentExports": {

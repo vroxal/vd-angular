@@ -207,4 +207,8 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/components/selection-card/selection-card.page').then((m) => m.default),
   },
+  {
+    path: 'components/chip',
+    loadComponent: () => import('./pages/components/chip/chip.page').then((m) => m.default),
+  },
 ];

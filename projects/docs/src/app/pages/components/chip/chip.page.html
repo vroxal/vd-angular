@@ -1,0 +1,245 @@
+<div class="doc-content">
+  <app-doc-page-header
+    [title]="'Chip'"
+    [subtitle]="'Chips are compact interactive elements used for filtering, selection, or tagging content.'"
+  >
+  </app-doc-page-header>
+
+  <div class="content-group component-variations">
+    <div class="content-group-title">
+      <h2 class="headline-large">Component variations</h2>
+    </div>
+    <div class="content-group-container variations-container">
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Default</h3>
+          <p>Unselected chip with icon, label, and close button</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-chip label="Label" icon="vd-icon-tag"></vd-chip>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Selected</h3>
+          <p>Chip in selected state with primary color styling</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-chip label="Label" icon="vd-icon-tag" [selected]="true"></vd-chip>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Without close button</h3>
+          <p>Chip with closable set to false — no remove action</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-chip label="Label" icon="vd-icon-tag" [closable]="false"></vd-chip>
+          <vd-chip label="Label" icon="vd-icon-tag" [closable]="false" [selected]="true"></vd-chip>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Without icon</h3>
+          <p>Chip without a leading icon</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-chip label="Label"></vd-chip>
+          <vd-chip label="Label" [selected]="true"></vd-chip>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Disabled</h3>
+          <p>Disabled chips cannot be interacted with</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-chip label="Label" icon="vd-icon-tag" [disabled]="true"></vd-chip>
+          <vd-chip label="Label" icon="vd-icon-tag" [disabled]="true" [selected]="true"></vd-chip>
+          <vd-chip label="Label" icon="vd-icon-tag" [disabled]="true" [closable]="false"></vd-chip>
+          <vd-chip label="Label" icon="vd-icon-tag" [disabled]="true" [closable]="false" [selected]="true"></vd-chip>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">Usage Guidelines</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Import</h3>
+          <p>Import the chip component in your module or component:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="importCodeSnippet"
+            fileName="import-chip.ts"
+            language="angular-ts"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Basic Implementation</h3>
+          <p>Minimal chip with just a label:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="basicImplementationSnippet"
+            fileName="chip-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Implementation with all available APIs</h3>
+          <p>Full example using all available inputs and outputs:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="allImplementationSnippet"
+            fileName="chip-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Two-way binding</h3>
+          <p>Use <code>[(selected)]</code> for two-way binding on the selected state:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="twoWayBindingSnippet"
+            fileName="chip-two-way.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-group usage-guidelines">
+    <div class="content-group-title">
+      <h2 class="headline-large">API Reference</h2>
+    </div>
+    <div class="content-group-container">
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Inputs</h3>
+        </div>
+
+        <ng-template #propertyBadge let-row>
+          <vd-chip [label]="row.property" [closable]="false" [selected]="false"></vd-chip>
+        </ng-template>
+
+        <vd-datatable [data]="apiData" [columns]="apiColumnsWithTemplate"></vd-datatable>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Outputs</h3>
+        </div>
+        <vd-datatable [data]="outputApiData" [columns]="outputApiColumnsWithTemplate"></vd-datatable>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-group usage-guidelines">
+  <div class="content-group-title">
+    <h2 class="headline-large">Best Practices</h2>
+  </div>
+  <div class="content-group-container">
+    <div class="guideline-section">
+      <h3 class="title-large">When to Use</h3>
+      <ul>
+        <li>Use chips to represent filters, tags, or multi-select options in a compact form.</li>
+        <li>Use the closable chip to allow users to remove selected items from a set.</li>
+        <li>Use the selected state to visually confirm an active filter or selection.</li>
+      </ul>
+    </div>
+    <div class="guideline-section">
+      <h3 class="title-large">When Not to Use</h3>
+      <ul>
+        <li>Avoid chips for primary call-to-action buttons — use <code>vd-button</code> instead.</li>
+        <li>Avoid chips as navigation elements — use tabs or breadcrumbs.</li>
+        <li>Do not use chips when the list of options is too long to display inline.</li>
+      </ul>
+    </div>
+    <div class="guideline-section">
+      <h3 class="title-large">Design Guidelines</h3>
+      <ul>
+        <li>Keep chip labels short and descriptive — one to three words is ideal.</li>
+        <li>Use the icon to add semantic context, not purely for decoration.</li>
+        <li>Ensure keyboard navigation works: chips are focusable and respond to Enter/Space.</li>
+        <li>Use consistent chip sizes within the same group or row.</li>
+        <li>Use <code>[(selected)]</code> two-way binding when managing selection state in a parent component.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="content-group playground">
+  <div class="content-group-title">
+    <h2 class="headline-large">Component playground</h2>
+    <div class="content-group-container playground-container">
+      <div class="component-preview">
+        <div class="component-control">
+          <div class="controls">
+            <vd-select
+              label="Icon"
+              [value]="icon"
+              (valueChange)="$event != null && (icon = $event)"
+              [options]="iconOptions"
+            ></vd-select>
+
+            <label class="switch-label">
+              <span>Selected</span>
+              <vd-switch [checked]="selected" (change)="selected = $event"></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Closable</span>
+              <vd-switch [checked]="closable" (change)="closable = $event"></vd-switch>
+            </label>
+
+            <label class="switch-label">
+              <span>Disabled</span>
+              <vd-switch [checked]="disabled" (change)="disabled = $event"></vd-switch>
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="component-showcase-container">
+            <vd-chip
+              [label]="label"
+              [icon]="icon"
+              [selected]="selected"
+              [closable]="closable"
+              [disabled]="disabled"
+              (selectedChange)="selected = $event"
+            ></vd-chip>
+          </div>
+        </div>
+      </div>
+      <code-container
+        [code]="codeSnippet"
+        fileName="example.html"
+        language="angular-html"
+      ></code-container>
+    </div>
+  </div>
+</div>
