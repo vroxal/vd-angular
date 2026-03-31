@@ -56,7 +56,7 @@ export class DeleteItemComponent {
     this.vdConfirmationDialog.confirm({
       title: 'Delete Item',
       description: 'Are you sure you want to delete this item? This action cannot be undone.',
-      icon: 'vd-icon-trash',
+      icon: 'vd-icon-trash-bin',
       color: 'error',
       confirmLabel: 'Delete',
       cancelLabel: 'Cancel'

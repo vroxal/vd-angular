@@ -1,7 +1,9 @@
 <div class="doc-content">
   <app-doc-page-header
     [title]="'Number Input'"
-    [subtitle]="'Number inputs capture numeric values with increment, decrement, and validation support.'"
+    [subtitle]="
+      'Number inputs capture numeric values with increment, decrement, and validation support.'
+    "
   >
   </app-doc-page-header>
   <div class="content-group component-variations">
@@ -12,7 +14,7 @@
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Basic Number Input</h3>
-        <p>Standard input for numeric data entry</p>
+          <p>Standard input for numeric data entry</p>
         </div>
         <div class="component-showcase-container">
           <vd-number-input label="Amount" placeholder="Enter amount"></vd-number-input>
@@ -21,7 +23,7 @@
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">States</h3>
-        <p>Contains: Default, Success, Error, Warning</p>
+          <p>Contains: Default, Success, Error, Warning</p>
         </div>
         <div class="component-showcase-container">
           <vd-number-input label="Default" placeholder="Default state"></vd-number-input>
@@ -49,7 +51,7 @@
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Leading Icon</h3>
-        <p>Leading icon and optional trailing action icon</p>
+          <p>Leading icon and optional trailing action icon</p>
         </div>
         <div class="component-showcase-container">
           <vd-number-input
@@ -62,20 +64,20 @@
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Trailing action</h3>
-        <p>Trailing action with icon button.</p>
+          <p>Trailing action with icon button.</p>
         </div>
         <div class="component-showcase-container">
           <vd-number-input
             label="Phone"
             placeholder="Enter phone number"
-            trailingActionIcon="vd-icon-cross"
+            trailingActionIcon="vd-icon-xmark"
           ></vd-number-input>
         </div>
       </div>
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Min, Max, and Step</h3>
-        <p>Inputs can enforce ranges and step intervals natively</p>
+          <p>Inputs can enforce ranges and step intervals natively</p>
         </div>
         <div class="component-showcase-container">
           <vd-number-input label="Quantity" placeholder="1-10" [min]="1" [max]="10" [step]="1">
@@ -93,7 +95,7 @@
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Optional & Disabled</h3>
-        <p>Inputs can be marked optional or disabled</p>
+          <p>Inputs can be marked optional or disabled</p>
         </div>
         <div class="component-showcase-container">
           <vd-number-input
@@ -111,7 +113,7 @@
       <div class="component-variation-group">
         <div class="title-container">
           <h3 class="title-large">Hint & Helper Text</h3>
-        <p>Use hint for tooltips and helper text for guidance</p>
+          <p>Use hint for tooltips and helper text for guidance</p>
         </div>
         <div class="component-showcase-container">
           <vd-number-input
@@ -224,34 +226,34 @@
     <h2 class="headline-large">Best Practices</h2>
   </div>
   <div class="content-group-container">
-      <div class="guideline-section">
-        <h3 class="title-large">When to Use</h3>
-        <ul>
-          <li>Use Number Input when this pattern clearly supports the user task.</li>
-          <li>Use it to keep similar interactions consistent across the product.</li>
-        </ul>
-      </div>
-      <div class="guideline-section">
-        <h3 class="title-large">When Not to Use</h3>
-        <ul>
-          <li>Avoid using Number Input when a simpler component communicates the same intent.</li>
-          <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
-        </ul>
-      </div>
-      <div class="guideline-section">
-        <h3 class="title-large">Design Guidelines</h3>
-        <ul>
-          <li>Use clear labels to specify what the number represents</li>
-          <li>Show helper text to clarify constraints (e.g., "Between 1 and 100")</li>
-          <li>Reserve error state for actionable feedback or out-of-range values</li>
-          <li>Use trailing actions for contextual helpers like clearing the input</li>
-          <li>Pass min/max/step values to leverage native device keyboards correctly on mobile</li>
-          <li>Keep labels, helper text, and actions concise and easy to scan.</li>
-          <li>Use VD variants and states consistently for predictable behavior.</li>
-          <li>Ensure keyboard access and clear focus order for accessibility.</li>
-        </ul>
-      </div>
-</div>
+    <div class="guideline-section">
+      <h3 class="title-large">When to Use</h3>
+      <ul>
+        <li>Use Number Input when this pattern clearly supports the user task.</li>
+        <li>Use it to keep similar interactions consistent across the product.</li>
+      </ul>
+    </div>
+    <div class="guideline-section">
+      <h3 class="title-large">When Not to Use</h3>
+      <ul>
+        <li>Avoid using Number Input when a simpler component communicates the same intent.</li>
+        <li>Avoid using it when the pattern introduces unnecessary interaction steps.</li>
+      </ul>
+    </div>
+    <div class="guideline-section">
+      <h3 class="title-large">Design Guidelines</h3>
+      <ul>
+        <li>Use clear labels to specify what the number represents</li>
+        <li>Show helper text to clarify constraints (e.g., "Between 1 and 100")</li>
+        <li>Reserve error state for actionable feedback or out-of-range values</li>
+        <li>Use trailing actions for contextual helpers like clearing the input</li>
+        <li>Pass min/max/step values to leverage native device keyboards correctly on mobile</li>
+        <li>Keep labels, helper text, and actions concise and easy to scan.</li>
+        <li>Use VD variants and states consistently for predictable behavior.</li>
+        <li>Ensure keyboard access and clear focus order for accessibility.</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <div class="content-group playground">

@@ -580,7 +580,7 @@ export class MyComponent {
       },
       {
         title: 'Delete',
-        icon: 'vd-icon-trash',
+        icon: 'vd-icon-trash-bin',
         action: this.onDeleteAction.bind(this),
         visible: this.isDeleteVisible.bind(this),
       },
