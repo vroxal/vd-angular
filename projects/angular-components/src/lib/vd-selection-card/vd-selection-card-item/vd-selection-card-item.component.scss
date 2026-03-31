@@ -10,12 +10,14 @@
   // Default state
   --vd-selection-card-bg: var(--vd-color-background-default-secondary);
   --vd-selection-card-border: var(--vd-color-border-default-tertiary);
-  --vd-selection-card-title-color: var(--vd-color-content-default-base);
-  --vd-selection-card-description-color: var(--vd-color-content-default-secondary);
+  --vd-selection-card-title-color: var(--vd-color-content-default-secondary);
+  --vd-selection-card-description-color: var(--vd-color-content-default-tertiary);
   --vd-selection-card-icon-color: var(--vd-color-content-default-secondary);
 
   // Hover state
   --vd-selection-card-border-hover: var(--vd-color-border-primary-base);
+  --vd-selection-card-title-color-hover: var(--vd-color-content-default-base);
+  --vd-selection-card-description-color-hover: var(--vd-color-content-default-secondary);
 
   // Checked state
   --vd-selection-card-bg-checked: var(--vd-color-background-primary-secondary);
@@ -82,13 +84,15 @@
   // Hover state
   &:not(.vd-selection-card-item--disabled):not(.vd-selection-card-item--checked):hover {
     --vd-selection-card-border: var(--vd-color-border-primary-base);
+    --vd-selection-card-title-color: var(--vd-selection-card-title-color-hover);
+    --vd-selection-card-description-color: var(--vd-selection-card-description-color-hover);
     ::ng-deep {
       .vd-checkbox__box {
-        background: var(--vd-color-background-primary-secondary-hover);
+        background: var(--vd-color-background-primary-secondary);
         border-color: var(--vd-color-border-primary-base);
       }
       .vd-radio__circle {
-        background: var(--vd-color-background-primary-secondary-hover);
+        background: var(--vd-color-background-primary-secondary);
         border-color: var(--vd-color-border-primary-base);
       }
     }
