@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
-import { ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
+
+const CLOSE_ANIMATION_MS = 150;
 import { VdButton } from '../vd-button/vd-button.component';
 import { VdIconButton } from '../vd-icon-button/vd-icon-button.component';
 
@@ -21,11 +23,13 @@ export interface VdDialogConfig<T = unknown> {
   imports: [CommonModule, VdButton, VdIconButton],
   templateUrl: './vd-dialog.component.html',
   styleUrl: './vd-dialog.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VdDialog<T = unknown> implements OnInit, OnDestroy {
   readonly config: VdDialogConfig<T>;
   isClosing = false;
   private destroy$ = new Subject<void>();
+  private closeTimer?: ReturnType<typeof setTimeout>;
 
   constructor(
     @Inject(DIALOG_DATA) data: VdDialogConfig<T>,
@@ -54,6 +58,7 @@ export class VdDialog<T = unknown> implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+    clearTimeout(this.closeTimer);
   }
 
   handleClose(): void {
@@ -74,8 +79,9 @@ export class VdDialog<T = unknown> implements OnInit, OnDestroy {
     this.isClosing = true;
     this.cdr.detectChanges();
 
-    setTimeout(() => {
+    this.closeTimer = setTimeout(() => {
+      this.isClosing = false;
       this.dialogRef.close(result);
-    }, 150);
+    }, CLOSE_ANIMATION_MS);
   }
 }

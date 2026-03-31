@@ -1,5 +1,5 @@
-import { Component, Input, ElementRef, AfterViewInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { VdIcon } from '../vd-icon/vd-icon.component';
 
 type ButtonVariant = 'solid' | 'subtle' | 'outline' | 'transparent';
@@ -13,18 +13,25 @@ type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   imports: [CommonModule, VdIcon],
   templateUrl: './vd-icon-button.component.html',
   styleUrl: './vd-icon-button.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VdIconButton implements AfterViewInit {
-  constructor(private el: ElementRef) {}
+  initialized = false;
+
+  constructor(
+    private cdr: ChangeDetectorRef,
+    @Inject(PLATFORM_ID) private platformId: object,
+  ) {}
 
   ngAfterViewInit() {
-    const buttonEl = this.el.nativeElement.querySelector('button');
-    if (buttonEl) {
+    if (isPlatformBrowser(this.platformId)) {
       requestAnimationFrame(() => {
-        buttonEl.classList.remove('not-initialized');
+        this.initialized = true;
+        this.cdr.markForCheck();
       });
     }
   }
+
   @Input({ required: true }) icon!: string;
   @Input({ required: true }) ariaLabel!: string;
   @Input() variant?: ButtonVariant = 'solid';

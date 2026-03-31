@@ -60,8 +60,7 @@ export class VdPagination implements OnChanges {
     this.pagesToShow = pages;
   }
 
-  goToPage(page: number | '...') {
-    if (page === '...') return;
+  goToPage(page: number) {
     this.pageChange.emit(page);
   }
 

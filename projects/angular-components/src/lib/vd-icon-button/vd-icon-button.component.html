@@ -1,7 +1,8 @@
 <button
   type="button"
   [disabled]="!!disabled || !!loading"
-  class="vd-icon-button not-initialized"
+  class="vd-icon-button"
+  [class.not-initialized]="!initialized"
   [class.vd-icon-button--subtle]="variant === 'subtle'"
   [class.vd-icon-button--outline]="variant === 'outline'"
   [class.vd-icon-button--transparent]="variant === 'transparent'"

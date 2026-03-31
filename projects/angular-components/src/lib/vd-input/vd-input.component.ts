@@ -1,9 +1,10 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, forwardRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, Output, EventEmitter, ViewChild, ElementRef, forwardRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { VdIcon } from '../vd-icon/vd-icon.component';
 import { VdIconButton } from '../vd-icon-button/vd-icon-button.component';
 import { VdTooltipDirective } from '../vd-tooltip/vd-tooltip.directive';
+import { getTrailingStateIcon } from '../shared/visual-state';
 
 let vdInputId = 0;
 
@@ -13,6 +14,7 @@ let vdInputId = 0;
   imports: [CommonModule, VdIcon, VdIconButton, VdTooltipDirective],
   templateUrl: './vd-input.component.html',
   styleUrl: './vd-input.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -22,6 +24,7 @@ let vdInputId = 0;
   ],
 })
 export class VdInput implements ControlValueAccessor {
+  constructor(private cdr: ChangeDetectorRef) {}
   // Basic properties
   @Input() label?: string;
   @Input() hintText?: string; // ? icon tooltip content
@@ -33,7 +36,7 @@ export class VdInput implements ControlValueAccessor {
   @Input() trailingActionAriaLabel: string = 'Action';
 
   @Input() placeholder: string = '';
-  @Input() type: 'text' | 'password' = 'text';
+  @Input() type: 'text' | 'password' | 'email' | 'tel' | 'url' = 'text';
   @Input() value: string = '';
   @Input() maxInputCount?: number;
   @Input() readOnly?: boolean;
@@ -49,25 +52,27 @@ export class VdInput implements ControlValueAccessor {
   @Output() trailingActionClick = new EventEmitter<void>();
   @Output() inputFocus = new EventEmitter<void>(); // optional focus event
 
-  onChange: any = () => {};
-  onTouched: any = () => {};
+  private onChange: (value: string) => void = () => {};
+  private onTouched: () => void = () => {};
 
-  writeValue(value: any): void {
+  writeValue(value: string): void {
     if (value !== undefined) {
       this.value = value;
+      this.cdr.markForCheck();
     }
   }
 
-  registerOnChange(fn: any): void {
+  registerOnChange(fn: (value: string) => void): void {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
   }
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
+    this.cdr.markForCheck();
   }
 
   // Internal
@@ -122,17 +127,7 @@ export class VdInput implements ControlValueAccessor {
     return this.state;
   }
 
-  // Trailing state icon
   get trailingStateIcon(): string | null {
-    switch (this.visualState) {
-      case 'success':
-        return 'vd-icon-tick-circle-filled';
-      case 'error':
-        return 'vd-icon-error-filled';
-      case 'warning':
-        return 'vd-icon-warning-filled';
-      default:
-        return null;
-    }
+    return getTrailingStateIcon(this.visualState);
   }
 }

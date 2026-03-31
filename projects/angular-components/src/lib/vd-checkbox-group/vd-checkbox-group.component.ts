@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { VdCheckbox } from '../vd-checkbox/vd-checkbox.component';
 
 export type VdCheckboxGroupDirection = 'vertical' | 'horizontal';
@@ -18,8 +19,16 @@ export interface VdCheckboxGroupItem {
   imports: [CommonModule, VdCheckbox],
   templateUrl: './vd-checkbox-group.component.html',
   styleUrl: './vd-checkbox-group.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => VdCheckboxGroup),
+      multi: true,
+    },
+  ],
 })
-export class VdCheckboxGroup implements OnChanges {
+export class VdCheckboxGroup implements ControlValueAccessor, OnChanges {
   @Input() items: VdCheckboxGroupItem[] = [];
   @Input() direction: VdCheckboxGroupDirection = 'vertical';
   @Input() value: Array<string | number> = [];
@@ -28,6 +37,29 @@ export class VdCheckboxGroup implements OnChanges {
   @Output() valueChange = new EventEmitter<Array<string | number>>();
 
   private selectedValues = new Set<string | number>();
+  private _onChange: (value: Array<string | number>) => void = () => {};
+  private _onTouched: () => void = () => {};
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  writeValue(value: Array<string | number> | null): void {
+    this.value = value ?? [];
+    this.syncSelectedValues();
+    this.cdr.markForCheck();
+  }
+
+  registerOnChange(fn: (value: Array<string | number>) => void): void {
+    this._onChange = fn;
+  }
+
+  registerOnTouched(fn: () => void): void {
+    this._onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+    this.cdr.markForCheck();
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['value'] || changes['items']) {
@@ -80,6 +112,8 @@ export class VdCheckboxGroup implements OnChanges {
 
     this.value = orderedValues;
     this.valueChange.emit([...orderedValues]);
+    this._onChange(orderedValues);
+    this._onTouched();
   }
 
   private syncSelectedValues(): void {

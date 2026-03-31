@@ -26,6 +26,7 @@
       [placeholder]="placeholder"
       [value]="value"
       [attr.maxlength]="maxInputCount ? maxInputCount : null"
+      [attr.aria-describedby]="helperText ? inputId + '-helper' : null"
       (input)="onInput($event)"
       (focus)="onFocus()"
       (blur)="onBlur()"
@@ -51,7 +52,7 @@
 
   <!-- Helper & counter row -->
   <div class="vd-textarea__helper-row" *ngIf="helperText || maxInputCount">
-    <span *ngIf="helperText" class="vd-textarea__helper-text body-small">
+    <span *ngIf="helperText" [id]="inputId + '-helper'" class="vd-textarea__helper-text body-small">
       {{ helperText }}
     </span>
 

@@ -46,9 +46,10 @@
           <td
             class="vd-datatable__table-data vd-datatable__table-data--actions"
             *ngIf="actions.length"
+            (click)="$event.stopPropagation()"
           >
             <div class="vd-datatable__action-cell" *ngIf="hasActions(row)">
-              <vd-dropdown position="bottom-right" (click)="$event.stopPropagation()">
+              <vd-dropdown position="bottom-right">
                 <vd-icon-button
                   color="neutral"
                   variant="transparent"

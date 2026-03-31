@@ -1,11 +1,12 @@
 //toast component
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VdToastService } from './vd-toast.service';
 import { Toast, ToastPosition } from './vd-toast.model';
 import { VdIconButton } from '../vd-icon-button/vd-icon-button.component';
 import { VdIcon } from '../vd-icon/vd-icon.component';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'vd-toast',
@@ -13,6 +14,7 @@ import { map } from 'rxjs/operators';
   imports: [CommonModule, VdIconButton, VdIcon],
   templateUrl: './vd-toast.component.html',
   styleUrl: './vd-toast.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VdToast implements OnInit {
   @Input() maxStack?: number;
@@ -26,20 +28,18 @@ export class VdToast implements OnInit {
     'bottom-center',
   ];
 
-  // 🔑 must be public for template access
+  toastsByPosition$!: Observable<Record<ToastPosition, Toast[]>>;
+
   constructor(public toastService: VdToastService) {}
 
   ngOnInit() {
-    // Configure toast service with component inputs if provided
     if (this.maxStack !== undefined) {
       this.toastService.configure({
         maxStack: this.maxStack,
       });
     }
-  }
 
-  get toastsByPosition$() {
-    return this.toastService.toasts$.pipe(
+    this.toastsByPosition$ = this.toastService.toasts$.pipe(
       map((toasts) => {
         const grouped: Record<ToastPosition, Toast[]> = {
           'top-right': [],

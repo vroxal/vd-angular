@@ -25,18 +25,18 @@
       [id]="selectId"
       class="vd-select__input body-medium"
       [disabled]="disabled"
-      [value]="value !== null ? value : ''"
-      [class.placeholder]="!value"
+      [class.placeholder]="selectedOptionIndex < 0"
+      [attr.aria-describedby]="helperText ? selectId + '-helper' : null"
       (focus)="onFocus()"
       (blur)="onBlur()"
       (change)="onChange($event)"
     >
-      <option *ngIf="placeholder" value="" disabled selected hidden>{{ placeholder }}</option>
+      <option *ngIf="placeholder" value="" disabled [selected]="selectedOptionIndex < 0" hidden>{{ placeholder }}</option>
       <option
-        *ngFor="let opt of options"
-        [value]="opt.value"
+        *ngFor="let opt of options; let i = index"
+        [value]="i"
         [disabled]="opt.disabled"
-        [selected]="opt.value === value"
+        [selected]="i === selectedOptionIndex"
       >
         {{ opt.label }}
       </option>
@@ -53,7 +53,7 @@
 
   <!-- Helper & counter row -->
   <div class="vd-select__helper-row" *ngIf="helperText">
-    <span *ngIf="helperText" class="vd-select__helper-text body-small">
+    <span *ngIf="helperText" [id]="selectId + '-helper'" class="vd-select__helper-text body-small">
       {{ helperText }}
     </span>
   </div>

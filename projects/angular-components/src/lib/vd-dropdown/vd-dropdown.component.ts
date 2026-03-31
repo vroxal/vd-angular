@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { OVERLAY_POSITION_MAP } from '../shared/overlay-positions';
 import { TemplatePortal } from '@angular/cdk/portal';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil, Subscription } from 'rxjs';
 import { VdDropdownService } from './vd-dropdown.service';
 import { VD_DROPDOWN } from './vd-dropdown.token';
 
@@ -47,8 +47,9 @@ export class VdDropdown implements OnInit, OnDestroy, OnChanges {
   @ViewChild('dropdownTemplate') dropdownTemplate!: TemplateRef<any>;
   @ViewChild('trigger', { read: ElementRef }) trigger!: ElementRef<HTMLElement>;
 
-  private overlayRef?: OverlayRef;
+  overlayRef?: OverlayRef;
   private destroy$ = new Subject<void>();
+  private outsideClickSub?: Subscription;
   private id = `vd-dropdown-${vdDropdownId++}`;
 
   constructor(
@@ -70,8 +71,9 @@ export class VdDropdown implements OnInit, OnDestroy, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['position'] && !changes['position'].firstChange) {
-      // Position has changed, dispose the old overlay so a new one will be created with the new position
       this.close();
+      this.outsideClickSub?.unsubscribe();
+      this.outsideClickSub = undefined;
       if (this.overlayRef) {
         this.overlayRef.dispose();
         this.overlayRef = undefined;
@@ -87,6 +89,7 @@ export class VdDropdown implements OnInit, OnDestroy, OnChanges {
     if (this.overlayRef?.hasAttached()) return;
 
     if (!this.overlayRef || this.overlayRef.hostElement === null) {
+      this.outsideClickSub?.unsubscribe();
       this.overlayRef = this.overlay.create({
         positionStrategy: this.overlay
           .position()
@@ -99,11 +102,10 @@ export class VdDropdown implements OnInit, OnDestroy, OnChanges {
         hasBackdrop: false,
       });
 
-      this.overlayRef
+      this.outsideClickSub = this.overlayRef
         .outsidePointerEvents()
         .pipe(takeUntil(this.destroy$))
         .subscribe((event) => {
-          // Don't close if clicking on the trigger element
           if (!this.trigger.nativeElement.contains(event.target as Node)) {
             this.close();
           }
@@ -126,6 +128,7 @@ export class VdDropdown implements OnInit, OnDestroy, OnChanges {
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+    this.outsideClickSub?.unsubscribe();
     this.overlayRef?.dispose();
   }
 }

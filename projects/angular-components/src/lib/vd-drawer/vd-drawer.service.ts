@@ -2,7 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { Dialog } from '@angular/cdk/dialog';
 import { Overlay, ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
-import { firstValueFrom } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
 import { VdDrawer, VdDrawerConfig, VdDrawerResult } from './vd-drawer.component';
 
 @Injectable({
@@ -24,14 +24,19 @@ export class VdDrawerService {
   }
 
   open<T = unknown>(config: VdDrawerConfig<T>): Promise<VdDrawerResult> {
-    this.lockBackgroundScroll();
-    this.blurActiveElement();
-    const positionStrategy = this.overlay.position().global().top('0').right('0');
+    return lastValueFrom(this.openAsObservable(config));
+  }
 
-    try {
-      const dialogRef = this.dialog.open<VdDrawerResult, VdDrawerConfig<T>, VdDrawer>(
-        VdDrawer,
-        {
+  private openAsObservable<T = unknown>(config: VdDrawerConfig<T>): Observable<VdDrawerResult> {
+    return new Observable((subscriber) => {
+      this.lockBackgroundScroll();
+      this.blurActiveElement();
+
+      const positionStrategy = this.overlay.position().global().top('0').right('0');
+
+      let dialogRef;
+      try {
+        dialogRef = this.dialog.open<VdDrawerResult, VdDrawerConfig<T>, VdDrawer>(VdDrawer, {
           data: config,
           hasBackdrop: true,
           disableClose: true,
@@ -40,18 +45,24 @@ export class VdDrawerService {
           panelClass: ['vd-drawer-panel'],
           scrollStrategy: this.scrollStrategy,
           positionStrategy,
-        },
-      );
-
-      return firstValueFrom(dialogRef.closed)
-        .then((result) => result ?? 'close')
-        .finally(() => {
-          this.unlockBackgroundScroll();
         });
-    } catch (error) {
-      this.unlockBackgroundScroll();
-      throw error;
-    }
+      } catch (error) {
+        subscriber.error(error);
+        return () => this.unlockBackgroundScroll();
+      }
+
+      const sub = dialogRef.closed.subscribe({
+        next: (result) => subscriber.next(result ?? 'close'),
+        error: (err) => subscriber.error(err),
+        complete: () => subscriber.complete(),
+      });
+
+      // Guaranteed teardown — runs on complete, error, or unsubscribe
+      return () => {
+        sub.unsubscribe();
+        this.unlockBackgroundScroll();
+      };
+    });
   }
 
   private lockBackgroundScroll(): void {

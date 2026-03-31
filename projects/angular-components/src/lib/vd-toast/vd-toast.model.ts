@@ -17,7 +17,7 @@ export interface Toast {
   autoDismiss?: boolean; // default true
   // internal
   isLeaving?: boolean;
-  timeoutId?: any;
+  timeoutId?: ReturnType<typeof setTimeout>;
   remainingTime?: number;
   startTime?: number;
   position?: ToastPosition; // internal use only

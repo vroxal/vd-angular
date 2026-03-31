@@ -1,10 +1,14 @@
 import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
   Input,
+  OnChanges,
   OnInit,
   Output,
+  SimpleChanges,
   ViewChild,
   forwardRef,
 } from '@angular/core';
@@ -19,6 +23,7 @@ let vdRadioButtonId = 0;
   imports: [CommonModule],
   templateUrl: './vd-radio-button.component.html',
   styleUrl: './vd-radio-button.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -27,7 +32,7 @@ let vdRadioButtonId = 0;
     },
   ],
 })
-export class VdRadioButton implements ControlValueAccessor, OnInit {
+export class VdRadioButton implements ControlValueAccessor, OnInit, OnChanges {
   @Input() label?: string;
   @Input() description?: string;
   @Input() value: string | number = '';
@@ -46,8 +51,19 @@ export class VdRadioButton implements ControlValueAccessor, OnInit {
   private onChange: (value: string | number) => void = () => {};
   private onTouched: () => void = () => {};
 
+  constructor(private cdr: ChangeDetectorRef) {}
+
   ngOnInit(): void {
-    this.inputId = this.id ?? `vd-radio-${vdRadioButtonId++}`;
+    if (!this.inputId) {
+      this.inputId = this.id ?? `vd-radio-${vdRadioButtonId++}`;
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['id'] && !changes['id'].firstChange) {
+      this.inputId = this.id ?? this.inputId;
+      this.cdr.markForCheck();
+    }
   }
 
   onInputChange(event: Event): void {
@@ -68,6 +84,7 @@ export class VdRadioButton implements ControlValueAccessor, OnInit {
 
   writeValue(value: string | number): void {
     this.checked = this.value === value;
+    this.cdr.markForCheck();
   }
 
   registerOnChange(fn: (value: string | number) => void): void {
@@ -80,5 +97,6 @@ export class VdRadioButton implements ControlValueAccessor, OnInit {
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
+    this.cdr.markForCheck();
   }
 }

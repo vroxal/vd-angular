@@ -1,9 +1,15 @@
-<div #trigger class="vd-dropdown__trigger" (click)="toggle()">
+<div
+  #trigger
+  class="vd-dropdown__trigger"
+  [attr.aria-expanded]="overlayRef?.hasAttached() ?? false"
+  [attr.aria-haspopup]="'menu'"
+  (click)="toggle()"
+>
   <ng-content select="[vdDropdownTrigger]"></ng-content>
 </div>
 
 <ng-template #dropdownTemplate let-close="close">
-  <div class="vd-dropdown__content">
+  <div class="vd-dropdown__content" role="menu">
     <ng-content></ng-content>
   </div>
 </ng-template>
