@@ -1,10 +1,14 @@
 <vd-toast></vd-toast>
 
-<div class="layout" [class.layout--has-navbar]="hasNavbar" [class.layout--has-sidebar]="hasSidebar">
+<div
+  class="vd-layout"
+  [class.vd-layout--has-navbar]="hasNavbar"
+  [class.vd-layout--has-sidebar]="hasSidebar"
+>
   @if (hasNavbar) {
-    <header class="layout__header">
+    <header class="vd-layout__header">
       <vd-navbar>
-        <div class="layout__brand">
+        <div class="vd-layout__brand">
           <div class="logo">
             <svg
               width="280"
@@ -26,7 +30,7 @@
           </div>
         </div>
 
-        <div class="layout__actions">
+        <div class="vd-layout__actions">
           <div class="control">
             <div class="segmented">
               <vd-icon
@@ -43,14 +47,14 @@
     </header>
   }
 
-  <div class="layout__body">
+  <div class="vd-layout__body">
     @if (hasSidebar) {
-      <aside class="layout__aside">
+      <aside class="vd-layout__aside">
         <vd-sidebar [sections]="sections"></vd-sidebar>
       </aside>
     }
 
-    <main class="layout__content">
+    <main class="vd-layout__content">
       <router-outlet></router-outlet>
     </main>
   </div>

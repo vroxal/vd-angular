@@ -21,6 +21,12 @@
     border-radius: var(--vd-dropdown-radius);
     padding: var(--vd-dropdown-padding);
     min-width: max-content;
+
+    ::ng-deep > * {
+      display: flex;
+      flex-direction: column;
+      gap: var(--vd-dropdown-padding);
+    }
   }
   &__trigger {
     display: inline-flex;

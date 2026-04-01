@@ -11,6 +11,7 @@ import { VD_DROPDOWN, VdDropdownControl } from '../vd-dropdown.token';
     <div
       class="vd-dropdown-item"
       [class.vd-dropdown-item--disabled]="disabled"
+      [class.vd-dropdown-item--selectable]="selectable"
       [class.vd-dropdown-item--selected]="selectable && selected"
       (click)="onClick()"
     >
