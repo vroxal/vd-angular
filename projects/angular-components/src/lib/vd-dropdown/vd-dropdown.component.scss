@@ -4,6 +4,7 @@
   --vd-dropdown-border-width: var(--vd-scale-border-width-sm);
   --vd-dropdown-radius: var(--vd-scale-border-radius-md);
   --vd-dropdown-padding: var(--vd-scale-spacing-50);
+  display: inline-flex;
 }
 
 .vd-dropdown {
