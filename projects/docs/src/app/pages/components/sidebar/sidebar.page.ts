@@ -31,6 +31,7 @@ import CodeContainer from '../../../components/code-container/code-container.com
 })
 export default class SidebarPage implements OnInit {
   // Playground controls
+  showBrand = false;
   showIcons = true;
   showSectionTitles = true;
   hasNestedItems = true;
@@ -112,6 +113,12 @@ export class MyComponent {
   },
 ];`;
 
+  brandSlotSnippet = `<vd-sidebar [sections]="sections" [showBrand]="true">
+  <div vdSidebarBrand>
+    <img src="assets/logo.png" alt="Brand logo" />
+  </div>
+</vd-sidebar>`;
+
   noSectionTitlesSnippet = `sections: VdSidebarNavSection[] = [
   {
     showTitle: false,  // Hide section title
@@ -188,6 +195,14 @@ export class MyComponent {
       default: '[]',
       required: 'Yes',
       description: 'Array of navigation sections to display in the sidebar',
+    },
+    {
+      property: 'showBrand',
+      type: 'boolean',
+      default: 'false',
+      required: 'No',
+      description:
+        'Controls visibility of the brand/logo slot at the top of the sidebar. Project content into it using the vdSidebarBrand attribute',
     },
   ];
 
@@ -322,7 +337,9 @@ export class MyComponent {
   }
 
   get codeSnippet(): string {
-    let code = `<vd-sidebar [sections]="sections"></vd-sidebar>\n\n`;
+    let code = this.showBrand
+      ? `<vd-sidebar [sections]="sections" [showBrand]="true">\n  <div vdSidebarBrand>\n    <img src="assets/logo.png" alt="Brand logo" />\n  </div>\n</vd-sidebar>\n\n`
+      : `<vd-sidebar [sections]="sections"></vd-sidebar>\n\n`;
     code += `// TypeScript\nsections: VdSidebarNavSection[] = [\n`;
     code += `  {\n`;
 

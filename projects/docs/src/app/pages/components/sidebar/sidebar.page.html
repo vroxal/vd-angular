@@ -24,6 +24,22 @@
 
       <div class="component-variation-group">
         <div class="title-container">
+          <h3 class="title-large">With Brand Logo</h3>
+        <p>Sidebar with a brand logo projected at the top, shown or hidden via the showBrand input</p>
+        </div>
+        <div class="component-showcase-container">
+          <div class="sidebar-demo">
+            <vd-sidebar [sections]="basicSections" [showBrand]="true">
+              <div vdSidebarBrand>
+                <img src="assets/images/brand/logo.png" alt="Brand logo" />
+              </div>
+            </vd-sidebar>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-variation-group">
+        <div class="title-container">
           <h3 class="title-large">Nested Navigation</h3>
         <p>Sidebar with expandable nested menu items</p>
         </div>
@@ -121,6 +137,18 @@
           [code]="withoutIconsSnippet"
           fileName="without-icons.ts"
           language="angular-ts"
+        ></code-container>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Brand Logo Slot</h3>
+          <p>Show a logo at the top of the sidebar with the showBrand input, and project the logo markup using the vdSidebarBrand attribute:</p>
+        </div>
+        <code-container
+          [code]="brandSlotSnippet"
+          fileName="sidebar-brand.html"
+          language="angular-html"
         ></code-container>
       </div>
 
@@ -228,6 +256,11 @@
           <!-- Controls -->
           <div class="controls">
             <label class="switch-label">
+              <span>Show Brand</span>
+              <vd-switch [checked]="showBrand" (change)="showBrand = $event"></vd-switch>
+            </label>
+
+            <label class="switch-label">
               <span>Show Icons</span>
               <vd-switch [checked]="showIcons" (change)="showIcons = $event"></vd-switch>
             </label>
@@ -251,7 +284,11 @@
           <div class="divider"></div>
           <div class="component-showcase-container">
             <div class="sidebar-demo">
-              <vd-sidebar [sections]="playgroundSections"></vd-sidebar>
+              <vd-sidebar [sections]="playgroundSections" [showBrand]="showBrand">
+                <div vdSidebarBrand>
+                  <img src="assets/images/brand/logo.png" alt="Brand logo" />
+                </div>
+              </vd-sidebar>
             </div>
           </div>
         </div>

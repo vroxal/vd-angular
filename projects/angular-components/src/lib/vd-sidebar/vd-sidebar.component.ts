@@ -31,6 +31,7 @@ export interface VdSidebarNavSection {
 })
 export class VdSidebar implements OnInit, OnDestroy {
   @Input() sections: VdSidebarNavSection[] = [];
+  @Input() showBrand: boolean = false;
 
   expandedItems = new Set<string>(); // Track which items are expanded
   currentRoute: string = '';

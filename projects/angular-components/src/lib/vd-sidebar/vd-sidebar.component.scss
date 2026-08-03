@@ -28,6 +28,18 @@
       margin: var(--vd-scale-spacing-400) 0 var(--vd-scale-spacing-200);
     }
   }
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--vd-scale-spacing-200);
+    margin-bottom: var(--vd-scale-spacing-600);
+
+    img {
+      height: 32px;
+      max-width: 100%;
+    }
+  }
+
   &__title-container {
     display: flex;
     align-items: center;

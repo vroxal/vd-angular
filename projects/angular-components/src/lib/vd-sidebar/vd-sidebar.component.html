@@ -1,4 +1,8 @@
 <div class="vd-sidebar">
+  <div class="vd-sidebar__brand" *ngIf="showBrand">
+    <ng-content select="[vdSidebarBrand]"></ng-content>
+  </div>
+
   <!-- Other sections -->
   <div *ngFor="let section of sections; trackBy: trackBySection" class="vd-sidebar__section">
     <div *ngIf="section.showTitle !== false" class="vd-sidebar__title-container">
