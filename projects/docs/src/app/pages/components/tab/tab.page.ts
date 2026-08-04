@@ -36,6 +36,7 @@ export default class TabPage implements OnInit {
   // Playground state
   type: 'default' | 'boxed' = 'default';
   direction: 'horizontal' | 'vertical' = 'horizontal';
+  color: 'primary' | 'neutral' = 'primary';
   activeTab = 'tab1';
   contentDemoTab = 'tab1';
   showIcons = true;
@@ -92,6 +93,12 @@ export default class TabPage implements OnInit {
   [tabs]="tabs"
   [(value)]="activeTab"
   direction="vertical"
+></vd-tab>`;
+
+  colorImplementationSnippet = `<vd-tab
+  [tabs]="tabs"
+  [(value)]="activeTab"
+  color="neutral"
 ></vd-tab>`;
 
   eventsSnippet = `<vd-tab
@@ -183,6 +190,14 @@ export default class TabPage implements OnInit {
       required: 'No',
       description: 'Layout direction of the tabs',
     },
+    {
+      property: 'color',
+      type: "'primary' | 'neutral'",
+      default: "'primary'",
+      required: 'No',
+      description:
+        "Color variant applied to the active tab and its indicator — 'primary' uses the brand color, 'neutral' uses gray tones.",
+    },
   ];
 
   tabConfigData = [
@@ -260,6 +275,11 @@ export default class TabPage implements OnInit {
     { label: 'Vertical', value: 'vertical' },
   ];
 
+  colorOptions: VdSelectOption<'primary' | 'neutral'>[] = [
+    { label: 'Primary', value: 'primary' },
+    { label: 'Neutral', value: 'neutral' },
+  ];
+
   get playgroundTabs(): VdTabConfig[] {
     return this.showIcons ? this.demoTabs : this.demoTabsNoIcons;
   }
@@ -273,6 +293,9 @@ export default class TabPage implements OnInit {
     }
     if (this.direction !== 'horizontal') {
       attrs.push(`direction="${this.direction}"`);
+    }
+    if (this.color !== 'primary') {
+      attrs.push(`color="${this.color}"`);
     }
     const attributes = attrs.length ? '\n  ' + attrs.join('\n  ') : '';
     return `<vd-tab${attributes}\n></vd-tab>`;

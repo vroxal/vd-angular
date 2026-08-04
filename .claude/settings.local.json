@@ -1,10 +1,12 @@
 {
-  "enabledMcpjsonServers": [
-    "figma"
-  ],
   "permissions": {
     "allow": [
-      "mcp__figma__use_figma"
+      "mcp__figma__use_figma",
+      "mcp__figma__get_design_context",
+      "Bash(curl -sL -o /tmp/claude-1000/-home-claude-Pramod-design-system-vd-angular/53b03e6a-3bff-4229-a37e-0a2e29d283d9/scratchpad/tabbar2.png \"https://www.figma.com/api/mcp/asset/a14eadfc-a222-47d7-87bb-2ee63b8cd380.png\")"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "figma"
+  ]
 }

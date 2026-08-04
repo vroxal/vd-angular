@@ -68,6 +68,46 @@
         </div>
       </div>
 
+      <!-- Color -->
+      <div class="component-variation-group">
+        <div class="title-container">
+          <h3 class="title-large">Color</h3>
+        <p>Primary uses the brand color for the active tab; neutral uses gray tones</p>
+        </div>
+        <div class="component-showcase-container">
+          <vd-tab
+            [tabs]="demoTabs"
+            value="tab1"
+            type="default"
+            direction="horizontal"
+            color="primary"
+          ></vd-tab
+          ><vd-tab
+            [tabs]="demoTabs"
+            value="tab1"
+            type="default"
+            direction="horizontal"
+            color="neutral"
+          ></vd-tab>
+        </div>
+        <div class="component-showcase-container">
+          <vd-tab
+            [tabs]="demoTabs"
+            value="tab1"
+            type="boxed"
+            direction="horizontal"
+            color="primary"
+          ></vd-tab
+          ><vd-tab
+            [tabs]="demoTabs"
+            value="tab1"
+            type="boxed"
+            direction="horizontal"
+            color="neutral"
+          ></vd-tab>
+        </div>
+      </div>
+
       <!-- Without icons -->
       <div class="component-variation-group">
         <div class="title-container">
@@ -182,6 +222,20 @@
           <code-container
             [code]="verticalImplementationSnippet"
             fileName="vertical-example.html"
+            language="angular-html"
+          ></code-container>
+        </div>
+      </div>
+
+      <div class="guideline-section">
+        <div class="title-container">
+          <h3 class="title-large">Color</h3>
+          <p>Use the neutral color for tabs that shouldn't compete with primary brand actions:</p>
+        </div>
+        <div class="guideline">
+          <code-container
+            [code]="colorImplementationSnippet"
+            fileName="color-example.html"
             language="angular-html"
           ></code-container>
         </div>
@@ -351,6 +405,13 @@
               [options]="directionOptions"
             ></vd-select>
 
+            <vd-select
+              label="Color"
+              [value]="color"
+              (valueChange)="$event && (color = $event)"
+              [options]="colorOptions"
+            ></vd-select>
+
             <label class="switch-label">
               <span>Show Icons</span>
               <vd-switch [checked]="showIcons" (change)="showIcons = $event"></vd-switch>
@@ -363,6 +424,7 @@
               [(value)]="activeTab"
               [type]="type"
               [direction]="direction"
+              [color]="color"
             ></vd-tab>
           </div>
         </div>

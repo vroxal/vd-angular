@@ -5,12 +5,14 @@
 
   // Text colors
   --vd-tab-text-default: var(--vd-color-content-default-secondary);
+  --vd-tab-text-hover: var(--vd-color-content-default-base);
   --vd-tab-text-active: var(--vd-color-content-primary-base);
   --vd-tab-text-active-boxed: var(--vd-color-content-primary-on-secondary);
   --vd-tab-text-disabled: var(--vd-color-content-default-disabled);
 
   // Icon colors
   --vd-tab-icon-default: var(--vd-color-content-default-secondary);
+  --vd-tab-icon-hover: var(--vd-color-content-default-base);
   --vd-tab-icon-active: var(--vd-color-content-primary-base);
   --vd-tab-icon-active-boxed: var(--vd-color-content-primary-on-secondary);
   --vd-tab-icon-disabled: var(--vd-color-content-default-disabled);
@@ -18,7 +20,6 @@
   // Backgrounds
   --vd-tab-bg-boxed-container: var(--vd-color-background-default-secondary);
   --vd-tab-bg-boxed-active: var(--vd-color-background-primary-secondary);
-  --vd-tab-bg-hover: var(--vd-color-background-neutral-secondary);
 
   // Border / indicator
   --vd-tab-indicator-color: var(--vd-color-border-primary-base);
@@ -37,6 +38,19 @@
 
 .vd-tab {
   display: inline-flex;
+
+  // ── Color modifiers ──
+  // 'primary' uses the :host defaults above; 'neutral' remaps active/indicator
+  // colors to the neutral/default-base tokens (per design).
+  &--neutral {
+    --vd-tab-text-active: var(--vd-color-content-default-base);
+    --vd-tab-icon-active: var(--vd-color-content-default-base);
+    --vd-tab-text-active-boxed: var(--vd-color-content-default-base);
+    --vd-tab-icon-active-boxed: var(--vd-color-content-default-base);
+    --vd-tab-bg-boxed-active: var(--vd-color-background-neutral-secondary);
+    --vd-tab-indicator-color: var(--vd-color-border-default-base);
+  }
+
   // ── Direction modifiers ──
   &--horizontal {
     flex-direction: row;
@@ -68,7 +82,13 @@
       }
 
       &:hover:not(.vd-tab__tab--active):not(.vd-tab__tab--disabled) {
-        background: var(--vd-tab-bg-hover);
+        .vd-tab__tab-label {
+          color: var(--vd-tab-text-active);
+        }
+
+        .vd-tab__tab-icon {
+          color: var(--vd-tab-icon-active);
+        }
       }
     }
   }
@@ -91,7 +111,13 @@
       }
 
       &:hover:not(.vd-tab__tab--active):not(.vd-tab__tab--disabled) {
-        background: var(--vd-tab-bg-hover);
+        .vd-tab__tab-label {
+          color: var(--vd-tab-text-hover);
+        }
+
+        .vd-tab__tab-icon {
+          color: var(--vd-tab-icon-hover);
+        }
       }
     }
 

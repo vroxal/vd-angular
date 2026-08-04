@@ -4,6 +4,7 @@ import { VdIcon } from '../vd-icon/vd-icon.component';
 
 export type VdTabType = 'default' | 'boxed';
 export type VdTabDirection = 'horizontal' | 'vertical';
+export type VdTabColor = 'primary' | 'neutral';
 
 export interface VdTabConfig {
   label: string;
@@ -31,6 +32,9 @@ export class VdTab implements OnInit {
 
   /** Layout direction */
   @Input() direction: VdTabDirection = 'horizontal';
+
+  /** Color variant: 'primary' (brand) or 'neutral' (gray) */
+  @Input() color: VdTabColor = 'primary';
 
   /** Emitted when active tab changes */
   @Output() valueChange = new EventEmitter<string>();
